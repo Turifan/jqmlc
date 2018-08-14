@@ -1,12 +1,11 @@
-<!-- 首页 -->
+<!-- 机器猫 -->
 <template lang="html">
 
 </template>
 
 <script>
 export default {
-  name:'Index',
-  components:{}
+  name: 'Doraemon'
 }
 </script>
 

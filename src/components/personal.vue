@@ -1,12 +1,10 @@
-<!-- 首页 -->
+<!--我的  -->
 <template lang="html">
 
 </template>
 
 <script>
 export default {
-  name:'Index',
-  components:{}
 }
 </script>
 

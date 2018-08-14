@@ -1,14 +1,14 @@
-<!-- 首页 -->
+<!-- 底部导航 -->
 <template lang="html">
 
 </template>
 
 <script>
 export default {
-  name:'Index',
-  components:{}
+  name:'Footer'
 }
 </script>
 
 <style lang="less">
+
 </style>

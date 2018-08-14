@@ -1,3 +1,4 @@
+<!-- 发财猫 -->
 <template lang="html">
 
 </template>
@@ -8,5 +9,5 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="less">
 </style>

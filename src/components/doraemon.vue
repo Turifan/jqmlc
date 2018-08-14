@@ -4,8 +4,12 @@
 </template>
 
 <script>
+import Header from './inc/header.vue'
+import Footer from './inc/footer.vue'
+
 export default {
-  name: 'Doraemon'
+  name: 'Doraemon',
+  components:{Header,Footer}
 }
 </script>
 

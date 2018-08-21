@@ -24,16 +24,25 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../style/mixin';
+@import '../../style/mixin.less';
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+}
 
 .footerNav {
     display: flex;
     flex: 1;
     width: 100%;
-    background:
+    background: @gray-nav-bg;
     a {
         display: block;
         width: 25%;
+        height: 100%;
     }
 }
 </style>

@@ -4,12 +4,15 @@
 </template>
 
 <script>
-import Header from './inc/header.vue'
-import Footer from './inc/footer.vue'
+import Header from '@/component/header/header'
+import Footer from '@/components/footer/footer'
 
 export default {
-  name:'Personal',
-  components:{Header,Footer}
+  name: 'Personal',
+  components: {
+    Header,
+    Footer
+  }
 }
 </script>
 

@@ -1,17 +1,22 @@
 <!-- 首页 -->
 <template lang="html">
-  <Header/>
+  <div class="">
+    <Header/>
 
-  <Footer/>
+    <Footer/>
+  </div>
 </template>
 
 <script>
-import Header from './inc/header.vue'
-import Footer from './inc/footer.vue'
+import Header from '@/components/header/header.vue'
+import Footer from '@/components/footer/footer.vue'
 
 export default {
-  name:'Index',
-  components:{Header,Footer}
+  name: 'Index',
+  components: {
+    Header,
+    Footer
+  }
 }
 </script>
 

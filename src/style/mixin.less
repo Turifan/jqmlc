@@ -1,11 +1,82 @@
 @import "./variables";
 
+
+/**
+ * reset
+ * @type {[type]}
+ */
+
+a {
+  text-decoration: none;
+
+  &:active,
+  &:hover,
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+}
+/**
+ * layout
+ * @type {[type]}
+ */
+
+.width(@width) {
+  width: @width;
+}
+
+.height(@height) {
+  height: @height;
+}
+
+.size(@width,@height){
+  .width(@width);
+  .height(@height);
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.layout-center{
+  margin: 0 auto;
+}
+
+/**
+ * color
+ * @type {[type]}
+ */
+
+.orange {
+  color: @main-color;
+}
+/**
+ * border
+ * @type {[type]}
+ */
+
 .border-radius(@radius) {
   border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
 }
+/**
+ * text and fonts
+ * @type {[type]}
+ */
 
-.orange {
-  color: @main-color;
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
 }

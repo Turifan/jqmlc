@@ -3,16 +3,37 @@
   <div class="footer">
     <nav class="footerNav">
       <a href="#">
-        <div class="">
+        <div class="nav-icon home-icon">
 
         </div>
         <div class="">
-
+            首页
         </div>
       </a>
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
+      <a href="#">
+        <div class="nav-icon doraemon-icon">
+
+        </div>
+        <div class="">
+            机器猫
+        </div>
+      </a>
+      <a href="#">
+        <div class="nav-icon fatten-icon">
+
+        </div>
+        <div class="">
+            发财猫
+        </div>
+      </a>
+      <a href="#">
+        <div class="nav-icon personal-icon">
+
+        </div>
+        <div class="">
+            我
+        </div>
+      </a>
     </nav>
   </div>
 </template>
@@ -24,7 +45,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../style/mixin.less';
+@import '../../style/mixin';
 
 .footer {
     position: fixed;
@@ -38,11 +59,60 @@ export default {
     display: flex;
     flex: 1;
     width: 100%;
+    height: 100%;
     background: @gray-nav-bg;
     a {
         display: block;
         width: 25%;
         height: 100%;
+        .text-center;
+        color: #6a6a6a;
+        font-size: 38px;
+        line-height: 45px;
+        &:hover,&link,&:visited,&:active{
+          color: #6a6a6a;
+        }
     }
+}
+
+.nav-icon{
+  .size(85px,85px);
+  margin: 9px auto;
+}
+
+.home-icon{
+  background: url('../../assets/images/home-icon.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+.home-icon-active{
+  background: url('../../assets/images/home-icon-active.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+
+.doraemon-icon{
+  background: url('../../assets/images/doraemon-icon.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+.doraemon-icon-active{
+  background: url('../../assets/images/doraemon-icon-active.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+
+.fatten-icon{
+  background: url('../../assets/images/fatten-icon.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+.fatten-icon-active{
+  background: url('../../assets/images/fatten-icon-active.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+
+.personal-icon{
+  background: url('../../assets/images/personal-icon.png') 0 0 no-repeat;
+  background-size: 85px 85px;
+}
+.personal-icon-active{
+  background: url('../../assets/images/personal-icon-active.png') 0 0 no-repeat;
+  background-size: 85px 85px;
 }
 </style>

@@ -3,10 +3,10 @@
   <div class="footer">
     <nav class="footerNav">
       <a href="#">
-        <div class="nav-icon home-icon">
+        <div class="nav-icon home-icon-active">
 
         </div>
-        <div class="">
+        <div class="active">
             首页
         </div>
       </a>
@@ -78,6 +78,10 @@ export default {
 .nav-icon{
   .size(85px,85px);
   margin: 9px auto;
+}
+
+.active{
+  .orange;
 }
 
 .home-icon{

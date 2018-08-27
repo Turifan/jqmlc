@@ -1,11 +1,8 @@
 @import "./variables";
-
-
 /**
  * reset
  * @type {[type]}
  */
-
 a {
   text-decoration: none;
 
@@ -20,7 +17,6 @@ a {
  * layout
  * @type {[type]}
  */
-
 .width(@width) {
   width: @width;
 }
@@ -29,7 +25,7 @@ a {
   height: @height;
 }
 
-.size(@width,@height){
+.size(@width, @height) {
   .width(@width);
   .height(@height);
 }
@@ -42,23 +38,33 @@ a {
   float: right !important;
 }
 
-.layout-center{
+.layout-center {
   margin: 0 auto;
 }
-
 /**
  * color
  * @type {[type]}
  */
 
+.color(@color) {
+  color: @color;
+}
+
 .orange {
-  color: @main-color;
+  .color(@main-color);
+}
+
+.white {
+  .color(#fff);
+}
+
+.gray-bg {
+  background: @gray-nav-bg;
 }
 /**
  * border
  * @type {[type]}
  */
-
 .border-radius(@radius) {
   border-radius: @radius;
   -moz-border-radius: @radius;
@@ -68,7 +74,6 @@ a {
  * text and fonts
  * @type {[type]}
  */
-
 .text-center {
   text-align: center;
 }

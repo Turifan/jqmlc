@@ -46,6 +46,7 @@ export default {
 
 <style lang="less">
 @import '../../style/mixin';
+@import '../../style/common';
 
 .footer {
     position: fixed;

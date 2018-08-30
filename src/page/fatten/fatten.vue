@@ -1,6 +1,8 @@
 <!-- 发财猫 -->
 <template lang="html">
+  <Header :title="title"/>
 
+  <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
 </template>
 
 <script>
@@ -12,6 +14,25 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data() {
+    return {
+      title: '金钱猫',
+      active: 'fatten',
+      iconClass: {
+        'nav-icon': true,
+        'fatten-icon-active': false,
+        'fatten-icon': true
+      },
+      iconActive: {
+        'nav-icon': true,
+        'fatten-icon-active': true,
+        'fatten-icon': false
+      }
+    }
+  },
+  computed: {
+
   }
 }
 </script>

@@ -1,9 +1,9 @@
 <!-- 首页 -->
 <template lang="html">
   <div class="">
-    <Header/>
-
-    <Footer/>
+    <Header :title="title"/>
+    
+    <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
   </div>
 </template>
 
@@ -16,6 +16,22 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data() {
+    return {
+      title: '金钱猫',
+      active: 'home',
+      iconClass: {
+        'nav-icon': true,
+        'home-icon-active': false,
+        'home-icon': true
+      },
+      iconActive: {
+        'nav-icon': true,
+        'home-icon-active': true,
+        'home-icon': false
+      }
+    }
   }
 }
 </script>

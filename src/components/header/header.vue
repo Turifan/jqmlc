@@ -1,8 +1,11 @@
 <template lang="html">
-  <div class="">
+  <div class="gray-bg">
     <div class="header">
       <div class="header-title">
         {{title}}
+      </div>
+      <div class="sign-icon">
+
       </div>
     </div>
   </div>
@@ -12,8 +15,11 @@
 export default {
   name: 'Header',
   data() {
-    return {
-      title: '金钱猫'
+    return {}
+  },
+  computed: {
+    title() {
+      return this.$attrs.title;
     }
   }
 }
@@ -28,10 +34,10 @@ export default {
     background: @main-color;
 }
 
-.header-title{
-  padding: 0 40px;
-  font-size: 52px;
-  .white;
-  .text-center;
+.header-title {
+    padding: 40px 0;
+    font-size: 52px;
+    .white;
+    .text-center;
 }
 </style>

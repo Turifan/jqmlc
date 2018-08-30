@@ -9,7 +9,7 @@ export default new Router({
     // 首页
     {
       path: '/',
-      name: 'Index',
+      name: 'index',
       component: Index
     }
   ]

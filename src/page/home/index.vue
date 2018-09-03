@@ -1,6 +1,6 @@
 <!-- 首页 -->
 <template lang="html">
-  <div class="">
+  <div class="gray-body">
     <Header :title="title"/>
     <div class="userAll">
       <div class="userAll-tit">
@@ -13,22 +13,24 @@
 
     <div class="home-content">
       <div class="shareActivity">
-        <div class="">
+        <div class="home-content-tit">
           分享有礼
         </div>
-        <div class="">
+        <div class="home-content-tips">
           分享好友赢加息机会
         </div>
       </div>
       <div class="currentAmount">
-        <div class="">
+        <div class="home-content-tit">
           灵活猫资金
         </div>
-        <div class="">
+        <div class="home-content-tips">
           5638.30元
         </div>
       </div>
     </div>
+    <NoviceBid />
+
     <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
   </div>
 </template>
@@ -36,12 +38,14 @@
 <script>
 import Header from '@/components/header/header.vue'
 import Footer from '@/components/footer/footer.vue'
+import NoviceBid from './novice_bid.vue'
 
 export default {
   name: 'Index',
   components: {
     Header,
-    Footer
+    Footer,
+    NoviceBid
   },
   data() {
     return {
@@ -78,4 +82,32 @@ export default {
     font-size: 112px;
   }
 }
+
+.home-content{
+  display: flex;
+  flex: 1;
+  padding: 60px 0;
+  align-items: center;
+  background: #fff;
+  .shareActivity{
+    width: 50%;
+    padding-left: 70px;
+    border-right: 2px solid #efefef;
+  }
+  .currentAmount{
+    width: 50%;
+    padding-left: 70px;
+  }
+}
+
+.home-content-tit{
+  margin-bottom: 25px;
+  font-size: 40px;
+}
+
+.home-content-tips{
+  .fontSize(32px);
+  .color(#999);
+}
+
 </style>

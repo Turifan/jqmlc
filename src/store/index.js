@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.store({
+const store = new Vuex.Store({
   strict: true,
 
   state: {},
@@ -13,4 +13,4 @@ const store = new Vuex.store({
   modules: {}
 })
 
-export default store
+export default store;

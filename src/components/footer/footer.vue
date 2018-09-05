@@ -70,6 +70,7 @@ export default {
     left: 0;
     right: 0;
     height: 150px;
+    z-index: 1000;
 }
 
 .footerNav {

@@ -1,38 +1,43 @@
 <!-- 首页 -->
 <template lang="html">
-  <div class="gray-body">
+  <div class="">
     <Header :title="title"/>
-    <div class="userAll">
-      <div class="userAll-tit">
-        总资产（元）
-      </div>
-      <div class="userAll-num">
-        23197.23
-      </div>
-    </div>
+    <div class="gray-body">
 
-    <div class="home-content">
-      <div class="shareActivity">
-        <div class="home-content-tit">
-          分享有礼
+      <div class="userAll">
+        <div class="userAll-tit">
+          总资产（元）
         </div>
-        <div class="home-content-tips">
-          分享好友赢加息机会
-        </div>
-      </div>
-      <div class="currentAmount">
-        <div class="home-content-tit">
-          灵活猫资金
-        </div>
-        <div class="home-content-tips">
-          5638.30元
+        <div class="userAll-num">
+          23197.23
         </div>
       </div>
-    </div>
-    <NoviceBid />
 
+      <div class="home-content">
+        <div class="shareActivity">
+          <div class="home-content-tit">
+            分享有礼
+          </div>
+          <div class="home-content-tips">
+            分享好友赢加息机会
+          </div>
+        </div>
+        <div class="currentAmount">
+          <div class="home-content-tit">
+            灵活猫资金
+          </div>
+          <div class="home-content-tips">
+            5638.30元
+          </div>
+        </div>
+      </div>
+      <NoviceBid />
+
+
+    </div>
     <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
   </div>
+
 </template>
 
 <script>

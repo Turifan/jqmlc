@@ -1,5 +1,4 @@
 <template lang="html">
-  <div class="gray-bg">
     <div class="header">
       <div class="header-title">
         {{title}}
@@ -30,12 +29,18 @@ export default {
 @import '../../style/common';
 
 .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 130px;
     padding: 0 35px;
     background: @main-color;
+    z-index: 1000;
 }
 
 .header-title {
-    padding: 40px 0;
+    padding: 42px 0;
     font-size: 52px;
     .white;
     .text-center;

@@ -1,12 +1,15 @@
 <!-- 我的  -->
 <template lang="html">
-  <Header :title="title"/>
+  <div class="">
+    <Header :title="title"/>
 
-  <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
+    <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
+  </div>
+
 </template>
 
 <script>
-import Header from '@/component/header/header'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 
 export default {

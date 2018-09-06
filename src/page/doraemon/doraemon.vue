@@ -2,8 +2,17 @@
 <template lang="html">
   <div class="">
     <Header :title="title"/>
+    <div class="swiper-container" v-if="">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="" :key="">
+          <router-link :to="{ name: '', params: {} }">
 
-    <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
+          </router-link>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+    <Footer />
   </div>
 
 </template>
@@ -11,6 +20,8 @@
 <script>
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
+import '@/plugins/swiper.min.js'
+import '@/style/swiper.min.css'
 
 export default {
   name: 'Doraemon',
@@ -21,17 +32,7 @@ export default {
   data() {
     return {
       title: '机器猫',
-      active: 'doraemon',
-      iconClass: {
-        'nav-icon': true,
-        'doraemon-icon-active': false,
-        'doraemon-icon': true
-      },
-      iconActive: {
-        'nav-icon': true,
-        'doraemon-icon-active': true,
-        'doraemon-icon': false
-      }
+
     }
   },
   computed: {

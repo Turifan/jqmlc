@@ -3,7 +3,7 @@
   <div class="">
     <Header :title="title"/>
 
-    <Footer :active="active" :iconClass="iconClass" :iconActive="iconActive"/>
+    <Footer />
   </div>
 
 </template>
@@ -20,18 +20,8 @@ export default {
   },
   data() {
     return {
-      title: '金钱猫',
-      active: 'fatten',
-      iconClass: {
-        'nav-icon': true,
-        'fatten-icon-active': false,
-        'fatten-icon': true
-      },
-      iconActive: {
-        'nav-icon': true,
-        'fatten-icon-active': true,
-        'fatten-icon': false
-      }
+      title: '发财猫',
+
     }
   },
   computed: {

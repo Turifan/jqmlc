@@ -2,38 +2,38 @@
 <template lang="html">
   <div class="footer">
     <nav class="footerNav">
-      <a href="#">
-        <div :class="[active=='home'?iconActive:iconClass]">
+      <router-link :to="{ name: 'home', params: {} }">
+        <div :class="$route.path.indexOf('home')!==-1?'home-icon-active':'home-icon'">
 
         </div>
-        <div :class="{active:active=='home'}">
+        <div :class="$route.path.indexOf('home')!==-1?'active':''">
             首页
         </div>
-      </a>
-      <a href="#">
-        <div class="nav-icon doraemon-icon">
+      </router-link>
+      <router-link :to="{ name: 'doraemon', params: {} }">
+        <div :class="$route.path.indexOf('doraemon')!==-1?'doraemon-icon-active':'doraemon-icon'">
 
         </div>
-        <div :class="{active:active=='doraemon'}">
+        <div :class="$route.path.indexOf('doraemon')!==-1?'active':''">
             机器猫
         </div>
-      </a>
-      <a href="#">
-        <div class="nav-icon fatten-icon">
+      </router-link>
+      <router-link :to="{ name: 'fatten', params: {} }">
+        <div :class="$route.path.indexOf('fatten')!==-1?'fatten-icon-active':'fatten-icon'">
 
         </div>
-        <div :class="{active:active=='fatten'}">
+        <div :class="$route.path.indexOf('fatten')!==-1?'active':''">
             发财猫
         </div>
-      </a>
-      <a href="#">
-        <div class="nav-icon personal-icon">
+      </router-link>
+      <router-link :to="{ name: 'personal', params: {} }">
+        <div :class="$route.path.indexOf('personal')!==-1?'personal-icon-active':'personal-icon'">
 
         </div>
-        <div :class="{active:active=='personal'}">
+        <div :class="$route.path.indexOf('personal')!==-1?'active':''">
             我
         </div>
-      </a>
+      </router-link>
     </nav>
   </div>
 </template>
@@ -47,15 +47,7 @@ export default {
     }
   },
   computed: {
-    active() {
-      return this.$attrs.active;
-    },
-    iconActive() {
-      return this.$attrs.iconActive;
-    },
-    iconClass() {
-      return this.$attrs.iconClass;
-    }
+
   }
 }
 </script>
@@ -96,47 +88,59 @@ export default {
     }
 }
 
-.nav-icon {
-    .size(85px,85px);
-    margin: 9px auto;
-}
 
 .active {
     .orange;
 }
 
 .home-icon {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/home-icon.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 .home-icon-active {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/home-icon-active.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 
 .doraemon-icon {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/doraemon-icon.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 .doraemon-icon-active {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/doraemon-icon-active.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 
 .fatten-icon {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/fatten-icon.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 .fatten-icon-active {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/fatten-icon-active.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 
 .personal-icon {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/personal-icon.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }
 .personal-icon-active {
+    .size(85px,85px);
+    margin: 9px auto;
     background: url("../../assets/images/personal-icon-active.png") 0 0 no-repeat;
     background-size: 85px 85px;
 }

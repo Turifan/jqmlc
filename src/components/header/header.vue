@@ -3,9 +3,6 @@
       <div class="header-title">
         {{title}}
       </div>
-      <div class="sign-icon">
-
-      </div>
     </div>
   </div>
 </template>
@@ -33,13 +30,15 @@ export default {
     left: 0;
     right: 0;
     top: 0;
+    width: 100%;
     height: 130px;
-    padding: 0 35px;
+    // padding: 0 35px;
     background: @main-color;
     z-index: 1000;
 }
 
 .header-title {
+    width: 100%;
     padding: 42px 0;
     font-size: 52px;
     .white;

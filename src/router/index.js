@@ -14,6 +14,16 @@ const current = r => require.ensure([], () => r(require('@/page/current/current'
 const currentInfo = r => require.ensure([], () => r(require('@/page/current/children/current_info')), 'currentInfo')
 const term = r => require.ensure([], () => r(require('@/page/term/term')), 'term')
 const sign = r => require.ensure([], () => r(require('@/page/sign/sign')), 'sign')
+const balance = r => require.ensure([], () => r(require('@/page/balance/balance')), 'balance')
+const autoInvest = r => require.ensure([], () => r(require('@/page/autoInvest/autoInvest')), 'autoInvest')
+const autoInvestRecord = r => require.ensure([], () => r(require('@/page/autoInvest/children/autoInvestRecord')), 'autoInvestRecord')
+const invest = r => require.ensure([], () => r(require('@/page/invest/invest')), 'invest')
+const auditStatus = r => require.ensure([], () => r(require('@/page/invest/children/auditStatus')), 'auditStatus')
+const loanInfo = r => require.ensure([], () => r(require('@/page/invest/children/loanInfo')), 'loanInfo')
+const projectDetail = r => require.ensure([], () => r(require('@/page/invest/children/projectDetail')), 'projectDetail')
+const protocol = r => require.ensure([], () => r(require('@/page/invest/children/protocol')), 'protocol')
+const history = r => require.ensure([], () => r(require('@/page/history/history')), 'history')
+const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 
 Vue.use(Router)
 
@@ -101,6 +111,65 @@ export default new Router({
       path: '/sign',
       name: 'sign',
       component: sign
+    },
+    // 发财猫投标详情
+    {
+      path: '/invest',
+      name: 'invest',
+      component: invest,
+      children: [
+        {
+          path: 'auditStatus', // 审核状态
+          name: 'auditStatus',
+          component: auditStatus
+        },
+        {
+          path: 'loanInfo', // 借款详情
+          name: 'loanInfo',
+          component: loanInfo
+        },
+        {
+          path: 'projectDetail', // 项目详情
+          name: 'projectDetail',
+          component: projectDetail
+        },
+        {
+          path: 'protocol', // 借款协议
+          name: 'protocol',
+          component: protocol
+        }
+      ]
+    },
+    // 自动投标
+    {
+      path: '/autoInvest',
+      name: 'autoInvest',
+      component: autoInvest,
+      children: [
+        {
+          path: 'autoInvestRecord', // 自动投标记录
+          name: 'autoInvestRecord',
+          component: autoInvestRecord
+        }
+      ]
+    },
+    // 余额
+    {
+      path: '/balance',
+      name: 'balance',
+      component: balance
+    },
+    // 发财猫已结束标
+    {
+      path: '/history',
+      name: 'history',
+      component: history
+    },
+    // 提现
+    {
+      path: '/deposit',
+      name: 'deposit',
+      component: deposit
     }
   ]
 })

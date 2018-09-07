@@ -1,17 +1,17 @@
-<!-- 机器猫 -->
+ <!-- 机器猫 -->
 <template lang="html">
   <div class="">
     <Header :title="title"/>
     <div class="swiper-container" v-if="">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="" :key="">
-          <router-link :to="{ name: '', params: {} }">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="" :key="">
+            <router-link :to="{ name: '', params: {} }">
 
-          </router-link>
-        </div>
+            </router-link>
+          </div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-pagination"></div>
-</div>
     <Footer />
   </div>
 

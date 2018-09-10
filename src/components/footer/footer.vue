@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../style/mixin';
 @import '../../style/common';
 
@@ -63,6 +63,7 @@ export default {
     right: 0;
     height: 150px;
     z-index: 1000;
+    border-top: 1px solid #ebebeb;/*no*/
 }
 
 .footerNav {
@@ -70,7 +71,8 @@ export default {
     flex: 1;
     width: 100%;
     height: 100%;
-    background: @gray-nav-bg;
+    // background: @gray-nav-bg;
+    background: #fff;
     a {
         display: block;
         width: 25%;

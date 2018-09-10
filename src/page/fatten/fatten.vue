@@ -33,6 +33,9 @@
       </div>
 
       <FattenList/>
+      <div class="history">
+        查看结束项目
+      </div>
     </div>
     <Footer />
   </div>
@@ -110,5 +113,11 @@ export default {
   background-size: 23px 42px;
 }
 
-
+.history {
+    .height(120px);
+    padding: 0 35px;
+    .bg(#fff);
+    .fontSize(36px);
+    line-height: 120px;
+}
 </style>

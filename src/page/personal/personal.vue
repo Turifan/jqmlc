@@ -19,14 +19,15 @@
           </div>
         </div>
         <div class="grow">
-          <div class="">
-            110
+          <div class="growValue">
+            <img src="../../assets/images/growTree.png" alt="">110
           </div>
           <div class="">
             成长值
           </div>
         </div>
       </div>
+      <Suduku :suduku="suduku"/>
     </div>
 
     <Footer />
@@ -37,17 +38,91 @@
 <script>
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
+import Suduku from './suduku.vue'
 
 export default {
   name: 'Personal',
   components: {
     Header,
-    Footer
+    Footer,
+    Suduku
   },
   data() {
     return {
       title: '我的',
-
+      suduku: [{
+          title:'抽奖号码',
+          imgUrl:require('../../assets/images/luckdraw.png'),
+          isMiddle:false,
+          path:'luckdraw'
+        },
+        {
+          title:'我的任务',
+          imgUrl:require('../../assets/images/mytasks.png'),
+          isMiddle:true,
+          path:'task'
+        },
+        {
+          title:'我的资产',
+          imgUrl:require('../../assets/images/myassets.png'),
+          isMiddle:false,
+          path:'assets'
+        },
+        {
+          title:'我的体验金',
+          imgUrl:require('../../assets/images/expgold.png'),
+          isMiddle:false,
+          path:'expgold'
+        },
+        {
+          title:'我的猫币',
+          imgUrl:require('../../assets/images/catcoin.png'),
+          isMiddle:true,
+          path:'catcoin'
+        },
+        {
+          title:'投资记录',
+          imgUrl:require('../../assets/images/investrecord.png'),
+          isMiddle:false,
+          path:'investRecord'
+        },
+        {
+          title:'喵喵管家',
+          imgUrl:require('../../assets/images/housekeeper.png'),
+          isMiddle:false,
+          path:'housekeeper'
+        },
+        {
+          title:'现金券',
+          imgUrl:require('../../assets/images/cashtickets.png'),
+          isMiddle:true,
+          path:'cashTickets'
+        },
+        {
+          title:'安全中心',
+          imgUrl:require('../../assets/images/safecenter.png'),
+          isMiddle:false,
+          path:'safe'
+        },
+        {
+          title:'关于我们',
+          imgUrl:require('../../assets/images/aboutus.png'),
+          isMiddle:false,
+          path:'aboutUs'
+        },
+        {
+          title:'常见问题',
+          imgUrl:require('../../assets/images/faq.png'),
+          isMiddle:true,
+          path:'faq'
+        },
+        {
+          title:'',
+          imgUrl:'',
+          isMiddle:false,
+          // path:''
+        }
+      ]
     }
   },
   computed: {
@@ -74,17 +149,20 @@ export default {
     flex: 1;
     padding: 20px 35px;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    border-bottom: 6px solid #ebebeb;
 }
 
 .avatar {
     .size(200px,200px);
+    margin-right: 26px;
     img {
         width: 100%;
     }
 }
 
 .mobile {
+    margin-bottom: 50px;
     .fontSize(52px);
     .color(#333);
 }
@@ -92,6 +170,10 @@ export default {
 .level {
     .fontSize(38px);
     .color(@main-color);
+}
+
+.userDetail {
+    .width(652px);
 }
 
 .grow {
@@ -106,4 +188,13 @@ export default {
     .fontSize(32px);
     .text-center;
 }
+
+.growValue {
+    .fontSize(38px);
+    img {
+        .size(48px,50px);
+    }
+}
+
+
 </style>

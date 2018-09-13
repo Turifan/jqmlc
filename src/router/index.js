@@ -24,6 +24,7 @@ const projectDetail = r => require.ensure([], () => r(require('@/page/invest/chi
 const protocol = r => require.ensure([], () => r(require('@/page/invest/children/protocol')), 'protocol')
 const history = r => require.ensure([], () => r(require('@/page/history/history')), 'history')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
+const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
 
 Vue.use(Router)
 
@@ -170,6 +171,12 @@ export default new Router({
       path: '/deposit',
       name: 'deposit',
       component: deposit
-    }
+    },
+    // 抽奖号码
+    {
+      path:'/luckdraw',
+      name:'luckdraw',
+      component:luckdraw
+    },
   ]
 })

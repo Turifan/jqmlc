@@ -25,6 +25,18 @@ const protocol = r => require.ensure([], () => r(require('@/page/invest/children
 const history = r => require.ensure([], () => r(require('@/page/history/history')), 'history')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
+const task = r => require.ensure([], () => r(require('@/page/task/task')), 'task')
+const assets = r => require.ensure([], () => r(require('@/page/assets/assets')), 'assets')
+const expGold = r => require.ensure([], () => r(require('@/page/expGold/expGold')), 'expGold')
+const catcoin = r => require.ensure([], () => r(require('@/page/catcoin/catcoin')), 'catcoin')
+const investRecord = r => require.ensure([], () => r(require('@/page/investRecord/investRecord')), 'investRecord')
+const houseKeeper = r => require.ensure([], () => r(require('@/page/houseKeeper/houseKeeper')), 'houseKeeper')
+const cashTickets = r => require.ensure([], () => r(require('@/page/cashTickets/cashTickets')), 'cashTickets')
+const safe = r => require.ensure([], () => r(require('@/page/safe/safe')), 'safe')
+const aboutUs = r => require.ensure([], () => r(require('@/page/aboutUs/aboutUs')), 'aboutUs')
+const faq = r => require.ensure([], () => r(require('@/page/faq/faq')), 'faq')
+const member = r => require.ensure([], () => r(require('@/page/member/member')), 'member')
+const memberRule = r => require.ensure([], () => r(require('@/page/member/memberRule')), 'memberRule')
 
 Vue.use(Router)
 
@@ -174,9 +186,81 @@ export default new Router({
     },
     // 抽奖号码
     {
-      path:'/luckdraw',
-      name:'luckdraw',
-      component:luckdraw
+      path: '/luckdraw',
+      name: 'luckdraw',
+      component: luckdraw
     },
+    // 我的任务
+    {
+      path: '/task',
+      name: 'task',
+      component: task
+    },
+    // 我的资产
+    {
+      path: '/assets',
+      name: 'assets',
+      component: assets
+    },
+    // 我的体验金
+    {
+      path: '/expGold',
+      name: 'expGold',
+      component: expGold
+    },
+    // 我的猫币
+    {
+      path: '/catcoin',
+      name: 'catcoin',
+      component: catcoin
+    },
+    // 投资记录
+    {
+      path: '/investRecord',
+      name: 'investRecord',
+      component: investRecord
+    },
+    // 喵喵管家
+    {
+      path: '/houseKeeper',
+      name: 'houseKeeper',
+      component: houseKeeper
+    },
+    // 现金券
+    {
+      path: '/cashTickets',
+      name: 'cashTickets',
+      component: cashTickets
+    },
+    // 安全中心
+    {
+      path: '/safe',
+      name: 'safe',
+      component: safe
+    },
+    // 关于我们
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: aboutUs
+    },
+    // 常见问题
+    {
+      path: '/faq',
+      name: 'faq',
+      component: faq
+    },
+    // 会员等级
+    {
+      path: '/member',
+      name: 'member',
+      component: member
+    },
+    // 会员规则
+    {
+      path: '/memberRule',
+      name: 'memberRule',
+      component: memberRule
+    }
   ]
 })

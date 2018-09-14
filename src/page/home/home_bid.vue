@@ -27,9 +27,9 @@
             </div>
           </div>
           <div class="novice-btn-box">
-            <div class="novice-btn">
+            <router-link tag="div" :to="{ name: 'invest', params: {} }" class="novice-btn">
               购买
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -63,9 +63,9 @@
             <div class="bank-bid-canInvest">
               可投资金 <span class="orange">2000000.00</span>元
             </div>
-            <div class="bank-btn">
+            <router-link tag="div" :to="{ name: 'invest', params: {} }" class="bank-btn">
               购买
-            </div>
+            </router-link>
           </div>
         </div>
       </div>

@@ -1,11 +1,10 @@
-<!-- 关于我们 -->
+<!-- 会员规则 -->
 <template lang="html">
 
 </template>
 
 <script>
 export default {
-  name:'AboutUs'
 }
 </script>
 

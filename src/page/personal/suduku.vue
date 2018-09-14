@@ -1,3 +1,4 @@
+<!-- 我的页面-九宫格组件 -->
 <template lang="html">
   <div class="">
     <div class="personalBox">
@@ -60,6 +61,7 @@ export default {
     box-sizing: border-box;
     .text-center;
     border-bottom: 2px solid #ebebeb;
+    .fontSize(38px);
     .personalCell_img {
         padding-top: 107px;
         padding-bottom: 64px;

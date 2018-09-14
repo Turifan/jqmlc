@@ -1,11 +1,11 @@
-<!-- 关于我们 -->
+<!-- 会员 -->
 <template lang="html">
 
 </template>
 
 <script>
 export default {
-  name:'AboutUs'
+  name: 'Member',
 }
 </script>
 

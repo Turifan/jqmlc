@@ -14,9 +14,11 @@
           <div class="mobile">
             185******23
           </div>
-          <div class="level">
-            会员等级:折耳猫 >>
-          </div>
+          <router-link :to="{ name: 'member', params: {} }">
+            <div class="level">
+              会员等级:折耳猫 >>
+            </div>
+          </router-link>
         </div>
         <div class="grow">
           <div class="growValue">
@@ -28,6 +30,9 @@
         </div>
       </div>
       <Suduku :suduku="suduku"/>
+      <div class="logOut">
+        安全退出
+      </div>
     </div>
 
     <Footer />
@@ -51,75 +56,75 @@ export default {
     return {
       title: '我的',
       suduku: [{
-          title:'抽奖号码',
-          imgUrl:require('../../assets/images/luckdraw.png'),
-          isMiddle:false,
-          path:'luckdraw'
+          title: '抽奖号码',
+          imgUrl: require('../../assets/images/luckdraw.png'),
+          isMiddle: false,
+          path: 'luckdraw'
         },
         {
-          title:'我的任务',
-          imgUrl:require('../../assets/images/mytasks.png'),
-          isMiddle:true,
-          path:'task'
+          title: '我的任务',
+          imgUrl: require('../../assets/images/mytasks.png'),
+          isMiddle: true,
+          path: 'task'
         },
         {
-          title:'我的资产',
-          imgUrl:require('../../assets/images/myassets.png'),
-          isMiddle:false,
-          path:'assets'
+          title: '我的资产',
+          imgUrl: require('../../assets/images/myassets.png'),
+          isMiddle: false,
+          path: 'assets'
         },
         {
-          title:'我的体验金',
-          imgUrl:require('../../assets/images/expgold.png'),
-          isMiddle:false,
-          path:'expgold'
+          title: '我的体验金',
+          imgUrl: require('../../assets/images/expgold.png'),
+          isMiddle: false,
+          path: 'expGold'
         },
         {
-          title:'我的猫币',
-          imgUrl:require('../../assets/images/catcoin.png'),
-          isMiddle:true,
-          path:'catcoin'
+          title: '我的猫币',
+          imgUrl: require('../../assets/images/catcoin.png'),
+          isMiddle: true,
+          path: 'catcoin'
         },
         {
-          title:'投资记录',
-          imgUrl:require('../../assets/images/investrecord.png'),
-          isMiddle:false,
-          path:'investRecord'
+          title: '投资记录',
+          imgUrl: require('../../assets/images/investrecord.png'),
+          isMiddle: false,
+          path: 'investRecord'
         },
         {
-          title:'喵喵管家',
-          imgUrl:require('../../assets/images/housekeeper.png'),
-          isMiddle:false,
-          path:'housekeeper'
+          title: '喵喵管家',
+          imgUrl: require('../../assets/images/housekeeper.png'),
+          isMiddle: false,
+          path: 'houseKeeper'
         },
         {
-          title:'现金券',
-          imgUrl:require('../../assets/images/cashtickets.png'),
-          isMiddle:true,
-          path:'cashTickets'
+          title: '现金券',
+          imgUrl: require('../../assets/images/cashtickets.png'),
+          isMiddle: true,
+          path: 'cashTickets'
         },
         {
-          title:'安全中心',
-          imgUrl:require('../../assets/images/safecenter.png'),
-          isMiddle:false,
-          path:'safe'
+          title: '安全中心',
+          imgUrl: require('../../assets/images/safecenter.png'),
+          isMiddle: false,
+          path: 'safe'
         },
         {
-          title:'关于我们',
-          imgUrl:require('../../assets/images/aboutus.png'),
-          isMiddle:false,
-          path:'aboutUs'
+          title: '关于我们',
+          imgUrl: require('../../assets/images/aboutus.png'),
+          isMiddle: false,
+          path: 'aboutUs'
         },
         {
-          title:'常见问题',
-          imgUrl:require('../../assets/images/faq.png'),
-          isMiddle:true,
-          path:'faq'
+          title: '常见问题',
+          imgUrl: require('../../assets/images/faq.png'),
+          isMiddle: true,
+          path: 'faq'
         },
         {
-          title:'',
-          imgUrl:'',
-          isMiddle:false,
+          title: '',
+          imgUrl: '',
+          isMiddle: false,
           // path:''
         }
       ]
@@ -162,7 +167,6 @@ export default {
 }
 
 .mobile {
-    margin-bottom: 50px;
     .fontSize(52px);
     .color(#333);
 }
@@ -174,6 +178,7 @@ export default {
 
 .userDetail {
     .width(652px);
+    line-height: 2;
 }
 
 .grow {
@@ -196,5 +201,14 @@ export default {
     }
 }
 
-
+.logOut{
+  .size(900px,120px);
+  margin: 21px auto 68px;
+  .bg(@main-color);
+  .border-radius(18px);
+  .fontSize(52px);
+  .text-center;
+  line-height: 120px;
+  .color(#fff);
+}
 </style>

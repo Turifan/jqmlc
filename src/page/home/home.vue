@@ -13,31 +13,8 @@
         </div>
       </div>
 
-      <div class="home-content">
-        <div class="shareActivity">
-          <router-link :to="{ name: 'share', params: {} }">
-            <div class="home-content-tit">
-              分享有礼
-            </div>
-            <div class="home-content-tips">
-              分享好友赢加息机会
-            </div>
-          </router-link>
-        </div>
-        <div class="currentAmount">
-          <router-link :to="{ name: 'current', params: {} }">
-            <div class="home-content-tit">
-              灵活猫资金
-            </div>
-            <div class="home-content-tips">
-              5638.30元
-            </div>
-          </router-link>
-        </div>
-      </div>
+      <UserFund :userFund="userFund"/>
       <HomeBid />
-
-
     </div>
     <Footer />
   </div>
@@ -48,18 +25,31 @@
 import Header from '@/components/header/header.vue'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
+import UserFund from '@/components/common/userFund.vue'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Footer,
-    HomeBid
+    HomeBid,
+    UserFund
   },
   data() {
     return {
       title: '金钱猫',
-
+      userFund: {
+        left: {
+          title: '分享有礼',
+          tips: '分享好友赢加息机会',
+          path: 'share'
+        },
+        right: {
+          title: '灵活猫资金',
+          tips: '0.00元',
+          path: 'current'
+        }
+      }
     }
   }
 }
@@ -80,32 +70,5 @@ export default {
     .userAll-num {
         font-size: 112px;
     }
-}
-
-.home-content {
-    display: flex;
-    flex: 1;
-    padding: 60px 0;
-    align-items: center;
-    background: #fff;
-    .shareActivity {
-        width: 50%;
-        padding-left: 70px;
-        border-right: 2px solid #efefef;
-    }
-    .currentAmount {
-        width: 50%;
-        padding-left: 70px;
-    }
-}
-
-.home-content-tit {
-    margin-bottom: 25px;
-    font-size: 40px;
-}
-
-.home-content-tips {
-    .fontSize(32px);
-    .color(#999);
 }
 </style>

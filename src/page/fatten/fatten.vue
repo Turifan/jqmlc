@@ -6,36 +6,8 @@
       <div class="pledge">
           <img src="../../assets/images/pledge.png" alt="">
       </div>
-      <div class="userInfo">
-        <router-link :to="{ name: 'balance', params: {} }">
-          <div class="balance">
-            <div class="userInfo-tit">余额</div>
-            <div class="userInfo-info">827321.32</div>
-            <div class="right-arrow">
-
-            </div>
-          </div>
-        </router-link>
-        <router-link :to="{ name: 'autoInvest', params: {} }">
-          <div class="autoInvest">
-            <div class="userInfo-tit">
-              自动投标
-            </div>
-            <div class="userInfo-info">
-              已开启
-            </div>
-            <div class="right-arrow">
-
-            </div>
-          </div>
-        </router-link>
-
-      </div>
-
-      <FattenList/>
-      <div class="history">
-        查看结束项目
-      </div>
+      <UserFund :userFund="userFund"/>
+      <FattenProduct/>
     </div>
     <Footer />
   </div>
@@ -44,19 +16,33 @@
 <script>
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
-import FattenList from './fatten_list.vue'
+import UserFund from '@/components/common/userFund.vue'
+import FattenProduct from './fatten_product.vue'
+// import FattenList from './fatten_list.vue'
 
 export default {
   name: 'Fatten',
   components: {
     Header,
     Footer,
-    FattenList
+    UserFund,
+    FattenProduct
   },
   data() {
     return {
       title: '发财猫',
-
+      userFund: {
+        left: {
+          title: '余额资金',
+          tips: '0.00',
+          path: 'balance'
+        },
+        right: {
+          title: '自动投标',
+          tips: '未开启',
+          path: 'autoInvest'
+        }
+      }
     }
   },
   computed: {
@@ -79,8 +65,12 @@ export default {
         padding: 0;
     }
 }
-.userInfo{
-  margin-bottom: 20px;
+.userInfo {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 .balance {
     display: flex;
@@ -98,19 +88,19 @@ export default {
     border-top: 2px solid @gray-body-bg;
 }
 
-.userInfo-tit{
-  width: 225px;
+.userInfo-tit {
+    width: 225px;
 }
-.userInfo-info{
-  .width(766px);
-  .color(@main-color);
+.userInfo-info {
+    .width(766px);
+    .color(@main-color);
 }
 
-.right-arrow{
-  width: 23px;
-  height: 42px;
-  background: url('../../assets/images/right.png') no-repeat;
-  background-size: 23px 42px;
+.right-arrow {
+    width: 23px;
+    height: 42px;
+    background: url("../../assets/images/right.png") no-repeat;
+    background-size: 23px 42px;
 }
 
 .history {

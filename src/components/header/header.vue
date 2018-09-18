@@ -23,7 +23,6 @@ export default {
 
 <style lang="less">
 @import '../../style/mixin';
-@import '../../style/common';
 
 .header {
     position: fixed;

@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  name:'Current'
+  name:'FatHistory'
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 </style>

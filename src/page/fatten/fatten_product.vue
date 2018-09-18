@@ -1,7 +1,7 @@
 <!-- 发财猫主页各产品列表 -->
 <template lang="html">
   <div class="fatten_product">
-    <router-link :to="{ name: 'fat', params: {} }" class="fatten_product_list">
+    <router-link :to="{ name: 'fat', params: {days:30} }" class="fatten_product_list">
       <div class="fatten_product_img">
           <img src="../../assets/images/cat_tmm.png" alt="">
       </div>
@@ -13,7 +13,7 @@
           预期年化率  11%   投资期限  30天
         </div>
       </div>
-      <router-link tag="div" :to="{ name: 'fat', params: {} }"  class="fatten_product_btn hasBid">
+      <router-link tag="div" :to="{ name: 'fat', params: {days:30} }"  class="fatten_product_btn hasBid">
           有标
       </router-link>
     </router-link>
@@ -28,7 +28,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .fatten_product {
     padding: 0 35px;

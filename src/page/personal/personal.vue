@@ -138,7 +138,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .notice {
     padding: 0 35px;

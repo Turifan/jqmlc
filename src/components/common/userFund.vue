@@ -40,7 +40,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .home-content {
     display: flex;

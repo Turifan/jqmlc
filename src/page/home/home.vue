@@ -57,7 +57,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .userAll {
     padding: 49px 0 60px;

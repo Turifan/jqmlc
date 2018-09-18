@@ -37,6 +37,8 @@ const aboutUs = r => require.ensure([], () => r(require('@/page/aboutUs/aboutUs'
 const faq = r => require.ensure([], () => r(require('@/page/faq/faq')), 'faq')
 const member = r => require.ensure([], () => r(require('@/page/member/member')), 'member')
 const memberRule = r => require.ensure([], () => r(require('@/page/member/memberRule')), 'memberRule')
+const fat = r => require.ensure([], () => r(require('@/page/fat/fat')), 'fat')
+const fatHistory = r => require.ensure([], () => r(require('@/page/fatHistory/fatHistory')), 'fatHistory')
 
 Vue.use(Router)
 
@@ -261,6 +263,18 @@ export default new Router({
       path: '/memberRule',
       name: 'memberRule',
       component: memberRule
-    }
+    },
+    // 发财猫具体商品列表
+    {
+      path: '/fat/:days',
+      name:'fat',
+      component:fat
+    },
+    // 发财猫结束列表
+    {
+      path: '/fatHistory/:days',
+      name:'fatHistory',
+      component:fatHistory
+    },
   ]
 })

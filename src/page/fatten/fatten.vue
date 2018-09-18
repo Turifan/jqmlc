@@ -18,7 +18,6 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import UserFund from '@/components/common/userFund.vue'
 import FattenProduct from './fatten_product.vue'
-// import FattenList from './fatten_list.vue'
 
 export default {
   name: 'Fatten',
@@ -53,7 +52,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .pledge {
     width: 100%;

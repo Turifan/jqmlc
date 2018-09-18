@@ -4,13 +4,12 @@
     <div class="fatten-container">
       <div class="fatten-list">
         <div class="fatten-list-title">
-          <div class="pull-left">
+          <div class="">
             <span class="">车贷0074</span>
-            <span class="orange">(新手标)</span>
+            <span class="orange exptips">0.4倍体验金</span>
           </div>
-          <div class="pull-right">
-            <span class="fatten-list-tip">可投资金</span>
-            <span class="orange">200000.00元</span>
+          <div class="">
+            <span class="fatten-list-tip">银行卡标</span>
           </div>
         </div>
         <div class="fatten-detail">
@@ -36,6 +35,14 @@
             开抢
           </div>
         </div>
+        <div class="fatten-limit">
+          <div class="">
+            每个ID限额2万
+          </div>
+          <div class="">
+            可投资金<span class="orange">200000.00元</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -51,7 +58,7 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
+
 
 .fatten-container {
     overflow-y: auto;
@@ -64,24 +71,37 @@ export default {
 }
 
 .fatten-list-title {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
     .fontSize(36px);
     line-height: 100px;
     overflow: hidden;
-    border-bottom: 1px dashed #e1e1e1;
-    /*no*/
+    // border-bottom: 1px dashed #e1e1e1;
+}
+
+.exptips {
+    display: inline-block;
+    .size(200px,42px);
+    .border-radius(12px);
+    .fontSize(32px);
+    .border(2px,solid,@orange);
+    line-height: 42px;
+    .text-center;
 }
 
 .fatten-list-tip {
+    .fontSize(34px);
     .color(#999);
 }
 
 .fatten-detail {
     display: flex;
     flex: 1;
-    // padding: 0 35px;
     height: 260px;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 2px solid #ededed;
 }
 
 .fatten-rate {
@@ -90,11 +110,11 @@ export default {
 }
 
 .rate {
-    .fontSize(60px);
+    .fontSize(50px);
     .color(@main-color);
-    margin-bottom: 29px;
+    margin-bottom: 33px;
     .rate-simbol {
-        .fontSize(34px);
+        .fontSize(32px);
     }
 }
 
@@ -114,10 +134,10 @@ export default {
     display: inline-block;
     margin-left: 23px;
     // margin-bottom: 30px;
-    .fontSize(50px);
+    .fontSize(42px);
     .color(@main-color);
     .invest-info-unit {
-        .fontSize(34px);
+        .fontSize(32px);
     }
 }
 
@@ -131,5 +151,12 @@ export default {
     .fontSize(42px);
 }
 
-
+.fatten-limit{
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  .color(#999);
+  line-height: 100px;
+}
 </style>

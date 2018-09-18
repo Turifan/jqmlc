@@ -90,7 +90,6 @@ export default {
 
 <style lang="less">
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .home-bid {
     padding: 0 15px;

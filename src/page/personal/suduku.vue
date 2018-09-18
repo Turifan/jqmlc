@@ -42,7 +42,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-@import '../../style/common.less';
 
 .personalBox {
     display: flex;
@@ -57,7 +56,7 @@ export default {
 }
 
 .personalCell {
-    .size(360px,360px);
+    .size(100%/3,360px);
     box-sizing: border-box;
     .text-center;
     border-bottom: 2px solid #ebebeb;

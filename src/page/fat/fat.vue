@@ -20,10 +20,13 @@ export default {
   },
   data() {
     return {
-      headerBar:{
-        title:'汤姆猫',
-        imgUrl:require('../../assets/images/fat_history.png'),
-        path:''
+      headerBar: {
+        title: '汤姆猫',
+        imgUrl: require('../../assets/images/fat_history.png'),
+        path: 'fatHistory',
+        params: {
+          days:30
+        }
       }
     }
   }

@@ -2,7 +2,7 @@
 <template lang="html">
   <div class="">
     <div class="fatten-container">
-      <div class="fatten-list">
+      <div class="fatten-list" v-for="" :key="">
         <div class="fatten-list-title">
           <div class="">
             <span class="">车贷0074</span>
@@ -12,7 +12,7 @@
             <span class="fatten-list-tip">银行卡标</span>
           </div>
         </div>
-        <div class="fatten-detail">
+        <router-link tag="div" :to="{ name: 'invest', params: {fatId:30} }" class="fatten-detail">
           <div class="fatten-rate">
             <div class="rate">
               10.0 <span class="rate-simbol">%</span>
@@ -31,10 +31,10 @@
               <span class="invest-info">100<span class="invest-info-unit">元</span></span>
             </div>
           </div>
-          <div class="invest-btn">
+          <router-link tag="div" :to="{ name: 'invest', params: {fatId:30} }" class="invest-btn">
             开抢
-          </div>
-        </div>
+          </router-link>
+        </router-link>
         <div class="fatten-limit">
           <div class="">
             每个ID限额2万
@@ -52,7 +52,8 @@
 
 <script>
 export default {
-  name: 'FattenList'
+  name: 'FattenList',
+  
 }
 </script>
 

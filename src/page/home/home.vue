@@ -1,7 +1,14 @@
 <!-- 首页 -->
 <template lang="html">
   <div class="">
-    <Header :title="title"/>
+    <div class="homeBar">
+      <div class="home-title">
+        金钱猫
+      </div>
+      <router-link tag="div" :to="{ name: 'sign', params: {} }" class="sign">
+        <img src="../../assets/images/sign.png" alt="">
+      </router-link>
+    </div>
     <div class="gray-body">
 
       <div class="userAll">
@@ -22,7 +29,6 @@
 </template>
 
 <script>
-import Header from '@/components/header/header.vue'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
 import UserFund from '@/components/common/userFund.vue'
@@ -30,7 +36,6 @@ import UserFund from '@/components/common/userFund.vue'
 export default {
   name: 'Home',
   components: {
-    Header,
     Footer,
     HomeBid,
     UserFund
@@ -49,7 +54,17 @@ export default {
           tips: '0.00元',
           path: 'current'
         }
-      }
+      },
+      // headerBar: {
+      //   title: '金钱猫',
+      //   imgUrl: require('../../assets/images/sign.png'),
+      //   path: 'sign',
+      //   params: {
+      //     // days:30
+      //   },
+      //   goBack:false,
+      //   showIcon:true
+      // }
     }
   }
 }
@@ -57,6 +72,37 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
+
+.homeBar{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 130px;
+  background: @main-color;
+  z-index: 1000;
+}
+
+.home-title{
+  .fontSize(52px);
+  width: 100%;
+  // padding: 42px 0;
+  height: 130px;
+  line-height: 130px;
+  .white;
+  .text-center;
+}
+
+.sign{
+  position: absolute;
+  right: 40px;
+  .size(84px,65px);
+  bottom: 32px;
+  img{
+    width: 100%;
+  }
+}
 
 .userAll {
     padding: 49px 0 60px;

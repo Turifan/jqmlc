@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="novice-btn-box">
-            <router-link tag="div" :to="{ name: 'invest', params: {} }" class="novice-btn">
+            <router-link tag="div" :to="{ name: 'invest', params: {fatId:30} }" class="novice-btn">
               购买
             </router-link>
           </div>
@@ -63,7 +63,7 @@
             <div class="bank-bid-canInvest">
               可投资金 <span class="orange">2000000.00</span>元
             </div>
-            <router-link tag="div" :to="{ name: 'invest', params: {} }" class="bank-btn">
+            <router-link tag="div" :to="{ name: 'invest', params: {fatId:30} }" class="bank-btn">
               购买
             </router-link>
           </div>
@@ -126,6 +126,7 @@ export default {
     margin-bottom: 99px;
     font-size: 72px;
     .color(@dark-color);
+    font-family: AdobeHeiti;
 }
 
 .novice-rate-tit {
@@ -182,6 +183,7 @@ export default {
 .bank-bid-rate {
     font-size: 72px;
     .color(@dark-color);
+    font-family: AdobeHeiti;
 }
 .bank-bid-rateTit {
     font-size: 32px;

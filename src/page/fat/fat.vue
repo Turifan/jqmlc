@@ -26,7 +26,9 @@ export default {
         path: 'fatHistory',
         params: {
           days:30
-        }
+        },
+        goBack:true,
+        showIcon:true
       }
     }
   }

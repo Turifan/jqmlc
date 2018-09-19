@@ -1,13 +1,13 @@
 <template lang="html">
 <div class="">
   <div class="header-bar">
-    <div class="goBack">
+    <div class="goBack" @click="goBack" v-if="headerBar.goBack">
       <img src="../../assets/images/goBack.png" alt="">
     </div>
     <div class="header-bar-title">
       {{headerBar.title}}
     </div>
-    <router-link tag="div" :to="{ name: headerBar.path, params: headerBar.params }" class="header-bar-icon">
+    <router-link tag="div" :to="{ name: headerBar.path, params: headerBar.params }" class="header-bar-icon" v-if="headerBar.showIcon">
       <img :src="headerBar.imgUrl" alt="">
     </router-link>
   </div>
@@ -20,6 +20,11 @@ export default {
   data() {
     return {
       headerBar: this.$attrs.headerBar
+    }
+  },
+  methods:{
+    goBack(){
+      this.$router.go(-1);
     }
   },
   computed: {
@@ -35,29 +40,40 @@ export default {
 @import '../../style/mixin.less';
 
 .header-bar {
-    display: flex;
-    flex: 1;
-    padding: 0 35px;
-    height: 130px;
-    // line-height: 130px;
-    align-items: center;
-    justify-content: space-between;
+    padding: 35px;
+    height: 60px;
+    width: 1010px;
     .bg(@main-color);
     .color(#fff);
     .fontSize(52px);
+    .text-center;
+    overflow: hidden;
 }
 
 .goBack {
-    .size(34px,60px);
+    .size(60px,60px);
+    .pull-left;
     img {
-        width: 100%;
+        width: auto;
+        height: 100%;
     }
+}
+
+.header-bar-title{
+  // clear: both;
+  // display: inline-block;
+  .pull-left;
+  width: 890px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .header-bar-icon {
     .size(60px,60px);
+    .pull-right;
     img {
-        width: 100%;
+        width: auto;
+        height: 100%;
     }
 }
 </style>

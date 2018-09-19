@@ -21,7 +21,7 @@ const invest = r => require.ensure([], () => r(require('@/page/invest/invest')),
 const auditStatus = r => require.ensure([], () => r(require('@/page/invest/children/auditStatus')), 'auditStatus')
 const loanInfo = r => require.ensure([], () => r(require('@/page/invest/children/loanInfo')), 'loanInfo')
 const projectDetail = r => require.ensure([], () => r(require('@/page/invest/children/projectDetail')), 'projectDetail')
-const protocol = r => require.ensure([], () => r(require('@/page/invest/children/protocol')), 'protocol')
+const protocol = r => require.ensure([], () => r(require('@/page/protocol/protocol')), 'protocol')
 const history = r => require.ensure([], () => r(require('@/page/history/history')), 'history')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
@@ -117,6 +117,7 @@ export default new Router({
       children: [
         {
           path: 'shareInfo', // 分享规则
+          name:'shareInfo',
           component: shareInfo
         }
       ]
@@ -129,29 +130,24 @@ export default new Router({
     },
     // 发财猫投标详情
     {
-      path: '/invest',
+      path: '/invest/:fatId',
       name: 'invest',
       component: invest,
       children: [
         {
           path: 'auditStatus', // 审核状态
-          name: 'auditStatus',
+          // name: 'auditStatus',
           component: auditStatus
         },
         {
           path: 'loanInfo', // 借款详情
-          name: 'loanInfo',
+          // name: 'loanInfo',
           component: loanInfo
         },
         {
           path: 'projectDetail', // 项目详情
           name: 'projectDetail',
           component: projectDetail
-        },
-        {
-          path: 'protocol', // 借款协议
-          name: 'protocol',
-          component: protocol
         }
       ]
     },
@@ -276,5 +272,11 @@ export default new Router({
       name:'fatHistory',
       component:fatHistory
     },
+    // 借款协议
+    {
+      path: '/protocol',
+      name: 'protocol',
+      component: protocol
+    }
   ]
 })

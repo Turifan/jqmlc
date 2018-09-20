@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="">
-      <HeaderBar :headerBar="headerBar"/>
+    <HeaderBar :header-bar="headerBar" v-if="$route.path=='/share'"/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -22,7 +23,8 @@ export default {
         },
         goBack:true,
         showIcon:true
-      }
+      },
+      // title:'分享有礼'
     }
   }
 }

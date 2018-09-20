@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <HeaderBar :headerBar="headerBar"/>
+    <HeaderBar :header-bar="headerBar"/>
     <div class="gray-bg">
       <FattenList />
     </div>

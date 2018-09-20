@@ -9,9 +9,9 @@ const personal = r => require.ensure([], () => r(require('@/page/personal/person
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
 const register = r => require.ensure([], () => r(require('@/page/register/register')), 'register')
 const share = r => require.ensure([], () => r(require('@/page/share/share')), 'share')
-const shareInfo = r => require.ensure([], () => r(require('@/page/share/children/share_info')), 'shareInfo')
+const shareInfo = r => require.ensure([], () => r(require('@/page/description/shareInfo')), 'shareInfo')
 const current = r => require.ensure([], () => r(require('@/page/current/current')), 'current')
-const currentInfo = r => require.ensure([], () => r(require('@/page/current/children/current_info')), 'currentInfo')
+const currentInfo = r => require.ensure([], () => r(require('@/page/description/currentInfo')), 'currentInfo')
 const term = r => require.ensure([], () => r(require('@/page/term/term')), 'term')
 const sign = r => require.ensure([], () => r(require('@/page/sign/sign')), 'sign')
 const balance = r => require.ensure([], () => r(require('@/page/balance/balance')), 'balance')
@@ -95,13 +95,7 @@ export default new Router({
     {
       path: '/current',
       name: 'current',
-      component: current,
-      children: [
-        {
-          path: 'currentInfo', // 灵活猫介绍
-          component: currentInfo
-        }
-      ]
+      component: current
     },
     // 机器猫产品
     {
@@ -109,18 +103,23 @@ export default new Router({
       name: 'term',
       component: term
     },
+    // 灵活猫介绍
+    {
+      path: '/currentInfo',
+      name: 'currentInfo',
+      component: currentInfo
+    },
     // 分享标
     {
       path: '/share',
       name: 'share',
-      component: share,
-      children: [
-        {
-          path: 'shareInfo', // 分享规则
-          name:'shareInfo',
-          component: shareInfo
-        }
-      ]
+      component: share
+    },
+    // 分享规则
+    {
+      path: '/shareInfo', // 分享规则
+      name: 'shareInfo',
+      component: shareInfo
     },
     // 签到
     {
@@ -263,14 +262,14 @@ export default new Router({
     // 发财猫具体商品列表
     {
       path: '/fat/:days',
-      name:'fat',
-      component:fat
+      name: 'fat',
+      component: fat
     },
     // 发财猫结束列表
     {
       path: '/fatHistory/:days',
-      name:'fatHistory',
-      component:fatHistory
+      name: 'fatHistory',
+      component: fatHistory
     },
     // 借款协议
     {

@@ -17,9 +17,10 @@
 <script>
 export default {
   name: 'HeaderBar',
+  props:['headerBar','headerTitle'],
   data() {
     return {
-      headerBar: this.$attrs.headerBar
+      // headerBar: this.$attrs.headerBar
     }
   },
   methods:{

@@ -1,7 +1,9 @@
 <template lang="html">
   <div class="">
     <HeaderBar :header-bar="headerBar" v-if="$route.path=='/share'"/>
-    <router-view></router-view>
+    <div class="gray-body">
+
+    </div>
   </div>
 </template>
 
@@ -30,5 +32,5 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="less">
 </style>

@@ -49,6 +49,10 @@ export default {
     .fontSize(52px);
     .text-center;
     overflow: hidden;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .goBack {

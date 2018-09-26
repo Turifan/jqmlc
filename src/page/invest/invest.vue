@@ -2,7 +2,7 @@
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar"/>
-    <div class="gray-fixed-bg">
+    <div class="gray-fixed-bg gray-fixed">
       <div class="bid-info">
         <div class="bid-title">
           车贷0075  ( 新手标)
@@ -77,7 +77,19 @@
           </div>
         </div>
       </div>
-
+      <div class="bid-description">
+        <div class="bid-des-tabs">
+          <div class="bid-des-tit tabActive">
+            车辆情况说明
+          </div>
+          <div class="bid-des-tit">
+            投标记录
+          </div>
+          <div class="bid-des-tit">
+            还款记录
+          </div>
+        </div>
+      </div>
     </div>
     <div class="rob">
       <div class="rob-btn">
@@ -221,5 +233,25 @@ export default {
   .fontSize(42px);
   .text-center;
   line-height: 120px;
+}
+
+.bid-des-tabs{
+  display: flex;
+  flex: 1;
+  height: 110px;
+  justify-content: space-around;
+  align-items: center;
+  .bg(#fff);
+  border-bottom: 1px solid #efefef;/*no*/
+  .color(#999);
+}
+.bid-des-tit{
+  .fontSize(42px);
+  line-height: 110px;
+}
+
+.tabActive{
+  .color(@main-color);
+  border-bottom: 4px solid @main-color;
 }
 </style>

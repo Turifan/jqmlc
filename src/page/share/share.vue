@@ -1,7 +1,8 @@
+<!-- 分享有礼 -->
 <template lang="html">
   <div class="">
-    <HeaderBar :header-bar="headerBar" v-if="$route.path=='/share'"/>
-    <div class="gray-fixed-bg">
+    <HeaderBar :header-bar="headerBar" />
+    <div class="gray-fixed-bg gray-fixed">
       <div class="">
         <ShareList/>
           <ShareList/>

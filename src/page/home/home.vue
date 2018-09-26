@@ -10,16 +10,14 @@
       </router-link>
     </div>
     <div class="gray-body">
-
-      <div class="userAll">
+      <router-link :to="{ name: 'assets', params: {} }" tag="div" class="userAll">
         <div class="userAll-tit">
           总资产（元）
         </div>
         <div class="userAll-num">
           23197.23
         </div>
-      </div>
-
+      </router-link>
       <UserFund :userFund="userFund"/>
       <HomeBid />
     </div>

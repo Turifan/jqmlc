@@ -17,11 +17,11 @@
           </div>
         </div>
         <div class="share-info">
-          <div>
+          <div class="share-info-items">
             <span class="share-info-txt">投资金额</span>
             <span class="share-info-data">25352.00</span>
           </div>
-          <div class="share-info-txt">
+          <div class="">
             <span class="share-info-txt">到期时间</span>
             <span class="share-info-data">2018-12-06</span>
           </div>
@@ -60,13 +60,19 @@ export default {
     padding: 60px 78px 60px 55px;
     justify-content: space-between;
     align-items: center;
-
+    align-content: space-between;
+    span {
+        display: inline-block;
+        line-height: 1;
+    }
 }
 
 .rate-num {
+    margin-bottom: 36px;
     .color(@dark-color);
     .fontSize(52px);
     font-family: AdobeHeiti;
+    line-height: 1;
     .rate-simbol {
         .fontSize(32px);
     }
@@ -75,6 +81,18 @@ export default {
 .rate-txt {
     .fontSize(34px);
     .color(#999);
+}
+
+// .share-info {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     // align-items: center;
+//     align-content: space-between;
+// }
+
+.share-info-items {
+    margin-bottom: 34px;
 }
 
 .share-info-txt {

@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <HeaderBar :header-bar="headerBar"/>
-    <div class="gray-bg">
+    <div class="gray-fixed gray-fixed-bg">
       <FattenList />
     </div>
   </div>

@@ -43,7 +43,6 @@ export default {
 .header-bar {
     padding: 35px;
     height: 60px;
-    width: 1010px;
     .bg(@main-color);
     .color(#fff);
     .fontSize(52px);

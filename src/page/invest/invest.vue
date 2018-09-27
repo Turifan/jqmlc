@@ -79,16 +79,11 @@
       </div>
       <div class="bid-description">
         <div class="bid-des-tabs">
-          <div class="bid-des-tit tabActive">
-            车辆情况说明
-          </div>
-          <div class="bid-des-tit">
-            投标记录
-          </div>
-          <div class="bid-des-tit">
-            还款记录
+          <div :class="['bid-des-tit', {tabActive:currentTab.name==tab.name}]" v-for="tab in tabs">
+            {{tab.txt}}
           </div>
         </div>
+        <component :is="currentTabComponent"></component>
       </div>
     </div>
     <div class="rob">
@@ -101,11 +96,17 @@
 
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import CarDetail from './carDetail.vue'
+import InvestRecord from './investRecord.vue'
+import RepaymentRecord from './repayment.vue'
 
 export default {
   name: 'Invest',
   components: {
-    HeaderBar
+    HeaderBar,
+    CarDetail,
+    InvestRecord,
+    RepaymentRecord
   },
   data() {
     return {
@@ -116,7 +117,37 @@ export default {
         params: {},
         goBack: true,
         showIcon: true
-      }
+      },
+      tabs: [{
+          name: 'carDetail',
+          txt: '车辆情况说明',
+          component: CarDetail
+        },
+        {
+          name: 'investRecord',
+          txt: '投标记录',
+          component: InvestRecord
+        },
+        {
+          name: 'repayment',
+          txt: '还款记录',
+          component: RepaymentRecord
+        }
+      ],
+      // currentTab: this.tabs[0]
+      // {
+      //   name: 'carDetail',
+      //   txt: '车辆情况说明',
+      //   component: CarDetail
+      // },
+    }
+  },
+  computed: {
+    currentTabComponent() {
+      return ''
+    },
+    currentTab(){
+      return this.tabs[0]
     }
   }
 }
@@ -125,133 +156,135 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin.less';
 
-.bid-info{
-  padding:0 35px;
-  .bg(@main-color);
-  .color(#fff);
+.bid-info {
+    padding: 0 35px;
+    .bg(@main-color);
+    .color(#fff);
 }
 
-.bid-title{
-  padding:19px 0 48px;
-  .fontSize(34px);
+.bid-title {
+    padding: 19px 0 48px;
+    .fontSize(34px);
 }
 
-.bid-rate{
-  padding-bottom: 113px;
+.bid-rate {
+    padding-bottom: 113px;
 }
 
-.bid-rate-txt{
-  .fontSize(32px);
+.bid-rate-txt {
+    .fontSize(32px);
 }
 
-.bid-rate-num{
-  margin-top: 30px;
-  .fontSize(132px);
-  line-height: 1;
-  span{
-    display: inline-block;
-  }
-  .bid-rate-simbol{
-    .fontSize(48px);
-  }
+.bid-rate-num {
+    margin-top: 30px;
+    .fontSize(132px);
+    line-height: 1;
+    span {
+        display: inline-block;
+    }
+    .bid-rate-simbol {
+        .fontSize(48px);
+    }
 }
 
-.invest-info{
-  .size(100%,180px);
-  display: flex;
-  flex: 1;
-  margin-bottom: 20px;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  .bg(#fff);
-  .fontSize(32px);
-  line-height: 1;
+.invest-info {
+    .size(100%,180px);
+    display: flex;
+    flex: 1;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    .bg(#fff);
+    .fontSize(32px);
+    line-height: 1;
 }
 
-.invest-txt{
-  margin-bottom: 26px;
+.invest-txt {
+    margin-bottom: 26px;
 }
 
-.can-invest-num{
-  .fontSize(46px);
-  .color(@orange);
+.can-invest-num {
+    .fontSize(46px);
+    .color(@orange);
 }
 
-.invest-num{
-  .fontSize(46px);
+.invest-num {
+    .fontSize(46px);
 }
 
-.bid-info-list{
-  margin-bottom: 20px;
-  .bg(#fff);
+.bid-info-list {
+    margin-bottom: 20px;
+    .bg(#fff);
 }
 
-.bid-info-items{
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 35px;
-  height: 130px;
-  border-bottom: 1px solid #efefef;/*no*/
-  .fontSize(40px);
+.bid-info-items {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    height: 130px;
+    border-bottom: 1px solid #efefef;
+    /*no*/
+    .fontSize(40px);
 }
 
-.bid-info-icon{
-  .width(50px);
-  margin-right: 24px;
-  img{
-    width: 100%;
-    vertical-align: middle;
-  }
+.bid-info-icon {
+    .width(50px);
+    margin-right: 24px;
+    img {
+        width: 100%;
+        vertical-align: middle;
+    }
 }
 
-.bid-info-rightIcon{
-  .width(22px);
-  margin-left: auto;
-  img{
-    width: 100%;
-  }
+.bid-info-rightIcon {
+    .width(22px);
+    margin-left: auto;
+    img {
+        width: 100%;
+    }
 }
 
-.rob{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 150px;
-  .bg(#fff);
+.rob {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 150px;
+    .bg(#fff);
 }
 
-.rob-btn{
-  .size(970px,120px);
-  margin: 15px auto;
-  .bg(@dark-color);
-  .border-radius(18px);
-  .color(#fff);
-  .fontSize(42px);
-  .text-center;
-  line-height: 120px;
+.rob-btn {
+    .size(970px,120px);
+    margin: 15px auto;
+    .bg(@dark-color);
+    .border-radius(18px);
+    .color(#fff);
+    .fontSize(42px);
+    .text-center;
+    line-height: 120px;
 }
 
-.bid-des-tabs{
-  display: flex;
-  flex: 1;
-  height: 110px;
-  justify-content: space-around;
-  align-items: center;
-  .bg(#fff);
-  border-bottom: 1px solid #efefef;/*no*/
-  .color(#999);
+.bid-des-tabs {
+    display: flex;
+    flex: 1;
+    height: 110px;
+    justify-content: space-around;
+    align-items: center;
+    .bg(#fff);
+    border-bottom: 1px solid #efefef;
+    /*no*/
+    .color(#999);
 }
-.bid-des-tit{
-  .fontSize(42px);
-  line-height: 110px;
+.bid-des-tit {
+    .fontSize(42px);
+    line-height: 110px;
 }
 
-.tabActive{
-  .color(@main-color);
-  border-bottom: 4px solid @main-color;
+.tabActive {
+    .color(@main-color);
+    border-bottom: 4px solid @main-color;
 }
 </style>

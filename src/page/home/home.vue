@@ -52,17 +52,7 @@ export default {
           tips: '0.00元',
           path: 'current'
         }
-      },
-      // headerBar: {
-      //   title: '金钱猫',
-      //   imgUrl: require('../../assets/images/sign.png'),
-      //   path: 'sign',
-      //   params: {
-      //     // days:30
-      //   },
-      //   goBack:false,
-      //   showIcon:true
-      // }
+      }
     }
   }
 }

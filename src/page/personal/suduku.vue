@@ -6,9 +6,9 @@
         <router-link :to="{ name: item.path, params: {} }">
           <div class="cellContainer">
             <div class="personalCell_img">
-              <img :src="item.imgUrl" alt="">
+              <img :src="item.imgUrl" alt="" :class="item.style">
             </div>
-            <div class="">
+            <div class="personalCell_tit">
               {{item.title}}
             </div>
           </div>
@@ -51,8 +51,8 @@ export default {
     justify-content: space-between;
 }
 
-.cellContainer{
-  .size(100%,100%);
+.cellContainer {
+    .size(100%,100%);
 }
 
 .personalCell {
@@ -62,18 +62,61 @@ export default {
     border-bottom: 2px solid #ebebeb;
     .fontSize(38px);
     .personalCell_img {
-        padding-top: 107px;
-        padding-bottom: 64px;
-        height: 90px;
-        img {
-            max-height: 100%;
-            width: auto;
-        }
+        display: flex;
+        flex: 1;
+        height: 200px;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .personalCell_tit {
+        padding: 60px 0 63px;
     }
 }
 
 .cellMiddle {
     border-left: 2px solid #ebebeb;
     border-right: 2px solid #ebebeb;
+}
+
+.luckdraw {
+    .size(72px,91px);
+}
+
+.task {
+    .size(90px,91px);
+}
+.assets {
+    .size(107px,80px);
+}
+.expGold {
+    .size(74px,91px);
+}
+
+.catcoin {
+    .size(65px,88px);
+}
+
+.investRecord {
+    .size(72px,87px);
+}
+
+.houseKeeper {
+    .size(85px,102px);
+}
+
+.cashTickets {
+    .size(107px,74px);
+}
+
+.safe {
+    .size(75px,91px);
+}
+
+.aboutUs {
+    .size(81px,98px);
+}
+
+.faq {
+    .size(86px,98px);
 }
 </style>

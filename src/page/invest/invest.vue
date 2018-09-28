@@ -79,7 +79,7 @@
       </div>
       <div class="bid-description">
         <div class="bid-des-tabs">
-          <div :class="['bid-des-tit', {tabActive:currentTab.name==tab.name}]" v-for="tab in tabs">
+          <div :class="['bid-des-tit', {tabActive:currentTab.name==tab.name}]" v-for="tab in tabs" @click="currentTab = tab">
             {{tab.txt}}
           </div>
         </div>
@@ -100,6 +100,23 @@ import CarDetail from './carDetail.vue'
 import InvestRecord from './investRecord.vue'
 import RepaymentRecord from './repayment.vue'
 
+var tabs = [{
+    name: 'carDetail',
+    txt: '车辆情况说明',
+    component: CarDetail
+  },
+  {
+    name: 'investRecord',
+    txt: '投标记录',
+    component: InvestRecord
+  },
+  {
+    name: 'repayment',
+    txt: '还款记录',
+    component: RepaymentRecord
+  }
+];
+
 export default {
   name: 'Invest',
   components: {
@@ -118,37 +135,14 @@ export default {
         goBack: true,
         showIcon: true
       },
-      tabs: [{
-          name: 'carDetail',
-          txt: '车辆情况说明',
-          component: CarDetail
-        },
-        {
-          name: 'investRecord',
-          txt: '投标记录',
-          component: InvestRecord
-        },
-        {
-          name: 'repayment',
-          txt: '还款记录',
-          component: RepaymentRecord
-        }
-      ],
-      // currentTab: this.tabs[0]
-      // {
-      //   name: 'carDetail',
-      //   txt: '车辆情况说明',
-      //   component: CarDetail
-      // },
+      tabs: tabs,
+      currentTab: tabs[0]
     }
   },
   computed: {
     currentTabComponent() {
-      return ''
+      return this.currentTab.component
     },
-    currentTab(){
-      return this.tabs[0]
-    }
   }
 }
 </script>
@@ -216,6 +210,7 @@ export default {
 .bid-info-list {
     margin-bottom: 20px;
     .bg(#fff);
+
 }
 
 .bid-info-items {
@@ -265,6 +260,10 @@ export default {
     .fontSize(42px);
     .text-center;
     line-height: 120px;
+}
+
+.bid-description{
+  padding-bottom: 150px;
 }
 
 .bid-des-tabs {

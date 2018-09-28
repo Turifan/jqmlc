@@ -58,72 +58,84 @@ export default {
       suduku: [{
           title: '抽奖号码',
           imgUrl: require('../../assets/images/luckdraw.png'),
+          style: "luckdraw",
           isMiddle: false,
           path: 'luckdraw'
         },
         {
           title: '我的任务',
           imgUrl: require('../../assets/images/mytasks.png'),
+          style: "task",
           isMiddle: true,
           path: 'task'
         },
         {
           title: '我的资产',
           imgUrl: require('../../assets/images/myassets.png'),
+          style: "assets",
           isMiddle: false,
           path: 'assets'
         },
         {
           title: '我的体验金',
           imgUrl: require('../../assets/images/expgold.png'),
+          style: "expGold",
           isMiddle: false,
           path: 'expGold'
         },
         {
           title: '我的猫币',
           imgUrl: require('../../assets/images/catcoin.png'),
+          style: "catcoin",
           isMiddle: true,
           path: 'catcoin'
         },
         {
           title: '投资记录',
           imgUrl: require('../../assets/images/investrecord.png'),
+          style: "investRecord",
           isMiddle: false,
           path: 'investRecord'
         },
         {
           title: '喵喵管家',
           imgUrl: require('../../assets/images/housekeeper.png'),
+          style: "houseKeeper",
           isMiddle: false,
           path: 'houseKeeper'
         },
         {
           title: '现金券',
           imgUrl: require('../../assets/images/cashtickets.png'),
+          style: "cashTickets",
           isMiddle: true,
           path: 'cashTickets'
         },
         {
           title: '安全中心',
           imgUrl: require('../../assets/images/safecenter.png'),
+          style: "safe",
           isMiddle: false,
           path: 'safe'
         },
         {
           title: '关于我们',
           imgUrl: require('../../assets/images/aboutus.png'),
+          style: "aboutUs",
           isMiddle: false,
           path: 'aboutUs'
         },
         {
           title: '常见问题',
           imgUrl: require('../../assets/images/faq.png'),
+          style: "faq",
           isMiddle: true,
           path: 'faq'
         },
         {
           title: '',
           imgUrl: '',
+          style: "",
           isMiddle: false,
           // path:''
         }
@@ -200,14 +212,15 @@ export default {
     }
 }
 
-.logOut{
-  .size(900px,120px);
-  margin: 21px auto 68px;
-  .bg(@main-color);
-  .border-radius(18px);
-  .fontSize(52px);
-  .text-center;
-  line-height: 120px;
-  .color(#fff);
+.logOut {
+    .size(900px,120px);
+    margin: 21px auto 68px;
+    .bg(@main-color);
+    .border-radius(18px);
+    .fontSize(52px);
+    .text-center;
+    line-height: 120px;
+    .color(#fff);
 }
+
 </style>

@@ -82,7 +82,7 @@ export default {
       bankTitle: '银行卡标'
     }
   },
-  computed:{
+  computed: {
 
   }
 }
@@ -181,6 +181,7 @@ export default {
 }
 
 .bank-bid-rate {
+    margin-bottom: 40px;
     font-size: 72px;
     .color(@dark-color);
     font-family: AdobeHeiti;

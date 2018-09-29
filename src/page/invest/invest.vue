@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="bid-info-list">
-        <div class="bid-info-items">
+        <router-link tag="div" :to="{ name: 'projectDetail', params: {fatId : 30} }" class="bid-info-items">
           <div class="bid-info-icon">
             <img src="../../assets/images/projectDetail.png" alt="">
           </div>
@@ -53,8 +53,8 @@
           <div class="bid-info-rightIcon">
             <img src="../../assets/images/right.png" alt="">
           </div>
-        </div>
-        <div class="bid-info-items">
+        </router-link>
+        <router-link tag="div" :to="{ name: 'loanInfo', params: {fatId : 30} }" class="bid-info-items">
           <div class="bid-info-icon">
             <img src="../../assets/images/borrowInfo.png" alt="">
           </div>
@@ -64,8 +64,8 @@
           <div class="bid-info-rightIcon">
             <img src="../../assets/images/right.png" alt="">
           </div>
-        </div>
-        <div class="bid-info-items">
+        </router-link>
+        <router-link tag="div" :to="{ name: 'auditStatus', params: {fatId : 30} }" class="bid-info-items">
           <div class="bid-info-icon">
             <img src="../../assets/images/audit.png" alt="">
           </div>
@@ -75,7 +75,8 @@
           <div class="bid-info-rightIcon">
             <img src="../../assets/images/right.png" alt="">
           </div>
-        </div>
+        </router-link>
+
       </div>
       <div class="bid-description">
         <div class="bid-des-tabs">
@@ -262,8 +263,8 @@ export default {
     line-height: 120px;
 }
 
-.bid-description{
-  padding-bottom: 150px;
+.bid-description {
+    padding-bottom: 150px;
 }
 
 .bid-des-tabs {

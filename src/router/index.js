@@ -131,24 +131,25 @@ export default new Router({
     {
       path: '/invest/:fatId',
       name: 'invest',
-      component: invest,
-      children: [
-        {
-          path: 'auditStatus', // 审核状态
-          // name: 'auditStatus',
-          component: auditStatus
-        },
-        {
-          path: 'loanInfo', // 借款详情
-          // name: 'loanInfo',
-          component: loanInfo
-        },
-        {
-          path: 'projectDetail', // 项目详情
-          name: 'projectDetail',
-          component: projectDetail
-        }
-      ]
+      component: invest
+    },
+    // 审核状态
+    {
+      path: '/auditStatus/:fatId',
+      name: 'auditStatus',
+      component: auditStatus
+    },
+    // 借款详情
+    {
+      path: '/loanInfo/:fatId',
+      name: 'loanInfo',
+      component: loanInfo
+    },
+    // 项目详情
+    {
+      path: '/projectDetail/:fatId',
+      name: 'projectDetail',
+      component: projectDetail
     },
     // 自动投标
     {

@@ -53,7 +53,7 @@
 <script>
 export default {
   name: 'FattenList',
-  
+
 }
 </script>
 
@@ -83,7 +83,8 @@ export default {
 
 .exptips {
     display: inline-block;
-    .size(200px,42px);
+    .size(auto,42px);
+    padding: 6px 12px;
     .border-radius(12px);
     .fontSize(32px);
     .border(2px,solid,@orange);
@@ -106,7 +107,7 @@ export default {
 }
 
 .fatten-rate {
-    width: 228px;
+    // width: 228px;
     text-align: center;
 }
 

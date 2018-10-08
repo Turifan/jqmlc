@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const check = r => require.ensure([], () => r(require('@/page/check/check')), 'check')
 const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
 const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraemon')), 'doraemon')
+const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonDetail/doraemonDetail')), 'doraemonDetail')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
@@ -66,6 +67,12 @@ export default new Router({
       path: '/doraemon',
       name: 'doraemon',
       component: doraemon
+    },
+    // 机器猫详细产品
+    {
+      path: '/doraemonDetail/days',
+      name: 'doraemonDetail',
+      component: doraemonDetail
     },
     // 发财猫
     {

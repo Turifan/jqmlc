@@ -1,9 +1,9 @@
-<!-- 分享有礼 -->
+<!-- 灵活猫 -->
 <template lang="html">
   <div class="">
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed">
-      <router-link :to="{ name: '', params: {} }" tag="div" class="surMoney">
+      <router-link :to="{ name: 'assets', params: {} }" tag="div" class="surMoney">
         <div class="surMoneyBox">
           <div class="surMoney-num">
             <span class="simbol">¥</span><span>6000001.00</span>

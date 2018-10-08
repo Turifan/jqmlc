@@ -8,7 +8,7 @@
           <span class="lock-time">锁定时间1个月</span>
         </div>
       </div>
-      <div class="doraemon-pro-detail">
+      <router-link :to="{ name: 'doraemonDetail', params: {days:30} }" tag="div" class="doraemon-pro-detail">
         <div class="doraemon-tit-detail">
           <div class="doraemon-rate">
             <div class="rate-tit">
@@ -30,7 +30,7 @@
             购买
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
 
 .doraemon-item-tit {
     .height(120px);
-    padding:0 34px;
+    padding: 0 34px;
 }
 
 .doraemon-tit-txt {
@@ -75,9 +75,9 @@ export default {
     .color(#999);
 }
 
-.doraemon-pro-detail{
-  height: 150px;
-  padding: 37px 32px 52px 19px;
+.doraemon-pro-detail {
+    height: 150px;
+    padding: 37px 32px 52px 19px;
 }
 
 .doraemon-tit-detail {
@@ -87,9 +87,9 @@ export default {
     justify-content: space-between;
     align-items: center;
     line-height: 1;
-    span{
-      display: inline-block;
-      line-height: 1;
+    span {
+        display: inline-block;
+        line-height: 1;
     }
 }
 
@@ -107,25 +107,25 @@ export default {
     }
 }
 
-.surMoney-tit{
-  margin-bottom: 69px;
-  .fontSize(38px);
-  .color(#999);
-  text-align: center;
+.surMoney-tit {
+    margin-bottom: 69px;
+    .fontSize(38px);
+    .color(#999);
+    text-align: center;
 }
 
-.surMoney-num{
-  .fontSize(44px);
-  .color(@orange);
+.surMoney-num {
+    .fontSize(44px);
+    .color(@orange);
 }
 
-.doraemon-btn{
-  .size(240px,150px);
-  .border-radius(20px);
-  .bg(@main-color);
-  text-align: center;
-  line-height: 150px;
-  .fontSize(52px);
-  .color(#fff);
+.doraemon-btn {
+    .size(240px,150px);
+    .border-radius(20px);
+    .bg(@main-color);
+    text-align: center;
+    line-height: 150px;
+    .fontSize(52px);
+    .color(#fff);
 }
 </style>

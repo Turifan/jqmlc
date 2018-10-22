@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar"/>
+  
   </div>
 </template>
 
@@ -19,7 +20,6 @@ export default {
         imgUrl: '',
         path: '',
         params: {
-          days:30
         },
         goBack:true,
         showIcon:false
@@ -29,5 +29,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+
+
 </style>

@@ -163,13 +163,11 @@ export default new Router({
       path: '/autoInvest',
       name: 'autoInvest',
       component: autoInvest,
-      children: [
-        {
-          path: 'autoInvestRecord', // 自动投标记录
-          name: 'autoInvestRecord',
-          component: autoInvestRecord
-        }
-      ]
+      children: [{
+        path: 'autoInvestRecord', // 自动投标记录
+        name: 'autoInvestRecord',
+        component: autoInvestRecord
+      }]
     },
     // 余额
     {

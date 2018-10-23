@@ -34,6 +34,12 @@ const investRecord = r => require.ensure([], () => r(require('@/page/investRecor
 const houseKeeper = r => require.ensure([], () => r(require('@/page/houseKeeper/houseKeeper')), 'houseKeeper')
 const cashTickets = r => require.ensure([], () => r(require('@/page/cashTickets/cashTickets')), 'cashTickets')
 const safe = r => require.ensure([], () => r(require('@/page/safe/safe')), 'safe')
+const cert = r => require.ensure([], () => r(require('@/page/safe/cert')), 'cert')
+const bindCard = r => require.ensure([], () => r(require('@/page/safe/bindCard')), 'bindCard')
+const bindTel = r => require.ensure([], () => r(require('@/page/safe/bindTel')), 'bindTel')
+const bindWechat = r => require.ensure([], () => r(require('@/page/safe/bindWechat')), 'bindWechat')
+const resetLoginPwd = r => require.ensure([], () => r(require('@/page/safe/resetLoginPwd')), 'resetLoginPwd')
+const resetDealPwd = r => require.ensure([], () => r(require('@/page/safe/resetDealPwd')), 'resetDealPwd')
 const aboutUs = r => require.ensure([], () => r(require('@/page/aboutUs/aboutUs')), 'aboutUs')
 const faq = r => require.ensure([], () => r(require('@/page/faq/faq')), 'faq')
 const member = r => require.ensure([], () => r(require('@/page/member/member')), 'member')
@@ -240,6 +246,42 @@ export default new Router({
       path: '/safe',
       name: 'safe',
       component: safe
+    },
+    // 安全认证
+    {
+      path: '/cert',
+      name: 'cert',
+      component: cert
+    },
+    // 绑定银行卡
+    {
+      path: '/bindCard',
+      name: 'bindCard',
+      component: bindCard
+    },
+    // 绑定手机号
+    {
+      path: '/bindTel',
+      name: 'bindTel',
+      component: bindTel
+    },
+    // 绑定微信号
+    {
+      path: '/bindWechat',
+      name: 'bindWechat',
+      component: bindWechat
+    },
+    // 修改登录密码
+    {
+      path: '/resetLoginPwd',
+      name: 'resetLoginPwd',
+      component: resetLoginPwd
+    },
+    // 修改交易密码
+    {
+      path: '/cert',
+      name: 'cert',
+      component: cert
     },
     // 关于我们
     {

@@ -3,7 +3,7 @@
   <div class="">
     <HeaderBar :headerBar="headerBar"/>
     <div class="gray-fixed">
-      <div class="safe-list" v-for="s in safeList" :key="s.index">
+      <router-link tag="div" :to="{ name: s.doneUrl, params: {} }" class="safe-list" v-for="s in safeList" :key="s.index">
         <div class="safe-tit">
           {{s.title}}
         </div>
@@ -13,9 +13,8 @@
           </span>
           <i class="safe-icon"></i>
         </div>
-      </div>
+      </router-link>
     </div>
-
   </div>
 </template>
 

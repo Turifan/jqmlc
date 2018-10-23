@@ -1,18 +1,19 @@
-@import "./variables"; /**
+@import "./variables";
+/**
  * reset
  * @type {[type]}
  */
-
 a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
   outline: none;
+
   &:active,
   &:hover,
   &:link,
   &:visited {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
     outline: none;
   }
 }
@@ -20,7 +21,6 @@ a {
  * layout
  * @type {[type]}
  */
-
 .width(@width) {
   width: @width;
 }
@@ -49,6 +49,7 @@ a {
  * color
  * @type {[type]}
  */
+
 .color(@color) {
   color: @color;
 }
@@ -84,19 +85,17 @@ a {
   background: @gray-body-bg;
 }
 
-
-
-.container{
+.container {
   padding: 130px 0 170px;
 }
-.bg(@bg-color){
+
+.bg(@bg-color) {
   background: @bg-color;
 }
 /**
  * border
  * @type {[type]}
  */
-
 .border-radius(@radius) {
   border-radius: @radius;
   -moz-border-radius: @radius;
@@ -110,7 +109,6 @@ a {
  * text and fonts
  * @type {[type]}
  */
-
 .text-center {
   text-align: center;
 }

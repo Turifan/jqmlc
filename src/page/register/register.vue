@@ -12,7 +12,7 @@
           <a class="captcha_btn" >获取验证码</a>
         </div>
         <div class="register-next">
-          <div class="next">
+          <div class="next" @click="register">
             下一步
           </div>
           <div class="agreeProtocol">
@@ -40,12 +40,18 @@ export default {
       headerBar: {
         title: '注册',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },
         goBack:true,
         showIcon:false
       },
+    }
+  },
+  methods:{
+    register(){
+      this.$router.push('regSencondStep')
     }
   }
 }

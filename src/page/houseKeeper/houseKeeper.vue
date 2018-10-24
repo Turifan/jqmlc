@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '客服喵喵',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

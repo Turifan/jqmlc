@@ -131,6 +131,7 @@ export default {
       headerBar: {
         title: '投资详情',
         imgUrl: require('../../assets/images/protocol.png'),
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: 'protocol',
         params: {},
         goBack: true,

@@ -21,6 +21,7 @@ export default {
       headerBar: {
         title: '实名认证',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

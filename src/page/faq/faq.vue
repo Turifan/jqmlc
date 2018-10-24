@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '常见问题',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

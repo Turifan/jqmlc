@@ -21,6 +21,7 @@ export default {
       headerBar: {
         title: '绑定银行卡',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

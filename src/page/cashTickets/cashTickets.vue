@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '现金券',
         imgUrl: '',
+        goBackUrl:require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

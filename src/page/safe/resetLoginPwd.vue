@@ -21,6 +21,7 @@ export default {
       headerBar: {
         title: '修改登录密码',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

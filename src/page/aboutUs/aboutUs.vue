@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '关于我们',
         imgUrl: '',
+        goBackUrl:require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

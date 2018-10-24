@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '我的任务',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

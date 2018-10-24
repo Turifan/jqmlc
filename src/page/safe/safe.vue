@@ -31,6 +31,7 @@ export default {
       headerBar: {
         title: '安全中心',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

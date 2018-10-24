@@ -2,7 +2,7 @@
 <div class="">
   <div class="header-bar">
     <div class="goBack" @click="goBack" v-if="headerBar.goBack">
-      <img src="../../assets/images/goBack.png" alt="">
+      <img :src="headerBar.goBackUrl" alt="">
     </div>
     <div class="header-bar-title">
       {{headerBar.title}}

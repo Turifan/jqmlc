@@ -72,6 +72,7 @@ export default {
       headerBar: {
         title: '季度喵',
         imgUrl: require('../../assets/images/doubt.png'),
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: 'doraemonInfo',
         params: {},
         goBack: true,

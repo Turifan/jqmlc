@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar"/>
-  
+
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '签到',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

@@ -9,7 +9,7 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name:'Catcoin',
+  name: 'Catcoin',
   components: {
     HeaderBar,
   },
@@ -18,11 +18,11 @@ export default {
       headerBar: {
         title: '我的猫币',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
-        params: {
-        },
-        goBack:true,
-        showIcon:false
+        params: {},
+        goBack: true,
+        showIcon: false
       },
     }
   }
@@ -31,5 +31,4 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-
 </style>

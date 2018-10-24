@@ -88,6 +88,7 @@ export default {
       headerBar: {
         title: '灵活猫',
         imgUrl: require('../../assets/images/doubt.png'),
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: 'currentInfo',
         params: {},
         goBack: true,
@@ -205,13 +206,13 @@ export default {
     .text-center;
 }
 
-.bid-info{
-  margin-bottom: 470px;
-  .fontSize(40px);
+.bid-info {
+    margin-bottom: 470px;
+    .fontSize(40px);
 }
 
-.scan-bond{
-  .fontSize(32px);
-  .color(@dark-color);
+.scan-bond {
+    .fontSize(32px);
+    .color(@dark-color);
 }
 </style>

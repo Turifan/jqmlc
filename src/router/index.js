@@ -9,6 +9,7 @@ const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')),
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
 const register = r => require.ensure([], () => r(require('@/page/register/register')), 'register')
+const regSencondStep = r => require.ensure([], () => r(require('@/page/register/regSencondStep')), 'regSencondStep')
 const share = r => require.ensure([], () => r(require('@/page/share/share')), 'share')
 const shareInfo = r => require.ensure([], () => r(require('@/page/description/shareInfo')), 'shareInfo')
 const current = r => require.ensure([], () => r(require('@/page/current/current')), 'current')
@@ -103,6 +104,12 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: register
+    },
+    // 注册第二步
+    {
+      path: '/regSencondStep',
+      name: 'regSencondStep',
+      component: regSencondStep
     },
     // 灵活猫
     {

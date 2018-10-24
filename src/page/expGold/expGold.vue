@@ -18,6 +18,7 @@ export default {
       headerBar: {
         title: '体验金',
         imgUrl: '',
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {
         },

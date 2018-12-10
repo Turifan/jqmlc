@@ -85,7 +85,10 @@ export default new Router({
     {
       path: '/fatten',
       name: 'fatten',
-      component: fatten
+      component: fatten,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 我的
     {
@@ -286,9 +289,9 @@ export default new Router({
     },
     // 修改交易密码
     {
-      path: '/cert',
-      name: 'cert',
-      component: cert
+      path: '/resetDealPwd',
+      name: 'resetDealPwd',
+      component: resetDealPwd
     },
     // 关于我们
     {

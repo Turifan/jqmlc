@@ -5,6 +5,7 @@ const check = r => require.ensure([], () => r(require('@/page/check/check')), 'c
 const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
 const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraemon')), 'doraemon')
 const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonDetail/doraemonDetail')), 'doraemonDetail')
+const profit = r => require.ensure([], () => r(require('@/page/profit/profit')), 'profit')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
@@ -29,10 +30,8 @@ const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit'
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
 const task = r => require.ensure([], () => r(require('@/page/task/task')), 'task')
 const assets = r => require.ensure([], () => r(require('@/page/assets/assets')), 'assets')
-const expGold = r => require.ensure([], () => r(require('@/page/expGold/expGold')), 'expGold')
-const catcoin = r => require.ensure([], () => r(require('@/page/catcoin/catcoin')), 'catcoin')
+const catGrain = r => require.ensure([], () => r(require('@/page/catGrain/catGrain')), 'catGrain')
 const investRecord = r => require.ensure([], () => r(require('@/page/investRecord/investRecord')), 'investRecord')
-const houseKeeper = r => require.ensure([], () => r(require('@/page/houseKeeper/houseKeeper')), 'houseKeeper')
 const cashTickets = r => require.ensure([], () => r(require('@/page/cashTickets/cashTickets')), 'cashTickets')
 const safe = r => require.ensure([], () => r(require('@/page/safe/safe')), 'safe')
 const cert = r => require.ensure([], () => r(require('@/page/safe/cert')), 'cert')
@@ -81,6 +80,12 @@ export default new Router({
       name: 'doraemonDetail',
       component: doraemonDetail
     },
+    // 月盈猫
+    {
+      path: '/profit',
+      name: 'profit',
+      component: profit
+    },
     // 发财猫
     {
       path: '/fatten',
@@ -94,7 +99,10 @@ export default new Router({
     {
       path: '/personal',
       name: 'personal',
-      component: personal
+      component: personal,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 登陆
     {
@@ -118,61 +126,91 @@ export default new Router({
     {
       path: '/current',
       name: 'current',
-      component: current
+      component: current,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 机器猫产品
     {
       path: '/term',
       name: 'term',
-      component: term
+      component: term,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 灵活猫介绍
     {
       path: '/currentInfo',
       name: 'currentInfo',
-      component: currentInfo
+      component: currentInfo,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 分享标
     {
       path: '/share',
       name: 'share',
-      component: share
+      component: share,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 分享规则
     {
       path: '/shareInfo', // 分享规则
       name: 'shareInfo',
-      component: shareInfo
+      component: shareInfo,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 签到
     {
       path: '/sign',
       name: 'sign',
-      component: sign
+      component: sign,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 发财猫投标详情
     {
       path: '/invest/:fatId',
       name: 'invest',
-      component: invest
+      component: invest,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 审核状态
     {
       path: '/auditStatus/:fatId',
       name: 'auditStatus',
-      component: auditStatus
+      component: auditStatus,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 借款详情
     {
       path: '/loanInfo/:fatId',
       name: 'loanInfo',
-      component: loanInfo
+      component: loanInfo,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 项目详情
     {
       path: '/projectDetail/:fatId',
       name: 'projectDetail',
-      component: projectDetail
+      component: projectDetail,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 自动投标
     {
@@ -183,67 +221,79 @@ export default new Router({
         path: 'autoInvestRecord', // 自动投标记录
         name: 'autoInvestRecord',
         component: autoInvestRecord
-      }]
+      }],
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 余额
     {
       path: '/balance',
       name: 'balance',
-      component: balance
+      component: balance,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 发财猫已结束标
     {
       path: '/history',
       name: 'history',
-      component: history
+      component: history,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 提现
     {
       path: '/deposit',
       name: 'deposit',
-      component: deposit
+      component: deposit,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 抽奖号码
     {
       path: '/luckdraw',
       name: 'luckdraw',
-      component: luckdraw
+      component: luckdraw,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 我的任务
     {
       path: '/task',
       name: 'task',
-      component: task
+      component: task,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 我的资产
     {
       path: '/assets',
       name: 'assets',
-      component: assets
+      component: assets,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
-    // 我的体验金
+    // 我的猫粮
     {
-      path: '/expGold',
-      name: 'expGold',
-      component: expGold
-    },
-    // 我的猫币
-    {
-      path: '/catcoin',
-      name: 'catcoin',
-      component: catcoin
+      path: '/catGrain',
+      name: 'catGrain',
+      component: catGrain,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 投资记录
     {
       path: '/investRecord',
       name: 'investRecord',
       component: investRecord
-    },
-    // 喵喵管家
-    {
-      path: '/houseKeeper',
-      name: 'houseKeeper',
-      component: houseKeeper
     },
     // 现金券
     {

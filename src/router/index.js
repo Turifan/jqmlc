@@ -6,6 +6,7 @@ const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home
 const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraemon')), 'doraemon')
 const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonDetail/doraemonDetail')), 'doraemonDetail')
 const profit = r => require.ensure([], () => r(require('@/page/profit/profit')), 'profit')
+const monthProfit = r => require.ensure([], () => r(require('@/page/monthProfit/monthProfit')), 'monthProfit')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
@@ -29,7 +30,7 @@ const history = r => require.ensure([], () => r(require('@/page/history/history'
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
 const task = r => require.ensure([], () => r(require('@/page/task/task')), 'task')
-const assets = r => require.ensure([], () => r(require('@/page/assets/assets')), 'assets')
+const asset = r => require.ensure([], () => r(require('@/page/asset/asset')), 'asset')
 const catGrain = r => require.ensure([], () => r(require('@/page/catGrain/catGrain')), 'catGrain')
 const investRecord = r => require.ensure([], () => r(require('@/page/investRecord/investRecord')), 'investRecord')
 const cashTickets = r => require.ensure([], () => r(require('@/page/cashTickets/cashTickets')), 'cashTickets')
@@ -84,7 +85,19 @@ export default new Router({
     {
       path: '/profit',
       name: 'profit',
-      component: profit
+      component: profit,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
+    },
+    // 月盈猫购买
+    {
+      path: '/monthProfit',
+      name: 'monthProfit',
+      component: monthProfit,
+      meta: {
+        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
     // 发财猫
     {
@@ -273,9 +286,9 @@ export default new Router({
     },
     // 我的资产
     {
-      path: '/assets',
-      name: 'assets',
-      component: assets,
+      path: '/asset',
+      name: 'asset',
+      component: asset,
       meta: {
         requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
       }

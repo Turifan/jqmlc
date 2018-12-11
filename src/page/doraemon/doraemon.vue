@@ -2,16 +2,7 @@
 <template lang="html">
   <div class="gray-fixed gray-fixed-bg">
     <Header :title="title"/>
-    <div class="swiper-container" v-if="">
-      <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="" :key="">
-            <router-link :to="{ name: '', params: {} }">
-              <img src="../../assets/images/swiper_default.png" alt="">
-            </router-link>
-          </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
+    
     <DoraemonList/>
     <DoraemonList/>
     <DoraemonList/>
@@ -36,23 +27,13 @@ export default {
   },
   data() {
     return {
-      title: '机器猫',
-
+      title: '机器猫'
     }
   },
-  computed: {
-
-  }
+  computed: {}
 }
 </script>
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-
-
-.swiper-slide{
-  img{
-    width: 100%;
-  }
-}
 </style>

@@ -2,31 +2,31 @@
 <template lang="html">
   <div class="">
     <div class="homeBar">
-      <div class="home-title">
-        金钱猫
-      </div>
+      <Header :title="title"></Header>
       <router-link tag="div" :to="{ name: 'sign', params: {} }" class="sign">
         <img src="../../assets/images/sign.png" alt="">
       </router-link>
     </div>
     <div class="gray-body">
-      <router-link :to="{ name: 'assets', params: {} }" tag="div" class="userAll">
-        <div class="userAll-tit">
-          总资产（元）
+      <div class="swiper-container" v-if="">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="" :key="">
+              <router-link :to="{ name: '', params: {} }">
+                <img src="../../assets/images/swiper_default.png" alt="">
+              </router-link>
+            </div>
         </div>
-        <div class="userAll-num">
-          23197.23
-        </div>
-      </router-link>
-      <UserFund :userFund="userFund"/>
-      <HomeBid />
+        <div class="swiper-pagination"></div>
+      </div>
+      <UserFund :userFund="userFund"></UserFund>
+      <HomeBid></HomeBid>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
-
 </template>
 
 <script>
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
 import UserFund from '@/components/common/userFund.vue'
@@ -34,6 +34,7 @@ import UserFund from '@/components/common/userFund.vue'
 export default {
   name: 'Home',
   components: {
+    Header,
     Footer,
     HomeBid,
     UserFund
@@ -48,9 +49,9 @@ export default {
           path: 'share'
         },
         right: {
-          title: '灵活猫资金',
-          tips: '0.00元',
-          path: 'current'
+          title: '签到',
+          tips: '每日签到获得猫粮',
+          path: 'sign'
         }
       }
     }
@@ -61,7 +62,7 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin.less';
 
-.homeBar{
+.homeBar {
   position: fixed;
   left: 0;
   right: 0;
@@ -72,7 +73,7 @@ export default {
   z-index: 1000;
 }
 
-.home-title{
+.home-title {
   .fontSize(52px);
   width: 100%;
   // padding: 42px 0;
@@ -82,26 +83,32 @@ export default {
   .text-center;
 }
 
-.sign{
+.swiper-slide {
+  img {
+    width: 100%;
+  }
+}
+
+.sign {
   position: absolute;
   right: 40px;
-  .size(84px,65px);
+  .size(84px, 65px);
   bottom: 32px;
-  img{
+  img {
     width: 100%;
   }
 }
 
 .userAll {
-    padding: 49px 0 60px;
-    background: @main-color;
-    text-align: center;
-    color: #fff;
-    .userAll-tit {
-        font-size: 42px;
-    }
-    .userAll-num {
-        font-size: 112px;
-    }
+  padding: 49px 0 60px;
+  background: @main-color;
+  text-align: center;
+  color: #fff;
+  .userAll-tit {
+    font-size: 42px;
+  }
+  .userAll-num {
+    font-size: 112px;
+  }
 }
 </style>

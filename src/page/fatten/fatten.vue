@@ -1,13 +1,16 @@
 <!-- 发财猫 -->
 <template lang="html">
   <div class="">
-    <Header :title="title"/>
+    <Header :title="title"></Header>
     <div class="gray-body">
       <div class="pledge">
           <img src="../../assets/images/pledge.png" alt="">
       </div>
-      <UserFund :userFund="userFund"/>
-      <FattenProduct/>
+      <router-link class="autoInvest" :to="{ name: 'autoInvest', params: '' }" tag="div">
+        <div class="autoInvest-tit">自动投标</div>
+        <div class="gray-font">未开启</div>
+      </router-link>
+      <FattenProduct></FattenProduct>
     </div>
     <Footer />
   </div>
@@ -16,7 +19,6 @@
 <script>
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
-import UserFund from '@/components/common/userFund.vue'
 import FattenProduct from './fatten_product.vue'
 
 export default {
@@ -24,29 +26,14 @@ export default {
   components: {
     Header,
     Footer,
-    UserFund,
     FattenProduct
   },
   data() {
     return {
-      title: '发财猫',
-      userFund: {
-        left: {
-          title: '余额资金',
-          tips: '0.00',
-          path: 'balance'
-        },
-        right: {
-          title: '自动投标',
-          tips: '未开启',
-          path: 'autoInvest'
-        }
-      }
+      title: '发财猫'
     }
   },
-  computed: {
-
-  }
+  computed: {}
 }
 </script>
 
@@ -54,58 +41,42 @@ export default {
 @import '../../style/mixin.less';
 
 .pledge {
+  width: 100%;
+  margin: 0 auto;
+  img {
+    display: block;
     width: 100%;
-    margin: 0 auto;
-    img {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
+    margin: 0;
+    padding: 0;
+  }
 }
 .userInfo {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.balance {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    height: 120px;
-    .bg(#fff);
-    padding: 0 35px;
-    line-height: 120px;
-    .fontSize(40px);
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .autoInvest {
-    .balance;
-    border-top: 2px solid @gray-body-bg;
-}
-
-.userInfo-tit {
-    width: 225px;
-}
-.userInfo-info {
-    .width(766px);
-    .color(@main-color);
-}
-
-.right-arrow {
-    width: 23px;
-    height: 42px;
-    background: url("../../assets/images/right.png") no-repeat;
-    background-size: 23px 42px;
+  display: flex;
+  flex: 1;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+  .bg(#fff);
+  padding: 0 35px;
+  line-height: 120px;
+  .fontSize(40px);
+  .color(#333);
 }
 
 .history {
-    .height(120px);
-    padding: 0 35px;
-    .bg(#fff);
-    .fontSize(36px);
-    line-height: 120px;
+  .height(120px);
+  padding: 0 35px;
+  .bg(#fff);
+  .fontSize(36px);
+  line-height: 120px;
 }
 </style>

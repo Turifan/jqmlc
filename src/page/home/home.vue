@@ -3,18 +3,15 @@
   <div class="">
     <div class="homeBar">
       <Header :title="title"></Header>
-      <router-link tag="div" :to="{ name: 'sign', params: {} }" class="sign">
-        <img src="../../assets/images/sign.png" alt="">
-      </router-link>
     </div>
     <div class="gray-body">
       <div class="swiper-container" v-if="">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="" :key="">
-              <router-link :to="{ name: '', params: {} }">
-                <img src="../../assets/images/swiper_default.png" alt="">
-              </router-link>
-            </div>
+          <div class="swiper-slide" v-for="" :key="">
+            <router-link :to="{ name: '', params: {} }">
+              <img src="../../assets/images/swiper_default.png" alt="">
+            </router-link>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -94,6 +91,7 @@ export default {
   right: 40px;
   .size(84px, 65px);
   bottom: 32px;
+
   img {
     width: 100%;
   }
@@ -104,9 +102,11 @@ export default {
   background: @main-color;
   text-align: center;
   color: #fff;
+
   .userAll-tit {
     font-size: 42px;
   }
+
   .userAll-num {
     font-size: 112px;
   }

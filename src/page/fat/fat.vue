@@ -18,7 +18,7 @@ export default {
     HeaderBar,
     FattenList
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '汤姆猫',
@@ -26,10 +26,10 @@ export default {
         goBackUrl: require('../../assets/images/goBack.png'),
         path: 'fatHistory',
         params: {
-          days:30
+          days: 30
         },
-        goBack:true,
-        showIcon:true
+        goBack: true,
+        showIcon: true
       }
     }
   }
@@ -40,29 +40,29 @@ export default {
 @import '../../style/mixin.less';
 
 .header-bar {
-    display: flex;
-    flex: 1;
-    padding: 0 35px;
-    height: 130px;
-    // line-height: 130px;
-    align-items: center;
-    justify-content: space-between;
-    .bg(@main-color);
-    .color(#fff);
-    .fontSize(52px);
+  display: flex;
+  flex: 1;
+  padding: 0 35px;
+  height: 130px;
+  // line-height: 130px;
+  align-items: center;
+  justify-content: space-between;
+  .bg(@main-color);
+  .color(#fff);
+  .fontSize(52px);
 }
 
 .goBack {
-    .size(34px,60px);
-    img {
-        width: 100%;
-    }
+  .size(34px, 60px);
+  img {
+    width: 100%;
+  }
 }
 
 .header-bar-icon {
-    .size(60px,60px);
-    img {
-        width: 100%;
-    }
+  .size(60px, 60px);
+  img {
+    width: 100%;
+  }
 }
 </style>

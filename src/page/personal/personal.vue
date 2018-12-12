@@ -257,6 +257,7 @@ export default {
 
 .userInfo-img {
   margin-bottom: 30px;
+
   img {
     height: 76px;
     width: auto;

@@ -7,7 +7,7 @@
     <div class="gray-body">
       <div class="swiper-container" v-if="">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="" :key="">
+          <div class="swiper-slide" v-for="" :key="index">
             <router-link :to="{ name: '', params: {} }">
               <img src="../../assets/images/swiper_default.png" alt="">
             </router-link>
@@ -36,7 +36,7 @@ export default {
     HomeBid,
     UserFund
   },
-  data() {
+  data () {
     return {
       title: '金钱猫',
       userFund: {

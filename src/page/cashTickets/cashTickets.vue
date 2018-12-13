@@ -1,7 +1,7 @@
-<!-- 现金券 -->
+<!-- 红包卡券 -->
 <template lang="html">
   <div class="">
-    <HeaderBar :headerBar="headerBar"/>
+    <HeaderBar :headerBar="headerBar" />
   </div>
 </template>
 
@@ -9,28 +9,28 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name:'CashTickets',
+  name: 'CashTickets',
   components: {
-    HeaderBar,
+    HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
-        title: '现金券',
+        title: '红包卡券',
         imgUrl: '',
-        goBackUrl:require('../../assets/images/goBack.png'),
+        goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
-        params: {
-        },
-        goBack:true,
-        showIcon:false
-      },
+        params: {},
+        goBack: true,
+        showIcon: false
+      }
     }
   }
 }
+
 </script>
 
 <style lang="less" scoped>
-@import '../../style/mixin.less';
+  @import '../../style/mixin.less';
 
 </style>

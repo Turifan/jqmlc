@@ -2,7 +2,7 @@
 <template lang="html">
   <div class="gray-fixed gray-fixed-bg">
     <Header :title="title"/>
-    
+
     <DoraemonList/>
     <DoraemonList/>
     <DoraemonList/>
@@ -25,7 +25,7 @@ export default {
     Footer,
     DoraemonList
   },
-  data() {
+  data () {
     return {
       title: '机器猫'
     }

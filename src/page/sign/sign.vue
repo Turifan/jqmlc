@@ -1,7 +1,6 @@
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar"/>
-
   </div>
 </template>
 
@@ -11,9 +10,9 @@ import HeaderBar from '@/components/common/headerBar.vue'
 export default {
   name: 'Sign',
   components: {
-    HeaderBar,
+    HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '签到',
@@ -22,8 +21,8 @@ export default {
         path: '',
         params: {
         },
-        goBack:true,
-        showIcon:false
+        goBack: true,
+        showIcon: false
       }
     }
   }
@@ -31,6 +30,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 
 </style>

@@ -4,75 +4,29 @@
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed">
       <router-link :to="{ name: 'assets', params: {} }" tag="div" class="surMoney">
+        <div class="surMoney-txt">
+          灵活猫资产
+        </div>
         <div class="surMoneyBox">
           <div class="surMoney-num">
-            <span class="simbol">¥</span><span>6000001.00</span>
+            <span>6000001.00</span>
           </div>
-        </div>
-        <div class="surMoney-txt">
-          可售份额
         </div>
       </router-link>
-      <div class="userAccount">
-        <div class="">
-          <div class="account-txt">
-            当前收益（元）
-          </div>
-          <div class="account-num">
-            34,857.00
-          </div>
+      <div class="currentTips">
+        <div class="tips">
+          <img src="../../assets/images/gantan.png" alt="">温馨提示：
         </div>
-        <div class="">
-          <div class="account-txt">
-            昨日收益（元）
-          </div>
-          <div class="account-num">
-            57.00
-          </div>
-        </div>
-        <div class="">
-          <div class="account-txt">
-            账户资产（元）
-          </div>
-          <div class="account-num">
-            500,000.00
-          </div>
+        <div class="tipsContent">
+          <div>灵活猫资金不能直接提现，</div>
+          <div>需购买发财猫，到期方能提现。</div>
         </div>
       </div>
-      <div class="userAssets">
-        <div class="frozenAssets">
-          <div class="userAssets-txt">
-            冻结资产(元）
-          </div>
-          <div class="userAssets-num">
-            100,000
-          </div>
-        </div>
-        <div class="withdrawAssets">
-          <div class="userAssets-txt">
-            可提资产(元)
-          </div>
-          <div class="userAssets-num">
-            400,000
-          </div>
-        </div>
-      </div>
-      <div class="bid-detail">
-        <div class="bid-rate-txt">
-          年化收益率(%)
-        </div>
-        <div class="bid-rate">
-          12.3~14.7
-        </div>
-        <div class="bid-info">
-          每周递增0.1%，40周封顶
-        </div>
-
-        <router-link tag="div" :to="{ name: '', params: {} }" class="scan-bond">查看债权</router-link>
+      <div class="goToInvest" @click.stop.prevent="$router.push('fatten')">
+        去投标
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -83,7 +37,7 @@ export default {
   components: {
     HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '灵活猫',
@@ -97,122 +51,67 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="less" scoped>
-@import '../../style/mixin';
+  @import '../../style/mixin';
 
-.surMoney {
+  .surMoney {
+    padding: 93px 0 153px;
     .bg(@main-color);
     .color(#fff);
     line-height: 1;
-}
+  }
 
-.surMoneyBox {
-    position: relative;
+  .surMoneyBox {
     text-align: center;
-}
+  }
 
-.simbol {
+  .simbol {
     display: inline-block;
     margin-right: 30px;
     vertical-align: top;
     .fontSize(60px);
-}
+  }
 
-.surMoney-num {
-    padding-top: 45px;
-    padding-bottom: 78px;
-    .fontSize(90px);
+  .surMoney-num {
+    .fontSize(72px);
     .text-center;
-}
+  }
 
-.surMoney-txt {
-    padding-bottom: 53px;
+  .surMoney-txt {
+    margin: 0 auto 30px;
     .text-center;
-    .fontSize(42px);
-}
-
-.userAccount {
-    .size(100%,180px);
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    align-items: center;
-    line-height: 1;
-    border-bottom: 1px solid #999;
-    /*no*/
-}
-
-.account-txt {
-    margin-bottom: 24px;
     .fontSize(32px);
-}
+  }
 
-.account-num {
-    .fontSize(40px);
-    .color(#333);
-}
+  .currentTips {
+    padding: 50px 35px 0;
+    .fontSize(34px);
+    line-height: 60px;
+  }
 
-.userAssets {
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
+  .tips {
+    img {
+      width: 40px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+  }
 
-.userAssets-txt {
-    margin: 37px 0 34px;
-    .fontSize(32px);
-}
+  .tipsContent {
+    padding-left: 50px;
 
-.userAssets-num {
-    .fontSize(58px);
-    .color(#333);
-    margin-bottom: 30px;
-}
-
-.frozenAssets {
-    .width(50%);
-    border-right: 1px solid #999;
-    /*no*/
-}
-
-.withdrawAssets {
-    .width(50%);
-}
-
-.userAssets {
-    border-bottom: 1px solid #999;
-    /*no*/
-}
-
-.bid-detail {
-    .text-center;
-    line-height: 1;
-}
-
-.bid-rate-txt {
-    margin: 110px auto 95px;
-    .fontSize(36px);
-    .text-center;
-}
-
-.bid-rate {
-    margin-bottom: 114px;
-    .color(@dark-color);
-    .fontSize(100px);
-    .text-center;
-}
-
-.bid-info {
-    margin-bottom: 470px;
-    .fontSize(40px);
-}
-
-.scan-bond {
-    .fontSize(32px);
-    .color(@dark-color);
+  }
+.goToInvest{
+  .size(800px,130px);
+  margin: 487px auto 0;
+  .fontSize(42px);
+  .bg(#ff7032);
+  border-radius: 18px;
+  .color(#fff);
+  line-height: 130px;
+  .text-center;
 }
 </style>

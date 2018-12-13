@@ -3,7 +3,7 @@
   <div class="">
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed">
-      <router-link :to="{ name: 'assets', params: {} }" tag="div" class="doraemon-box">
+      <router-link :to="{ name: 'asset', params: {} }" tag="div" class="doraemon-box">
         <div class="rate-txt">
           预期年化率(%)
         </div>
@@ -67,7 +67,7 @@ export default {
   components: {
     HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '季度喵',

@@ -1,7 +1,7 @@
-<!-- 猫粮 -->
+<!-- 猫小票 -->
 <template lang="html">
   <div class="">
-    <HeaderBar :headerBar="headerBar"></HeaderBar>
+    <HeaderBar :headerBar="headerBar" />
   </div>
 </template>
 
@@ -9,14 +9,14 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'CatGrain',
+  name: 'Catcoin',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '猫粮',
+        title: '猫小票',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',

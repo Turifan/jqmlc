@@ -5,9 +5,9 @@
       <Header :title="title"></Header>
     </div>
     <div class="gray-body">
-      <div class="swiper-container" v-if="">
+      <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="" :key="index">
+          <div class="swiper-slide">
             <router-link :to="{ name: '', params: {} }">
               <img src="../../assets/images/swiper_default.png" alt="">
             </router-link>
@@ -54,61 +54,63 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="less" scoped>
-@import '../../style/mixin.less';
+  @import '../../style/mixin.less';
 
-.homeBar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 130px;
-  background: @main-color;
-  z-index: 1000;
-}
-
-.home-title {
-  .fontSize(52px);
-  width: 100%;
-  // padding: 42px 0;
-  height: 130px;
-  line-height: 130px;
-  .white;
-  .text-center;
-}
-
-.swiper-slide {
-  img {
+  .homeBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
     width: 100%;
+    height: 130px;
+    background: @main-color;
+    z-index: 1000;
   }
-}
 
-.sign {
-  position: absolute;
-  right: 40px;
-  .size(84px, 65px);
-  bottom: 32px;
-
-  img {
+  .home-title {
+    .fontSize(52px);
     width: 100%;
-  }
-}
-
-.userAll {
-  padding: 49px 0 60px;
-  background: @main-color;
-  text-align: center;
-  color: #fff;
-
-  .userAll-tit {
-    font-size: 42px;
+    // padding: 42px 0;
+    height: 130px;
+    line-height: 130px;
+    .white;
+    .text-center;
   }
 
-  .userAll-num {
-    font-size: 112px;
+  .swiper-slide {
+    img {
+      width: 100%;
+    }
   }
-}
+
+  .sign {
+    position: absolute;
+    right: 40px;
+    .size(84px, 65px);
+    bottom: 32px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .userAll {
+    padding: 49px 0 60px;
+    background: @main-color;
+    text-align: center;
+    color: #fff;
+
+    .userAll-tit {
+      font-size: 42px;
+    }
+
+    .userAll-num {
+      font-size: 112px;
+    }
+  }
+
 </style>

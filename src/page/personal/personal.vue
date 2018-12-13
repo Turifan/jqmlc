@@ -22,41 +22,39 @@
           <div class="mobile">
             185******23
           </div>
-          <router-link :to="{ name: 'member', params: {} }">
-            <div class="level">
-              <div class="level-box">
-                <img src="../../assets/images/level.png" alt="" class="level-img">折耳猫 >>
-              </div>
-              <div class="level-box">
-                <img src="../../assets/images/growTree.png" alt="" class="level-img">110 >>
-              </div>
+          <div class="level" @click.stop.prevent="$router.push('member')">
+            <div class="level-box">
+              <img src="../../assets/images/level.png" alt="" class="level-img">折耳猫 >>
             </div>
-          </router-link>
+            <div class="level-box" @click.stop.prevent="$router.push('growValue')">
+              <img src="../../assets/images/growTree.png" alt="" class="level-img">110 >>
+            </div>
+          </div>
         </div>
       </div>
       <div class="accountBox">
         <!-- 占位框 -->
       </div>
       <div class="userAccount">
-        <div class="account">
+        <div class="account" @click.stop.prevent="$router.push('asset')">
           <div class="userInfo-img">
             <img src="../../assets/images/self-account.png" alt="">
           </div>
           <div class="">账户资产</div>
         </div>
-        <div class="current">
+        <div class="current" @click.stop.prevent="$router.push('current')">
           <div class="userInfo-img">
             <img src="../../assets/images/self-current.png" alt="">
           </div>
           <div class="">灵活猫</div>
         </div>
-        <div class="invite">
+        <div class="invite" @click.stop.prevent="$router.push('invite')">
           <div class="userInfo-img">
             <img src="../../assets/images/self-invite.png" alt="">
           </div>
           <div class="">我的邀请</div>
         </div>
-        <div class="balance">
+        <div class="balance" @click.stop.prevent="$router.push('balance')">
           <div class="userInfo-img">
             <img src="../../assets/images/self-balance.png" alt="">
           </div>
@@ -85,193 +83,194 @@ export default {
     Footer,
     Suduku
   },
-  data() {
+  data () {
     return {
       title: '我的',
-      suduku: [
-        {
-          title: '抽奖号码',
-          imgUrl: require('../../assets/images/self-lottery.png'),
-          txt: '',
-          path: 'luckdraw'
-        },
-        {
-          title: '我的任务',
-          imgUrl: require('../../assets/images/self-task.png'),
-          txt: '做任务，得成长值',
-          path: 'task'
-        },
-        {
-          title: '投资记录',
-          imgUrl: require('../../assets/images/self-investRecord.png'),
-          txt: '',
-          path: 'investRecord'
-        },
-        {
-          title: '猫小票',
-          imgUrl: require('../../assets/images/self-catTickets.png'),
-          txt: '竞猜赢大奖',
-          path: 'expGold'
-        },
-        {
-          title: '我的猫粮',
-          imgUrl: require('../../assets/images/self-catGrain.png'),
-          txt: '猫粮兑好礼',
-          path: 'catcoin'
-        },
-        {
-          title: '红包卡券',
-          imgUrl: require('../../assets/images/self-tickets.png'),
-          txt: '',
-          path: 'investRecord'
-        },
-        {
-          title: '安全中心',
-          imgUrl: require('../../assets/images/self-safe.png'),
-          txt: '',
-          path: 'safe'
-        },
-        {
-          title: '常见问题',
-          imgUrl: require('../../assets/images/self-faq.png'),
-          txt: '',
-          path: 'faq'
-        },
-        {
-          title: '关于我们',
-          imgUrl: require('../../assets/images/self-about.png'),
-          txt: '猫友的专属客服',
-          path: 'aboutUs'
-        }
+      suduku: [{
+        title: '抽奖号码',
+        imgUrl: require('../../assets/images/self-lottery.png'),
+        txt: '',
+        path: 'luckdraw'
+      },
+      {
+        title: '我的任务',
+        imgUrl: require('../../assets/images/self-task.png'),
+        txt: '做任务，得成长值',
+        path: 'task'
+      },
+      {
+        title: '投资记录',
+        imgUrl: require('../../assets/images/self-investRecord.png'),
+        txt: '',
+        path: 'investRecord'
+      },
+      {
+        title: '猫小票',
+        imgUrl: require('../../assets/images/self-catTickets.png'),
+        txt: '竞猜赢大奖',
+        path: 'catTickets'
+      },
+      {
+        title: '我的猫粮',
+        imgUrl: require('../../assets/images/self-catGrain.png'),
+        txt: '猫粮兑好礼',
+        path: 'catGrain'
+      },
+      {
+        title: '红包卡券',
+        imgUrl: require('../../assets/images/self-tickets.png'),
+        txt: '',
+        path: 'cashTickets'
+      },
+      {
+        title: '安全中心',
+        imgUrl: require('../../assets/images/self-safe.png'),
+        txt: '',
+        path: 'safe'
+      },
+      {
+        title: '常见问题',
+        imgUrl: require('../../assets/images/self-faq.png'),
+        txt: '',
+        path: 'faq'
+      },
+      {
+        title: '关于我们',
+        imgUrl: require('../../assets/images/self-about.png'),
+        txt: '猫友的专属客服',
+        path: 'aboutUs'
+      }
       ]
     }
   },
   computed: {}
 }
+
 </script>
 
 <style lang="less" scoped>
-@import '../../style/mixin.less';
+  @import '../../style/mixin.less';
 
-.notice {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 35px;
-  .bg(#fff2e3);
-  .color(#7d3b03);
-  .fontSize(32px);
-  .height(54px);
-}
-
-.notice-img {
-  display: flex;
-  // flex: 1;
-  align-items: center;
-  width: 40px;
-  margin-right: 23px;
-
-  img {
-    .size(40px, 38px);
+  .notice {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    .bg(#fff2e3);
+    .color(#7d3b03);
+    .fontSize(32px);
+    .height(54px);
   }
-}
 
-.notice-txt {
-  margin-right: auto;
-}
+  .notice-img {
+    display: flex;
+    // flex: 1;
+    align-items: center;
+    width: 40px;
+    margin-right: 23px;
 
-.moreNotice {
-  display: flex;
-  align-items: center;
-  .size(44px, 12px);
+    img {
+      .size(40px, 38px);
+    }
+  }
 
-  img {
+  .notice-txt {
+    margin-right: auto;
+  }
+
+  .moreNotice {
+    display: flex;
+    align-items: center;
     .size(44px, 12px);
+
+    img {
+      .size(44px, 12px);
+    }
   }
-}
 
-.userInfo {
-  display: flex;
-  flex: 1;
-  padding: 60px 35px;
-  align-items: center;
-  justify-content: space-between;
-  background: @main-color;
-  .color(#fff);
-}
-
-.avatar {
-  .size(200px, 200px);
-  margin-right: 35px;
-  border-radius: 50%;
-
-  img {
-    width: 100%;
+  .userInfo {
+    display: flex;
+    flex: 1;
+    padding: 60px 35px;
+    align-items: center;
+    justify-content: space-between;
+    background: @main-color;
+    .color(#fff);
   }
-}
 
-.mobile {
-  margin-bottom: 30px;
-  .fontSize(48px);
-}
+  .avatar {
+    .size(200px, 200px);
+    margin-right: 35px;
+    border-radius: 50%;
 
-.level {
-  .fontSize(36px);
-}
-
-.level-box {
-  display: inline-block;
-  margin-right: 50px;
-}
-
-.level-img {
-  .size(36px, 36px);
-  margin-right: 16px;
-}
-
-.userDetail {
-  .width(652px);
-  margin-right: auto;
-}
-
-.accountBox {
-  height: 100px;
-  background: @main-color;
-}
-
-.userAccount {
-  display: flex;
-  flex: 1;
-  .size(1010px, 250px);
-  margin: -100px 0 16px;
-  padding: 60px 35px 50px;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 40px;
-  background: #fff;
-  text-align: center;
-  .fontSize(38px);
-  .color(#333);
-}
-
-.userInfo-img {
-  margin-bottom: 30px;
-
-  img {
-    height: 76px;
-    width: auto;
+    img {
+      width: 100%;
+    }
   }
-}
 
-.logOut {
-  .size(900px, 120px);
-  margin: 21px auto 68px;
-  .bg(@main-color);
-  .border-radius(18px);
-  .fontSize(52px);
-  .text-center;
-  line-height: 120px;
-  .color(#fff);
-}
+  .mobile {
+    margin-bottom: 30px;
+    .fontSize(48px);
+  }
+
+  .level {
+    .fontSize(36px);
+  }
+
+  .level-box {
+    display: inline-block;
+    margin-right: 50px;
+  }
+
+  .level-img {
+    .size(36px, 36px);
+    margin-right: 16px;
+  }
+
+  .userDetail {
+    .width(652px);
+    margin-right: auto;
+  }
+
+  .accountBox {
+    height: 100px;
+    background: @main-color;
+  }
+
+  .userAccount {
+    display: flex;
+    flex: 1;
+    height: 250px;
+    margin: -100px 0 16px;
+    padding: 60px 35px 50px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 40px;
+    background: #fff;
+    text-align: center;
+    .fontSize(38px);
+    .color(#333);
+  }
+
+  .userInfo-img {
+    margin-bottom: 30px;
+
+    img {
+      height: 76px;
+      width: auto;
+    }
+  }
+
+  .logOut {
+    .size(900px, 120px);
+    margin: 21px auto 68px;
+    .bg(@main-color);
+    .border-radius(18px);
+    .fontSize(52px);
+    .text-center;
+    line-height: 120px;
+    .color(#fff);
+  }
+
 </style>

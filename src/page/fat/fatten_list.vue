@@ -52,14 +52,13 @@
 
 <script>
 export default {
-  name: 'FattenList',
+  name: 'FattenList'
 
 }
 </script>
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
-
 
 .fatten-container {
     overflow-y: auto;

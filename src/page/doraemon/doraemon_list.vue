@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'DoraemonList',
+  name: 'DoraemonList'
 }
 </script>
 

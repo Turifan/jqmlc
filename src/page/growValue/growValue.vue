@@ -1,23 +1,22 @@
-<!-- 猫粮 -->
-<template lang="html">
-  <div class="">
-    <HeaderBar :headerBar="headerBar"></HeaderBar>
+<!-- 成长值 -->
+<template>
+  <div>
+      <HeaderBar :header-bar="headerBar"></HeaderBar>
   </div>
 </template>
-
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'CatGrain',
+  name: 'GrowValue',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '猫粮',
-        imgUrl: '',
+        title: '成长值记录',
+        imgUrl: require('../../assets/images/doubt.png'),
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {},
@@ -26,11 +25,10 @@ export default {
       }
     }
   }
+
 }
 
 </script>
-
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
 
 </style>

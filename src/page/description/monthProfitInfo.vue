@@ -1,7 +1,7 @@
-<!-- 猫粮 -->
+<!-- 月盈猫介绍 -->
 <template lang="html">
   <div class="">
-    <HeaderBar :headerBar="headerBar"></HeaderBar>
+    <HeaderBar :header-bar="headerBar"></HeaderBar>
   </div>
 </template>
 
@@ -9,14 +9,14 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'CatGrain',
+  name: 'CurrentInfo',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '猫粮',
+        title: '月盈猫介绍',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
@@ -31,6 +31,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
-
 </style>

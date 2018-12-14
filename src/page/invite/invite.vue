@@ -37,7 +37,14 @@
             </div>
           </div>
           <div class="tipContent">
-
+            <div class="tipContentItem">
+              <div class="listImg"></div>
+              <div class="tipContentTxt">20元现金券(仅限投资月盈猫使用)</div>
+            </div>
+            <div class="tipContentItem">
+              <div class="listImg"></div>
+              <div class="tipContentTxt">一次签到机会（每天最多可签到3次）</div>
+            </div>
           </div>
         </div>
       </div>
@@ -159,7 +166,28 @@ export default {
   .inviteTipsBox {
     padding: 0 70px;
   }
-.tipContent{
-  margin: 80px auto 0;
-}
+
+  .tipContent {
+    margin: 80px auto 0;
+  }
+
+  .tipContentItem {
+    display: flex;
+    flex: 1;
+    margin-bottom: 40px;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .listImg {
+    .size(20px, 20px);
+    transform: rotate(45deg);
+    background: @main-color;
+  }
+
+  .tipContentTxt {
+    margin: 0 auto 0 30px;
+  }
+
 </style>

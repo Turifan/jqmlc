@@ -28,7 +28,7 @@ export default {
     HeaderBar,
     ShareList
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '分享有礼',

@@ -1,35 +1,38 @@
-<!-- 机器猫介绍页面 -->
-<template lang="html">
-  <div class="">
-      <HeaderBar :header-bar="headerBar"/>
+<!-- 最新公告  -->
+<template>
+  <div>
+    <HeaderBar :header-bar="headerBar"></HeaderBar>
+    <div class="gray-fixed">
+      <div class=""></div>
+    </div>
   </div>
 </template>
-
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'ShareInfo',
+  name: 'Notice',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '季度喵介绍',
+        title: '最新公告',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
-        params: {
-        },
+        params: {},
         goBack: true,
         showIcon: false
       }
-      // title: '加息规则',
     }
   }
-}
-</script>
 
+}
+
+</script>
 <style lang="less" scoped>
+  @import '../../style/mixin.less';
+
 </style>

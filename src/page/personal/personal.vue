@@ -7,10 +7,10 @@
         <div class="notice-img">
           <img src="../../assets/images/notice.png" alt="">
         </div>
-        <div class="notice-txt">
+        <div class="notice-txt" @click.stop.prevent="$router.push('noticeDetail')">
           1月24号晚凌晨24:00至25号凌晨3:00系统维护。
         </div>
-        <div class="moreNotice">
+        <div class="moreNotice" @click.stop.prevent="$router.push('notice')">
           <img src="../../assets/images/moreNotice.png" alt="">
         </div>
       </div>

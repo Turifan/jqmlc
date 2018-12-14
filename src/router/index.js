@@ -5,24 +5,24 @@ const check = r => require.ensure([], () => r(require('@/page/check/check')), 'c
 const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
 const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraemon')), 'doraemon')
 const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonDetail/doraemonDetail')), 'doraemonDetail')
-const doraemonInfo = r => require.ensure([], () => r(require('@/page/description/doraemonInfo')), 'doraemonInfo')
 const profit = r => require.ensure([], () => r(require('@/page/profit/profit')), 'profit')
 const monthProfit = r => require.ensure([], () => r(require('@/page/monthProfit/monthProfit')), 'monthProfit')
 const monthProfitInfo = r => require.ensure([], () => r(require('@/page/description/monthProfitInfo')), 'monthProfitInfo')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
+const notice = r => require.ensure([], () => r(require('@/page/notice/notice')), 'notice')
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
 const register = r => require.ensure([], () => r(require('@/page/register/register')), 'register')
 const regSencondStep = r => require.ensure([], () => r(require('@/page/register/regSencondStep')), 'regSencondStep')
 const share = r => require.ensure([], () => r(require('@/page/share/share')), 'share')
 const shareInfo = r => require.ensure([], () => r(require('@/page/description/shareInfo')), 'shareInfo')
 const current = r => require.ensure([], () => r(require('@/page/current/current')), 'current')
-const currentInfo = r => require.ensure([], () => r(require('@/page/description/currentInfo')), 'currentInfo')
 const term = r => require.ensure([], () => r(require('@/page/term/term')), 'term')
 const sign = r => require.ensure([], () => r(require('@/page/sign/sign')), 'sign')
 const balance = r => require.ensure([], () => r(require('@/page/balance/balance')), 'balance')
+const balanceRecord = r => require.ensure([], () => r(require('@/page/balance/balanceRecord')), 'balanceRecord')
 const autoInvest = r => require.ensure([], () => r(require('@/page/autoInvest/autoInvest')), 'autoInvest')
-const autoInvestRecord = r => require.ensure([], () => r(require('@/page/autoInvest/children/autoInvestRecord')), 'autoInvestRecord')
+const autoInvestRecord = r => require.ensure([], () => r(require('@/page/autoInvest/autoInvestRecord')), 'autoInvestRecord')
 const invest = r => require.ensure([], () => r(require('@/page/invest/invest')), 'invest')
 const auditStatus = r => require.ensure([], () => r(require('@/page/invest/children/auditStatus')), 'auditStatus')
 const loanInfo = r => require.ensure([], () => r(require('@/page/invest/children/loanInfo')), 'loanInfo')
@@ -30,6 +30,7 @@ const projectDetail = r => require.ensure([], () => r(require('@/page/invest/chi
 const protocol = r => require.ensure([], () => r(require('@/page/protocol/protocol')), 'protocol')
 const history = r => require.ensure([], () => r(require('@/page/history/history')), 'history')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
+const recharge = r => require.ensure([], () => r(require('@/page/recharge/recharge')), 'recharge')
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
 const task = r => require.ensure([], () => r(require('@/page/task/task')), 'task')
 const asset = r => require.ensure([], () => r(require('@/page/asset/asset')), 'asset')
@@ -86,12 +87,6 @@ export default new Router({
       name: 'doraemonDetail',
       component: doraemonDetail
     },
-    // 机器猫详细介绍
-    {
-      path: '/doraemonInfo',
-      name: 'doraemonInfo',
-      component: doraemonInfo
-    },
     // 月盈猫
     {
       path: '/profit',
@@ -137,6 +132,15 @@ export default new Router({
         requireAuth: true
       }
     },
+    // 公告
+    {
+      path: '/notice',
+      name: 'notice',
+      component: notice,
+      meta: {
+        requireAuth: true
+      }
+    },
     // 登陆
     {
       path: '/login',
@@ -173,15 +177,6 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 灵活猫介绍
-    {
-      path: '/currentInfo',
-      name: 'currentInfo',
-      component: currentInfo,
-      meta: {
-        requireAuth: true
-      }
-    },
     // 分享标
     {
       path: '/share',
@@ -193,12 +188,9 @@ export default new Router({
     },
     // 分享规则
     {
-      path: '/shareInfo', // 分享规则
+      path: 'shareInfo',
       name: 'shareInfo',
-      component: shareInfo,
-      meta: {
-        requireAuth: true
-      }
+      component: shareInfo
     },
     // 签到
     {
@@ -250,11 +242,15 @@ export default new Router({
       path: '/autoInvest',
       name: 'autoInvest',
       component: autoInvest,
-      children: [{
-        path: 'autoInvestRecord', // 自动投标记录
-        name: 'autoInvestRecord',
-        component: autoInvestRecord
-      }],
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 自动投标记录
+    {
+      path: '/autoInvestRecord',
+      name: 'autoInvestRecord',
+      component: autoInvestRecord,
       meta: {
         requireAuth: true
       }
@@ -264,6 +260,15 @@ export default new Router({
       path: '/balance',
       name: 'balance',
       component: balance,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 余额记录
+    {
+      path: '/balanceRecord', // 余额记录
+      name: 'balanceRecord',
+      component: balanceRecord,
       meta: {
         requireAuth: true
       }
@@ -291,6 +296,15 @@ export default new Router({
       path: '/deposit',
       name: 'deposit',
       component: deposit,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 充值
+    {
+      path: '/recharge',
+      name: 'recharge',
+      component: recharge,
       meta: {
         requireAuth: true
       }

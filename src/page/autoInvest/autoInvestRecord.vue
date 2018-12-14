@@ -1,21 +1,21 @@
-<template lang="html">
-  <div class="">
-    <HeaderBar :header-bar="headerBar" />
+<!-- 自动投标记录 -->
+<template>
+  <div>
+    <HeaderBar :header-bar="headerBar"></HeaderBar>
   </div>
 </template>
-
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'ShareInfo',
+  name: 'AutoInvestRecord',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '加息规则',
+        title: '投标记录',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
@@ -25,9 +25,10 @@ export default {
       }
     }
   }
+
 }
 
 </script>
-
 <style lang="less" scoped>
+
 </style>

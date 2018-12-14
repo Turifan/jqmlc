@@ -71,12 +71,12 @@ export default {
     return {
       headerBar: {
         title: '季度喵',
-        imgUrl: require('../../assets/images/doubt.png'),
+        imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
-        path: 'doraemonInfo',
+        path: '',
         params: {},
         goBack: true,
-        showIcon: true
+        showIcon: false
       }
     }
   }

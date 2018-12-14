@@ -2,7 +2,7 @@
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar" />
-    <div class="gray-fixed-bg gray-fixed">
+    <div class="gray-body">
       <div class="bid-info">
         <div class="bid-title">
           车贷0075 ( 新手标)

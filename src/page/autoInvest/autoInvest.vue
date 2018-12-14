@@ -15,10 +15,10 @@ export default {
   data () {
     return {
       headerBar: {
-        title: '全部投资',
-        imgUrl: require('../../assets/images/doubt.png'),
+        title: '自动投标',
+        imgUrl: require('../../assets/images/record.png'),
         goBackUrl: require('../../assets/images/goBack.png'),
-        path: '',
+        path: 'autoInvestRecord',
         params: {},
         goBack: true,
         showIcon: true

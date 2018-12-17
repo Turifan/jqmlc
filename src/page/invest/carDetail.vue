@@ -74,47 +74,50 @@
 
 <script>
 export default {
-  name:'CarDetail'
+  name: 'CarDetail'
 }
+
 </script>
 
 <style lang="less" scoped>
-@import '../../style/mixin.less';
+  @import '../../style/mixin.less';
 
-.carDetail{
-  .bg(#fff);
-  // padding-bottom: 150px;
-  height: 450px;
-  overflow-y: auto;
-}
+  .carDetail {
+    .bg(#fff);
+    // padding-bottom: 150px;
+    height: 450px;
+    overflow-y: auto;
+  }
 
-.carDetail-list-item{
+  .carDetail-list-item {
     padding: 0 34px;
-}
+  }
 
-.carDetail-items-box{
-  height: 130px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  line-height: 130px;
-  border-bottom: 1px solid #efefef;/*no*/
-}
+  .carDetail-items-box {
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 130px;
+    border-bottom: 1px solid #efefef;
+    /*no*/
+  }
 
-.icon{
-  .size(20px,20px);
-  .bg(@main-color);
-  transform: rotate(45deg);
-}
+  .icon {
+    .size(20px, 20px);
+    .bg(@main-color);
+    transform: rotate(45deg);
+  }
 
-.carDetail-list-tit{
-  margin-left: 43px;
-  .fontSize(40px);
-}
+  .carDetail-list-tit {
+    margin-left: 43px;
+    .fontSize(40px);
+  }
 
-.carDetail-list-des{
-  margin-left: auto;
-  .fontSize(36px);
-  .color(#333);
-}
+  .carDetail-list-des {
+    margin-left: auto;
+    .fontSize(36px);
+    .color(#333);
+  }
+
 </style>

@@ -8,6 +8,7 @@ const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonD
 const profit = r => require.ensure([], () => r(require('@/page/profit/profit')), 'profit')
 const monthProfit = r => require.ensure([], () => r(require('@/page/monthProfit/monthProfit')), 'monthProfit')
 const monthProfitInfo = r => require.ensure([], () => r(require('@/page/description/monthProfitInfo')), 'monthProfitInfo')
+const aboutTicket = r => require.ensure([], () => r(require('@/page/description/aboutTicket')), 'aboutTicket')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
 const notice = r => require.ensure([], () => r(require('@/page/notice/notice')), 'notice')
@@ -362,6 +363,12 @@ export default new Router({
       path: '/cashTickets',
       name: 'cashTickets',
       component: cashTickets
+    },
+    // 现金券规则
+    {
+      path: '/aboutTicket',
+      name: 'aboutTicket',
+      component: aboutTicket
     },
     // 安全中心
     {

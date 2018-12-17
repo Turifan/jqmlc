@@ -1,7 +1,7 @@
 <!-- 投标详情 -->
 <template lang="html">
   <div class="">
-    <HeaderBar :headerBar="headerBar" />
+    <HeaderBar :headerBar="headerBar"></HeaderBar>
     <div class="gray-body">
       <div class="bid-info">
         <div class="bid-title">

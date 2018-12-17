@@ -19,8 +19,7 @@ export default {
   name: 'HeaderBar',
   props: ['headerBar'],
   data () {
-    return {
-    }
+    return {}
   },
   methods: {
     goBack () {

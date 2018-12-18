@@ -42,7 +42,7 @@ export default {
   .header-bar {
     display: flex;
     flex: 1;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 0 35px;
     height: 131px;
@@ -59,8 +59,8 @@ export default {
 
   .goBack {
     .size(60px, 60px);
-    // .pull-left;
-
+    margin-right: 0;
+    text-align: left;
     img {
       width: auto;
       height: 100%;
@@ -68,14 +68,14 @@ export default {
   }
 
   .header-bar-title {
-    width: 890px;
+    width: calc(100% - 120px);
+    margin-left: 0;
     text-align: center;
-    margin: 0 auto;
   }
 
   .header-bar-icon {
     .size(60px, 60px);
-
+    text-align: right;
     img {
       width: auto;
       height: 100%;

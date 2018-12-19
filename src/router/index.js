@@ -294,7 +294,7 @@ export default new Router({
     },
     // 提现
     {
-      path: '/deposit',
+      path: '/deposit/:type/:assetId',
       name: 'deposit',
       component: deposit,
       meta: {
@@ -346,7 +346,7 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 投资记录
+    // 我的投资记录
     {
       path: '/investRecord',
       name: 'investRecord',

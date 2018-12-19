@@ -4,7 +4,10 @@ import {
 } from './mutation-types'
 
 export default {
-  [RESET_LOGINPWD](state){
-    
+  [RESET_LOGINPWD] (state) {
+
+  },
+  [RESET_DEALPWD] (state) {
+
   }
 }

@@ -1,4 +1,4 @@
-<!-- 投资记录  -->
+<!-- 我的投资记录  -->
 <template>
   <div>
     <HeaderBar :header-bar="headerBar"></HeaderBar>

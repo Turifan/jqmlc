@@ -29,7 +29,7 @@
           <div>投资时间</div>
           <div class="profitDesItemTxt">2018-10-10</div>
         </div>
-        <div :class="['profitDepositBtn', false?'orangeBg':'grayBg']">提现</div>
+        <div :class="['profitDepositBtn', true?'orangeBg':'grayBg']" @click.stop.prevent="$router.push('deposit/9/30')">提现</div>
       </div>
     </div>
   </div>

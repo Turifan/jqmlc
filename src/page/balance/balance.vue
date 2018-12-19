@@ -15,7 +15,7 @@
               <img src="../../assets/images/self-right.png" alt="">
             </div>
           </div>
-          <div class="deposit balanceOperate" @click.stop.prevent="$router.push('deposit')">
+          <div class="deposit balanceOperate" @click.stop.prevent="$router.push('deposit/8/-1')">
             <div class="depositImg">
               <img src="../../assets/images/balance-deposit.png" alt="">
             </div>

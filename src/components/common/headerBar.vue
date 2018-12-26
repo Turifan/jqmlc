@@ -1,16 +1,14 @@
 <template lang="html">
-  <div class="">
-    <div class="header-bar">
-      <div class="goBack" @click="goBack" v-if="headerBar.goBack">
-        <img :src="headerBar.goBackUrl" alt="">
-      </div>
-      <div class="header-bar-title">
-        {{headerBar.title}}
-      </div>
-      <router-link tag="div" :to="{ name: headerBar.path, params: headerBar.params }" class="header-bar-icon" v-if="headerBar.showIcon">
-        <img :src="headerBar.imgUrl" alt="">
-      </router-link>
+  <div class="header-bar">
+    <div class="goBack" @click="goBack" v-if="headerBar.goBack">
+      <img :src="headerBar.goBackUrl" alt="">
     </div>
+    <div class="header-bar-title">
+      {{headerBar.title}}
+    </div>
+    <router-link tag="div" :to="{ name: headerBar.path, params: headerBar.params }" class="header-bar-icon" v-if="headerBar.showIcon">
+      <img :src="headerBar.imgUrl" alt="">
+    </router-link>
   </div>
 </template>
 
@@ -61,6 +59,7 @@ export default {
     .size(60px, 60px);
     margin-right: 0;
     text-align: left;
+
     img {
       width: auto;
       height: 100%;
@@ -76,6 +75,7 @@ export default {
   .header-bar-icon {
     .size(60px, 60px);
     text-align: right;
+
     img {
       width: auto;
       height: 100%;

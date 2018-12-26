@@ -293,6 +293,11 @@ export default new Router({
       }
     },
     // 提现
+    /**
+     * @params
+     * type 提现方式 9-月盈猫提现到银行卡 8-余额提现到银行卡 1-月月涨提现到灵活猫
+     * assetId 默认为-1，在月盈猫提现时提供资产id
+     */
     {
       path: '/deposit/:type/:assetId',
       name: 'deposit',

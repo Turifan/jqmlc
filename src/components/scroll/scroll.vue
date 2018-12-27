@@ -148,8 +148,10 @@ export default {
     this.pullDownInitTop = -50
   },
   mounted () {
+    console.log('scroll组件已挂载')
     setTimeout(() => {
       this.initScroll()
+      console.log('initScroll初始化完毕')
     }, 20)
   },
   destroyed () {
@@ -180,7 +182,6 @@ export default {
       }
 
       this.scroll = new BScroll(this.$refs.wrapper, options)
-
       if (this.listenScroll) {
         this.scroll.on('scroll', (pos) => {
           this.$emit('scroll', pos)
@@ -314,34 +315,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  @import '../../style/mixin';
+
   .list-wrapper {
     position: relative;
     height: 100%;
-    /*position: absolute*/
-    /*left: 0*/
-    /*top: 0*/
-    /*right: 0*/
-    /*bottom: 0*/
     overflow: hidden;
-    background: #fff;
+    // background: #fff;
 
     .scroll-content {
       position: relative;
       z-index: 1;
-    }
-
-    .list-content {
-      position: relative;
-      z-index: 10;
-      background: #fff;
-    }
-
-    .list-item {
-      height: 60px;
-      line-height: 60px;
-      font-size: 18px;
-      padding-left: 20px;
-      border-bottom: 1px solid #e5e5e5;
     }
   }
 
@@ -354,6 +338,7 @@ export default {
     align-items: center;
     transition: all;
     top: -150px;
+    .fontSize(34px);
 
     .after-trigger {
       margin-top: 10px
@@ -366,6 +351,7 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 16px 0;
+    .fontSize(34px);
   }
 
 </style>

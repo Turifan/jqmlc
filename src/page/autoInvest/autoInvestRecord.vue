@@ -9,11 +9,22 @@
         <div class="investPayWay">支付</div>
         <div class="investDate">时间</div>
       </div>
-      <!-- <div class="autoInvestBox"> -->
       <div class="wrapper">
-        <scroll ref="scroll" :data="items" :pullDownRefresh="pullDownRefreshObj" :pullUpLoad="pullUpLoadObj" :startY="parseInt(startY)"
+        <scroll ref="scroll" :data="items" :pullDownRefresh="pullDownRefresh" :pullUpLoad="pullUpLoad" :startY="parseInt(startY)"
           @pullingDown="onPullingDown" @pullingUp="onPullingUp">
           <div class="autoInvestList">
+            <div class="autoInvestItem">
+              <div class="investPro">以租代购0001</div>
+              <div class="investSum">10000</div>
+              <div class="investPayWay">余额资金</div>
+              <div class="investDate">2018-11-01 11:19:42</div>
+            </div>
+            <div class="autoInvestItem">
+              <div class="investPro">以租代购0001</div>
+              <div class="investSum">10000</div>
+              <div class="investPayWay">余额资金</div>
+              <div class="investDate">2018-11-01 11:19:42</div>
+            </div>
             <div class="autoInvestItem">
               <div class="investPro">以租代购0001</div>
               <div class="investSum">10000</div>
@@ -26,8 +37,6 @@
 
     </div>
   </div>
-
-  <!-- </div> -->
 </template>
 
 <script>
@@ -54,24 +63,23 @@ export default {
         goBack: true,
         showIcon: false
       },
-      autoInvestList: [],
-      scrollbar: true,
-      scrollbarFade: true,
+      // scrollbar: true,
+      // scrollbarFade: true,
       pullDownRefresh: true,
-      pullDownRefreshThreshold: 90,
-      pullDownRefreshStop: 40,
+      // pullDownRefreshThreshold: 90,
+      // pullDownRefreshStop: 40,
       pullUpLoad: true,
-      pullUpLoadThreshold: 0,
+      // pullUpLoadThreshold: 0,
       pullUpLoadMoreTxt: '加载更多',
       pullUpLoadNoMoreTxt: '没有更多数据了',
       startY: 0,
-      scrollToX: 0,
-      scrollToY: -200,
-      scrollToTime: 700,
-      scrollToEasing: 'bounce',
-      scrollToEasingOptions: ['bounce', 'swipe', 'swipeBounce'],
-      items: [],
-      itemIndex: 0
+      // scrollToX: 0,
+      // scrollToY: -200,
+      // scrollToTime: 700,
+      // scrollToEasing: 'bounce',
+      // scrollToEasingOptions: ['bounce', 'swipe', 'swipeBounce'],
+      items: []
+      // itemIndex: 0
     }
   },
   watch: {
@@ -81,28 +89,30 @@ export default {
     //   },
     //   deep: true
     // },
-    pullDownRefreshObj: {
-      handler (val) {
-        const scroll = this.$refs.scroll.scroll
-        if (val) {
-          scroll.openPullDown()
-        } else {
-          scroll.closePullDown()
-        }
-      },
-      deep: true
-    },
-    pullUpLoadObj: {
-      handler (val) {
-        const scroll = this.$refs.scroll.scroll
-        if (val) {
-          scroll.openPullUp()
-        } else {
-          scroll.closePullUp()
-        }
-      },
-      deep: true
-    },
+    // pullDownRefreshObj: {
+    //   handler (val) {
+    //     const scroll = this.$refs.scroll.scroll
+    //     if (val) {
+    //       scroll.openPullDown()
+    //       console.log('动态开启下拉')
+    //     } else {
+    //       scroll.closePullDown()
+    //       console.log('动态关闭下拉')
+    //     }
+    //   },
+    //   deep: true
+    // },
+    // pullUpLoadObj: {
+    //   handler (val) {
+    //     const scroll = this.$refs.scroll.scroll
+    //     if (val) {
+    //       scroll.openPullUp()
+    //     } else {
+    //       scroll.closePullUp()
+    //     }
+    //   },
+    //   deep: true
+    // },
     startY () {
       this.rebuildScroll()
     }
@@ -112,26 +122,28 @@ export default {
     console.log('数据初始化完毕')
   },
   computed: {
-    scrollbarObj: function () {
-      return this.scrollbar ? {
-        fade: this.scrollbarFade
-      } : false
-    },
-    pullDownRefreshObj: function () {
-      return this.pullDownRefresh ? {
-        threshold: parseInt(this.pullDownRefreshThreshold),
-        stop: parseInt(this.pullDownRefreshStop)
-      } : false
-    },
-    pullUpLoadObj: function () {
-      return this.pullUpLoad ? {
-        threshold: parseInt(this.pullUpLoadThreshold),
-        txt: {
-          more: this.pullUpLoadMoreTxt,
-          noMore: this.pullUpLoadNoMoreTxt
-        }
-      } : false
-    }
+    // scrollbarObj: function () {
+    //   return this.scrollbar ? {
+    //     fade: this.scrollbarFade
+    //   } : false
+    // },
+    // pullDownRefreshObj: function () {
+    //   console.log('pullDownRefreshObj计算属性')
+    //   return this.pullDownRefresh ? {
+    //     threshold: parseInt(this.pullDownRefreshThreshold),
+    //     stop: parseInt(this.pullDownRefreshStop)
+    //   } : false
+    // },
+    // pullUpLoadObj: function () {
+    //   console.log('pullUpLoadObj计算属性')
+    //   return this.pullUpLoad ? {
+    //     threshold: parseInt(this.pullUpLoadThreshold),
+    //     txt: {
+    //       more: this.pullUpLoadMoreTxt,
+    //       noMore: this.pullUpLoadNoMoreTxt
+    //     }
+    //   } : false
+    // }
   },
   methods: {
     // scrollTo () {
@@ -176,51 +188,51 @@ export default {
         }
       }, 1500)
     },
-    clickItem () {
-      this.$router.back()
-    },
-    updateScrollbar (val) {
-      this.scrollbar = val
-    },
-    updateScrollbarFade (val) {
-      this.scrollbarFade = val
-    },
-    updatePullDownRefresh (val) {
-      this.pullDownRefresh = val
-    },
-    updatePullDownRefreshThreshold (val) {
-      this.pullDownRefreshThreshold = val
-    },
-    updatePullDownRefreshStop (val) {
-      this.pullDownRefreshStop = val
-    },
-    updatePullUpLoad (val) {
-      this.pullUpLoad = val
-    },
-    updatePullUpLoadThreshold (val) {
-      this.pullUpLoadThreshold = val
-    },
-    updatePullUpLoadMoreTxt (val) {
-      this.pullUpLoadMoreTxt = val
-    },
-    updatePullUpLoadNoMoreTxt (val) {
-      this.pullUpLoadNoMoreTxt = val
-    },
-    updateStartY (val) {
-      this.startY = val
-    },
-    updateScrollToX (val) {
-      this.scrollToX = val
-    },
-    updateScrollToY (val) {
-      this.scrollToY = val
-    },
-    updateScrollToTime (val) {
-      this.scrollToTime = val
-    },
-    updateScrollToEasing (val) {
-      this.scrollToEasing = val
-    },
+    // clickItem () {
+    //   this.$router.back()
+    // },
+    // updateScrollbar (val) {
+    //   this.scrollbar = val
+    // },
+    // updateScrollbarFade (val) {
+    //   this.scrollbarFade = val
+    // },
+    // updatePullDownRefresh (val) {
+    //   this.pullDownRefresh = val
+    // },
+    // updatePullDownRefreshThreshold (val) {
+    //   this.pullDownRefreshThreshold = val
+    // },
+    // updatePullDownRefreshStop (val) {
+    //   this.pullDownRefreshStop = val
+    // },
+    // updatePullUpLoad (val) {
+    //   this.pullUpLoad = val
+    // },
+    // updatePullUpLoadThreshold (val) {
+    //   this.pullUpLoadThreshold = val
+    // },
+    // updatePullUpLoadMoreTxt (val) {
+    //   this.pullUpLoadMoreTxt = val
+    // },
+    // updatePullUpLoadNoMoreTxt (val) {
+    //   this.pullUpLoadNoMoreTxt = val
+    // },
+    // updateStartY (val) {
+    //   this.startY = val
+    // },
+    // updateScrollToX (val) {
+    //   this.scrollToX = val
+    // },
+    // updateScrollToY (val) {
+    //   this.scrollToY = val
+    // },
+    // updateScrollToTime (val) {
+    //   this.scrollToTime = val
+    // },
+    // updateScrollToEasing (val) {
+    //   this.scrollToEasing = val
+    // },
     rebuildScroll () {
       Vue.nextTick(() => {
         this.$refs.scroll.destroy()

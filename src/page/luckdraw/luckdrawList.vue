@@ -5,6 +5,7 @@
       <div class="luckdraw-list-info" @click.stop.prevent="$router.push('luckdrawNumber/30')">
         <div class="luckdraw-img">
           <img src="../../assets/images/luckdraw_img.png" alt="" class="img-responsive">
+          <div class="luckdraw-modal"></div>
         </div>
         <div class="luckdraw-detail">
           <div class="luckdraw-title">抽奖送送送</div>

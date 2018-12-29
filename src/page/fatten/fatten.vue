@@ -28,7 +28,7 @@ export default {
     Footer,
     FattenProduct
   },
-  data() {
+  data () {
     return {
       title: '发财猫'
     }

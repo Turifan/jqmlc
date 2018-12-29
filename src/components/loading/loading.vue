@@ -14,8 +14,8 @@ export default {
 <style lang="less" scoped>
   .mf-loading-container {
     img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       display: block
     }
   }

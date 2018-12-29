@@ -262,7 +262,7 @@ export default {
         }
         if (this.beforePullDown) {
           this.bubbleY = Math.max(0, pos.y + this.pullDownInitTop)
-          this.pullDownStyle = `top:${Math.min(pos.y + this.pullDownInitTop, 10)}px`
+          this.pullDownStyle = `top:${Math.min(pos.y + this.pullDownInitTop, 0)}px`
         } else {
           this.bubbleY = 0
         }
@@ -341,7 +341,13 @@ export default {
     .fontSize(34px);
 
     .after-trigger {
-      margin-top: 10px
+      margin-top: 10px;
+
+      span {
+        display: inline-block;
+        height: 80px;
+        line-height: 80px;
+      }
     }
   }
 
@@ -352,6 +358,16 @@ export default {
     align-items: center;
     padding: 16px 0;
     .fontSize(34px);
+
+    .before-trigger {
+      margin-top: 10px;
+
+      span {
+        display: inline-block;
+        height: 80px;
+        line-height: 80px;
+      }
+    }
   }
 
 </style>

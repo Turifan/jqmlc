@@ -18,7 +18,6 @@ const regSencondStep = r => require.ensure([], () => r(require('@/page/register/
 const share = r => require.ensure([], () => r(require('@/page/share/share')), 'share')
 const shareInfo = r => require.ensure([], () => r(require('@/page/description/shareInfo')), 'shareInfo')
 const current = r => require.ensure([], () => r(require('@/page/current/current')), 'current')
-const term = r => require.ensure([], () => r(require('@/page/term/term')), 'term')
 const sign = r => require.ensure([], () => r(require('@/page/sign/sign')), 'sign')
 const balance = r => require.ensure([], () => r(require('@/page/balance/balance')), 'balance')
 const balanceRecord = r => require.ensure([], () => r(require('@/page/balance/balanceRecord')), 'balanceRecord')
@@ -29,10 +28,11 @@ const auditStatus = r => require.ensure([], () => r(require('@/page/invest/child
 const loanInfo = r => require.ensure([], () => r(require('@/page/invest/children/loanInfo')), 'loanInfo')
 const projectDetail = r => require.ensure([], () => r(require('@/page/invest/children/projectDetail')), 'projectDetail')
 const protocol = r => require.ensure([], () => r(require('@/page/protocol/protocol')), 'protocol')
-const history = r => require.ensure([], () => r(require('@/page/history/history')), 'history')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 const recharge = r => require.ensure([], () => r(require('@/page/recharge/recharge')), 'recharge')
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
+const luckdrawRule = r => require.ensure([], () => r(require('@/page/luckdraw/luckdrawRule')), 'luckdrawRule')
+const luckdrawNumber = r => require.ensure([], () => r(require('@/page/luckdraw/luckdrawNumber')), 'luckdrawNumber')
 const task = r => require.ensure([], () => r(require('@/page/task/task')), 'task')
 const asset = r => require.ensure([], () => r(require('@/page/asset/asset')), 'asset')
 const catGrain = r => require.ensure([], () => r(require('@/page/catGrain/catGrain')), 'catGrain')
@@ -53,7 +53,7 @@ const member = r => require.ensure([], () => r(require('@/page/member/member')),
 const growValue = r => require.ensure([], () => r(require('@/page/growValue/growValue')), 'growValue')
 const memberRule = r => require.ensure([], () => r(require('@/page/member/memberRule')), 'memberRule')
 const fat = r => require.ensure([], () => r(require('@/page/fat/fat')), 'fat')
-const fatHistory = r => require.ensure([], () => r(require('@/page/fatHistory/fatHistory')), 'fatHistory')
+const fatHistory = r => require.ensure([], () => r(require('@/page/fat/fatHistory')), 'fatHistory')
 
 Vue.use(Router)
 
@@ -169,15 +169,6 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 机器猫产品
-    {
-      path: '/term',
-      name: 'term',
-      component: term,
-      meta: {
-        requireAuth: true
-      }
-    },
     // 分享标
     {
       path: '/share',
@@ -283,15 +274,6 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 发财猫已结束标
-    {
-      path: '/history',
-      name: 'history',
-      component: history,
-      meta: {
-        requireAuth: true
-      }
-    },
     // 提现
     /**
      * @params
@@ -320,6 +302,24 @@ export default new Router({
       path: '/luckdraw',
       name: 'luckdraw',
       component: luckdraw,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 抽奖号码--规则
+    {
+      path: '/luckdrawRule/:term',
+      name: 'luckdrawRule',
+      component: luckdrawRule,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 抽奖号码--某一期号码
+    {
+      path: '/luckdrawNumber/:term',
+      name: 'luckdrawNumber',
+      component: luckdrawNumber,
       meta: {
         requireAuth: true
       }

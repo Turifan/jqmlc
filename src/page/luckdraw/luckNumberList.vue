@@ -56,64 +56,62 @@
 export default {
   name: 'LuckNumberList'
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .luckNumberContainer {
-    padding: 0 15px;
-    overflow-y: hidden;
-    position: relative;
-  }
+.luckNumberContainer {
+  padding: 0 15px;
+  overflow-y: hidden;
+  position: relative;
+}
 
-  .luckNumber-list {
-    position: relative;
-    margin: 31px 0;
-    height: 191px;
-    .bg(#fff);
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    align-items: center;
-    border-top-right-radius: 10px;
-  }
+.luckNumber-list {
+  position: relative;
+  margin: 31px 0;
+  height: 191px;
+  .bg(#fff);
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  border-top-right-radius: 10px;
+}
 
-  .luckNumberStatus {
-    position: absolute;
-    top: -15px;
-    left: 79px;
-    .size(160px, 64px);
-    .text-center;
-    .color(#fff);
-    line-height: 64px;
-  }
+.luckNumberStatus {
+  position: absolute;
+  top: -15px;
+  left: 79px;
+  .size(160px, 64px);
+  .text-center;
+  .color(#fff);
+  line-height: 64px;
+}
 
-  .luckNumber-wkj {
-    background: url('../../assets/images/luckdraw_wkj.png') no-repeat;
-    background-size: 100% 100%;
-  }
+.luckNumber-wkj {
+  background: url('../../assets/images/luckdraw_wkj.png') no-repeat;
+  background-size: 100% 100%;
+}
 
-  .luckNumber-wzj {
-    background: url('../../assets/images/luckdraw_wzj.png') no-repeat;
-    background-size: 100% 100%;
-  }
+.luckNumber-wzj {
+  background: url('../../assets/images/luckdraw_wzj.png') no-repeat;
+  background-size: 100% 100%;
+}
 
-  .luckNumber-yzj {
-    background: url('../../assets/images/luckdraw_yzj.png') no-repeat;
-    background-size: 100% 100%;
-  }
+.luckNumber-yzj {
+  background: url('../../assets/images/luckdraw_yzj.png') no-repeat;
+  background-size: 100% 100%;
+}
 
-  .luckdraw-num {
-    font-family: AdobeHeiti;
-    .fontSize(52px);
-    .color(@dark-color);
-  }
+.luckdraw-num {
+  font-family: AdobeHeiti;
+  .fontSize(52px);
+  .color(@dark-color);
+}
 
-  .luckNumber-title {
-    margin-bottom: 33px;
-    .fontSize(32px);
-  }
-
+.luckNumber-title {
+  margin-bottom: 33px;
+  .fontSize(32px);
+}
 </style>

@@ -53,11 +53,8 @@ export default {
   created () {
     console.log('数据初始化完毕')
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
-
     onPullingDown () {
       // 模拟更新数据
       console.log('pulling down and load data')
@@ -105,16 +102,14 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .wrapper {
-    overflow-y: hidden;
-    position: relative;
-    height: 100%;
-  }
-
+.wrapper {
+  overflow-y: hidden;
+  position: relative;
+  height: 100%;
+}
 </style>

@@ -61,11 +61,8 @@ export default {
   created () {
     console.log('数据初始化完毕')
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
-
     onPullingDown () {
       // 模拟更新数据
       console.log('pulling down and load data')
@@ -113,37 +110,35 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .wrapper {
-    overflow-y: hidden;
-    position: relative;
-    height: calc(100% - 370px);
-  }
+.wrapper {
+  overflow-y: hidden;
+  position: relative;
+  height: calc(100% - 370px);
+}
 
-  .luckNumber {
-    height: 370px;
-    .bg(@main-color);
-    .color(#fff);
-    .text-center;
-    overflow: hidden;
-  }
+.luckNumber {
+  height: 370px;
+  .bg(@main-color);
+  .color(#fff);
+  .text-center;
+  overflow: hidden;
+}
 
-  .hasNum {
-    margin: 100px 0 30px;
-    .fontSize(32px);
-  }
+.hasNum {
+  margin: 100px 0 30px;
+  .fontSize(32px);
+}
 
-  .luckNumber-sum {
-    .fontSize(42px);
-  }
+.luckNumber-sum {
+  .fontSize(42px);
+}
 
-  .luckNum {
-    .fontSize(132px);
-  }
-
+.luckNum {
+  .fontSize(132px);
+}
 </style>

@@ -31,60 +31,58 @@
 export default {
   name: 'LuckdrawList'
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .luckdraw-container {
-    overflow-y: hidden;
-    position: relative;
-  }
+.luckdraw-container {
+  overflow-y: hidden;
+  position: relative;
+}
 
-  .luckdraw-list {
-    margin-bottom: 20px;
-    padding: 0 34px;
-    .bg(#fff);
-  }
+.luckdraw-list {
+  margin-bottom: 20px;
+  padding: 0 34px;
+  .bg(#fff);
+}
 
-  .luckdraw-list-info {
-    height: 300px;
-    display: flex;
-    flex: 1;
-    align-items: center;
-    border-bottom: 2px solid #efefef;
-  }
+.luckdraw-list-info {
+  height: 300px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-bottom: 2px solid #efefef;
+}
 
-  .luckdraw-img {
-    .size(300px, 220px);
-    margin-right: 52px;
-  }
+.luckdraw-img {
+  .size(300px, 220px);
+  margin-right: 52px;
+}
 
-  .luckdraw-title {
-    margin-bottom: 60px;
-    .fontSize(42px);
-    .color(#333);
-  }
+.luckdraw-title {
+  margin-bottom: 60px;
+  .fontSize(42px);
+  .color(#333);
+}
 
-  .luckdraw-desc {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    .fontSize(32px);
-  }
+.luckdraw-desc {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  .fontSize(32px);
+}
 
-  .luckdraw-number {
-    margin-right: 180px;
-  }
+.luckdraw-number {
+  margin-right: 180px;
+}
 
-  .luckdraw-list-desc {
-    display: flex;
-    flex: 1;
-    height: 100px;
-    justify-content: space-between;
-    align-items: center;
-    .fontSize(32px);
-  }
-
+.luckdraw-list-desc {
+  display: flex;
+  flex: 1;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  .fontSize(32px);
+}
 </style>

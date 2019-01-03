@@ -10,7 +10,7 @@
         <div class="grainSum">
           <div class="grainSumTit">
             <div class="ownGrain">我拥有的猫粮</div>
-            <div class="checkGrainUsed brandColor">查看使用记录</div>
+            <div class="checkGrainUsed brandColor" @click.stop.prevent="$router.push('grainRecords')">查看使用记录</div>
           </div>
           <div class="grainNumber">25000</div>
         </div>

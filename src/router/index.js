@@ -36,6 +36,7 @@ const luckdrawNumber = r => require.ensure([], () => r(require('@/page/luckdraw/
 const task = r => require.ensure([], () => r(require('@/page/task/task')), 'task')
 const asset = r => require.ensure([], () => r(require('@/page/asset/asset')), 'asset')
 const catGrain = r => require.ensure([], () => r(require('@/page/catGrain/catGrain')), 'catGrain')
+const grainRecords = r => require.ensure([], () => r(require('@/page/catGrain/grainRecords')), 'grainRecords')
 const investRecord = r => require.ensure([], () => r(require('@/page/investRecord/investRecord')), 'investRecord')
 const invite = r => require.ensure([], () => r(require('@/page/invite/invite')), 'invite')
 const catTickets = r => require.ensure([], () => r(require('@/page/catTickets/catTickets')), 'catTickets')
@@ -347,6 +348,15 @@ export default new Router({
       path: '/catGrain',
       name: 'catGrain',
       component: catGrain,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 我的猫粮记录
+    {
+      path: '/grainRecords',
+      name: 'grainRecords',
+      component: grainRecords,
       meta: {
         requireAuth: true
       }

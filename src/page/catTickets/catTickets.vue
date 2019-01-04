@@ -11,14 +11,17 @@
             </div>
             <div class="catTicketsTxt">自主选票</div>
           </div>
-          <div class="checkHistory">
+          <div class="checkHistory" @click.stop.prevent="$router.push('winTickets')">
             参考往期中奖号码>>
           </div>
         </div>
         <!-- 猫小票列表 -->
         <div class="catTicketsList">
           <div class="catTicketsItemContainer" v-for="cat in catTickets" :key="cat.id" @click.stop.prevent="selectTickets(cat.id)">
-            <div class="catTicketsItem">
+            <div :class="['catTicketsItem',{'catTicketsItem-active':selectedTicketsNum[cat.id]>0}]">
+              <div class="catTicketsItemNum" v-if="selectedTicketsNum[cat.id]>0">
+                <div class="catTicketsWord">{{selectedTicketsNum[cat.id]}}</div>
+              </div>
               <img :src="cat.imgUrl" alt="" :class="['img-responsive',cat.imgSize]">
             </div>
             <div class="catTicketsItemTit">
@@ -50,6 +53,27 @@
             <div class="ticketsBtn randomTicketsBtn" @click.stop.prevent="randomTickets">自动生成</div>
           </div>
         </div>
+        <!-- 确认选票 -->
+        <div class="catTicketsTitle">
+          <div class="catTicketsTit">
+            <div class="icon">
+
+            </div>
+            <div class="catTicketsTxt">确认选票</div>
+          </div>
+        </div>
+        <div class="exchangeBox">
+          <div class="exchangeInfo">
+            <div class="catGrainSum orange">剩余猫粮 : 180000</div>
+            <div class="exchangeDemand">10000猫粮兑换一注猫小票</div>
+          </div>
+          <div class="exchangeBtn">确认兑换</div>
+        </div>
+      </div>
+      <!-- 历史票码 -->
+      <div class="historyTicketsBox">
+        <div class="historyItem" @click.stop.prevent="$router.push('historyTickets')">历史票码>></div>
+        <div class="currentItem orange" @click.stop.prevent="$router.push('currentTickets')">本期票码>></div>
       </div>
     </div>
   </div>
@@ -124,7 +148,8 @@ export default {
           imgSize: 'cat8'
         }
       ],
-      selectedTickets: []
+      selectedTickets: [],
+      selectedTicketsNum: {}
     }
   },
   methods: {
@@ -135,21 +160,29 @@ export default {
         id: id,
         imgUrl: require(`../../assets/images/catchoice${id}.png`)
       })
+      this.selectedTicketsNum.hasOwnProperty(id)
+        ? (this.selectedTicketsNum[id] += 1)
+        : (this.selectedTicketsNum[id] = 1)
     },
     // 随机选择猫小票
     randomTickets () {
       this.selectedTickets = []
+      this.selectedTicketsNum = {}
       for (let i = 0; i < 5; i++) {
         let rand = Math.round(Math.random() * 7) + 1
         this.selectedTickets.push({
           id: `${rand}`,
           imgUrl: require(`../../assets/images/catchoice${rand}.png`)
         })
+        this.selectedTicketsNum[rand]
+          ? (this.selectedTicketsNum[rand] += 1)
+          : (this.selectedTicketsNum[rand] = 1)
       }
     },
     // 清除全部
     clearAllTickets () {
       this.selectedTickets = []
+      this.selectedTicketsNum = {}
     }
   }
 }
@@ -201,6 +234,7 @@ export default {
   margin-bottom: 50px;
 }
 .catTicketsItem {
+  position: relative;
   display: flex;
   flex: 1;
   align-items: center;
@@ -211,7 +245,24 @@ export default {
   border: 1px solid #dedede; /*no*/
   text-align: center;
 }
-
+.catTicketsItem-active {
+  border: 1px solid @main-color !important; /*no*/
+}
+.catTicketsItemNum {
+  position: absolute;
+  right: 0;
+  top: 0;
+  .size(0, 0);
+  border-top: 48px solid @main-color;
+  border-left: 48px solid transparent;
+}
+.catTicketsWord {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  .fontSize(30px);
+  .color(#fff);
+}
 .catTicketsItemTit {
   display: flex;
   flex: 1;
@@ -314,5 +365,34 @@ export default {
 .randomTicketsBtn {
   .color(@main-color);
   border: 2px solid @main-color;
+}
+.exchangeBox {
+  display: flex;
+  flex: 1;
+  margin: 77px 0 50px;
+  align-items: center;
+  justify-content: space-between;
+  .fontSize(32px);
+}
+.catGrainSum {
+  margin-bottom: 26px;
+}
+.exchangeBtn {
+  .size(230px, 80px);
+  .color(#fff);
+  .fontSize(34px);
+  text-align: center;
+  line-height: 80px;
+  .bg(@main-color);
+  border-radius: 12px;
+}
+.historyTicketsBox {
+  display: flex;
+  flex: 1;
+  .fontSize(32px);
+  padding: 45px 255px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #efefef;
 }
 </style>

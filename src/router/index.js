@@ -41,6 +41,10 @@ const investRecord = r => require.ensure([], () => r(require('@/page/investRecor
 const invite = r => require.ensure([], () => r(require('@/page/invite/invite')), 'invite')
 const catTickets = r => require.ensure([], () => r(require('@/page/catTickets/catTickets')), 'catTickets')
 const cashTickets = r => require.ensure([], () => r(require('@/page/cashTickets/cashTickets')), 'cashTickets')
+const historyTickets = r => require.ensure([], () => r(require('@/page/catTickets/historyTickets')), 'historyTickets')
+const historyTicketsTerm = r => require.ensure([], () => r(require('@/page/catTickets/historyTicketsTerm')), 'historyTicketsTerm')
+const currentTickets = r => require.ensure([], () => r(require('@/page/catTickets/currentTickets')), 'currentTickets')
+const winTickets = r => require.ensure([], () => r(require('@/page/catTickets/winTickets')), 'winTickets')
 const safe = r => require.ensure([], () => r(require('@/page/safe/safe')), 'safe')
 const cert = r => require.ensure([], () => r(require('@/page/safe/cert')), 'cert')
 const bindCard = r => require.ensure([], () => r(require('@/page/safe/bindCard')), 'bindCard')
@@ -372,6 +376,30 @@ export default new Router({
       path: '/catTickets',
       name: 'catTickets',
       component: catTickets
+    },
+    // 猫小票-历史票码
+    {
+      path: '/historyTickets',
+      name: 'historyTickets',
+      component: historyTickets
+    },
+    // 猫小票-历史票码
+    {
+      path: '/historyTicketsTerm/:term',
+      name: 'historyTicketsTerm',
+      component: historyTicketsTerm
+    },
+    // 猫小票-本期票码
+    {
+      path: '/currentTickets',
+      name: 'currentTickets',
+      component: currentTickets
+    },
+    // 猫小票-中奖历史
+    {
+      path: '/winTickets',
+      name: 'winTickets',
+      component: winTickets
     },
     // 现金券
     {

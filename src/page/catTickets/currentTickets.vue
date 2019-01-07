@@ -2,11 +2,11 @@
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar"></HeaderBar>
-    <div class="gray-fixed gray-fixed-bg">
+    <div class="gray-fixed">
       <div class="wrapper">
-        <scroll ref="scroll" :data="items" :pullDownRefresh="pullDownRefresh" :pullUpLoad="pullUpLoad" :startY="parseInt(startY)"
+        <scroll ref="scroll" :pullDownRefresh="pullDownRefresh" :pullUpLoad="pullUpLoad" :startY="parseInt(startY)"
           @pullingDown="onPullingDown" @pullingUp="onPullingUp">
-          <LuckdrawList></LuckdrawList>
+          <TicketsList :data="items"></TicketsList>
         </scroll>
       </div>
     </div>
@@ -16,7 +16,7 @@
 <script>
 import Vue from 'vue'
 import HeaderBar from '@/components/common/headerBar.vue'
-import HistoryTicketsList from './HistoryTicketsList.vue'
+import TicketsList from './TicketsList.vue'
 import Scroll from '@/components/scroll/scroll.vue'
 
 export default {
@@ -24,7 +24,7 @@ export default {
   components: {
     HeaderBar,
     Scroll,
-    HistoryTicketsList
+    TicketsList
   },
   data () {
     return {
@@ -42,7 +42,35 @@ export default {
       pullUpLoadMoreTxt: '加载更多',
       pullUpLoadNoMoreTxt: '没有更多数据了',
       startY: 0,
-      items: []
+      items: [
+        {
+          cost: 10000,
+          create_time: '2018-12-20',
+          draw_result: '0',
+          draw_result_desc: '未开奖',
+          draw_status: 1,
+          ticket_number: '76114',
+          user_id: 2
+        },
+        {
+          cost: 10000,
+          create_time: '2018-12-20',
+          draw_result: '0',
+          draw_result_desc: '未开奖',
+          draw_status: 1,
+          ticket_number: '23456',
+          user_id: 2
+        },
+        {
+          cost: 10000,
+          create_time: '2018-12-19',
+          draw_result: '0',
+          draw_result_desc: '未开奖',
+          draw_status: 1,
+          ticket_number: '45678',
+          user_id: 2
+        }
+      ]
     }
   },
   watch: {

@@ -5,7 +5,7 @@
       <div class="luckdraw-list-info" @click.stop.prevent="$router.push('luckdrawNumber/30')">
         <div class="luckdraw-img">
           <img src="../../assets/images/luckdraw_img.png" alt="" class="img-responsive">
-          <div class="luckdraw-modal"></div>
+          <div class="luckdraw-modal" v-if="true">已结束</div>
         </div>
         <div class="luckdraw-detail">
           <div class="luckdraw-title">抽奖送送送</div>
@@ -58,8 +58,20 @@ export default {
 .luckdraw-img {
   .size(300px, 220px);
   margin-right: 52px;
+  position: relative;
 }
-
+.luckdraw-modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  .bg(rgba(0, 0, 0, 0.3));
+  .fontSize(52px);
+  .color(#fff);
+  .text-center;
+  line-height: 220px;
+}
 .luckdraw-title {
   margin-bottom: 60px;
   .fontSize(42px);

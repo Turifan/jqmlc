@@ -4,8 +4,8 @@
     <div class="luckdraw-list" v-for="(item,index) in catTicketsList" :key="index">
       <div class="luckdraw-list-info" @click.stop.prevent="$router.push(`historyTicketsTerm/${item.draw_id}`)">
         <div class="luckdraw-img">
-          <img src="../../assets/images/luckdraw_img.png" alt="" class="img-responsive">
-          <div class="luckdraw-modal"></div>
+          <img src="../../assets/images/tickets-img.png" alt="" class="img-responsive">
+          <div class="luckdraw-modal" v-if="item.isOver==1">{{item.isOver==1?'未开奖':'已开奖'}}</div>
         </div>
         <div class="luckdraw-detail">
           <div class="luckdraw-title">{{item.activity_name}}</div>
@@ -26,8 +26,12 @@
           </div>
         </div>
       </div>
-      <div class="ticketsRecords" v-if="true">
-
+      <div class="ticketsRecords" v-if="activeIndex==index">
+        <ul>
+          <li>一等奖奖品为朗逸汽车一辆</li>
+          <li>二等奖奖品为苹果电脑一台</li>
+          <li>三等奖奖品为最新款苹果手机一台</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -63,11 +67,14 @@ export default {
           second_prize: '二等奖奖品为iphone6',
           third_prize: '三等奖奖品为iphone7'
         }
-      ]
+      ],
+      activeIndex: -1
     }
   },
   methods: {
-    showRewards (index) {}
+    showRewards (index) {
+      this.activeIndex = this.activeIndex === index ? -1 : index
+    }
   }
 }
 </script>
@@ -81,7 +88,7 @@ export default {
 }
 
 .luckdraw-list {
-  margin-bottom: 20px;
+  margin-bottom: 37px;
   padding: 0 34px;
   .bg(#fff);
 }
@@ -97,6 +104,19 @@ export default {
 .luckdraw-img {
   .size(300px, 220px);
   margin-right: 52px;
+  position: relative;
+}
+.luckdraw-modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  .bg(rgba(0, 0, 0, 0.3));
+  .fontSize(52px);
+  .color(#fff);
+  .text-center;
+  line-height: 220px;
 }
 .luckdraw-detail {
   width: calc(100% - 352px);
@@ -138,6 +158,21 @@ export default {
   img {
     height: 22px;
     width: auto;
+  }
+}
+.ticketsRecords {
+  margin: 0 -34px;
+  padding: 48px 54px;
+  border-top: 2px solid #efefef;
+  ul {
+    li {
+      line-height: 60px;
+      &::before {
+        content: '\02022';
+        margin-right: 10px;
+        color: #ff9b2e;
+      }
+    }
   }
 }
 </style>

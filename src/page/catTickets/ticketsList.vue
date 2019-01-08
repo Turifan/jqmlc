@@ -90,11 +90,10 @@ export default {
   display: flex;
   flex: 1;
   align-items: center;
+  justify-content: space-between;
   padding-left: 30px;
+  padding-right: 30px;
   .fontSize(32px);
   .color(#999);
-}
-.ticketsTime {
-  margin-right: 230px;
 }
 </style>

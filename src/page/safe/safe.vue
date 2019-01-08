@@ -24,62 +24,61 @@ import HeaderBar from '@/components/common/headerBar.vue'
 export default {
   name: 'Safe',
   components: {
-    HeaderBar,
+    HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '安全中心',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
-        params: {
-        },
-        goBack:true,
-        showIcon:false
+        params: {},
+        goBack: true,
+        showIcon: false
       },
-      safeList:[
+      safeList: [
         {
-          title:'实名认证',
-          doneUrl:'cert',
-          unDoneUrl:'',
-          doneTxt:'已认证',
-          unDoneTxt:'未认证'
+          title: '实名认证',
+          doneUrl: 'cert',
+          unDoneUrl: '',
+          doneTxt: '已认证',
+          unDoneTxt: '未认证'
         },
         {
-          title:'绑定银行卡',
-          doneUrl:'bindCard',
-          unDoneUrl:'',
-          doneTxt:'已绑定',
-          unDoneTxt:'未绑定'
+          title: '绑定银行卡',
+          doneUrl: 'bindCard',
+          unDoneUrl: '',
+          doneTxt: '已绑定',
+          unDoneTxt: '未绑定'
         },
         {
-          title:'绑定手机号',
-          doneUrl:'bindTel',
-          unDoneUrl:'',
-          doneTxt:'已绑定',
-          unDoneTxt:'未绑定'
+          title: '绑定手机号',
+          doneUrl: 'bindTel',
+          unDoneUrl: '',
+          doneTxt: '已绑定',
+          unDoneTxt: '未绑定'
         },
         {
-          title:'绑定微信号',
-          doneUrl:'bindWechat',
-          unDoneUrl:'',
-          doneTxt:'已绑定',
-          unDoneTxt:'未绑定'
+          title: '绑定微信号',
+          doneUrl: 'bindWechat',
+          unDoneUrl: '',
+          doneTxt: '已绑定',
+          unDoneTxt: '未绑定'
         },
         {
-          title:'登录密码',
-          doneUrl:'resetLoginPwd',
-          unDoneUrl:'resetLoginPwd',
-          doneTxt:'修改',
-          unDoneTxt:'修改'
+          title: '登录密码',
+          doneUrl: 'resetLoginPwd',
+          unDoneUrl: 'resetLoginPwd',
+          doneTxt: '修改',
+          unDoneTxt: '修改'
         },
         {
-          title:'交易密码',
-          doneUrl:'resetDealPwd',
-          unDoneUrl:'resetDealPwd',
-          doneTxt:'修改',
-          unDoneTxt:'修改'
+          title: '交易密码',
+          doneUrl: 'resetDealPwd',
+          unDoneUrl: 'resetDealPwd',
+          doneTxt: '修改',
+          unDoneTxt: '修改'
         }
       ]
     }
@@ -90,7 +89,7 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin.less';
 
-.safe-list{
+.safe-list {
   display: flex;
   flex: 1;
   height: 156px;
@@ -101,22 +100,22 @@ export default {
   border-bottom: 2px solid #ededed;
 }
 
-.safe-tit{
+.safe-tit {
   .color(#333);
 }
 
-.safe-link{
+.safe-link {
   line-height: 1;
   .color(#999);
-  .safe-status{
+  .safe-status {
     display: inline-block;
     line-height: 1;
   }
 }
 
-.safe-icon{
+.safe-icon {
   display: inline-block;
-  .size(30px,52px);
+  .size(30px, 52px);
   margin-left: 19px;
   background: url('../../assets/images/right_gray.png') no-repeat;
   background-size: 30px 52px;

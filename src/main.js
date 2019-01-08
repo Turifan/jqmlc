@@ -6,8 +6,10 @@ import router from './router'
 import store from './store/'
 import 'lib-flexible/flexible.js'
 import axios from 'axios'
+import { Message } from 'element-ui'
 
 Vue.prototype.$http = axios
+Vue.prototype.$message = Message
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

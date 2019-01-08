@@ -39,29 +39,28 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name:'Register',
+  name: 'Register',
   components: {
-    HeaderBar,
+    HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '注册',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
-        params: {
-        },
-        goBack:true,
-        showIcon:false
-      },
+        params: {},
+        goBack: true,
+        showIcon: false
+      }
     }
   },
-  methods:{
-    register(){
+  methods: {
+    register () {
       this.$router.push('regSencondStep')
     },
-    enter(){
+    enter () {
       this.$router.push('home')
     }
   }
@@ -71,16 +70,16 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin.less';
 
-.register-box{
+.register-box {
   padding: 28px 34px 0;
 }
 
-.form-box{
+.form-box {
   .height(112px);
   margin-bottom: 30px;
   padding: 4px;
-  .border(2px,solid,#bfbfbf);
-  input{
+  .border(2px, solid, #bfbfbf);
+  input {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -91,29 +90,30 @@ export default {
   }
 }
 
-.loginPwd{
+.loginPwd {
   width: calc(100% - 112px);
   background: url('../../assets/images/loginPwd.png') no-repeat 30px center;
   background-size: 52px 59px;
 }
 
-.confirm_loginPwd{
+.confirm_loginPwd {
   width: calc(100% - 112px);
-  background: url('../../assets/images/confirm_loginPwd.png') no-repeat 30px center;
+  background: url('../../assets/images/confirm_loginPwd.png') no-repeat 30px
+    center;
   background-size: 52px 59px;
 }
 
-.inviteCode{
+.inviteCode {
   width: calc(100% - 112px);
   background: url('../../assets/images/reg_yzm.png') no-repeat 24px center;
   background-size: 64px 59px;
 }
 
-.register-next{
+.register-next {
   .fontSize(38px);
 
-  .next{
-    .size(900px,120px);
+  .next {
+    .size(900px, 120px);
     margin: 60px auto 68px;
     line-height: 120px;
     text-align: center;
@@ -122,36 +122,35 @@ export default {
     .bg(@main-color);
     .border-radius(18px);
   }
-
 }
 
-.getInviteCode{
+.getInviteCode {
   margin: 32px auto 170px;
   .text-right;
   .color(@main-color);
   .fontSize(38px);
 }
 
-.pop{
+.pop {
   position: fixed;
   left: 0;
   bottom: 0;
   right: 0;
   top: 0;
-  .bg(rgba(0,0,0,.5));
+  .bg(rgba(0, 0, 0, 0.5));
   z-index: 1000;
 }
 
-.shadePop{
+.shadePop {
   margin: 540px auto;
   width: 779px;
-  img{
+  img {
     width: 100%;
   }
 }
 
-.enter{
-  .size(600px,120px);
+.enter {
+  .size(600px, 120px);
   margin: 0 auto;
   .bg(@main-color);
   line-height: 120px;

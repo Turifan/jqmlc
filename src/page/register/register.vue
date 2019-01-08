@@ -31,26 +31,25 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name:'Register',
+  name: 'Register',
   components: {
-    HeaderBar,
+    HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '注册',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
-        params: {
-        },
-        goBack:true,
-        showIcon:false
-      },
+        params: {},
+        goBack: true,
+        showIcon: false
+      }
     }
   },
-  methods:{
-    register(){
+  methods: {
+    register () {
       this.$router.push('regSencondStep')
     }
   }
@@ -60,16 +59,16 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin.less';
 
-.register-box{
+.register-box {
   padding: 28px 34px 0;
 }
 
-.form-box{
+.form-box {
   .height(112px);
   margin-bottom: 30px;
   padding: 4px;
-  .border(2px,solid,#bfbfbf);
-  input{
+  .border(2px, solid, #bfbfbf);
+  input {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -80,43 +79,46 @@ export default {
   }
 }
 
-.telphone{
+.telphone {
   width: 100%;
   background: url('../../assets/images/reg_tel.png') no-repeat 33px center;
   background-size: 46px 64px;
 }
 
-.captcha{
+.captcha {
   width: e('calc(100% - 540px)');
   background: url('../../assets/images/reg_yzm.png') no-repeat 24px center;
   background-size: 64px 59px;
 }
 
-.captcha_btn{
+.captcha_btn {
   display: inline-block;
   margin-top: 6px;
-  .size(400px,100px);
+  .size(400px, 100px);
   text-align: center;
   line-height: 100px;
   .bg(@main-color);
   .color(#fff);
   .fontSize(38px);
   .border-radius(18px);
-  &:hover,&:visited,&:active,&:link{
+  &:hover,
+  &:visited,
+  &:active,
+  &:link {
     .color(#fff);
   }
 }
 
-.register-next{
+.register-next {
   .fontSize(38px);
 
-  .protocol{
+  .protocol {
     .color(@main-color);
     text-align: center;
   }
 
-  .next{
-    .size(900px,120px);
+  .next {
+    .size(900px, 120px);
     margin: 60px auto 68px;
     line-height: 120px;
     text-align: center;
@@ -126,14 +128,9 @@ export default {
     .border-radius(18px);
   }
 
-  .agreeProtocol{
+  .agreeProtocol {
     margin-bottom: 28px;
     .text-center;
   }
 }
-
-
-
-
-
 </style>

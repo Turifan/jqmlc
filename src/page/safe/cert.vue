@@ -26,6 +26,9 @@
               <input type="text" v-model.trim="certNum" placeholder="请输入身份证号码" class="certNumInput">
             </div>
           </div>
+          <div class="certBtn" @click.stop.prevent="cert">
+            确定
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +62,8 @@ export default {
   methods: {
     jump (url) {
       window.location.href = url
-    }
+    },
+    cert () {}
   }
 }
 </script>
@@ -82,12 +86,13 @@ export default {
 }
 .certTips {
   margin: 36px 0 72px;
+  .fontSize(32px);
 }
 .certForm {
   // padding: 1px;
   box-sizing: border-box;
   border: 2px solid #bfbfbf;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
 }
 .certFormBox {
@@ -102,6 +107,7 @@ export default {
     outline: none;
     border: none;
     .fontSize(38px);
+    box-sizing: border-box;
   }
   .userNameInput {
     padding-left: 114px;
@@ -116,5 +122,15 @@ export default {
 }
 .certUserName {
   border-bottom: 2px solid #bfbfbf;
+}
+.certBtn {
+  .size(900px, 120px);
+  margin: 340px auto;
+  .bg(@main-color);
+  .color(#fff);
+  line-height: 120px;
+  .text-center;
+  .fontSize(52px);
+  border-radius: 18px;
 }
 </style>

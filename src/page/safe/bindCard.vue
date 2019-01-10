@@ -29,7 +29,10 @@
             :confirmTxt="confirmTxt"></picker>
             </div>
             <div class="certUserName certFormBox">
-              <input type="text" v-model.trim="bankAddress" placeholder="请选择开户地区" class="bankAddressInput">
+              <input type="text" v-model.trim="bankAddress" :placeholder="selectedText[1]" class="bankAddressInput" ref="select1" @click="showPicker(1)" readonly>
+    <city-picker @select="handleSelect(1,arguments)" :data="areaList" :selected-index="selectedIndex[1]"
+                 ref="picker1" :title="title[1]" :cancelTxt="cancelTxt"
+                 :confirmTxt="confirmTxt"></city-picker>
             </div>
             <div class="certUserName certFormBox">
               <input type="text" v-model.trim="subBank" placeholder="请输入开户支行" class="subBankInput">
@@ -50,12 +53,18 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import Picker from '@/components/picker/picker.vue'
+import CityPicker from '@/components/city-picker/city-picker.vue'
+import { provinceList, cityList, areaList } from '@/data/areaData'
 
 export default {
   name: 'Cert',
   components: {
     HeaderBar,
-    Picker
+    Picker,
+    CityPicker,
+    provinceList,
+    cityList,
+    areaList
   },
   data () {
     return {
@@ -69,28 +78,49 @@ export default {
         showIcon: false
       },
       binded: false,
+      // 输入框默认值
       username: '',
       bankName: '',
       bankAddress: '',
       subBank: '',
       bankNum: '',
+      // 获取银行卡列表
       bankList: this.$store.state.bankList,
+      // 省市区列表
+      areaList: [provinceList, cityList, areaList],
+      // picker组件默认值
       confirmTxt: '确定',
       cancelTxt: '取消',
-      selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]],
+      // 设定弹起时默认选中的值
+      selectedIndex: [[2], [0, 0, 0]],
       selectedText: ['请选择开户银行', '请选择开户地址'],
       title: ['开户行', '开户地址']
     }
   },
   mounted () {
     this.$refs.picker0.setData([this.bankList])
-    this.$refs.picker0.setSelectedIndex([0])
+    this.$refs.picker0.setSelectedIndex([2])
+  },
+  watch: {
+    bankName () {
+      this.bankName = this.selectedText[0]
+    },
+    bankAddress () {
+      this.bankAddress = this.selectedText[1]
+    }
   },
   methods: {
     jump (url) {
       window.location.href = url
     },
-    bindBankCard () {},
+    // 绑定银行卡按钮事件
+    bindBankCard () {
+      console.log(this.username)
+      console.log(this.bankName)
+      console.log(this.bankAddress)
+      console.log(this.subBank)
+      console.log(this.bankNum)
+    },
     showPicker (index) {
       let picker = this.$refs['picker' + index]
 
@@ -98,7 +128,10 @@ export default {
     },
     handleSelect (index, args) {
       this.selectedText.splice(index, 1, args[2].join('，'))
-      console.log(args)
+      this.bankName =
+        this.selectedText[0] === '请选择开户银行' ? '' : this.selectedText[0]
+      this.bankAddress =
+        this.selectedText[1] === '请选择开户地址' ? '' : this.selectedText[1]
     }
   }
 }
@@ -106,6 +139,34 @@ export default {
 
 <style lang="less" scoped>
 @import '../../style/mixin.less';
+
+.border-1px {
+  position: relative;
+  &:after {
+    content: '';
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    border: 1px solid #ccc; /*no*/
+    border-radius: 2px; /*no*/
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+      width: 200%;
+      height: 200%;
+      border-radius: 4px;
+      transform: scale(0.5) translateZ(0);
+    }
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+      width: 300%;
+      height: 300%;
+      border-radius: 6px;
+      transform: scale(0.33) translateZ(0);
+    }
+  }
+}
 
 .certBox {
   display: flex;

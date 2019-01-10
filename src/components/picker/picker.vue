@@ -252,9 +252,32 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus" rel="stylesheet/stylus">
-@import '../../style/mixin.styl';
-@import '../../style/variable.styl';
+<style scoped lang="less">
+@import '../../style/mixin.less';
+
+.border-top-1px {
+  &::before {
+    border-top: 1px solid #ebebeb; /*no*/
+  }
+}
+
+.border-right-1px {
+  &::after {
+    border-right: 1px solid #ebebeb; /*no*/
+  }
+}
+
+.border-bottom-1px {
+  &::after {
+    border-bottom: 1px solid #ebebeb; /*no*/
+  }
+}
+
+.border-left-1px {
+  &::before {
+    border-left: 1px solid #ebebeb; /*no*/
+  }
+}
 
 .picker {
   position: fixed;
@@ -265,14 +288,16 @@ export default {
   height: 100%;
   overflow: hidden;
   text-align: center;
-  font-size: $fontsize-medium;/*no*/
-  background-color: $color-mask-bgc;
+  font-size: 38px;
+  background-color: rgba(37, 38, 45, 0.4);
 
-  &.picker-fade-enter, &.picker-fade-leave-active {
+  &.picker-fade-enter,
+  &.picker-fade-leave-active {
     opacity: 0;
   }
 
-  &.picker-fade-enter-active, &.picker-fade-leave-active {
+  &.picker-fade-enter-active,
+  &.picker-fade-leave-active {
     transition: all 0.3s ease-in-out;
   }
 
@@ -281,44 +306,48 @@ export default {
     z-index: 600;
     bottom: 0;
     width: 100%;
-    height: 273px;/*no*/
-    background: $color-white;
+    height: 685px;
+    background: #fff;
 
-    &.picker-move-enter, &.picker-move-leave-active {
-      transform: translate3d(0, 273px, 0);/*no*/
+    &.picker-move-enter,
+    &.picker-move-leave-active {
+      transform: translate3d(0, 685px, 0);
     }
 
-    &.picker-move-enter-active, &.picker-move-leave-active {
+    &.picker-move-enter-active,
+    &.picker-move-leave-active {
       transition: all 0.3s ease-in-out;
     }
 
     .picker-choose {
       position: relative;
-      height: 60px;/*no*/
-      color: $color-light-grey;
+      height: 140px;
+      color: #999;
 
       .picker-title {
         margin: 0;
-        line-height: 60px;/*no*/
+        line-height: 140px;
         font-weight: normal;
         text-align: center;
-        font-size: $fontsize-large-x;/*no*/
-        color: $color-dark-grey;
+        font-size: 40px;
+        color: #333;
+        border-bottom: 1px solid #ebebeb; /*no*/
       }
 
-      .confirm, .cancel {
+      .confirm,
+      .cancel {
         position: absolute;
-        top: 6px;/*no*/
-        padding: 16px;/*no*/
-        font-size: $fontsize-medium;/*no*/
+        top: 0;
+        padding: 54px;
+        font-size: 32px;
       }
 
       .confirm {
         right: 0;
-        color: $color-main;
+        color: @main-color;
 
         &:active {
-          color: $color-main-ll;
+          color: #5aaaff;
         }
       }
 
@@ -326,58 +355,70 @@ export default {
         left: 0;
 
         &:active {
-          color: $color-active-light-gray-fe;
+          color: #c2c2c2;
         }
       }
     }
 
     .picker-content {
       position: relative;
-      top: 20px;/*no*/
+      top: 20px;
 
-      .mask-top, .mask-bottom {
+      .mask-top,
+      .mask-bottom {
         z-index: 10;
         width: 100%;
-        height: 68px;/*no*/
+        height: 200px;
         pointer-events: none;
         transform: translateZ(0);
+        box-sizing: border-box;
       }
 
       .mask-top {
         position: absolute;
         top: 0;
-        background: linear-gradient(to top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 0.4),
+          rgba(255, 255, 255, 0.8)
+        );
+        border-bottom: 1px solid #ebebeb; /*no*/
       }
 
       .mask-bottom {
         position: absolute;
-        bottom: 1px;/*no*/
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+        bottom: 1px; /* no */
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.4),
+          rgba(255, 255, 255, 0.8)
+        );
+        border-top: 1px solid #ebebeb; /*no*/
       }
     }
 
     .wheel-wrapper {
       display: flex;
-      padding: 0 16px;/*no*/
+      padding: 0 34px;
 
       .wheel {
-        flex-fix();
-        height: 173px;/*no*/
+        .flex-fix();
+        height: 515px;
         overflow: hidden;
-        font-size: $fontsize-large-xx;
+        font-size: 42px;
 
         .wheel-scroll {
           padding: 0;
-          margin-top: 68px;/*no*/
-          line-height: 36px;/*no*/
+          margin-top: 200px;
+          line-height: 118px;
           list-style: none;
 
           .wheel-item {
             list-style: none;
-            height: 36px;/*no*/
+            height: 115px;
             overflow: hidden;
             white-space: nowrap;
-            color: $color-dark-grey;
+            color: #333;
           }
         }
       }
@@ -385,7 +426,7 @@ export default {
   }
 
   .picker-footer {
-    height: 20px;/*no*/
+    height: 20px;
   }
 }
 </style>

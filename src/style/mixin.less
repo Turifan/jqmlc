@@ -148,3 +148,23 @@ a {
   width: 100%;
   height: auto;
 }
+
+.border-none() {
+  &:before {
+    display: none;
+  }
+
+  &:after {
+    display: none;
+  }
+}
+
+.flex-fix() {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+  // width：1%;
+}

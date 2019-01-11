@@ -1,10 +1,6 @@
 <!-- 修改登录密码 -->
 <template lang="html">
-  <div class="">
-    <HeaderBar :headerBar="headerBar"></HeaderBar>
-    <div class="gray-fixed gray-fixed-bg">
-      <div class="resetPwdBox">
-        <div>
+  <div>
           <div class="resetFormBox">
            <div class="originalPwd loginPwd">
              <input type="password" placeholder="请输入原始登录密码" v-model.trim="originalPwd" class="originalPwdInput">
@@ -20,9 +16,6 @@
             确认修改
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>

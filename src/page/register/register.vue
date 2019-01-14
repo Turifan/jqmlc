@@ -81,6 +81,7 @@ export default {
 
 .telphone {
   width: 100%;
+  box-sizing: border-box;
   background: url('../../assets/images/reg_tel.png') no-repeat 33px center;
   background-size: 46px 64px;
 }

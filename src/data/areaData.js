@@ -2,94 +2,124 @@ export const provinceList = [
   {
     text: '北京市',
     value: '110000'
-  }, {
+  },
+  {
     text: '天津市',
     value: '120000'
-  }, {
+  },
+  {
     text: '河北省',
     value: '130000'
-  }, {
+  },
+  {
     text: '山西省',
     value: '140000'
-  }, {
+  },
+  {
     text: '内蒙古自治区',
     value: '150000'
-  }, {
+  },
+  {
     text: '辽宁省',
     value: '210000'
-  }, {
+  },
+  {
     text: '吉林省',
     value: '220000'
-  }, {
+  },
+  {
     text: '黑龙江省',
     value: '230000'
-  }, {
+  },
+  {
     text: '上海市',
     value: '310000'
-  }, {
+  },
+  {
     text: '江苏省',
     value: '320000'
-  }, {
+  },
+  {
     text: '浙江省',
     value: '330000'
-  }, {
+  },
+  {
     text: '安徽省',
     value: '340000'
-  }, {
+  },
+  {
     text: '福建省',
     value: '350000'
-  }, {
+  },
+  {
     text: '江西省',
     value: '360000'
-  }, {
+  },
+  {
     text: '山东省',
     value: '370000'
-  }, {
+  },
+  {
     text: '河南省',
     value: '410000'
-  }, {
+  },
+  {
     text: '湖北省',
     value: '420000'
-  }, {
+  },
+  {
     text: '湖南省',
     value: '430000'
-  }, {
+  },
+  {
     text: '广东省',
     value: '440000'
-  }, {
+  },
+  {
     text: '广西壮族自治区',
     value: '450000'
-  }, {
+  },
+  {
     text: '海南省',
     value: '460000'
-  }, {
+  },
+  {
     text: '重庆市',
     value: '500000'
-  }, {
+  },
+  {
     text: '四川省',
     value: '510000'
-  }, {
+  },
+  {
     text: '贵州省',
     value: '520000'
-  }, {
+  },
+  {
     text: '云南省',
     value: '530000'
-  }, {
+  },
+  {
     text: '西藏自治区',
     value: '540000'
-  }, {
+  },
+  {
     text: '陕西省',
     value: '610000'
-  }, {
+  },
+  {
     text: '甘肃省',
     value: '620000'
-  }, {
+  },
+  {
     text: '青海省',
     value: '630000'
-  }, {
+  },
+  {
     text: '宁夏回族自治区',
     value: '640000'
-  }, {
+  },
+  {
     text: '新疆维吾尔自治区',
     value: '650000'
   }
@@ -103,14 +133,14 @@ export const cityList = {
       value: '110100'
     }
   ],
-    '120000': [
+  '120000': [
     {
       province: '天津市',
       text: '天津市',
       value: '120100'
     }
   ],
-    '130000': [
+  '130000': [
     {
       province: '河北省',
       text: '石家庄市',
@@ -172,7 +202,7 @@ export const cityList = {
       value: '139000'
     }
   ],
-    '140000': [
+  '140000': [
     {
       province: '山西省',
       text: '太原市',
@@ -229,7 +259,7 @@ export const cityList = {
       value: '141100'
     }
   ],
-    '150000': [
+  '150000': [
     {
       province: '内蒙古自治区',
       text: '呼和浩特市',
@@ -291,7 +321,7 @@ export const cityList = {
       value: '152900'
     }
   ],
-    '210000': [
+  '210000': [
     {
       province: '辽宁省',
       text: '沈阳市',
@@ -363,7 +393,7 @@ export const cityList = {
       value: '211400'
     }
   ],
-    '220000': [
+  '220000': [
     {
       province: '吉林省',
       text: '长春市',
@@ -410,7 +440,7 @@ export const cityList = {
       value: '222400'
     }
   ],
-    '230000': [
+  '230000': [
     {
       province: '黑龙江省',
       text: '哈尔滨市',
@@ -477,14 +507,14 @@ export const cityList = {
       value: '232700'
     }
   ],
-    '310000': [
+  '310000': [
     {
       province: '上海市',
       text: '上海市',
       value: '310100'
     }
   ],
-    '320000': [
+  '320000': [
     {
       province: '江苏省',
       text: '南京市',
@@ -551,7 +581,7 @@ export const cityList = {
       value: '321300'
     }
   ],
-    '330000': [
+  '330000': [
     {
       province: '浙江省',
       text: '杭州市',
@@ -608,7 +638,7 @@ export const cityList = {
       value: '331100'
     }
   ],
-    '340000': [
+  '340000': [
     {
       province: '安徽省',
       text: '合肥市',
@@ -690,7 +720,7 @@ export const cityList = {
       value: '341800'
     }
   ],
-    '350000': [
+  '350000': [
     {
       province: '福建省',
       text: '福州市',
@@ -737,7 +767,7 @@ export const cityList = {
       value: '350900'
     }
   ],
-    '360000': [
+  '360000': [
     {
       province: '江西省',
       text: '南昌市',
@@ -794,7 +824,7 @@ export const cityList = {
       value: '361100'
     }
   ],
-    '370000': [
+  '370000': [
     {
       province: '山东省',
       text: '济南市',
@@ -881,7 +911,7 @@ export const cityList = {
       value: '371700'
     }
   ],
-    '410000': [
+  '410000': [
     {
       province: '河南省',
       text: '郑州市',
@@ -973,7 +1003,7 @@ export const cityList = {
       value: '419000'
     }
   ],
-    '420000': [
+  '420000': [
     {
       province: '湖北省',
       text: '武汉市',
@@ -1045,7 +1075,7 @@ export const cityList = {
       value: '429000'
     }
   ],
-    '430000': [
+  '430000': [
     {
       province: '湖南省',
       text: '长沙市',
@@ -1117,7 +1147,7 @@ export const cityList = {
       value: '433100'
     }
   ],
-    '440000': [
+  '440000': [
     {
       province: '广东省',
       text: '广州市',
@@ -1224,7 +1254,7 @@ export const cityList = {
       value: '445300'
     }
   ],
-    '450000': [
+  '450000': [
     {
       province: '广西壮族自治区',
       text: '南宁市',
@@ -1296,7 +1326,7 @@ export const cityList = {
       value: '451400'
     }
   ],
-    '460000': [
+  '460000': [
     {
       province: '海南省',
       text: '海口市',
@@ -1323,7 +1353,7 @@ export const cityList = {
       value: '469000'
     }
   ],
-    '500000': [
+  '500000': [
     {
       province: '重庆市',
       text: '重庆市',
@@ -1335,7 +1365,7 @@ export const cityList = {
       value: '500200'
     }
   ],
-    '510000': [
+  '510000': [
     {
       province: '四川省',
       text: '成都市',
@@ -1442,7 +1472,7 @@ export const cityList = {
       value: '513400'
     }
   ],
-    '520000': [
+  '520000': [
     {
       province: '贵州省',
       text: '贵阳市',
@@ -1489,7 +1519,7 @@ export const cityList = {
       value: '522700'
     }
   ],
-    '530000': [
+  '530000': [
     {
       province: '云南省',
       text: '昆明市',
@@ -1571,7 +1601,7 @@ export const cityList = {
       value: '533400'
     }
   ],
-    '540000': [
+  '540000': [
     {
       province: '西藏自治区',
       text: '拉萨市',
@@ -1608,7 +1638,7 @@ export const cityList = {
       value: '542500'
     }
   ],
-    '610000': [
+  '610000': [
     {
       province: '陕西省',
       text: '西安市',
@@ -1660,7 +1690,7 @@ export const cityList = {
       value: '611000'
     }
   ],
-    '620000': [
+  '620000': [
     {
       province: '甘肃省',
       text: '兰州市',
@@ -1732,7 +1762,7 @@ export const cityList = {
       value: '623000'
     }
   ],
-    '630000': [
+  '630000': [
     {
       province: '青海省',
       text: '西宁市',
@@ -1774,7 +1804,7 @@ export const cityList = {
       value: '632800'
     }
   ],
-    '640000': [
+  '640000': [
     {
       province: '宁夏回族自治区',
       text: '银川市',
@@ -1801,7 +1831,7 @@ export const cityList = {
       value: '640500'
     }
   ],
-    '650000': [
+  '650000': [
     {
       province: '新疆维吾尔自治区',
       text: '乌鲁木齐市',

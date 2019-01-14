@@ -27,7 +27,6 @@ const invest = r => require.ensure([], () => r(require('@/page/invest/invest')),
 const auditStatus = r => require.ensure([], () => r(require('@/page/invest/children/auditStatus')), 'auditStatus')
 const loanInfo = r => require.ensure([], () => r(require('@/page/invest/children/loanInfo')), 'loanInfo')
 const projectDetail = r => require.ensure([], () => r(require('@/page/invest/children/projectDetail')), 'projectDetail')
-const protocol = r => require.ensure([], () => r(require('@/page/protocol/protocol')), 'protocol')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 const recharge = r => require.ensure([], () => r(require('@/page/recharge/recharge')), 'recharge')
 const luckdraw = r => require.ensure([], () => r(require('@/page/luckdraw/luckdraw')), 'luckdraw')
@@ -496,12 +495,6 @@ export default new Router({
       path: '/fatHistory/:days',
       name: 'fatHistory',
       component: fatHistory
-    },
-    // 借款协议
-    {
-      path: '/protocol',
-      name: 'protocol',
-      component: protocol
     }
   ]
 })

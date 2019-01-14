@@ -1,47 +1,27 @@
 <!-- 修改登录密码 -->
 <template lang="html">
   <div>
-          <div class="resetFormBox">
-           <div class="originalPwd loginPwd">
-             <input type="password" placeholder="请输入原始登录密码" v-model.trim="originalPwd" class="originalPwdInput">
-           </div>
-           <div class="newPwd loginPwd">
-             <input type="password" placeholder="请输入您的新密码" v-model.trim="newPwd" class="newPwdInput">
-           </div>
-           <div class="confirmPwd loginPwd">
-             <input type="password" placeholder="请输入原始登录密码" v-model.trim="confirmPwd" class="confirmPwdInput">
-           </div>
-          </div>
-          <div class="resetLoginBtn">
-            确认修改
-          </div>
+    <div class="resetFormBox">
+      <div class="originalPwd loginPwd">
+        <input type="password" :placeholder="resetValue.originalPwdHolder" v-model.trim="resetValue.originalPwd" class="originalPwdInput">
+      </div>
+      <div class="newPwd loginPwd">
+        <input type="password" :placeholder="resetValue.newPwdHolder" v-model.trim="resetValue.newPwd" class="newPwdInput">
         </div>
+      <div class="confirmPwd loginPwd">
+        <input type="password" :placeholder="resetValue.confirmPwdHolder" v-model.trim="resetValue.confirmPwd" class="confirmPwdInput">
+      </div>
+    </div>
+    <div class="resetLoginBtn" @click.stop.prevent="submitReset">
+      确认修改
+    </div>
+  </div>
 </template>
 
 <script>
-import HeaderBar from '@/components/common/headerBar.vue'
-
 export default {
-  name: 'ResetLoginPwd',
-  components: {
-    HeaderBar
-  },
-  data () {
-    return {
-      headerBar: {
-        title: '修改登录密码',
-        imgUrl: '',
-        goBackUrl: require('../../assets/images/goBack.png'),
-        path: '',
-        params: {},
-        goBack: true,
-        showIcon: false
-      },
-      originalPwd: '',
-      newPwd: '',
-      confirmPwd: ''
-    }
-  }
+  name: 'ResetPwd',
+  props: ['resetValue', 'submitReset']
 }
 </script>
 

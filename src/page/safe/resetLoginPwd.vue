@@ -4,22 +4,7 @@
     <HeaderBar :headerBar="headerBar"></HeaderBar>
     <div class="gray-fixed gray-fixed-bg">
       <div class="resetPwdBox">
-        <div>
-          <div class="resetFormBox">
-           <div class="originalPwd loginPwd">
-             <input type="password" placeholder="请输入原始登录密码" v-model.trim="originalPwd" class="originalPwdInput">
-           </div>
-           <div class="newPwd loginPwd">
-             <input type="password" placeholder="请输入您的新密码" v-model.trim="newPwd" class="newPwdInput">
-           </div>
-           <div class="confirmPwd loginPwd">
-             <input type="password" placeholder="请输入原始登录密码" v-model.trim="confirmPwd" class="confirmPwdInput">
-           </div>
-          </div>
-          <div class="resetLoginBtn">
-            确认修改
-          </div>
-        </div>
+        <resetPwd :resetValue="resetValue" :submitReset="resetLoginPwd"></resetPwd>
       </div>
     </div>
   </div>
@@ -27,11 +12,13 @@
 
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import ResetPwd from './resetPwd.vue'
 
 export default {
   name: 'ResetLoginPwd',
   components: {
-    HeaderBar
+    HeaderBar,
+    ResetPwd
   },
   data () {
     return {
@@ -44,9 +31,23 @@ export default {
         goBack: true,
         showIcon: false
       },
-      originalPwd: '',
-      newPwd: '',
-      confirmPwd: ''
+      resetValue: {
+        originalPwd: '',
+        newPwd: '',
+        confirmPwd: '',
+        originalPwdHolder: '请输入原始登录密码',
+        newPwdHolder: '请输入您的新密码',
+        confirmPwdHolder: '请确认您的密码'
+      }
+    }
+  },
+  methods: {
+    resetLoginPwd () {
+      console.log(`
+        ${this.resetValue.originalPwd},
+          ${this.resetValue.newPwd},
+          ${this.resetValue.confirmPwd},`)
+      console.log('重置登录密码')
     }
   }
 }
@@ -57,54 +58,5 @@ export default {
 
 .resetPwdBox {
   padding: 0 34px;
-}
-.resetFormBox {
-  margin: 32px auto 300px;
-  height: 420px;
-  border: 2px solid #bfbfbf;
-  border-radius: 16px;
-  .bg(#fff);
-}
-.loginPwd {
-  height: 140px;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  .fontSize(38px);
-  input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0 0 0 70px;
-    outline: none;
-    border: none;
-  }
-}
-.newPwd {
-  border-top: 2px solid #bfbfbf;
-  border-bottom: 2px solid #bfbfbf;
-}
-
-.originalPwdInput {
-  background: url('../../assets/images/loginPwd.png') 0 center no-repeat;
-  background-size: 52px 59px;
-}
-.newPwdInput {
-  background: url('../../assets/images/newLoginPwd.png') 0 center no-repeat;
-  background-size: 52px 59px;
-}
-.confirmPwdInput {
-  background: url('../../assets/images/confirm_loginPwd.png') 0 center no-repeat;
-  background-size: 52px 59px;
-}
-.resetLoginBtn {
-  .size(900px, 120px);
-  margin: 0 auto;
-  .bg(@main-color);
-  border-radius: 18px;
-  line-height: 120px;
-  .text-center;
-  .fontSize(52px);
-  .color(#fff);
 }
 </style>

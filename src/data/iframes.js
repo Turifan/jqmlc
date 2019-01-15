@@ -35,5 +35,9 @@ export default {
   shareAddRateRule: {
     title: '分享加息规则',
     url: 'H5/addRate.html'
+  },
+  aboutTickets: {
+    title: '红包规则',
+    url: 'H5/aboutticket.html'
   }
 }

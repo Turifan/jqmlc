@@ -1,33 +1,35 @@
-<!-- 会员 -->
-<template lang="html">
+<!-- 公告  -->
+<template>
   <div>
     <HeaderBar :header-bar="headerBar"></HeaderBar>
+    <div class="gray-fixed gray-fixed-bg">
+
+    </div>
   </div>
 </template>
-
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'Member',
+  name: 'NoticeDetail',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '会员等级',
-        imgUrl: require('../../assets/images/doubt.png'),
+        title: '公告',
+        imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
-        path: 'description',
-        params: { title: 'memberAddRate' },
+        path: '',
+        params: {},
         goBack: true,
-        showIcon: true
+        showIcon: false
       }
     }
   }
 }
 </script>
-
 <style lang="less" scoped>
+@import '../../style/mixin.less';
 </style>

@@ -34,8 +34,8 @@ export default {
         title: '分享有礼',
         imgUrl: require('../../assets/images/doubt.png'),
         goBackUrl: require('../../assets/images/goBack.png'),
-        path: 'shareInfo',
-        params: {},
+        path: 'description',
+        params: { title: 'shareAddRateRule' },
         goBack: true,
         showIcon: true
       }

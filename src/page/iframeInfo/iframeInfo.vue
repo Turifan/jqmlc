@@ -13,4 +13,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+@import '../../style/mixin.less';
 </style>

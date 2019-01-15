@@ -49,39 +49,36 @@ export default {
       }
     }
   }
-
 }
-
 </script>
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .growValueTitle {
-    height: 108px;
-    padding: 0 58px 0 62px;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    align-items: center;
-    .fontSize(34px);
-    .color(#999);
-  }
+.growValueTitle {
+  height: 108px;
+  padding: 0 58px 0 62px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  .fontSize(34px);
+  .color(#999);
+}
 
-  .growValueList {
-    padding: 0 35px;
-    border-top: 2px solid #efefef;
-    // border-bottom: 2px solid #efefef;
-  }
+.growValueList {
+  padding: 0 35px;
+  border-top: 2px solid #efefef;
+  // border-bottom: 2px solid #efefef;
+}
 
-  .growValueItem {
-    display: flex;
-    flex: 1;
-    height: 138px;
-    padding: 0 26px 0 22px;
-    justify-content: space-between;
-    align-items: center;
-    .fontSize(38px);
-    border-bottom: 2px solid #efefef;
-  }
-
+.growValueItem {
+  display: flex;
+  flex: 1;
+  height: 138px;
+  padding: 0 26px 0 22px;
+  justify-content: space-between;
+  align-items: center;
+  .fontSize(38px);
+  border-bottom: 2px solid #efefef;
+}
 </style>

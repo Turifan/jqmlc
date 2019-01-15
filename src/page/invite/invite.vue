@@ -22,7 +22,8 @@
             14355674677
           </div>
           <div class="dashedLine"></div>
-          <div class="inviteRecord">
+          <div class="inviteRecord"
+               @click.stop.prevent="$router.push('inviteRecords')">
             查看邀请记录>>
           </div>
         </div>
@@ -73,121 +74,116 @@ export default {
       }
     }
   }
-
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .inviteBox {
-    margin: 34px;
-  }
+.inviteBox {
+  margin: 34px;
+}
 
-  .inveiteCodeBox {
-    height: 1098px;
-    padding: 80px 120px 40px;
-    margin-bottom: 16px;
-    background: #fff;
-    border-radius: 16px;
-  }
+.inveiteCodeBox {
+  height: 1098px;
+  padding: 80px 120px 40px;
+  margin-bottom: 16px;
+  background: #fff;
+  border-radius: 16px;
+}
 
-  .inviteTitleBox {
-    display: flex;
-    flex: 1;
-    margin: 0 auto 45px;
-    justify-content: space-between;
-    align-items: center;
-  }
+.inviteTitleBox {
+  display: flex;
+  flex: 1;
+  margin: 0 auto 45px;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .line {
-    .size(250px, 2px);
-    background: #ededed;
-  }
+.line {
+  .size(250px, 2px);
+  background: #ededed;
+}
 
-  .tipsLine {
-    .size(190px, 2px);
-    background: #ededed;
-  }
+.tipsLine {
+  .size(190px, 2px);
+  background: #ededed;
+}
 
-  .inviteTitle {
-    .fontSize(44px);
-    .color(#333);
-  }
+.inviteTitle {
+  .fontSize(44px);
+  .color(#333);
+}
 
-  .scanCode {
-    .fontSize(38px);
-  }
+.scanCode {
+  .fontSize(38px);
+}
 
-  .inviteCodeBorder {
-    .size(520px, 520px);
-    margin: 60px auto;
-    background: url('../../assets/images/qrcode_box.png') no-repeat;
-    background-size: 100%;
-  }
+.inviteCodeBorder {
+  .size(520px, 520px);
+  margin: 60px auto;
+  background: url('../../assets/images/qrcode_box.png') no-repeat;
+  background-size: 100%;
+}
 
-  .inviteCode {
-    width: 100%;
-    height: 100%;
-    padding: 42px 38px;
-    box-sizing: border-box;
-  }
+.inviteCode {
+  width: 100%;
+  height: 100%;
+  padding: 42px 38px;
+  box-sizing: border-box;
+}
 
-  .inviteNumber {
-    .size(520px, 110px);
-    margin: 50px auto 62px;
-    border: 2px solid #dedede;
-    border-radius: 4px;
-    .color(@main-color);
-    .fontSize(58px);
-    text-align: center;
-    line-height: 110px;
-  }
+.inviteNumber {
+  .size(520px, 110px);
+  margin: 50px auto 62px;
+  border: 2px solid #dedede;
+  border-radius: 4px;
+  .color(@main-color);
+  .fontSize(58px);
+  text-align: center;
+  line-height: 110px;
+}
 
-  .dashedLine {
-    border-bottom: 2px dashed #ccc;
-  }
+.dashedLine {
+  border-bottom: 2px dashed #ccc;
+}
 
-  .inviteRecord {
-    margin: 42px auto;
-    text-align: center;
-    .color(@main-color);
-    .fontSize(38px);
-  }
+.inviteRecord {
+  margin: 42px auto;
+  text-align: center;
+  .color(@main-color);
+  .fontSize(38px);
+}
 
-  .inviteTips {
-    height: 295px;
-    padding: 60px 50px;
-    background: #fff;
+.inviteTips {
+  height: 295px;
+  padding: 60px 50px;
+  background: #fff;
+}
 
-  }
+.inviteTipsBox {
+  padding: 0 70px;
+}
 
-  .inviteTipsBox {
-    padding: 0 70px;
-  }
+.tipContent {
+  margin: 80px auto 0;
+}
 
-  .tipContent {
-    margin: 80px auto 0;
-  }
+.tipContentItem {
+  display: flex;
+  flex: 1;
+  margin-bottom: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .tipContentItem {
-    display: flex;
-    flex: 1;
-    margin-bottom: 40px;
-    align-items: center;
-    justify-content: space-between;
+.listImg {
+  .size(20px, 20px);
+  transform: rotate(45deg);
+  background: @main-color;
+}
 
-  }
-
-  .listImg {
-    .size(20px, 20px);
-    transform: rotate(45deg);
-    background: @main-color;
-  }
-
-  .tipContentTxt {
-    margin: 0 auto 0 30px;
-  }
-
+.tipContentTxt {
+  margin: 0 auto 0 30px;
+}
 </style>

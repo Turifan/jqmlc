@@ -1,6 +1,6 @@
-<!-- 会员规则 -->
+<!-- h5页面 -->
 <template lang="html">
-  <div>
+  <div class="">
     <HeaderBar :header-bar="headerBar"></HeaderBar>
   </div>
 </template>
@@ -9,15 +9,15 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 
 export default {
-  name: 'MemberRule',
+  name: 'Description',
   components: {
     HeaderBar
   },
   data () {
     return {
       headerBar: {
-        title: '会员规则',
-        imgUrl: require('../../assets/images/doubt.png'),
+        title: 'h5',
+        imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
         params: {},
@@ -26,9 +26,7 @@ export default {
       }
     }
   }
-
 }
-
 </script>
 
 <style lang="less" scoped>

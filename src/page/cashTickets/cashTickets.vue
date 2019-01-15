@@ -33,24 +33,28 @@ export default {
         title: '红包卡券',
         imgUrl: '规则',
         goBackUrl: require('../../assets/images/goBack.png'),
-        path: 'aboutTicket',
-        params: {},
+        path: 'description',
+        params: { title: 'aboutTickets' },
         goBack: true,
         showIcon: true
       },
-      tabs: [{
-        title: '未使用',
-        component: UnUsed,
-        id: 0
-      }, {
-        title: '已使用',
-        component: Used,
-        id: 1
-      }, {
-        title: '已过期',
-        component: OverdueTickets,
-        id: 2
-      }],
+      tabs: [
+        {
+          title: '未使用',
+          component: UnUsed,
+          id: 0
+        },
+        {
+          title: '已使用',
+          component: Used,
+          id: 1
+        },
+        {
+          title: '已过期',
+          component: OverdueTickets,
+          id: 2
+        }
+      ],
       tabIndex: 0
     }
   },
@@ -65,28 +69,26 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .cashTicketsTabs {
-    display: flex;
-    flex: 1;
-    height: 120px;
-    line-height: 120px;
-    align-items: center;
-    justify-content: space-around;
-    border-bottom: 2px solid #efefef;
-  }
+.cashTicketsTabs {
+  display: flex;
+  flex: 1;
+  height: 120px;
+  line-height: 120px;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 2px solid #efefef;
+}
 
-  .active {
-    border-bottom: 4px solid @main-color;
-  }
+.active {
+  border-bottom: 4px solid @main-color;
+}
 
-  .cashTicketsList {
-    padding: 40px 35px;
-  }
-
+.cashTicketsList {
+  padding: 40px 35px;
+}
 </style>

@@ -2,7 +2,7 @@
 <template lang="html">
   <div class="">
     <div class="personalBox">
-      <router-link :to="{ name: item.path, params: {} }" class="personalItems" v-for="(item,index) in suduku" :key="index">
+      <div class="personalItems" v-for="(item,index) in suduku" :key="index" @click.stop.prevent="$router.push(item.path)">
         <div class="personalItem-img">
           <img :src="item.imgUrl" alt="">
         </div>
@@ -11,7 +11,7 @@
           <span>{{item.txt}}</span>
           <img src="../../assets/images/self-right.png" alt="">
         </div>
-        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -24,9 +24,8 @@ export default {
     return {}
   },
   computed: {},
-  mounted () { }
+  mounted () {}
 }
-
 </script>
 
 <style lang="less" scoped>

@@ -7,16 +7,14 @@ const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraem
 const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonDetail/doraemonDetail')), 'doraemonDetail')
 const profit = r => require.ensure([], () => r(require('@/page/profit/profit')), 'profit')
 const monthProfit = r => require.ensure([], () => r(require('@/page/monthProfit/monthProfit')), 'monthProfit')
-const monthProfitInfo = r => require.ensure([], () => r(require('@/page/description/monthProfitInfo')), 'monthProfitInfo')
-const aboutTicket = r => require.ensure([], () => r(require('@/page/description/aboutTicket')), 'aboutTicket')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
 const notice = r => require.ensure([], () => r(require('@/page/notice/notice')), 'notice')
+const noticeDetail = r => require.ensure([], () => r(require('@/page/notice/noticeDetail')), 'noticeDetail')
 const login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
 const register = r => require.ensure([], () => r(require('@/page/register/register')), 'register')
 const regSencondStep = r => require.ensure([], () => r(require('@/page/register/regSencondStep')), 'regSencondStep')
 const share = r => require.ensure([], () => r(require('@/page/share/share')), 'share')
-const shareInfo = r => require.ensure([], () => r(require('@/page/description/shareInfo')), 'shareInfo')
 const current = r => require.ensure([], () => r(require('@/page/current/current')), 'current')
 const sign = r => require.ensure([], () => r(require('@/page/sign/sign')), 'sign')
 const balance = r => require.ensure([], () => r(require('@/page/balance/balance')), 'balance')
@@ -25,7 +23,6 @@ const autoInvest = r => require.ensure([], () => r(require('@/page/autoInvest/au
 const autoInvestRecord = r => require.ensure([], () => r(require('@/page/autoInvest/autoInvestRecord')), 'autoInvestRecord')
 const invest = r => require.ensure([], () => r(require('@/page/invest/invest')), 'invest')
 const auditStatus = r => require.ensure([], () => r(require('@/page/invest/children/auditStatus')), 'auditStatus')
-const loanInfo = r => require.ensure([], () => r(require('@/page/invest/children/loanInfo')), 'loanInfo')
 const projectDetail = r => require.ensure([], () => r(require('@/page/invest/children/projectDetail')), 'projectDetail')
 const deposit = r => require.ensure([], () => r(require('@/page/deposit/deposit')), 'deposit')
 const recharge = r => require.ensure([], () => r(require('@/page/recharge/recharge')), 'recharge')
@@ -38,6 +35,7 @@ const catGrain = r => require.ensure([], () => r(require('@/page/catGrain/catGra
 const grainRecords = r => require.ensure([], () => r(require('@/page/catGrain/grainRecords')), 'grainRecords')
 const investRecord = r => require.ensure([], () => r(require('@/page/investRecord/investRecord')), 'investRecord')
 const invite = r => require.ensure([], () => r(require('@/page/invite/invite')), 'invite')
+const inviteRecords = r => require.ensure([], () => r(require('@/page/invite/inviteRecords')), 'inviteRecords')
 const catTickets = r => require.ensure([], () => r(require('@/page/catTickets/catTickets')), 'catTickets')
 const cashTickets = r => require.ensure([], () => r(require('@/page/cashTickets/cashTickets')), 'cashTickets')
 const historyTickets = r => require.ensure([], () => r(require('@/page/catTickets/historyTickets')), 'historyTickets')
@@ -55,9 +53,9 @@ const aboutUs = r => require.ensure([], () => r(require('@/page/aboutUs/aboutUs'
 const faq = r => require.ensure([], () => r(require('@/page/faq/faq')), 'faq')
 const member = r => require.ensure([], () => r(require('@/page/member/member')), 'member')
 const growValue = r => require.ensure([], () => r(require('@/page/growValue/growValue')), 'growValue')
-const memberRule = r => require.ensure([], () => r(require('@/page/member/memberRule')), 'memberRule')
 const fat = r => require.ensure([], () => r(require('@/page/fat/fat')), 'fat')
 const fatHistory = r => require.ensure([], () => r(require('@/page/fat/fatHistory')), 'fatHistory')
+const description = r => require.ensure([], () => r(require('@/page/description/description')), 'description')
 
 Vue.use(Router)
 
@@ -110,15 +108,6 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 月盈猫介绍
-    {
-      path: '/monthProfitInfo',
-      name: 'monthProfitInfo',
-      component: monthProfitInfo,
-      meta: {
-        requireAuth: true
-      }
-    },
     // 发财猫
     {
       path: '/fatten',
@@ -137,11 +126,20 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 公告
+    // 公告列表
     {
       path: '/notice',
       name: 'notice',
       component: notice,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 公告
+    {
+      path: '/noticeDetail/:id',
+      name: 'noticeDetail',
+      component: noticeDetail,
       meta: {
         requireAuth: true
       }
@@ -182,12 +180,6 @@ export default new Router({
         requireAuth: true
       }
     },
-    // 分享规则
-    {
-      path: 'shareInfo',
-      name: 'shareInfo',
-      component: shareInfo
-    },
     // 签到
     {
       path: '/sign',
@@ -211,15 +203,6 @@ export default new Router({
       path: '/auditStatus/:fatId',
       name: 'auditStatus',
       component: auditStatus,
-      meta: {
-        requireAuth: true
-      }
-    },
-    // 借款详情
-    {
-      path: '/loanInfo/:fatId',
-      name: 'loanInfo',
-      component: loanInfo,
       meta: {
         requireAuth: true
       }
@@ -274,6 +257,15 @@ export default new Router({
       path: '/invite',
       name: 'invite',
       component: invite,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 我的邀请记录
+    {
+      path: '/inviteRecords',
+      name: 'inviteRecords',
+      component: inviteRecords,
       meta: {
         requireAuth: true
       }
@@ -406,12 +398,6 @@ export default new Router({
       name: 'cashTickets',
       component: cashTickets
     },
-    // 现金券规则
-    {
-      path: '/aboutTicket',
-      name: 'aboutTicket',
-      component: aboutTicket
-    },
     // 安全中心
     {
       path: '/safe',
@@ -478,12 +464,6 @@ export default new Router({
       name: 'growValue',
       component: growValue
     },
-    // 会员规则
-    {
-      path: '/memberRule',
-      name: 'memberRule',
-      component: memberRule
-    },
     // 发财猫具体商品列表
     {
       path: '/fat/:days',
@@ -495,6 +475,12 @@ export default new Router({
       path: '/fatHistory/:days',
       name: 'fatHistory',
       component: fatHistory
+    },
+    // h5页面
+    {
+      path: '/description/:title',
+      name: 'description',
+      component: description
     }
   ]
 })

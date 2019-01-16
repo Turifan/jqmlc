@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../store'
 
 const check = r => require.ensure([], () => r(require('@/page/check/check')), 'check')
 const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
@@ -59,7 +60,7 @@ const description = r => require.ensure([], () => r(require('@/page/description/
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     // 检测微信端打开
     {
@@ -484,3 +485,20 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (store.state.token) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

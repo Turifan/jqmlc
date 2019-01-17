@@ -5,13 +5,19 @@ import router from '../router'
 
 // axios配置
 axios.defaults.timeout = 5000
-axios.defaults.baseURL = process.env.BASE_URL
+// axios.defaults.baseURL = process.env.BASE_URL
 
 let loadingInstance
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    loadingInstance = Loading.service({ fullscreen: true })
+    loadingInstance = Loading.service({
+      fullscreen: true,
+      lock: true,
+      text: 'Loading',
+      spinner: 'el-icon-loading',
+      background: 'rgba(0, 0, 0, 0.7)'
+    })
     if (store.state.token) {
       config.headers.Authorization = `token ${store.state.token}`
     } else {

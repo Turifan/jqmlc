@@ -5,8 +5,8 @@ import store from '../store'
 const check = r => require.ensure([], () => r(require('@/page/check/check')), 'check')
 const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
 const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraemon')), 'doraemon')
-const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemonDetail/doraemonDetail')), 'doraemonDetail')
-const profit = r => require.ensure([], () => r(require('@/page/profit/profit')), 'profit')
+const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemon/doraemonDetail')), 'doraemonDetail')
+const profit = r => require.ensure([], () => r(require('@/page/monthProfit/profit')), 'profit')
 const monthProfit = r => require.ensure([], () => r(require('@/page/monthProfit/monthProfit')), 'monthProfit')
 const fatten = r => require.ensure([], () => r(require('@/page/fatten/fatten')), 'fatten')
 const personal = r => require.ensure([], () => r(require('@/page/personal/personal')), 'personal')
@@ -49,9 +49,10 @@ const bindCard = r => require.ensure([], () => r(require('@/page/safe/bindCard')
 const bindTel = r => require.ensure([], () => r(require('@/page/safe/bindTel')), 'bindTel')
 const bindWechat = r => require.ensure([], () => r(require('@/page/safe/bindWechat')), 'bindWechat')
 const resetLoginPwd = r => require.ensure([], () => r(require('@/page/safe/resetLoginPwd')), 'resetLoginPwd')
+const forgetLoginPwd = r => require.ensure([], () => r(require('@/page/safe/forgetLoginPwd')), 'forgetLoginPwd')
+const setNewLoginPwd = r => require.ensure([], () => r(require('@/page/safe/setNewLoginPwd')), 'setNewLoginPwd')
 const resetDealPwd = r => require.ensure([], () => r(require('@/page/safe/resetDealPwd')), 'resetDealPwd')
 const aboutUs = r => require.ensure([], () => r(require('@/page/aboutUs/aboutUs')), 'aboutUs')
-const faq = r => require.ensure([], () => r(require('@/page/faq/faq')), 'faq')
 const member = r => require.ensure([], () => r(require('@/page/member/member')), 'member')
 const growValue = r => require.ensure([], () => r(require('@/page/growValue/growValue')), 'growValue')
 const fat = r => require.ensure([], () => r(require('@/page/fat/fat')), 'fat')
@@ -367,121 +368,184 @@ const router = new Router({
     {
       path: '/catTickets',
       name: 'catTickets',
-      component: catTickets
+      component: catTickets,
+      meta: {
+        requireAuth: true
+      }
     },
     // 猫小票-历史票码
     {
       path: '/historyTickets',
       name: 'historyTickets',
-      component: historyTickets
+      component: historyTickets,
+      meta: {
+        requireAuth: true
+      }
     },
     // 猫小票-历史票码
     {
       path: '/historyTicketsTerm/:term',
       name: 'historyTicketsTerm',
-      component: historyTicketsTerm
+      component: historyTicketsTerm,
+      meta: {
+        requireAuth: true
+      }
     },
     // 猫小票-本期票码
     {
       path: '/currentTickets',
       name: 'currentTickets',
-      component: currentTickets
+      component: currentTickets,
+      meta: {
+        requireAuth: true
+      }
     },
     // 猫小票-中奖历史
     {
       path: '/winTickets',
       name: 'winTickets',
-      component: winTickets
+      component: winTickets,
+      meta: {
+        requireAuth: true
+      }
     },
     // 现金券
     {
       path: '/cashTickets',
       name: 'cashTickets',
-      component: cashTickets
+      component: cashTickets,
+      meta: {
+        requireAuth: true
+      }
     },
     // 安全中心
     {
       path: '/safe',
       name: 'safe',
-      component: safe
+      component: safe,
+      meta: {
+        requireAuth: true
+      }
     },
     // 安全认证
     {
       path: '/cert',
       name: 'cert',
-      component: cert
+      component: cert,
+      meta: {
+        requireAuth: true
+      }
     },
     // 绑定银行卡
     {
       path: '/bindCard',
       name: 'bindCard',
-      component: bindCard
+      component: bindCard,
+      meta: {
+        requireAuth: true
+      }
     },
     // 绑定手机号
     {
       path: '/bindTel',
       name: 'bindTel',
-      component: bindTel
+      component: bindTel,
+      meta: {
+        requireAuth: true
+      }
     },
     // 绑定微信号
     {
       path: '/bindWechat',
       name: 'bindWechat',
-      component: bindWechat
+      component: bindWechat,
+      meta: {
+        requireAuth: true
+      }
     },
     // 修改登录密码
     {
       path: '/resetLoginPwd',
       name: 'resetLoginPwd',
-      component: resetLoginPwd
+      component: resetLoginPwd,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 重置登录密码
+    {
+      path: '/forgetLoginPwd',
+      name: 'forgetLoginPwd',
+      component: forgetLoginPwd
+    },
+    // 重置登录密码-第二步
+    {
+      path: '/setNewLoginPwd',
+      name: 'setNewLoginPwd',
+      component: setNewLoginPwd
     },
     // 修改交易密码
     {
       path: '/resetDealPwd',
       name: 'resetDealPwd',
-      component: resetDealPwd
+      component: resetDealPwd,
+      meta: {
+        requireAuth: true
+      }
     },
     // 关于我们
     {
       path: '/aboutUs',
       name: 'aboutUs',
-      component: aboutUs
-    },
-    // 常见问题
-    {
-      path: '/faq',
-      name: 'faq',
-      component: faq
+      component: aboutUs,
+      meta: {
+        requireAuth: true
+      }
     },
     // 会员等级
     {
       path: '/member',
       name: 'member',
-      component: member
+      component: member,
+      meta: {
+        requireAuth: true
+      }
     },
     // 成长值记录
     {
       path: '/growValue',
       name: 'growValue',
-      component: growValue
+      component: growValue,
+      meta: {
+        requireAuth: true
+      }
     },
     // 发财猫具体商品列表
     {
       path: '/fat/:days',
       name: 'fat',
-      component: fat
+      component: fat,
+      meta: {
+        requireAuth: true
+      }
     },
     // 发财猫结束列表
     {
       path: '/fatHistory/:days',
       name: 'fatHistory',
-      component: fatHistory
+      component: fatHistory,
+      meta: {
+        requireAuth: true
+      }
     },
     // h5页面
     {
       path: '/description/:title',
       name: 'description',
-      component: description
+      component: description,
+      meta: {
+        requireAuth: true
+      }
     }
   ]
 })

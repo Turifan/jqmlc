@@ -9,17 +9,17 @@
         </div>
         <div class="login_form">
           <div class="loginFormBox border-bottom">
-            <input type="text" name="username" value="" placeholder="请输入用户名" v-model="username">
+            <input type="text" name="username" value="" placeholder="请输入用户名" v-model.trim="username">
           </div>
           <div class="loginFormBox">
-            <input type="password" name="password" value="" placeholder="请输入密码" v-model="password">
+            <input type="password" name="password" value="" placeholder="请输入密码" v-model.trim="password">
           </div>
         </div>
-        <div class="login">
+        <div class="login" @click.stop.prevent="login">
           登录
         </div>
         <div class="login_pwd">
-          <div class="login_pwd_txt">忘记密码？</div>
+          <div class="login_pwd_txt" @click.stop.prevent="$router.push('forgetLoginPwd')">忘记密码？</div>
           <router-link tag="div" :to="{ name: 'register', params: {} }">立即注册</router-link>
         </div>
       </div>
@@ -29,13 +29,15 @@
 
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import { validateLogin } from '@/lib/js/validate'
+import { login } from '@/service'
 
 export default {
   name: 'Login',
   components: {
-    HeaderBar,
+    HeaderBar
   },
-  data() {
+  data () {
     return {
       headerBar: {
         title: '会员登录',
@@ -46,8 +48,16 @@ export default {
         goBack: true,
         showIcon: false
       },
-      username:'',
-      password:'',
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    async login () {
+      validateLogin(this.username, this.password)
+      let params = { info: { name: this.username, pwd: this.password } }
+      let userInfo = await login(params)
+      console.log(userInfo)
     }
   }
 }
@@ -57,30 +67,30 @@ export default {
 @import '../../style/mixin.less';
 
 .login_box {
-    margin: 377px auto;
-    padding: 0 34px;
+  margin: 377px auto;
+  padding: 0 34px;
 }
 
 .login_img {
-    .size(716px,396px);
-    margin-left: 153px;
-    margin-right: 143px;
-    img {
-        width: 100%;
-    }
+  .size(716px, 396px);
+  margin-left: 153px;
+  margin-right: 143px;
+  img {
+    width: 100%;
+  }
 }
 
 .login_form {
-    width: 826px;
-    margin: 0 auto;
-    .border(1px,solid,@main-color);
-    /*no*/
-    .border-radius(28px);
+  width: 826px;
+  margin: 0 auto;
+  .border(1px, solid, @main-color);
+  /*no*/
+  .border-radius(28px);
 }
 
-.loginFormBox{
+.loginFormBox {
   .width(100%);
-  input{
+  input {
     width: calc(100% - 78px);
     height: 138px;
     padding-left: 78px;
@@ -91,12 +101,12 @@ export default {
   }
 }
 
-.border-bottom{
-  border-bottom: 1px solid @main-color;/*no*/
+.border-bottom {
+  border-bottom: 1px solid @main-color; /*no*/
 }
 
-.login{
-  .size(714px,140px);
+.login {
+  .size(714px, 140px);
   margin: 110px auto 27px;
   .bg(@main-color);
   .border-radius(18px);
@@ -106,7 +116,7 @@ export default {
   text-align: center;
 }
 
-.login_pwd{
+.login_pwd {
   width: 714px;
   margin: 0 auto;
   display: flex;

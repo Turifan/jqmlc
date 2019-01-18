@@ -5,6 +5,6 @@ export default {
   catTickets,
   // 绑定的银行卡列表
   bankList,
-  token: '',
-  userInfo: ''
+  token: null,
+  userInfo: null
 }

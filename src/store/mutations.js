@@ -1,13 +1,13 @@
-import {
-  RESET_LOGINPWD,
-  RESET_DEALPWD
-} from './mutation-types'
+import { SET_USERINFO, SET_TOKEN } from './mutation-types'
+import { setStore } from '@/lib/js/storage'
 
 export default {
-  [RESET_LOGINPWD] (state) {
-
+  [SET_USERINFO] (state, info) {
+    state.userInfo = info
+    setStore('userInfo', info)
   },
-  [RESET_DEALPWD] (state) {
-
+  [SET_TOKEN] (state, token) {
+    state.token = token
+    setStore('token', token)
   }
 }

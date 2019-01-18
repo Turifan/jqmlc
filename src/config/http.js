@@ -18,11 +18,12 @@ axios.interceptors.request.use(
       spinner: 'el-icon-loading',
       background: 'rgba(0, 0, 0, 0.7)'
     })
-    if (store.state.token) {
+    if (/* store.state.token */ localStorage.token) {
       config.headers.Authorization = `token ${store.state.token}`
     } else {
       router.push('login')
     }
+    config.data = JSON.stringify(config.data)
     return config
   },
   err => {
@@ -36,6 +37,11 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   response => {
     loadingInstance.close()
+    if (response.data === undefined) {
+      response = response.request.responseText
+    } else {
+      response = response.data
+    }
     return response
   },
   err => {

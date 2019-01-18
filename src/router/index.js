@@ -552,7 +552,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(r => r.meta.requireAuth)) {
-    if (store.state.token) {
+    if (/* store.state.token */ localStorage.token) {
       next()
     } else {
       next({

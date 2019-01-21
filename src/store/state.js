@@ -6,5 +6,6 @@ export default {
   // 绑定的银行卡列表
   bankList,
   token: null,
-  userInfo: null
+  userInfo: null,
+  openid: '54646546'
 }

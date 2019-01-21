@@ -30,7 +30,7 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import { validateLogin } from '@/lib/js/validate'
-import { login } from '@/service'
+// import { login } from '@/service'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -61,16 +61,24 @@ export default {
         this.$message.error({ message: validateMsg })
         return
       }
-      let data = await login(this.username, this.password)
+      // let data = await login(this.username, this.password)
+      let data = this.$store.dispatch('SET_USERINFO', [
+        this.username,
+        this.password
+      ])
+      console.log(data)
       if (data.error === '0') {
-        this.SET_USERINFO(data.backBean)
-        this.SET_TOKEN(data.backBean.qrsoft_fe_token)
+        // this.SET_USERINFO(data.backBean)
+        // this.SET_TOKEN(data.backBean.qrsoft_fe_token)
         this.$router.push('home')
       } else {
         this.$message.error({ message: data.msg })
       }
     }
   }
+  // mounted () {
+  //   this.$store.dispatch('SET_USERINFO', [this.username, this.password])
+  // }
 }
 </script>
 

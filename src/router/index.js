@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store'
+// import store from '../store'
 
 const check = r => require.ensure([], () => r(require('@/page/check/check')), 'check')
+const wxid = r => require.ensure([], () => r(require('@/page/check/wxid')), 'wxid')
 const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
 const doraemon = r => require.ensure([], () => r(require('@/page/doraemon/doraemon')), 'doraemon')
 const doraemonDetail = r => require.ensure([], () => r(require('@/page/doraemon/doraemonDetail')), 'doraemonDetail')
@@ -65,9 +66,15 @@ const router = new Router({
   routes: [
     // 检测微信端打开
     {
-      path: '/',
+      path: '/check',
       name: 'check',
       component: check
+    },
+    // 获取openid
+    {
+      path: '/wxid/:openid',
+      name: 'wxid',
+      component: wxid
     },
     // 重定向地址
     {
@@ -78,19 +85,29 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: home
+      component: home,
+      meta: {
+        requireOpenid: true
+      }
     },
     // 机器猫
     {
       path: '/doraemon',
       name: 'doraemon',
-      component: doraemon
+      component: doraemon,
+      meta: {
+        requireOpenid: true
+      }
     },
     // 机器猫详细产品
     {
       path: '/doraemonDetail/:days',
       name: 'doraemonDetail',
-      component: doraemonDetail
+      component: doraemonDetail,
+      meta: {
+        requireOpenid: true,
+        requireAuth: true
+      }
     },
     // 月盈猫
     {
@@ -98,6 +115,7 @@ const router = new Router({
       name: 'profit',
       component: profit,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -107,6 +125,7 @@ const router = new Router({
       name: 'monthProfit',
       component: monthProfit,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -116,6 +135,7 @@ const router = new Router({
       name: 'fatten',
       component: fatten,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -125,6 +145,7 @@ const router = new Router({
       name: 'personal',
       component: personal,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -134,6 +155,7 @@ const router = new Router({
       name: 'notice',
       component: notice,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -143,6 +165,7 @@ const router = new Router({
       name: 'noticeDetail',
       component: noticeDetail,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -150,19 +173,28 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: login
+      component: login,
+      meta: {
+        requireOpenid: true
+      }
     },
     // 注册
     {
       path: '/register',
       name: 'register',
-      component: register
+      component: register,
+      meta: {
+        requireOpenid: true
+      }
     },
     // 注册第二步
     {
       path: '/regSencondStep',
       name: 'regSencondStep',
-      component: regSencondStep
+      component: regSencondStep,
+      meta: {
+        requireOpenid: true
+      }
     },
     // 灵活猫
     {
@@ -170,6 +202,7 @@ const router = new Router({
       name: 'current',
       component: current,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -179,6 +212,7 @@ const router = new Router({
       name: 'share',
       component: share,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -188,6 +222,7 @@ const router = new Router({
       name: 'sign',
       component: sign,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -197,6 +232,7 @@ const router = new Router({
       name: 'invest',
       component: invest,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -206,6 +242,7 @@ const router = new Router({
       name: 'auditStatus',
       component: auditStatus,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -215,6 +252,7 @@ const router = new Router({
       name: 'projectDetail',
       component: projectDetail,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -224,6 +262,7 @@ const router = new Router({
       name: 'autoInvest',
       component: autoInvest,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -233,6 +272,7 @@ const router = new Router({
       name: 'autoInvestRecord',
       component: autoInvestRecord,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -242,6 +282,7 @@ const router = new Router({
       name: 'balance',
       component: balance,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -251,6 +292,7 @@ const router = new Router({
       name: 'balanceRecord',
       component: balanceRecord,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -260,6 +302,7 @@ const router = new Router({
       name: 'invite',
       component: invite,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -269,6 +312,7 @@ const router = new Router({
       name: 'inviteRecords',
       component: inviteRecords,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -283,6 +327,7 @@ const router = new Router({
       name: 'deposit',
       component: deposit,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -292,6 +337,7 @@ const router = new Router({
       name: 'recharge',
       component: recharge,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -301,6 +347,7 @@ const router = new Router({
       name: 'luckdraw',
       component: luckdraw,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -310,6 +357,7 @@ const router = new Router({
       name: 'luckdrawRule',
       component: luckdrawRule,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -319,6 +367,7 @@ const router = new Router({
       name: 'luckdrawNumber',
       component: luckdrawNumber,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -328,6 +377,7 @@ const router = new Router({
       name: 'task',
       component: task,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -337,6 +387,7 @@ const router = new Router({
       name: 'asset',
       component: asset,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -346,6 +397,7 @@ const router = new Router({
       name: 'catGrain',
       component: catGrain,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -355,6 +407,7 @@ const router = new Router({
       name: 'grainRecords',
       component: grainRecords,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -362,7 +415,11 @@ const router = new Router({
     {
       path: '/investRecord',
       name: 'investRecord',
-      component: investRecord
+      component: investRecord,
+      meta: {
+        requireOpenid: true,
+        requireAuth: true
+      }
     },
     // 猫小票
     {
@@ -370,6 +427,7 @@ const router = new Router({
       name: 'catTickets',
       component: catTickets,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -379,6 +437,7 @@ const router = new Router({
       name: 'historyTickets',
       component: historyTickets,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -388,6 +447,7 @@ const router = new Router({
       name: 'historyTicketsTerm',
       component: historyTicketsTerm,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -397,6 +457,7 @@ const router = new Router({
       name: 'currentTickets',
       component: currentTickets,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -406,6 +467,7 @@ const router = new Router({
       name: 'winTickets',
       component: winTickets,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -415,6 +477,7 @@ const router = new Router({
       name: 'cashTickets',
       component: cashTickets,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -424,6 +487,7 @@ const router = new Router({
       name: 'safe',
       component: safe,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -433,6 +497,7 @@ const router = new Router({
       name: 'cert',
       component: cert,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -442,6 +507,7 @@ const router = new Router({
       name: 'bindCard',
       component: bindCard,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -451,6 +517,7 @@ const router = new Router({
       name: 'bindTel',
       component: bindTel,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -460,6 +527,7 @@ const router = new Router({
       name: 'bindWechat',
       component: bindWechat,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -469,6 +537,7 @@ const router = new Router({
       name: 'resetLoginPwd',
       component: resetLoginPwd,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -476,13 +545,21 @@ const router = new Router({
     {
       path: '/forgetLoginPwd',
       name: 'forgetLoginPwd',
-      component: forgetLoginPwd
+      component: forgetLoginPwd,
+      meta: {
+        requireOpenid: true,
+        requireAuth: true
+      }
     },
     // 重置登录密码-第二步
     {
       path: '/setNewLoginPwd',
       name: 'setNewLoginPwd',
-      component: setNewLoginPwd
+      component: setNewLoginPwd,
+      meta: {
+        requireOpenid: true,
+        requireAuth: true
+      }
     },
     // 修改交易密码
     {
@@ -490,6 +567,7 @@ const router = new Router({
       name: 'resetDealPwd',
       component: resetDealPwd,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -499,6 +577,7 @@ const router = new Router({
       name: 'aboutUs',
       component: aboutUs,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -508,6 +587,7 @@ const router = new Router({
       name: 'member',
       component: member,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -517,6 +597,7 @@ const router = new Router({
       name: 'growValue',
       component: growValue,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -526,6 +607,7 @@ const router = new Router({
       name: 'fat',
       component: fat,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -535,6 +617,7 @@ const router = new Router({
       name: 'fatHistory',
       component: fatHistory,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -544,6 +627,7 @@ const router = new Router({
       name: 'description',
       component: description,
       meta: {
+        requireOpenid: true,
         requireAuth: true
       }
     }
@@ -551,18 +635,42 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(r => r.meta.requireAuth)) {
-    if (/* store.state.token */ localStorage.token) {
+  if (to.matched.some(r => r.meta.requireOpenid)) {
+    if (window.localStorage.openid) {
+      if (to.matched.some(r => r.meta.requireAuth)) {
+        if (window.localStorage.token) {
+          next()
+        } else {
+          next({
+            path: '/login',
+            query: { redirect: to.fullPath }
+          })
+        }
+      } else {
+        next()
+      }
       next()
     } else {
       next({
-        path: '/login',
+        path: '/check',
         query: { redirect: to.fullPath }
       })
     }
   } else {
     next()
   }
+  // if (to.matched.some(r => r.meta.requireAuth)) {
+  //   if (/* store.state.token */ localStorage.token) {
+  //     next()
+  //   } else {
+  //     next({
+  //       path: '/login',
+  //       query: { redirect: to.fullPath }
+  //     })
+  //   }
+  // } else {
+  //   next()
+  // }
 })
 
 export default router

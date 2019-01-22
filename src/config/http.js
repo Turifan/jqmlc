@@ -1,7 +1,7 @@
 import axios from 'axios'
-import store from '../store'
+// import store from '../store'
 import { Loading, Message } from 'element-ui'
-import router from '../router'
+// import router from '../router'
 
 // axios配置
 axios.defaults.timeout = 5000
@@ -18,11 +18,11 @@ axios.interceptors.request.use(
       spinner: 'el-icon-loading',
       background: 'rgba(0, 0, 0, 0.7)'
     })
-    if (/* store.state.token */ localStorage.token) {
-      config.headers.Authorization = `token ${store.state.token}`
-    } else {
-      router.push('login')
-    }
+    // if (store.state.token /* localStorage.token */) {
+    //   config.headers.Authorization = `token ${store.state.token}`
+    // } else {
+    //   router.push('login')
+    // }
     config.data = JSON.stringify(config.data)
     return config
   },

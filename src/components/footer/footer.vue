@@ -41,7 +41,7 @@
 <script>
 export default {
   name: 'Footer',
-  data() {
+  data () {
     return {
 
     }
@@ -88,7 +88,6 @@ export default {
         }
     }
 }
-
 
 .active {
     .orange;

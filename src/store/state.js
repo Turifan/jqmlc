@@ -5,7 +5,8 @@ export default {
   catTickets,
   // 绑定的银行卡列表
   bankList,
-  token: null,
-  userInfo: null,
-  openid: '54646546'
+  token: window.localStorage.token || null,
+  userInfo: window.localStorage.userInfo || null,
+  openid: '54646546',
+  bannerImages: null
 }

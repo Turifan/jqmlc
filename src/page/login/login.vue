@@ -30,8 +30,8 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import { validateLogin } from '@/lib/js/validate'
-// import { login } from '@/service'
-import { mapMutations } from 'vuex'
+import * as service from '@/service'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -55,30 +55,22 @@ export default {
   },
   methods: {
     ...mapMutations(['SET_USERINFO', 'SET_TOKEN']),
+    ...mapActions(['loginAction']),
     async login () {
       let validateMsg = validateLogin(this.username, this.password)
       if (validateMsg !== true) {
         this.$message.error({ message: validateMsg })
         return
       }
-      // let data = await login(this.username, this.password)
-      let data = this.$store.dispatch('SET_USERINFO', [
-        this.username,
-        this.password
-      ])
-      console.log(data)
+      let data = await service.login(this.username, this.password)
       if (data.error === '0') {
-        // this.SET_USERINFO(data.backBean)
-        // this.SET_TOKEN(data.backBean.qrsoft_fe_token)
-        this.$router.push('home')
+        this.loginAction(data)
+        this.$router.push(this.$route.query.redirect)
       } else {
         this.$message.error({ message: data.msg })
       }
     }
   }
-  // mounted () {
-  //   this.$store.dispatch('SET_USERINFO', [this.username, this.password])
-  // }
 }
 </script>
 

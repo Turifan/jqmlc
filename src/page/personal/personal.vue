@@ -62,7 +62,7 @@
         </div>
       </div>
       <Suduku :suduku="suduku"></Suduku>
-      <div class="logOut">
+      <div class="logOut" @click.stop.prevent="logout">
         安全退出
       </div>
     </div>
@@ -75,6 +75,7 @@
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Suduku from './suduku.vue'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'Personal',
@@ -144,7 +145,13 @@ export default {
       ]
     }
   },
-  computed: {}
+  computed: {},
+  methods: {
+    ...mapActions(['logoutAction']),
+    logout () {
+      this.logoutAction()
+    }
+  }
 }
 </script>
 

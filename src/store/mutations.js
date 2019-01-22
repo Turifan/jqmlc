@@ -1,5 +1,5 @@
-import { SET_USERINFO, SET_TOKEN, SET_OPENID } from './mutation-types'
-import { setStore } from '@/lib/js/storage'
+import { SET_USERINFO, SET_TOKEN, SET_OPENID, GET_INDEX_IMAGES, REMOVE_ALL_STORAGE } from './mutation-types'
+import { setStore, removeStore } from '@/lib/js/storage'
 
 export default {
   [SET_USERINFO] (state, info) {
@@ -12,6 +12,15 @@ export default {
   },
   [SET_OPENID] (state, openid) {
     state.openid = openid
-    setStore(sessionStorage, 'openid', openid)
+    sessionStorage.setItem('openid', openid)
+  },
+  [GET_INDEX_IMAGES] (state, payload) {
+    state.bannerImages = payload
+  },
+  [REMOVE_ALL_STORAGE] (state) {
+    state.openid = null
+    state.token = null
+    removeStore('openid')
+    removeStore('userInfo')
   }
 }

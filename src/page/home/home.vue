@@ -27,6 +27,8 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
 import UserFund from '@/components/common/userFund.vue'
+import {banner} from '@/service'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'Home',
@@ -50,7 +52,22 @@ export default {
           tips: '每日签到获得猫粮',
           path: 'sign'
         }
-      }
+      },
+      bannerImages: null
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+    ...mapActions(['getBannerImages'])
+  },
+  async mounted () {
+    let data = await banner()
+    if (data.error === '0') {
+      this.bannerImages = data.listBean.page
+    } else {
+      this.$message.error({ message: data.msg })
     }
   }
 }

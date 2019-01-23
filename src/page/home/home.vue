@@ -5,7 +5,7 @@
       <Header :title="title"></Header>
     </div>
     <div class="gray-body">
-      <div class="swiper-container">
+      <!-- <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <router-link :to="{ name: '', params: {} }">
@@ -14,7 +14,13 @@
           </div>
         </div>
         <div class="swiper-pagination"></div>
-      </div>
+      </div> -->
+      <swiper :options="swiperOption" ref="mySwiper">
+        <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+          <img src="../../assets/images/swiper_default.png" alt="">
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
       <UserFund :userFund="userFund"></UserFund>
       <HomeBid></HomeBid>
     </div>
@@ -27,8 +33,10 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
 import UserFund from '@/components/common/userFund.vue'
-import {banner} from '@/service'
-import {mapActions} from 'vuex'
+import * as service from '@/service'
+import { mapMutations, mapActions } from 'vuex'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 
 export default {
   name: 'Home',
@@ -36,7 +44,9 @@ export default {
     Header,
     Footer,
     HomeBid,
-    UserFund
+    UserFund,
+    swiper,
+    swiperSlide
   },
   data () {
     return {
@@ -53,81 +63,116 @@ export default {
           path: 'sign'
         }
       },
-      bannerImages: null
+      swiperOption: {
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        },
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      },
+      swiperSlides: null
     }
   },
   computed: {
-
+    swiper () {
+      return this.$refs.mySwiper.swiper
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    sessionStorage.path = to.path
+    if (sessionStorage.openid) {
+      next()
+    } else {
+      next({
+        path: '/check'
+      })
+    }
+  },
+  created () {
+    // this.getBannerImages()
+    // this.loadBanner()
   },
   methods: {
-    ...mapActions(['getBannerImages'])
-  },
-  async mounted () {
-    let data = await banner()
-    if (data.error === '0') {
-      this.bannerImages = data.listBean.page
-    } else {
-      this.$message.error({ message: data.msg })
+    ...mapMutations(['GET_INDEX_IMAGES']),
+    ...mapActions(['getBannerImagesAction']),
+    async loadBanner () {
+      let data = await service.banner()
+      if (data.error === '0') {
+        // this.$store.dispatch('getBannerImages', data)
+        this.getBannerImagesAction(data)
+        this.swiperSlides = data.listBean.page
+        // this.$store.commit('GET_INDEX_IMAGES', data.listBean.page)
+      } else {
+        this.$message.error({ message: data.msg })
+      }
     }
+  },
+  mounted () {
+    // this.$nextTick(() => {
+    //   this.loadBanner()
+    //   // new Swiper('.swiper-container')
+    // })
+    this.loadBanner()
+    // console.log(this.banners)
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .homeBar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
+.homeBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 130px;
+  background: @main-color;
+  z-index: 1000;
+}
+
+.home-title {
+  .fontSize(52px);
+  width: 100%;
+  // padding: 42px 0;
+  height: 130px;
+  line-height: 130px;
+  .white;
+  .text-center;
+}
+
+.swiper-slide {
+  img {
     width: 100%;
-    height: 130px;
-    background: @main-color;
-    z-index: 1000;
   }
+}
 
-  .home-title {
-    .fontSize(52px);
+.sign {
+  position: absolute;
+  right: 40px;
+  .size(84px, 65px);
+  bottom: 32px;
+
+  img {
     width: 100%;
-    // padding: 42px 0;
-    height: 130px;
-    line-height: 130px;
-    .white;
-    .text-center;
+  }
+}
+
+.userAll {
+  padding: 49px 0 60px;
+  background: @main-color;
+  text-align: center;
+  color: #fff;
+
+  .userAll-tit {
+    font-size: 42px;
   }
 
-  .swiper-slide {
-    img {
-      width: 100%;
-    }
+  .userAll-num {
+    font-size: 112px;
   }
-
-  .sign {
-    position: absolute;
-    right: 40px;
-    .size(84px, 65px);
-    bottom: 32px;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .userAll {
-    padding: 49px 0 60px;
-    background: @main-color;
-    text-align: center;
-    color: #fff;
-
-    .userAll-tit {
-      font-size: 42px;
-    }
-
-    .userAll-num {
-      font-size: 112px;
-    }
-  }
-
+}
 </style>

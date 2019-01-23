@@ -85,19 +85,19 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: home,
-      meta: {
-        requireOpenid: true
-      }
+      component: home
+      // meta: {
+      //   requireOpenid: true
+      // }
     },
     // 机器猫
     {
       path: '/doraemon',
       name: 'doraemon',
-      component: doraemon,
-      meta: {
-        requireOpenid: true
-      }
+      component: doraemon
+      // meta: {
+      //   requireOpenid: true
+      // }
     },
     // 机器猫详细产品
     {
@@ -635,42 +635,43 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(r => r.meta.requireOpenid)) {
-    if (window.localStorage.openid) {
-      if (to.matched.some(r => r.meta.requireAuth)) {
-        if (window.localStorage.token) {
-          next()
-        } else {
-          next({
-            path: '/login',
-            query: { redirect: to.fullPath }
-          })
-        }
-      } else {
-        next()
-      }
+  // if (to.matched.some(r => r.meta.requireOpenid)) {
+  //   if (window.localStorage.openid) {
+  //     if (to.matched.some(r => r.meta.requireAuth)) {
+  //       if (window.localStorage.token) {
+  //         next()
+  //       } else {
+  //         next({
+  //           path: '/login',
+  //           query: { redirect: to.fullPath }
+  //         })
+  //       }
+  //     } else {
+  //       next()
+  //     }
+  //     // next()
+  //   } else {
+  //     next({
+  //       path: '/check',
+  //       query: { redirect: router.currentRoute.fullPath }
+  //     })
+  //   }
+  // } else {
+  //   next()
+  // }
+
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (/* store.state.token */ localStorage.token) {
       next()
     } else {
       next({
-        path: '/check',
+        path: '/login',
         query: { redirect: to.fullPath }
       })
     }
   } else {
     next()
   }
-  // if (to.matched.some(r => r.meta.requireAuth)) {
-  //   if (/* store.state.token */ localStorage.token) {
-  //     next()
-  //   } else {
-  //     next({
-  //       path: '/login',
-  //       query: { redirect: to.fullPath }
-  //     })
-  //   }
-  // } else {
-  //   next()
-  // }
 })
 
 export default router

@@ -15,8 +15,6 @@
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import DoraemonList from './doraemon_list.vue'
-// import '@/plugins/swiper.min.js'
-// import '@/style/swiper.min.css'
 
 export default {
   name: 'Doraemon',

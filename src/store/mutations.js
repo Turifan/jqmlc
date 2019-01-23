@@ -14,8 +14,8 @@ export default {
     state.openid = openid
     sessionStorage.setItem('openid', openid)
   },
-  [GET_INDEX_IMAGES] (state, payload) {
-    state.bannerImages = payload
+  [GET_INDEX_IMAGES] (state, bannerImages) {
+    state.bannerImages = bannerImages
   },
   [REMOVE_ALL_STORAGE] (state) {
     state.openid = null

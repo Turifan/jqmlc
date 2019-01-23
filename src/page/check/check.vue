@@ -8,7 +8,7 @@ export default {
   data () {
     return {}
   },
-  mounted () {
+  created () {
     //     let inviteName = location.search().username || -1
     //     let assetId = location.search().assetId || -1
     //     let shareDate = location.search().shareDate || -1
@@ -25,7 +25,7 @@ export default {
     let openid = '1'
     // window.localStorage.openid = openid
     // window.location.href = link
-    this.$router.push(`wxid/${openid}`)
+    this.$router.push(`/wxid/${openid}`)
   }
 }
 </script>

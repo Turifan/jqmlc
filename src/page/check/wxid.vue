@@ -1,13 +1,18 @@
 <template lang="html">
-  <div class=""></div>
+  <div class="">wxid:{{this.$route.params.openid}}</div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'Wxid',
+  methods: {
+    ...mapMutations(['SET_OPENID'])
+  },
   mounted () {
-    window.localStorage.openid = this.$route.params.openid
-    this.$router.push('/home')
+    this.$store.commit('SET_OPENID', this.$route.params.openid)
+    this.$router.push(sessionStorage.path ? sessionStorage.path : '/home')
   }
 }
 </script>

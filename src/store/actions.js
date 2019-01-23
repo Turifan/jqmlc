@@ -3,19 +3,19 @@ import * as service from '@/service'
 
 export default {
   loginAction ({ commit }, data) {
-    commit(SET_TOKEN, data.backBean)
-    commit(SET_USERINFO, data.backBean.qrsoft_fe_token)
+    commit(SET_TOKEN, data.backBean.qrsoft_fe_token)
+    commit(SET_USERINFO, data.backBean)
   },
   logoutAction ({ commit }) {
     commit(REMOVE_ALL_STORAGE)
   },
-  async getBannerImages ({ commit }) {
-    let data = await service.banner()
-    if (data.error === '0') {
-      console.log(data)
-      commit(GET_INDEX_IMAGES, data.listBean.page)
-    } else {
-      this.$message.error({ message: data.msg })
-    }
+  // async getBannerImages ({ commit }) {
+  //   console.log(service.banner())
+  //   let data = await service.banner()
+  //   commit(GET_INDEX_IMAGES, data.listBean.page)
+  // },
+  getBannerImagesAction ({ commit }, data) {
+    console.log(data.listBean.page)
+    commit(GET_INDEX_IMAGES, data.listBean.page)
   }
 }

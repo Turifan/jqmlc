@@ -105,7 +105,6 @@ const router = new Router({
       name: 'doraemonDetail',
       component: doraemonDetail,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -115,7 +114,6 @@ const router = new Router({
       name: 'profit',
       component: profit,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -125,7 +123,6 @@ const router = new Router({
       name: 'monthProfit',
       component: monthProfit,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -135,7 +132,6 @@ const router = new Router({
       name: 'fatten',
       component: fatten,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -145,7 +141,6 @@ const router = new Router({
       name: 'personal',
       component: personal,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -155,7 +150,6 @@ const router = new Router({
       name: 'notice',
       component: notice,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -165,7 +159,6 @@ const router = new Router({
       name: 'noticeDetail',
       component: noticeDetail,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -202,7 +195,6 @@ const router = new Router({
       name: 'current',
       component: current,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -212,7 +204,6 @@ const router = new Router({
       name: 'share',
       component: share,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -222,7 +213,6 @@ const router = new Router({
       name: 'sign',
       component: sign,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -232,7 +222,6 @@ const router = new Router({
       name: 'invest',
       component: invest,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -242,7 +231,6 @@ const router = new Router({
       name: 'auditStatus',
       component: auditStatus,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -252,7 +240,6 @@ const router = new Router({
       name: 'projectDetail',
       component: projectDetail,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -262,7 +249,6 @@ const router = new Router({
       name: 'autoInvest',
       component: autoInvest,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -272,7 +258,6 @@ const router = new Router({
       name: 'autoInvestRecord',
       component: autoInvestRecord,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -282,7 +267,6 @@ const router = new Router({
       name: 'balance',
       component: balance,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -292,7 +276,6 @@ const router = new Router({
       name: 'balanceRecord',
       component: balanceRecord,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -302,7 +285,6 @@ const router = new Router({
       name: 'invite',
       component: invite,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -312,7 +294,6 @@ const router = new Router({
       name: 'inviteRecords',
       component: inviteRecords,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -327,7 +308,6 @@ const router = new Router({
       name: 'deposit',
       component: deposit,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -337,7 +317,6 @@ const router = new Router({
       name: 'recharge',
       component: recharge,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -347,7 +326,6 @@ const router = new Router({
       name: 'luckdraw',
       component: luckdraw,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -357,7 +335,6 @@ const router = new Router({
       name: 'luckdrawRule',
       component: luckdrawRule,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -367,7 +344,6 @@ const router = new Router({
       name: 'luckdrawNumber',
       component: luckdrawNumber,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -377,7 +353,6 @@ const router = new Router({
       name: 'task',
       component: task,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -387,7 +362,6 @@ const router = new Router({
       name: 'asset',
       component: asset,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -397,7 +371,6 @@ const router = new Router({
       name: 'catGrain',
       component: catGrain,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -407,7 +380,6 @@ const router = new Router({
       name: 'grainRecords',
       component: grainRecords,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -417,7 +389,6 @@ const router = new Router({
       name: 'investRecord',
       component: investRecord,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -427,7 +398,6 @@ const router = new Router({
       name: 'catTickets',
       component: catTickets,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -437,7 +407,6 @@ const router = new Router({
       name: 'historyTickets',
       component: historyTickets,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -447,7 +416,6 @@ const router = new Router({
       name: 'historyTicketsTerm',
       component: historyTicketsTerm,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -457,7 +425,6 @@ const router = new Router({
       name: 'currentTickets',
       component: currentTickets,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -467,7 +434,6 @@ const router = new Router({
       name: 'winTickets',
       component: winTickets,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -477,7 +443,6 @@ const router = new Router({
       name: 'cashTickets',
       component: cashTickets,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -487,7 +452,6 @@ const router = new Router({
       name: 'safe',
       component: safe,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -497,7 +461,6 @@ const router = new Router({
       name: 'cert',
       component: cert,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -507,7 +470,6 @@ const router = new Router({
       name: 'bindCard',
       component: bindCard,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -517,7 +479,6 @@ const router = new Router({
       name: 'bindTel',
       component: bindTel,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -527,7 +488,6 @@ const router = new Router({
       name: 'bindWechat',
       component: bindWechat,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -537,7 +497,6 @@ const router = new Router({
       name: 'resetLoginPwd',
       component: resetLoginPwd,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -547,7 +506,6 @@ const router = new Router({
       name: 'forgetLoginPwd',
       component: forgetLoginPwd,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -557,7 +515,6 @@ const router = new Router({
       name: 'setNewLoginPwd',
       component: setNewLoginPwd,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -567,7 +524,6 @@ const router = new Router({
       name: 'resetDealPwd',
       component: resetDealPwd,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -577,7 +533,6 @@ const router = new Router({
       name: 'aboutUs',
       component: aboutUs,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -587,7 +542,6 @@ const router = new Router({
       name: 'member',
       component: member,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -597,7 +551,6 @@ const router = new Router({
       name: 'growValue',
       component: growValue,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -607,7 +560,6 @@ const router = new Router({
       name: 'fat',
       component: fat,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -617,7 +569,6 @@ const router = new Router({
       name: 'fatHistory',
       component: fatHistory,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     },
@@ -627,7 +578,6 @@ const router = new Router({
       name: 'description',
       component: description,
       meta: {
-        requireOpenid: true,
         requireAuth: true
       }
     }
@@ -659,15 +609,21 @@ router.beforeEach((to, from, next) => {
   // } else {
   //   next()
   // }
-
   if (to.matched.some(r => r.meta.requireAuth)) {
-    if (/* store.state.token */ localStorage.token) {
-      next()
-    } else {
+    if (!sessionStorage.openid) {
+      next({
+        path: '/check'
+        // query: { redirect: to.fullPath }
+      })
+    } else if (!localStorage.token) {
+      sessionStorage.path = to.fullPath
+      sessionStorage.path2 = from.fullPath
       next({
         path: '/login',
         query: { redirect: to.fullPath }
       })
+    } else {
+      next()
     }
   } else {
     next()

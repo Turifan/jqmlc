@@ -21,65 +21,62 @@ export default {
   },
   methods: {
     goBack () {
-      this.$router.go(-1)
+      sessionStorage.path2
+        ? this.$router.push(sessionStorage.path2)
+        : this.$router.go(-1)
+      sessionStorage.removeItem('path2')
     }
   },
-  computed: {
-
-  },
-  mounted () {
-
-  }
+  computed: {},
+  mounted () {}
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .header-bar {
-    display: flex;
-    flex: 1;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 35px;
-    height: 131px;
-    .bg(@main-color);
-    .color(#fff);
-    .fontSize(52px);
-    .text-center;
-    overflow: hidden;
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+.header-bar {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 35px;
+  height: 131px;
+  .bg(@main-color);
+  .color(#fff);
+  .fontSize(52px);
+  .text-center;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.goBack {
+  .size(60px, 60px);
+  margin-right: 0;
+  text-align: left;
+
+  img {
+    width: auto;
+    height: 100%;
   }
+}
 
-  .goBack {
-    .size(60px, 60px);
-    margin-right: 0;
-    text-align: left;
+.header-bar-title {
+  width: calc(100% - 120px);
+  margin-left: 0;
+  text-align: center;
+}
 
-    img {
-      width: auto;
-      height: 100%;
-    }
+.header-bar-icon {
+  .size(60px, 60px);
+  text-align: right;
+
+  img {
+    width: auto;
+    height: 100%;
   }
-
-  .header-bar-title {
-    width: calc(100% - 120px);
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .header-bar-icon {
-    .size(60px, 60px);
-    text-align: right;
-
-    img {
-      width: auto;
-      height: 100%;
-    }
-  }
-
+}
 </style>

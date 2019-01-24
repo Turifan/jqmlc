@@ -15,12 +15,12 @@ export default {
     sessionStorage.setItem('openid', openid)
   },
   [GET_INDEX_IMAGES] (state, bannerImages) {
-    state.bannerImages = bannerImages
+    state.bannerImagesList = bannerImages
   },
   [REMOVE_ALL_STORAGE] (state) {
-    state.openid = null
+    state.userInfo = null
     state.token = null
-    removeStore('openid')
     removeStore('userInfo')
+    removeStore('token')
   }
 }

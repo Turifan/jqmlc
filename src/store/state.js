@@ -7,6 +7,6 @@ export default {
   bankList,
   token: /* window.localStorage.token || */ null,
   userInfo: /* window.localStorage.userInfo || */ null,
-  openid: /* sessionStorage.openid || */ null,
-  bannerImages: null
+  openid: /* sessionStorage.openid || */ null
 }
+// 给空数组可以不  你是不是做判断了 并没哟好  我之前试过 空数组 然后mutation 直接concat 也不行

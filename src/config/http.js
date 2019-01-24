@@ -42,7 +42,11 @@ axios.interceptors.response.use(
     } else {
       response = response.data
     }
-    return response
+    if (response.error === '0') {
+      return response
+    } else {
+      Message.error({ message: response.msg })
+    }
   },
   err => {
     loadingInstance.close()

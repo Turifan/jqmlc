@@ -63,12 +63,12 @@ export default {
         return
       }
       let data = await service.login(this.username, this.password)
-      if (data.error === '0') {
-        this.loginAction(data)
-        this.$router.push(this.$route.query.redirect)
-      } else {
-        this.$message.error({ message: data.msg })
-      }
+      // if (data.error === '0') {
+      this.loginAction(data)
+      this.$router.push(this.$route.query.redirect)
+      // } else {
+      // this.$message.error({ message: data.msg })
+      // }
     }
   }
 }

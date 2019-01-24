@@ -6,5 +6,7 @@ export const GET_TOKEN = 'GET_TOKEN'
 export const GET_USERINFO = 'GET_USERINFO'
 export const SET_OPENID = 'SET_OPENID'
 export const GET_OPENID = 'GET_OPENID'
+export const REMOVE_ALL_STORAGE = 'REMOVE_ALL_STORAGE'
+
 export const GET_INDEX_IMAGES = 'GET_INDEX_IMAGES'
-export const REMOVE_ALL_STORAGE = 'GET_INDEX_IMAGES'
+export const GET_HOME_INFO = 'GET_HOME_INFO'

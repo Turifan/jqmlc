@@ -24,13 +24,13 @@
 <script>
 export default {
   name: 'UserFund',
-  data() {
+  data () {
     return {
       userFund: this.$attrs.userFund
     }
   },
   computed: {},
-  mounted() {}
+  mounted () {}
 }
 </script>
 

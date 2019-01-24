@@ -5,24 +5,14 @@
       <Header :title="title"></Header>
     </div>
     <div class="gray-body">
-      <!-- <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <router-link :to="{ name: '', params: {} }">
-              <img src="../../assets/images/swiper_default.png" alt="">
-            </router-link>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div> -->
       <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+        <swiper-slide v-for="(slide, index) in bannerImagesList" :key="index">
           <img src="../../assets/images/swiper_default.png" alt="">
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
       <UserFund :userFund="userFund"></UserFund>
-      <HomeBid></HomeBid>
+      <HomeBid :homeInfo="homeInfo"></HomeBid>
     </div>
     <Footer></Footer>
   </div>
@@ -33,8 +23,8 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
 import UserFund from '@/components/common/userFund.vue'
-import * as service from '@/service'
-import { mapMutations, mapActions } from 'vuex'
+// import * as service from '@/service'
+import { mapActions, mapState } from 'vuex'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -71,17 +61,20 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
-      },
-      swiperSlides: null
+      }
     }
   },
   computed: {
+    ...mapState({
+      bannerImagesList: ({ globalVal }) => globalVal.bannerImagesList,
+      homeInfo: ({ globalVal }) => globalVal.homeInfo
+    }),
     swiper () {
       return this.$refs.mySwiper.swiper
     }
   },
   beforeRouteEnter (to, from, next) {
-    sessionStorage.path = to.path
+    sessionStorage.path = to.fullPath
     if (sessionStorage.openid) {
       next()
     } else {
@@ -90,32 +83,15 @@ export default {
       })
     }
   },
-  created () {
-    // this.getBannerImages()
-    // this.loadBanner()
-  },
   methods: {
-    ...mapMutations(['GET_INDEX_IMAGES']),
-    ...mapActions(['getBannerImagesAction']),
-    async loadBanner () {
-      let data = await service.banner()
-      if (data.error === '0') {
-        // this.$store.dispatch('getBannerImages', data)
-        this.getBannerImagesAction(data)
-        this.swiperSlides = data.listBean.page
-        // this.$store.commit('GET_INDEX_IMAGES', data.listBean.page)
-      } else {
-        this.$message.error({ message: data.msg })
-      }
-    }
+    // ...mapMutations(['GET_INDEX_IMAGES']),
+    ...mapActions(['getBannerImages', 'queryHome'])
   },
   mounted () {
-    // this.$nextTick(() => {
-    //   this.loadBanner()
-    //   // new Swiper('.swiper-container')
-    // })
-    this.loadBanner()
-    // console.log(this.banners)
+    if (!this.bannerImagesList.length) {
+      this.getBannerImages()
+    }
+    this.queryHome()
   }
 }
 </script>

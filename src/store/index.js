@@ -4,6 +4,8 @@ import state from './state'
 import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
+import globalVal from './modules/global'
+import auth from './modules/auth'
 
 Vue.use(Vuex)
 
@@ -13,7 +15,11 @@ const store = new Vuex.Store({
   state,
   mutations,
   actions,
-  getters
+  getters,
+  modules: {
+    globalVal,
+    auth
+  }
 })
 
 export default store

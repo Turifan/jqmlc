@@ -6,6 +6,7 @@ import actions from './actions'
 import getters from './getters'
 import globalVal from './modules/global'
 import auth from './modules/auth'
+import products from './modules/products'
 
 Vue.use(Vuex)
 
@@ -18,7 +19,8 @@ const store = new Vuex.Store({
   getters,
   modules: {
     globalVal,
-    auth
+    auth,
+    products
   }
 })
 

@@ -7,20 +7,19 @@
       <div class="monthProfitRate">
         <div class="monthProfitTit">年化收益率</div>
         <div class="monthProfitRateNum">
-          <div>7~18<span class="simbol">%</span></div>
+          <div>{{parseInt(monthProfit.annualRate)}}~{{parseInt(monthProfit.maxRate)}}<span class="simbol">%</span></div>
         </div>
       </div>
       <!-- 提示及可购金额 -->
       <div class="monthProfitInfo">
         <div class="canInvest">
           <div class="canInvestTit gray-font">可投金额(元)</div>
-          <div class="canInvestSum">392670.00</div>
+          <div class="canInvestSum">{{monthProfit.surMoney}}</div>
         </div>
         <div class="tips gray-font">
           <div class="tipsTit">注 : </div>
           <div class="tipsContent">
-            1000元起投，并以100的整数倍递增，单笔最高可投100万元
-            每月十号可申请提现，不限次数
+            {{monthProfit.tip}}
           </div>
         </div>
       </div>
@@ -34,7 +33,7 @@
         </div>
         <div class="monthProfitFormGroup"
              @click.stop.prevent="showAccount">
-          <div class="monthProfitAccount">{{selectAccount==='1'?'银行卡2745':'余额资金'}}</div>
+          <div class="monthProfitAccount">{{selectAccount==='1'?`银行卡${monthProfit.cardNo.slice(-4)}`:'余额资金'}}</div>
           <div class="monthArrow">
             <img :src="arrowImg"
                  alt=""
@@ -51,7 +50,7 @@
                    v-show="false"
                    value="1"
                    checked="checked">
-            <label for="bankAccount">银行卡2745</label>
+            <label for="bankAccount">银行卡{{monthProfit.cardNo.slice(-4)}}</label>
           </div>
           <div class="balanceAccount">
             <input type="radio"
@@ -99,9 +98,10 @@
 </template>
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: 'monthProfit',
+  name: 'MonthProfit',
   components: {
     HeaderBar
   },
@@ -131,7 +131,13 @@ export default {
       agree: false
     }
   },
+  computed: {
+    ...mapState({
+      monthProfit: ({ products }) => products.monthProfit
+    })
+  },
   methods: {
+    ...mapActions(['getMonthProfit']),
     showAccount () {
       this.isShowAccount = !this.isShowAccount
       this.arrowImg = this.isShowAccount
@@ -140,6 +146,11 @@ export default {
     },
     forgetDealPwd () {
       console.log(this.selectAccount, typeof this.selectAccount)
+    }
+  },
+  mounted () {
+    if (!this.monthProfit) {
+      this.getMonthProfit(`${this.$route.params.id}`)
     }
   }
 }

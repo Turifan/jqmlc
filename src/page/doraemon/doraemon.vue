@@ -1,12 +1,9 @@
  <!-- 机器猫 -->
 <template lang="html">
   <div class="gray-fixed gray-fixed-bg">
-    <Header :title="title"/>
-
-    <DoraemonList/>
-    <DoraemonList/>
-    <DoraemonList/>
-    <Footer />
+    <Header :title="title"></Header>
+    <DoraemonList :doraemonList="doraemonList"></DoraemonList>
+    <Footer></Footer>
   </div>
 
 </template>
@@ -15,6 +12,7 @@
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import DoraemonList from './doraemon_list.vue'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Doraemon',
@@ -28,7 +26,19 @@ export default {
       title: '机器猫'
     }
   },
-  computed: {}
+  computed: {
+    ...mapState({
+      doraemonList: ({ products }) => products.doraemonList
+    })
+  },
+  methods: {
+    ...mapActions(['getDoraemonList'])
+  },
+  mounted () {
+    if (this.doraemonList.length === 0) {
+      this.getDoraemonList()
+    }
+  }
 }
 </script>
 

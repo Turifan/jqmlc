@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <div class="home-bid">
+    <div class="home-bid" v-if="homeInfo">
       <!-- 月盈猫 -->
       <div class="monthProfit">
         <div class="home-bid-tit" @click.stop.prevent="$router.push('profit')">

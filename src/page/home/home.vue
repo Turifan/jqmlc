@@ -23,7 +23,6 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer.vue'
 import HomeBid from './home_bid.vue'
 import UserFund from '@/components/common/userFund.vue'
-// import * as service from '@/service'
 import { mapActions, mapState } from 'vuex'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -84,7 +83,6 @@ export default {
     }
   },
   methods: {
-    // ...mapMutations(['GET_INDEX_IMAGES']),
     ...mapActions(['getBannerImages', 'queryHome'])
   },
   mounted () {

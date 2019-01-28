@@ -328,6 +328,15 @@ export const current = (uid, token) => axios({ url: requestUrl.current, methods:
  */
 export const balance = (uid, token) => axios({ url: requestUrl.balance, methods: 'post', params: { auth: { uid, qrsoft_fe_token: token } } })
 
+// 余额支付
+/**
+ * balance page init
+ * @param {String} uid userid
+ * @param {String} token token
+ */
+export const balancePay = (uid, token, payPWD, money, divType, copies, steadyId, code, profitId) =>
+  axios({ url: requestUrl.balancePay, methods: 'post', params: { auth: { uid, qrsoft_fe_token: token }, info: { payPWD, money, divType, copies, steadyId, code, profitId } } })
+
 // 余额记录
 /**
  * balance records

@@ -2,7 +2,8 @@
 <template>
   <div>
     <HeaderBar :header-bar="headerBar"></HeaderBar>
-    <div class="gray-fixed">
+    <div class="gray-fixed"
+         v-if="monthProfit">
       <!-- 利率 -->
       <div class="monthProfitRate">
         <div class="monthProfitTit">年化收益率</div>
@@ -28,7 +29,8 @@
         <div class="monthProfitFormGroup">
           <div>
             <input type="text"
-                   placeholder="请输入购买金额">
+                   placeholder="请输入购买金额"
+                   v-model.trim="money">
           </div>
         </div>
         <div class="monthProfitFormGroup"
@@ -65,7 +67,8 @@
         <div class="monthProfitFormGroup">
           <div>
             <input type="password"
-                   placeholder="请输入交易密码">
+                   placeholder="请输入交易密码"
+                   v-model.trim="dealPassword">
           </div>
           <div class="forgetDealPwd"
                @click.stop.prevent="forgetDealPwd">
@@ -77,10 +80,12 @@
              v-if="selectAccount=='2'">
           <div>
             <input type="text"
-                   placeholder="请输入短信验证码">
+                   placeholder="请输入短信验证码"
+                   v-model.trim="code">
           </div>
-          <div class="getCode">
-            获取验证码
+          <div :class="['getCode',{'btn-disabled':codeClick}]"
+               @click.stop.prevent="getCode">
+            {{codeText}}
           </div>
         </div>
         <!-- 同意协议 -->
@@ -91,7 +96,8 @@
                  id="agree">
           <label for="agree">我同意将月盈猫账户资金交由金钱猫平台自由匹配直投标</label>
         </div>
-        <div class="buyBtn">立即购买</div>
+        <div class="buyBtn"
+             @click.stop.prevent="profitInvest(monthProfit.typeName)">立即购买</div>
       </div>
     </div>
   </div>
@@ -99,6 +105,9 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import { mapActions, mapState } from 'vuex'
+import { sendSMS, balancePay } from '@/service'
+import { getStore } from '@/lib/js/storage'
+import { validateProfitInvest } from '@/lib/js/validate'
 
 export default {
   name: 'MonthProfit',
@@ -128,7 +137,12 @@ export default {
       // 下拉图标
       arrowImg: require('../../assets/images/downArrow.png'),
       // 同意协议
-      agree: false
+      money: '',
+      dealPassword: '',
+      code: '',
+      agree: false,
+      codeText: '获取验证码',
+      codeClick: false
     }
   },
   computed: {
@@ -146,6 +160,57 @@ export default {
     },
     forgetDealPwd () {
       console.log(this.selectAccount, typeof this.selectAccount)
+    },
+    async getCode () {
+      this.codeClick = true
+      let data = await sendSMS(
+        ...[JSON.parse(getStore('userInfo')).mobilePhone, 'balancePay']
+      )
+      if (data.error === '0') {
+        let count = 60
+        let countDown = setInterval(() => {
+          this.codeText = `${count}秒`
+          count--
+          if (count === 0) {
+            clearInterval(countDown)
+            this.codeText = '重新获取'
+            this.codeClick = false
+          }
+        }, 1000)
+      } else {
+        this.$message.error({ message: data.msg })
+      }
+    },
+    async profitInvest (typename) {
+      let validateMsg = validateProfitInvest(
+        this.money,
+        this.dealPassword,
+        this.selectAccount,
+        this.code,
+        this.agree
+      )
+      if (validateMsg !== true) {
+        this.$message.error({ message: validateMsg })
+        return
+      }
+
+      if (this.selectAccount === '2') {
+        let data = await balancePay(
+          JSON.parse(getStore('userInfo')).id,
+          getStore('token'),
+          this.dealPassword,
+          this.money,
+          'profit',
+          '',
+          '',
+          this.code
+        )
+        if (data.error === '0') {
+        } else {
+          this.$message.error({ message: data.msg })
+        }
+      } else {
+      }
     }
   },
   mounted () {
@@ -341,6 +406,7 @@ input[type='checkbox'] + label {
   text-align: center;
   .fontSize(32px);
   .color(@main-color);
+  outline: none;
 }
 
 .agreeProtocol {
@@ -357,5 +423,12 @@ input[type='checkbox'] + label {
   line-height: 134px;
   .color(#fff);
   .fontSize(42px);
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  box-shadow: none;
 }
 </style>

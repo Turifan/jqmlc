@@ -113,6 +113,9 @@ export default {
   // 余额
   balance: '/app/balanceAccount.do',
 
+  // 余额支付
+  balancePay: '/app/balancePay.do',
+
   // 余额记录
   balanceRecord: '/app/balanceRecordApp.do',
 

@@ -7,6 +7,7 @@ import getters from './getters'
 import globalVal from './modules/global'
 import auth from './modules/auth'
 import products from './modules/products'
+import pay from './modules/pay'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,8 @@ const store = new Vuex.Store({
   modules: {
     globalVal,
     auth,
-    products
+    products,
+    pay
   }
 })
 

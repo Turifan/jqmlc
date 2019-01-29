@@ -607,3 +607,14 @@ export const updateDealPwd = (uid, token, oldPwd, newPwd) =>
  */
 export const updateLoginPwd = (uid, token, oldPwd, newPwd) =>
   axios({ url: requestUrl.updateLoginPwd, methods: 'post', params: { auth: { uid, qrsoft_fe_token: token }, info: { oldPwd, newPwd } } })
+
+// 第三方支付
+/**
+ * update login password
+ * @param {String} uid userid
+ * @param {String} token token
+ * @param {String} oldPwd old login password
+ * @param {String} newPwd new login password
+ */
+export const bankPayJson = (uid, token, bankCard, idNo, amt, name, divType, profitId, copies) =>
+  axios({ url: requestUrl.bankPayJson, methods: 'post', params: { auth: { uid, qrsoft_fe_token: token }, info: { bankCard, idNo, amt, name, divType, profitId, copies } } })

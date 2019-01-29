@@ -1,7 +1,7 @@
 import axios from 'axios'
-// import store from '../store'
+import { removeStore } from '@/lib/js/storage'
 import { Loading, Message } from 'element-ui'
-// import router from '../router'
+import router from '../router'
 
 // axios配置
 axios.defaults.timeout = 5000
@@ -44,6 +44,10 @@ axios.interceptors.response.use(
     }
     if (response.error === '0') {
       return response
+    } else if (response.error === '103') {
+      removeStore('token')
+      Message.error({ message: response.msg })
+      router.push('/login')
     } else {
       Message.error({ message: response.msg })
     }

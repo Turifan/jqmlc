@@ -26,93 +26,122 @@
       </div>
       <!-- 购买表单 -->
       <div class="monthProfitFormBox">
-        <div class="monthProfitFormGroup">
-          <div>
-            <input type="text"
-                   placeholder="请输入购买金额"
-                   v-model.trim="money">
+        <form>
+          <div class="monthProfitFormGroup">
+            <div>
+              <input type="text"
+                     placeholder="请输入购买金额"
+                     v-model.trim="money">
+            </div>
           </div>
-        </div>
-        <div class="monthProfitFormGroup"
-             @click.stop.prevent="showAccount">
-          <div class="monthProfitAccount">{{selectAccount==='1'?`银行卡${monthProfit.cardNo.slice(-4)}`:'余额资金'}}</div>
-          <div class="monthArrow">
-            <img :src="arrowImg"
-                 alt=""
-                 class="img-responsive">
+          <div class="monthProfitFormGroup"
+               @click.stop.prevent="showAccount">
+            <div class="monthProfitAccount">{{selectAccount==='1'?`银行卡${monthProfit.cardNo.slice(-4)}`:'余额资金'}}</div>
+            <div class="monthArrow">
+              <img :src="arrowImg"
+                   alt=""
+                   class="img-responsive">
+            </div>
           </div>
-        </div>
-        <!-- 显示购买方式 -->
-        <div class="monthProfitFormGroup monthProfitAccountBox"
-             v-show="isShowAccount">
-          <div class="bankAccount">
-            <input type="radio"
-                   id="bankAccount"
-                   v-model="selectAccount"
-                   v-show="false"
-                   value="1"
-                   checked="checked">
-            <label for="bankAccount">银行卡{{monthProfit.cardNo.slice(-4)}}</label>
+          <!-- 显示购买方式 -->
+          <div class="monthProfitFormGroup monthProfitAccountBox"
+               v-show="isShowAccount">
+            <div class="bankAccount">
+              <input type="radio"
+                     id="bankAccount"
+                     v-model="selectAccount"
+                     v-show="false"
+                     value="1"
+                     checked="checked">
+              <label for="bankAccount">银行卡{{monthProfit.cardNo.slice(-4)}}</label>
+            </div>
+            <div class="balanceAccount">
+              <input type="radio"
+                     id="balanceAccount"
+                     v-model="selectAccount"
+                     v-show="false"
+                     value="2">
+              <label for="balanceAccount">余额资金</label>
+            </div>
           </div>
-          <div class="balanceAccount">
-            <input type="radio"
-                   id="balanceAccount"
-                   v-model="selectAccount"
-                   v-show="false"
-                   value="2">
-            <label for="balanceAccount">余额资金</label>
+          <!-- 交易密码 -->
+          <div class="monthProfitFormGroup">
+            <div>
+              <input type="password"
+                     placeholder="请输入交易密码"
+                     v-model.trim="dealPassword">
+            </div>
+            <div class="forgetDealPwd"
+                 @click.stop.prevent="forgetDealPwd">
+              忘记交易密码?
+            </div>
           </div>
-        </div>
-        <!-- 交易密码 -->
-        <div class="monthProfitFormGroup">
-          <div>
-            <input type="password"
-                   placeholder="请输入交易密码"
-                   v-model.trim="dealPassword">
-          </div>
-          <div class="forgetDealPwd"
-               @click.stop.prevent="forgetDealPwd">
-            忘记交易密码?
-          </div>
-        </div>
-        <!-- 验证码 -->
-        <div class="monthProfitFormGroup"
-             v-if="selectAccount=='2'">
-          <div>
-            <input type="text"
-                   placeholder="请输入短信验证码"
-                   v-model.trim="code">
-          </div>
-          <div :class="['getCode',{'btn-disabled':codeClick}]"
+          <!-- 验证码 -->
+          <div class="monthProfitFormGroup"
+               v-if="selectAccount=='2'">
+            <div>
+              <input type="text"
+                     placeholder="请输入短信验证码"
+                     v-model.trim="code">
+            </div>
+            <PhoneCode :codeKey="codeKey"
+                       :codeBtn="codeBtn"
+                       :codeText="codeText">
+            </PhoneCode>
+            <!-- <div :class="['getCode',{'btn-disabled':codeClick}]"
                @click.stop.prevent="getCode">
             {{codeText}}
+          </div> -->
           </div>
-        </div>
-        <!-- 同意协议 -->
-        <div class="agreeProtocol gray-font">
-          <input type="checkbox"
-                 v-show="false"
-                 v-model="agree"
-                 id="agree">
-          <label for="agree">我同意将月盈猫账户资金交由金钱猫平台自由匹配直投标</label>
-        </div>
-        <div class="buyBtn"
-             @click.stop.prevent="profitInvest(monthProfit.typeName)">立即购买</div>
+          <!-- 同意协议 -->
+          <div class="agreeProtocol gray-font">
+            <input type="checkbox"
+                   v-show="false"
+                   v-model="agree"
+                   id="agree">
+            <label for="agree">我同意将月盈猫账户资金交由金钱猫平台自由匹配直投标</label>
+          </div>
+          <div class="buyBtn"
+               @click.stop.prevent="profitInvest(monthProfit.typeName)">立即购买</div>
+        </form>
+        <form :action="bankUrl"
+              method="POST"
+              ref="bankPay"
+              id="form">
+          <input type="hidden"
+                 name="ENCTP"
+                 ref="ENCTP">
+          <input type="hidden"
+                 name="FM"
+                 ref="FM">
+          <input type="hidden"
+                 name="MCHNTCD"
+                 ref="MCHNTCD">
+          <input type="hidden"
+                 name="VERSION"
+                 ref="VERSION">
+          <input type="hidden"
+                 name="LOGOTP"
+                 ref="LOGOTP">
+        </form>
       </div>
     </div>
   </div>
 </template>
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import PhoneCode from '@/components/PhoneCode/PhoneCode.vue'
 import { mapActions, mapState } from 'vuex'
-import { sendSMS, balancePay } from '@/service'
-import { getStore } from '@/lib/js/storage'
+import { balancePay, profitInvest, bankPayJson } from '@/service'
+import { getStore, setStore } from '@/lib/js/storage'
 import { validateProfitInvest } from '@/lib/js/validate'
+import requestUrl from '@/config/requestUrl'
 
 export default {
   name: 'MonthProfit',
   components: {
-    HeaderBar
+    HeaderBar,
+    PhoneCode
   },
   data () {
     return {
@@ -136,22 +165,32 @@ export default {
       isShowAccount: false,
       // 下拉图标
       arrowImg: require('../../assets/images/downArrow.png'),
-      // 同意协议
+      // 用户输入金额
       money: '',
+      // 交易密码
       dealPassword: '',
+      // 验证码
       code: '',
+      // 同意协议
       agree: false,
+      // 验证码按钮初始化值
       codeText: '获取验证码',
-      codeClick: false
+      // 验证码key值
+      codeKey: 'balancePay',
+      // 验证码按钮 class
+      codeBtn: 'getCode',
+      // 第三方支付链接地址
+      bankUrl: requestUrl.bankPayUrl
     }
   },
   computed: {
     ...mapState({
-      monthProfit: ({ products }) => products.monthProfit
+      monthProfit: ({ products }) => products.monthProfit,
+      bankPayParams: ({ pay }) => pay.bankParams
     })
   },
   methods: {
-    ...mapActions(['getMonthProfit']),
+    ...mapActions(['getMonthProfit', 'setBankPayParms']),
     showAccount () {
       this.isShowAccount = !this.isShowAccount
       this.arrowImg = this.isShowAccount
@@ -160,26 +199,6 @@ export default {
     },
     forgetDealPwd () {
       console.log(this.selectAccount, typeof this.selectAccount)
-    },
-    async getCode () {
-      this.codeClick = true
-      let data = await sendSMS(
-        ...[JSON.parse(getStore('userInfo')).mobilePhone, 'balancePay']
-      )
-      if (data.error === '0') {
-        let count = 60
-        let countDown = setInterval(() => {
-          this.codeText = `${count}秒`
-          count--
-          if (count === 0) {
-            clearInterval(countDown)
-            this.codeText = '重新获取'
-            this.codeClick = false
-          }
-        }, 1000)
-      } else {
-        this.$message.error({ message: data.msg })
-      }
     },
     async profitInvest (typename) {
       let validateMsg = validateProfitInvest(
@@ -193,7 +212,7 @@ export default {
         this.$message.error({ message: validateMsg })
         return
       }
-
+      // selectAccount==2 余额支付
       if (this.selectAccount === '2') {
         let data = await balancePay(
           JSON.parse(getStore('userInfo')).id,
@@ -203,13 +222,52 @@ export default {
           'profit',
           '',
           '',
-          this.code
+          this.code,
+          this.$route.params.id
         )
         if (data.error === '0') {
+          setStore('typeName', this.monthProfit.typename)
+          setStore('curpay', this.money)
         } else {
           this.$message.error({ message: data.msg })
         }
       } else {
+        // 银行卡支付
+        let res = await profitInvest(
+          JSON.parse(getStore('userInfo')).id,
+          getStore('token'),
+          this.money,
+          this.dealPassword,
+          this.$route.params.id
+        )
+        if (res.error === '0') {
+          let json = await bankPayJson(
+            JSON.parse(getStore('userInfo')).id,
+            getStore('token'),
+            this.monthProfit.cardNo,
+            this.monthProfit.idNo,
+            this.money,
+            this.monthProfit.realName,
+            'profit',
+            this.$route.params.id,
+            ''
+          )
+          if (json.error === '0') {
+            this.setBankPayParms(json.singleBean)
+            setStore('typeName', this.monthProfit.typename)
+            setStore('curpay', this.money)
+            this.$refs.ENCTP.value = json.singleBean.ENCTP
+            this.$refs.FM.value = json.singleBean.FM
+            this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
+            this.$refs.VERSION.value = json.singleBean.VERSION
+            this.$refs.LOGOTP.value = json.singleBean.LOGOTP
+            this.$refs.bankPay.submit()
+          } else {
+            this.$message.error({ message: json.msg })
+          }
+        } else {
+          this.$message.error({ message: res.msg })
+        }
       }
     }
   },
@@ -398,17 +456,6 @@ input[type='checkbox'] + label {
   }
 }
 
-.getCode {
-  .size(193px, 80px);
-  border: 2px solid @main-color;
-  border-radius: 18px;
-  line-height: 80px;
-  text-align: center;
-  .fontSize(32px);
-  .color(@main-color);
-  outline: none;
-}
-
 .agreeProtocol {
   margin: 20px 0 0;
   .fontSize(32px);
@@ -423,12 +470,5 @@ input[type='checkbox'] + label {
   line-height: 134px;
   .color(#fff);
   .fontSize(42px);
-}
-
-.btn-disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.65;
-  box-shadow: none;
 }
 </style>

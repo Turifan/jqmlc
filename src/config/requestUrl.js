@@ -195,5 +195,11 @@ export default {
   updateDealPwd: '/app/updateDealPwdApp.do',
 
   //   修改登陆密码
-  updateLoginPwd: '/app/updateLoginPwdApp.do'
+  updateLoginPwd: '/app/updateLoginPwdApp.do',
+
+  //   第三方支付
+  bankPayJson: '/app/fuionPayJson.do',
+
+  // 第三方支付链接
+  bankPayUrl: 'https://mpay.fuiou.com:16128/h5pay/payAction.pay'
 }

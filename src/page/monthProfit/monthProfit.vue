@@ -105,9 +105,11 @@
                @click.stop.prevent="profitInvest(monthProfit.typeName)">立即购买</div>
         </form>
         <form :action="bankUrl"
-              method="POST"
+              method="GET"
               ref="bankPay"
-              id="form">
+              id="form"
+              enctype="application/x-www-form-urlencoded"
+              @submit.prevent="false">
           <input type="hidden"
                  name="ENCTP"
                  ref="ENCTP">
@@ -228,11 +230,14 @@ export default {
         if (data.error === '0') {
           setStore('typeName', this.monthProfit.typename)
           setStore('curpay', this.money)
+          this.$router.push('/paySuccess')
         } else {
           this.$message.error({ message: data.msg })
         }
       } else {
         // 银行卡支付
+        // 从这里开始 银行卡支付  现在是ref的方式 我给你演示下 以前老项目和 新的项目的
+        // 这里请求我们的后台接口 生成订单号 流水号
         let res = await profitInvest(
           JSON.parse(getStore('userInfo')).id,
           getStore('token'),
@@ -240,7 +245,9 @@ export default {
           this.dealPassword,
           this.$route.params.id
         )
+        console.log(res)
         if (res.error === '0') {
+          // 成功后 请求我们后台的接口地址 传用户购买的金额 标的ID等信息 然后后台做签名
           let json = await bankPayJson(
             JSON.parse(getStore('userInfo')).id,
             getStore('token'),
@@ -252,19 +259,27 @@ export default {
             this.$route.params.id,
             ''
           )
-          if (json.error === '0') {
-            this.setBankPayParms(json.singleBean)
-            setStore('typeName', this.monthProfit.typename)
-            setStore('curpay', this.money)
-            this.$refs.ENCTP.value = json.singleBean.ENCTP
-            this.$refs.FM.value = json.singleBean.FM
-            this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
-            this.$refs.VERSION.value = json.singleBean.VERSION
-            this.$refs.LOGOTP.value = json.singleBean.LOGOTP
-            this.$refs.bankPay.submit()
-          } else {
-            this.$message.error({ message: json.msg })
-          }
+          console.log(json)
+          // if (json.error === '0') {
+          // console.log(json.ENCTP)
+          // console.log(json.singleBean)
+          // console.log(json.singleBean.ENCTP)
+          // console.log(json.singleBean.FM)
+          // 这里是返回的数据  第三方支付 需要的数据值 在这里
+          // this.setBankPayParms(json.singleBean)
+          setStore('typeName', this.monthProfit.typename)
+          setStore('curpay', this.money)
+          // 就是这几个
+          // this.$refs.ENCTP.value = json.singleBean.ENCTP
+          // this.$refs.FM.value = json.singleBean.FM
+          // this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
+          // this.$refs.VERSION.value = json.singleBean.VERSION
+          // this.$refs.LOGOTP.value = json.singleBean.LOGOTP
+          // 提交这个表单  第三方文档上面也是这样提交 我看看那个支付接口的文档
+          // this.$refs.bankPay.submit()
+          // } else {
+          //   this.$message.error({ message: json.msg })
+          // }
         } else {
           this.$message.error({ message: res.msg })
         }

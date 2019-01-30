@@ -58,6 +58,8 @@ const member = r => require.ensure([], () => r(require('@/page/member/member')),
 const growValue = r => require.ensure([], () => r(require('@/page/growValue/growValue')), 'growValue')
 const fat = r => require.ensure([], () => r(require('@/page/fat/fat')), 'fat')
 const fatHistory = r => require.ensure([], () => r(require('@/page/fat/fatHistory')), 'fatHistory')
+const paySuccess = r => require.ensure([], () => r(require('@/page/payInfo/paySuccess')), 'paySuccess')
+const payFailed = r => require.ensure([], () => r(require('@/page/payInfo/payFailed')), 'payFailed')
 const description = r => require.ensure([], () => r(require('@/page/description/description')), 'description')
 
 Vue.use(Router)
@@ -568,6 +570,24 @@ const router = new Router({
       path: '/fatHistory/:days',
       name: 'fatHistory',
       component: fatHistory,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 支付成功
+    {
+      path: '/paySuccess',
+      name: 'paySuccess',
+      component: paySuccess,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 支付失败
+    {
+      path: '/payFailed',
+      name: 'payFailed',
+      component: payFailed,
       meta: {
         requireAuth: true
       }

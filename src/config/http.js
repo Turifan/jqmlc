@@ -5,6 +5,7 @@ import router from '../router'
 
 // axios配置
 axios.defaults.timeout = 5000
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 // axios.defaults.baseURL = process.env.BASE_URL
 
 let loadingInstance
@@ -18,12 +19,15 @@ axios.interceptors.request.use(
       spinner: 'el-icon-loading',
       background: 'rgba(0, 0, 0, 0.7)'
     })
-    // if (store.state.token /* localStorage.token */) {
-    //   config.headers.Authorization = `token ${store.state.token}`
-    // } else {
-    //   router.push('login')
-    // }
-    config.data = JSON.stringify(config.data)
+    // // if (store.state.token /* localStorage.token */) {
+    // //   config.headers.Authorization = `token ${store.state.token}`
+    // // } else {
+    // //   router.push('login')
+    // // }
+    // console.log(config.data)
+    // config.data = JSON.stringify(config.params)
+    // config.data = config.params
+    console.log(config)
     return config
   },
   err => {

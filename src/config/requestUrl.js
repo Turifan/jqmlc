@@ -39,7 +39,7 @@ export default {
   monthProfitList: '/app/profitWithdrawDataApp.do',
 
   // 月盈猫购买
-  profitInvest: '/app/profitInvestApp.do',
+  profitInvest: '/weixin/profitInvestApp.do',
 
   // 机器猫列表
   machineList: '/app/machineListApp.do',

@@ -259,27 +259,20 @@ export default {
             this.$route.params.id,
             ''
           )
-          console.log(json)
-          // if (json.error === '0') {
-          // console.log(json.ENCTP)
-          // console.log(json.singleBean)
-          // console.log(json.singleBean.ENCTP)
-          // console.log(json.singleBean.FM)
-          // 这里是返回的数据  第三方支付 需要的数据值 在这里
+          if (json.error === '0') {
           // this.setBankPayParms(json.singleBean)
-          setStore('typeName', this.monthProfit.typename)
-          setStore('curpay', this.money)
-          // 就是这几个
-          // this.$refs.ENCTP.value = json.singleBean.ENCTP
-          // this.$refs.FM.value = json.singleBean.FM
-          // this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
-          // this.$refs.VERSION.value = json.singleBean.VERSION
-          // this.$refs.LOGOTP.value = json.singleBean.LOGOTP
-          // 提交这个表单  第三方文档上面也是这样提交 我看看那个支付接口的文档
-          // this.$refs.bankPay.submit()
-          // } else {
-          //   this.$message.error({ message: json.msg })
-          // }
+            setStore('typeName', this.monthProfit.typename)
+            setStore('curpay', this.money)
+            // 就是这几个
+            this.$refs.ENCTP.value = json.singleBean.ENCTP
+            this.$refs.FM.value = json.singleBean.FM
+            this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
+            this.$refs.VERSION.value = json.singleBean.VERSION
+            this.$refs.LOGOTP.value = json.singleBean.LOGOTP
+            this.$refs.bankPay.submit()
+          } else {
+            this.$message.error({ message: json.msg })
+          }
         } else {
           this.$message.error({ message: res.msg })
         }

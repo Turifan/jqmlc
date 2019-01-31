@@ -1,5 +1,5 @@
 export default {
-  method: 'post',
+  // method: 'post',
   // 基础url前缀
   //   baseURL: process.env.BASE_URL,
   // 请求头信息

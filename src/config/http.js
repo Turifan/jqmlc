@@ -12,9 +12,7 @@ export default function $axios (options) {
       headers: config.headers,
       transformRequest: [
         function (data) {
-          console.log(data)
-          data = param(data)
-          return data
+          return QS.stringify(data)
         }
       ]
     })
@@ -30,7 +28,6 @@ export default function $axios (options) {
           spinner: 'el-icon-loading',
           background: 'rgba(0, 0, 0, 0.7)'
         })
-        console.log(config)
         return config
       },
       err => {
@@ -75,44 +72,4 @@ export default function $axios (options) {
         reject(error)
       })
   })
-}
-
-function param (obj) {
-  let query = ''
-  let name
-  let value
-  let fullSubName
-  let subName
-  let subValue
-  let innerObj
-  let i
-
-  for (name in obj) {
-    console.log(name)
-    value = obj[name]
-    query += encodeURIComponent(name) + '='
-    if (value instanceof Array) {
-      for (i = 0; i < value.length; ++i) {
-        subValue = value[i]
-        fullSubName = name + '[' + i + ']'
-        innerObj = {}
-        innerObj[fullSubName] = subValue
-        query += param(innerObj) + '&'
-      }
-    } else if (value instanceof Object) {
-      for (subName in value) {
-        subValue = value[subName]
-        fullSubName = `${subName}`
-        innerObj = {}
-        innerObj[fullSubName] = subValue
-        query += param(innerObj) + '&'
-      }
-    } else if (value !== undefined && value !== null) {
-      query += encodeURIComponent(value) + '&'
-    }
-    query += encodeURIComponent(value) + '&'
-    console.log(query)
-  }
-
-  return query.length ? query.substr(0, query.length - 1) : query
 }

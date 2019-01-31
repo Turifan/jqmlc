@@ -62,10 +62,6 @@ export default {
         this.$message.error({ message: validateMsg })
         return
       }
-      // let info = {
-      //   name: this.username,
-      //   pwd: this.password
-      // }
       let data = await service.login(this.username, this.password)
       // if (data.error === '0') {
       this.loginAction(data)

@@ -202,7 +202,7 @@ export default {
     forgetDealPwd () {
       console.log(this.selectAccount, typeof this.selectAccount)
     },
-    async profitInvest (typename) {
+    validateInvest () {
       let validateMsg = validateProfitInvest(
         this.money,
         this.dealPassword,
@@ -212,65 +212,72 @@ export default {
       )
       if (validateMsg !== true) {
         this.$message.error({ message: validateMsg })
-        return
       }
-      // selectAccount==2 余额支付
-      if (this.selectAccount === '2') {
-        let data = await balancePay(
+    },
+    async payWithBalance () {
+      let data = await balancePay(
+        JSON.parse(getStore('userInfo')).id,
+        getStore('token'),
+        this.dealPassword,
+        this.money,
+        'profit',
+        '',
+        '',
+        this.code,
+        this.$route.params.id
+      )
+      if (data.error === '0') {
+        setStore('typeName', this.monthProfit.typename)
+        setStore('curpay', this.money)
+        this.$router.push('/paySuccess')
+      } else {
+        this.$message.error({ message: data.msg })
+      }
+    },
+    async payWithBankCard () {
+      let res = await profitInvest(
+        JSON.parse(getStore('userInfo')).id,
+        getStore('token'),
+        this.money,
+        this.dealPassword,
+        this.$route.params.id
+      )
+      if (res.error === '0') {
+        let json = await bankPayJson(
           JSON.parse(getStore('userInfo')).id,
           getStore('token'),
-          this.dealPassword,
+          this.monthProfit.cardNo,
+          this.monthProfit.idNo,
           this.money,
+          this.monthProfit.realName,
           'profit',
-          '',
-          '',
-          this.code,
-          this.$route.params.id
+          this.$route.params.id,
+          ''
         )
-        if (data.error === '0') {
+        if (json.error === '0') {
           setStore('typeName', this.monthProfit.typename)
           setStore('curpay', this.money)
-          this.$router.push('/paySuccess')
+          this.$refs.ENCTP.value = json.singleBean.ENCTP
+          this.$refs.FM.value = json.singleBean.FM
+          this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
+          this.$refs.VERSION.value = json.singleBean.VERSION
+          this.$refs.LOGOTP.value = json.singleBean.LOGOTP
+          this.$refs.bankPay.submit()
         } else {
-          this.$message.error({ message: data.msg })
+          this.$message.error({ message: json.msg })
         }
       } else {
+        this.$message.error({ message: res.msg })
+      }
+    },
+    profitInvest (typename) {
+      this.validateInvest()
+      // selectAccount==2 余额支付
+      if (this.selectAccount === '2') {
+        this.payWithBalance()
+      } else {
         // 银行卡支付
-        let res = await profitInvest(
-          JSON.parse(getStore('userInfo')).id,
-          getStore('token'),
-          this.money,
-          this.dealPassword,
-          this.$route.params.id
-        )
-        console.log(res)
-        if (res.error === '0') {
-          let json = await bankPayJson(
-            JSON.parse(getStore('userInfo')).id,
-            getStore('token'),
-            this.monthProfit.cardNo,
-            this.monthProfit.idNo,
-            this.money,
-            this.monthProfit.realName,
-            'profit',
-            this.$route.params.id,
-            ''
-          )
-          if (json.error === '0') {
-            setStore('typeName', this.monthProfit.typename)
-            setStore('curpay', this.money)
-            this.$refs.ENCTP.value = json.singleBean.ENCTP
-            this.$refs.FM.value = json.singleBean.FM
-            this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD
-            this.$refs.VERSION.value = json.singleBean.VERSION
-            this.$refs.LOGOTP.value = json.singleBean.LOGOTP
-            this.$refs.bankPay.submit()
-          } else {
-            this.$message.error({ message: json.msg })
-          }
-        } else {
-          this.$message.error({ message: res.msg })
-        }
+        this.payWithBankCard()
       }
     }
   },

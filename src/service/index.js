@@ -1314,13 +1314,13 @@ export const updateLoginPwd = (uid, token, oldPwd, newPwd) =>
  * @param {String} oldPwd old login password
  * @param {String} newPwd new login password
  */
-export const bankPayJson = (uid, token, bankCard, idNo, amt, name, divType, profitId, copies) =>
+export const bankPayJson = (userId, token, bankCard, idNo, amt, name, divType, profitId, copies) =>
   axios({
     url: requestUrl.bankPayJson,
     method: 'post',
     data: {
       auth: JSON.stringify({
-        uid,
+        userId,
         qrsoft_fe_token: token
       }),
       info: JSON.stringify({

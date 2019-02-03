@@ -105,7 +105,7 @@
                @click.stop.prevent="profitInvest(monthProfit.typeName)">立即购买</div>
         </form>
         <form :action="bankUrl"
-              method="GET"
+              method="POST"
               ref="bankPay"
               id="form"
               enctype="application/x-www-form-urlencoded"
@@ -192,7 +192,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['getMonthProfit', 'setBankPayParms']),
+    ...mapActions(['getMonthProfit']),
     showAccount () {
       this.isShowAccount = !this.isShowAccount
       this.arrowImg = this.isShowAccount
@@ -236,8 +236,6 @@ export default {
         }
       } else {
         // 银行卡支付
-        // 从这里开始 银行卡支付  现在是ref的方式 我给你演示下 以前老项目和 新的项目的
-        // 这里请求我们的后台接口 生成订单号 流水号
         let res = await profitInvest(
           JSON.parse(getStore('userInfo')).id,
           getStore('token'),
@@ -247,7 +245,6 @@ export default {
         )
         console.log(res)
         if (res.error === '0') {
-          // 成功后 请求我们后台的接口地址 传用户购买的金额 标的ID等信息 然后后台做签名
           let json = await bankPayJson(
             JSON.parse(getStore('userInfo')).id,
             getStore('token'),
@@ -260,10 +257,8 @@ export default {
             ''
           )
           if (json.error === '0') {
-          // this.setBankPayParms(json.singleBean)
             setStore('typeName', this.monthProfit.typename)
             setStore('curpay', this.money)
-            // 就是这几个
             this.$refs.ENCTP.value = json.singleBean.ENCTP
             this.$refs.FM.value = json.singleBean.FM
             this.$refs.MCHNTCD.value = json.singleBean.MCHNTCD

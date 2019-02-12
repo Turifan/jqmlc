@@ -51,6 +51,7 @@ const bindTel = r => require.ensure([], () => r(require('@/page/safe/bindTel')),
 const bindWechat = r => require.ensure([], () => r(require('@/page/safe/bindWechat')), 'bindWechat')
 const resetLoginPwd = r => require.ensure([], () => r(require('@/page/safe/resetLoginPwd')), 'resetLoginPwd')
 const forgetLoginPwd = r => require.ensure([], () => r(require('@/page/safe/forgetLoginPwd')), 'forgetLoginPwd')
+const forgetDealPwd = r => require.ensure([], () => r(require('@/page/safe/forgetDealPwd')), 'forgetDealPwd')
 const setNewLoginPwd = r => require.ensure([], () => r(require('@/page/safe/setNewLoginPwd')), 'setNewLoginPwd')
 const resetDealPwd = r => require.ensure([], () => r(require('@/page/safe/resetDealPwd')), 'resetDealPwd')
 const aboutUs = r => require.ensure([], () => r(require('@/page/aboutUs/aboutUs')), 'aboutUs')
@@ -516,6 +517,15 @@ const router = new Router({
       path: '/setNewLoginPwd',
       name: 'setNewLoginPwd',
       component: setNewLoginPwd,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 重置交易密码
+    {
+      path: '/forgetDealPwd',
+      name: 'forgetDealPwd',
+      component: forgetDealPwd,
       meta: {
         requireAuth: true
       }

@@ -1,6 +1,6 @@
  <!-- 机器猫 -->
 <template lang="html">
-  <div class="gray-fixed gray-fixed-bg">
+  <div class="gray-body">
     <Header :title="title"></Header>
     <DoraemonList :doraemonList="doraemonList"></DoraemonList>
     <Footer></Footer>

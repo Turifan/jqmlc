@@ -1,4 +1,4 @@
-<!-- 重置登录密码第一步 -->
+<!-- 重置交易密码 -->
 <template lang="html">
   <div class="">
     <HeaderBar :headerBar="headerBar"></HeaderBar>
@@ -34,7 +34,7 @@ export default {
   data () {
     return {
       headerBar: {
-        title: '重置登录密码',
+        title: '忘记交易密码',
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
@@ -46,8 +46,8 @@ export default {
   },
   methods: {
     forgetLoginPwd () {
-      console.log('重置登录密码')
-      this.$router.push('/setNewLoginPwd')
+      console.log('重置交易密码')
+      this.$router.push('/')
     }
   }
 }

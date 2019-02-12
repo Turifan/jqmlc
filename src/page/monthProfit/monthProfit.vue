@@ -102,7 +102,7 @@
             <label for="agree">我同意将月盈猫账户资金交由金钱猫平台自由匹配直投标</label>
           </div>
           <div class="buyBtn"
-               @click.stop.prevent="profitInvest(monthProfit.typeName)">立即购买</div>
+               @click.stop.prevent="monthProfitInvest(monthProfit.typeName)">立即购买</div>
         </form>
         <form :action="bankUrl"
               method="POST"
@@ -134,7 +134,7 @@
 import HeaderBar from '@/components/common/headerBar.vue'
 import PhoneCode from '@/components/PhoneCode/PhoneCode.vue'
 import { mapActions, mapState } from 'vuex'
-import { balancePay, profitInvest, bankPayJson } from '@/service'
+import { balancePay, profitInvest, bankPayJson, sendSMS } from '@/service'
 import { getStore, setStore } from '@/lib/js/storage'
 import { validateProfitInvest } from '@/lib/js/validate'
 import requestUrl from '@/config/requestUrl'
@@ -199,8 +199,16 @@ export default {
         ? require('../../assets/images/upArrow.png')
         : require('../../assets/images/downArrow.png')
     },
-    forgetDealPwd () {
-      console.log(this.selectAccount, typeof this.selectAccount)
+    async forgetDealPwd () {
+      let data = await sendSMS(
+        JSON.parse(getStore('userInfo')).mobilePhone,
+        'backDeal'
+      )
+      if (data.error === '0') {
+        this.$router.push('/forgetDealPwd')
+      } else {
+        this.$message.error({ message: data.msg })
+      }
     },
     validateInvest () {
       let validateMsg = validateProfitInvest(
@@ -270,7 +278,7 @@ export default {
         this.$message.error({ message: res.msg })
       }
     },
-    profitInvest (typename) {
+    monthProfitInvest (typename) {
       this.validateInvest()
       // selectAccount==2 余额支付
       if (this.selectAccount === '2') {

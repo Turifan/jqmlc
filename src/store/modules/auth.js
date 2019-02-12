@@ -1,6 +1,5 @@
 import { SET_TOKEN, SET_USERINFO, REMOVE_ALL_STORAGE } from '../mutation-types'
-// import { banner, queryHome } from '@/service'
-import { getStore, setStore } from '@/lib/js/storage'
+import { getStore, setStore, clearStore } from '@/lib/js/storage'
 
 const state = {
   userInfo: getStore('userInfo') || null,
@@ -15,6 +14,12 @@ const mutations = {
   [SET_TOKEN] (state, token) {
     state.token = token
     setStore('token', token)
+  },
+  [REMOVE_ALL_STORAGE] (state) {
+    state.userInfo = null
+    state.token = null
+    clearStore()
+    sessionStorage.clear()
   }
 }
 

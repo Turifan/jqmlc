@@ -24,3 +24,10 @@ export const removeStore = name => {
   if (!name) return
   window.localStorage.removeItem(name)
 }
+
+/**
+ * 清空localStorage
+ */
+export const clearStore = () => {
+  window.localStorage.clearStore()
+}

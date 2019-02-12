@@ -7,6 +7,7 @@
 
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import iframes from '@/data/iframes'
 
 export default {
   name: 'Description',
@@ -15,8 +16,13 @@ export default {
   },
   data () {
     return {
-      headerBar: {
-        title: 'h5',
+
+    }
+  },
+  computed: {
+    headerBar () {
+      return {
+        title: iframes[this.$route.params.title].title,
         imgUrl: '',
         goBackUrl: require('../../assets/images/goBack.png'),
         path: '',
@@ -27,6 +33,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="less" scoped>

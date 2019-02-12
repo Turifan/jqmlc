@@ -34,11 +34,7 @@
 
       <!-- 列表 -->
       <div class="profitList">
-        <profitList :profitListItem="profitListItem"></profitList>
-        <profitList :profitListItem="profitListItem"></profitList>
-        <profitList :profitListItem="profitListItem"></profitList>
-        <profitList :profitListItem="profitListItem"></profitList>
-        <profitList :profitListItem="profitListItem"></profitList>
+        <profitList :monthProfitList="monthProfitList"></profitList>
       </div>
     </div>
 
@@ -48,6 +44,10 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import ProfitList from './profitList.vue'
+import {
+  mapActions,
+  mapState
+} from 'vuex'
 
 export default {
   name: 'Profit',
@@ -62,105 +62,123 @@ export default {
         imgUrl: require('../../assets/images/doubt.png'),
         goBackUrl: require('../../assets/images/goBack.png'),
         path: 'description',
-        params: { title: 'monthProfit' },
+        params: {
+          title: 'monthProfit'
+        },
         goBack: true,
         showIcon: true
-      },
-      profitListItem: {}
+      }
+    }
+  },
+  computed: {
+    ...mapState({
+      monthProfitList: ({
+        products
+      }) => products.monthProfitList
+    })
+  },
+  methods: {
+    ...mapActions(['getMonthProfitList'])
+  },
+  mounted () {
+    if (!this.monthProfitList) {
+      this.getMonthProfitList()
     }
   }
 }
+
 </script>
 
 <style lang="less" scoped>
-@import '../../style/mixin.less';
+  @import '../../style/mixin.less';
 
-.profitBox {
-  display: flex;
-  flex: 1;
-  height: 130px;
-  padding: 0 34px;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  .fontSize(38px);
-}
-
-.profitImg {
-  width: 50px;
-  margin-right: 22px;
-
-  img {
-    width: 100%;
-    height: auto;
+  .profitBox {
+    display: flex;
+    flex: 1;
+    height: 130px;
+    padding: 0 34px;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    .fontSize(38px);
   }
-}
 
-.profitTxt {
-  margin-right: auto;
-  .color(#333);
-}
+  .profitImg {
+    width: 50px;
+    margin-right: 22px;
 
-.profitAsset {
-  height: 150px;
-  padding-left: 108px;
-  line-height: 150px;
-  background: #fff;
-  border-top: 2px solid #efefef;
-  /*no*/
-  border-bottom: 2px solid #efefef;
-  /*no*/
-}
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 
-.profitAssetTitle {
-  display: inline-block;
-  margin-right: 30px;
-  .fontSize(34px);
-}
+  .profitTxt {
+    margin-right: auto;
+    .color(#333);
+  }
 
-.profitTotalIncomeTitle {
-  display: inline-block;
-  margin-right: 26px;
-  .fontSize(34px);
-}
+  .profitAsset {
+    height: 150px;
+    padding-left: 108px;
+    line-height: 150px;
+    background: #fff;
+    border-top: 2px solid #efefef;
+    /*no*/
+    border-bottom: 2px solid #efefef;
+    /*no*/
+  }
 
-.profitAssetNum {
-  .fontSize(42px);
-  .color(#333);
-}
+  .profitAssetTitle {
+    display: inline-block;
+    margin-right: 30px;
+    .fontSize(34px);
+  }
 
-.profitTotalIncomeNum {
-  .fontSize(34px);
-  .color(#333);
-}
+  .profitTotalIncomeTitle {
+    display: inline-block;
+    margin-right: 26px;
+    .fontSize(34px);
+  }
 
-.profitIncome {
-  display: flex;
-  flex: 1;
-  height: 130px;
-  margin-bottom: 16px;
-  padding: 0 34px;
-  justify-content: space-between;
-  background: #fff;
-  align-items: center;
-  line-height: 130px;
-}
+  .profitAssetNum {
+    .fontSize(42px);
+    .color(#333);
+  }
 
-.profitTotalIncome {
-  box-sizing: border-box;
-  width: 50%;
-  padding-left: 72px;
-  border-right: 2px solid #efefef;
-  /*no*/
-}
+  .profitTotalIncomeNum {
+    .fontSize(34px);
+    .color(#333);
+  }
 
-.profitYesterdayIncome {
-  box-sizing: border-box;
-  width: 50%;
-  padding-left: 72px;
-}
+  .profitIncome {
+    display: flex;
+    flex: 1;
+    height: 130px;
+    margin-bottom: 16px;
+    padding: 0 34px;
+    justify-content: space-between;
+    background: #fff;
+    align-items: center;
+    line-height: 130px;
+  }
 
-.profitList {
-  margin: 0 15px;
-}
+  .profitTotalIncome {
+    box-sizing: border-box;
+    width: 50%;
+    padding-left: 72px;
+    border-right: 2px solid #efefef;
+    /*no*/
+  }
+
+  .profitYesterdayIncome {
+    box-sizing: border-box;
+    width: 50%;
+    padding-left: 72px;
+  }
+
+  .profitList {
+    margin: 0 15px;
+  }
+
 </style>

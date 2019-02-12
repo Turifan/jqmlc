@@ -1,35 +1,35 @@
 <!-- 月盈猫列表 -->
 <template lang="html">
-  <div class="">
-    <div class="profitItems">
+  <div class="" >
+    <div class="profitItems" v-for="m in monthProfitList" :key="m.assetId">
       <div class="profitItemTitleBox">
         <div class="profitItemTitle">
-          <div class="profitTitle">月盈猫002</div>
-          <div class="profitTxt">爱乐恩项目</div>
+          <div class="profitTitle">{{m.typeName}}</div>
+          <div class="profitTxt" v-if="m.projectName">{{m.projectName}}</div>
         </div>
       </div>
       <div class="profitItemDesBox">
         <div class="profitDesItem">
           <div>投资金额</div>
-          <div class="profitDesItemTxt">25000.00</div>
+          <div class="profitDesItemTxt">{{m.money}}</div>
         </div>
         <div class="profitDesItem">
           <div>预期年化</div>
-          <div class="profitDesItemTxt">7%</div>
+          <div class="profitDesItemTxt">{{m.annualRate}}%</div>
         </div>
         <div class="profitDesItem">
           <div>当前收益</div>
-          <div class="profitDesItemTxt">123.23</div>
+          <div class="profitDesItemTxt">{{m.hasInterest}}</div>
         </div>
         <div class="profitDesItem">
           <div>项目分红</div>
-          <div class="profitDesItemTxt">1200.00</div>
+          <div class="profitDesItemTxt">{{m.bonus}}</div>
         </div>
         <div class="profitDesItem">
           <div>投资时间</div>
-          <div class="profitDesItemTxt">2018-10-10</div>
+          <div class="profitDesItemTxt">{{m.join_time}}</div>
         </div>
-        <div :class="['profitDepositBtn', true?'orangeBg':'grayBg']" @click.stop.prevent="$router.push('deposit/9/30')">提现</div>
+        <div :class="['profitDepositBtn', m.isWithdraw==='1'?'orangeBg':'grayBg']" @click.stop.prevent="$router.push('deposit/9/30')">提现</div>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
 <script>
 export default {
   name: 'ProfitList',
-  props: ['profitListItem'],
+  props: ['monthProfitList'],
   components: {},
   data () {
     return {}

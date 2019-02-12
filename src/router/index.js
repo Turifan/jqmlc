@@ -605,35 +605,10 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  // if (to.matched.some(r => r.meta.requireOpenid)) {
-  //   if (window.localStorage.openid) {
-  //     if (to.matched.some(r => r.meta.requireAuth)) {
-  //       if (window.localStorage.token) {
-  //         next()
-  //       } else {
-  //         next({
-  //           path: '/login',
-  //           query: { redirect: to.fullPath }
-  //         })
-  //       }
-  //     } else {
-  //       next()
-  //     }
-  //     // next()
-  //   } else {
-  //     next({
-  //       path: '/check',
-  //       query: { redirect: router.currentRoute.fullPath }
-  //     })
-  //   }
-  // } else {
-  //   next()
-  // }
   if (to.matched.some(r => r.meta.requireAuth)) {
     if (!sessionStorage.openid) {
       next({
         path: '/check'
-        // query: { redirect: to.fullPath }
       })
     } else if (!localStorage.token) {
       sessionStorage.path = to.fullPath

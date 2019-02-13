@@ -1,6 +1,19 @@
-import { GET_DORAEMON_LIST, SET_MONTH_DETAIL, SET_YEAR_DETAIL, SET_MONTHPROFIT_DETAIL, GET_MONTHPROFIT_LIST, SET_MONTHPROFIT_CURRENTPAGE } from '../mutation-types'
+import {
+  GET_DORAEMON_LIST,
+  SET_MONTH_DETAIL,
+  SET_YEAR_DETAIL,
+  SET_MONTHPROFIT_DETAIL,
+  GET_MONTHPROFIT_LIST,
+  SET_MONTHPROFIT_CURRENTPAGE,
+  GET_FATTEN_LIST,
+  GET_FAT_LIST,
+  SET_FAT_CURRENTPAGE,
+  INIT_FAT_CURRENTPAGE,
+  GET_FAT_LIST_TOTALNUM,
+  INIT_FAT_LIST
+} from '../mutation-types'
 
-import { machineList, month, machineYear, monthProfitInfo, monthProfitList } from '@/service'
+import { machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList } from '@/service'
 
 import { getStore } from '@/lib/js/storage'
 
@@ -11,7 +24,11 @@ const state = {
   monthProfit: null,
   monthProfitList: [],
   monthProfitListSize: null,
-  monthProfitListPage: 1
+  monthProfitListPage: 1,
+  fattenList: [],
+  fatList: [],
+  fatListCurpage: 1,
+  totalNum: 0
 }
 
 const mutations = {
@@ -33,6 +50,24 @@ const mutations = {
   },
   [SET_MONTHPROFIT_CURRENTPAGE] (state) {
     state.monthProfitListPage++
+  },
+  [GET_FATTEN_LIST] (state, fattenList) {
+    state.fattenList = state.fattenList.concat(fattenList)
+  },
+  [GET_FAT_LIST] (state, fatList) {
+    state.fatList = state.fatList.concat(fatList)
+  },
+  [GET_FAT_LIST_TOTALNUM] (state, num) {
+    state.totalNum = num
+  },
+  [SET_FAT_CURRENTPAGE] (state) {
+    state.fatListCurpage++
+  },
+  [INIT_FAT_CURRENTPAGE] (state) {
+    state.fatListCurpage = 1
+  },
+  [INIT_FAT_LIST] (state) {
+    state.fatList = []
   }
 }
 
@@ -71,6 +106,32 @@ const actions = {
     if (data) {
       commit(GET_MONTHPROFIT_LIST, data.singleBean)
       commit(SET_MONTHPROFIT_CURRENTPAGE)
+    }
+  },
+  // 发财猫首页列表
+  async getFattenList ({ commit }) {
+    let data = await fattenList()
+    if (data) {
+      commit(GET_FATTEN_LIST, data.singleBean.classifyList)
+    }
+  },
+  // 发财猫某一期列表
+  async getFatList ({ commit }, args) {
+    let data = await fatList(...args)
+    if (data) {
+      commit(INIT_FAT_LIST)
+      commit(GET_FAT_LIST, data.listBean.page)
+      commit(GET_FAT_LIST_TOTALNUM, data.listBean.totalNum)
+      commit(SET_FAT_CURRENTPAGE)
+    }
+  },
+  // 发财猫某一期列表
+  async getMoreFatList ({ commit }, args) {
+    let data = await fatList(...args)
+    if (data) {
+      commit(GET_FAT_LIST, data.listBean.page)
+      commit(GET_FAT_LIST_TOTALNUM, data.listBean.totalNum)
+      commit(SET_FAT_CURRENTPAGE)
     }
   }
 }

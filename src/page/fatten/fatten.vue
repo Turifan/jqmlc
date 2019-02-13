@@ -8,9 +8,9 @@
       </div>
       <router-link class="autoInvest" :to="{ name: 'autoInvest', params: '' }" tag="div">
         <div class="autoInvest-tit">自动投标</div>
-        <div class="gray-font">未开启</div>
+        <div class="gray-font" v-if="autoInvestInfo">{{autoInvestInfo.status==='0'?'未开启':'已开启'}}</div>
       </router-link>
-      <FattenProduct></FattenProduct>
+      <FattenProduct :fattenList="fattenList"></FattenProduct>
     </div>
     <Footer />
   </div>
@@ -20,6 +20,7 @@
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import FattenProduct from './fatten_product.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Fatten',
@@ -33,7 +34,23 @@ export default {
       title: '发财猫'
     }
   },
-  computed: {}
+  computed: {
+    ...mapState({
+      autoInvestInfo: ({ pay }) => pay.autoInvestInfo,
+      fattenList: ({ products }) => products.fattenList
+    })
+  },
+  methods: {
+    ...mapActions(['getAutoInvestInfo', 'getFattenList'])
+  },
+  mounted () {
+    if (!this.autoInvestInfo) {
+      this.getAutoInvestInfo()
+    }
+    if (this.fattenList.length === 0) {
+      this.getFattenList()
+    }
+  }
 }
 </script>
 

@@ -3,9 +3,9 @@
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed gray-fixed-bg">
       <div class="wrapper">
-        <scroll ref="scroll" :data="items" :pullDownRefresh="pullDownRefresh" :pullUpLoad="pullUpLoad" :startY="parseInt(startY)"
+        <scroll ref="scroll" :pullDownRefresh="pullDownRefreshObj" :pullUpLoad="pullUpLoadObj" :startY="parseInt(startY)"
           @pullingDown="onPullingDown" @pullingUp="onPullingUp">
-          <FattenList></FattenList>
+          <FattenList :data="items"></FattenList>
         </scroll>
       </div>
     </div>
@@ -18,6 +18,8 @@ import Vue from 'vue'
 import HeaderBar from '@/components/common/headerBar.vue'
 import FattenList from './fatten_list.vue'
 import Scroll from '@/components/scroll/scroll.vue'
+import { mapState, mapMutations, mapActions } from 'vuex'
+import { getStore } from '@/lib/js/storage'
 
 export default {
   name: 'Fat',
@@ -40,62 +42,118 @@ export default {
         showIcon: true
       },
       pullDownRefresh: true,
+      pullDownRefreshThreshold: 90,
+      pullDownRefreshStop: 40,
       pullUpLoad: true,
+      pullUpLoadThreshold: 0,
       pullUpLoadMoreTxt: '加载更多',
       pullUpLoadNoMoreTxt: '没有更多数据了',
       startY: 0,
-      items: []
+      items: this.fatList
     }
   },
   watch: {
     startY () {
       this.rebuildScroll()
+    },
+    pullDownRefreshObj: {
+      handler (val) {
+        const scroll = this.$refs.scroll.scroll
+        if (val) {
+          scroll.openPullDown()
+        } else {
+          scroll.closePullDown()
+        }
+      },
+      deep: true
+    },
+    pullUpLoadObj: {
+      handler (val) {
+        const scroll = this.$refs.scroll.scroll
+        if (val) {
+          scroll.openPullUp()
+        } else {
+          scroll.closePullUp()
+        }
+      },
+      deep: true
     }
   },
   created () {
-    console.log('数据初始化完毕')
+    // 初始化curPage参数
+    this.INIT_FAT_CURRENTPAGE()
   },
   computed: {
-
+    ...mapState({
+      fatList: ({ products }) => products.fatList,
+      fatListCurpage: ({ products }) => products.fatListCurpage,
+      totalNum: ({ products }) => products.totalNum
+    }),
+    pullDownRefreshObj () {
+      return this.pullDownRefresh
+        ? {
+          threshold: parseInt(this.pullDownRefreshThreshold),
+          stop: parseInt(this.pullDownRefreshStop)
+        }
+        : false
+    },
+    pullUpLoadObj () {
+      return this.pullUpLoad
+        ? {
+          threshold: parseInt(this.pullUpLoadThreshold),
+          txt: {
+            more: this.pullUpLoadMoreTxt,
+            noMore: this.pullUpLoadNoMoreTxt
+          }
+        }
+        : false
+    }
   },
   methods: {
-
+    ...mapMutations(['INIT_FAT_CURRENTPAGE', 'INIT_FAT_LIST']),
+    ...mapActions(['getFatList', 'getMoreFatList']),
     onPullingDown () {
-      // 模拟更新数据
-      console.log('pulling down and load data')
+      // console.log('pulling down and load data')
       setTimeout(() => {
         if (this._isDestroyed) {
           return
         }
-        if (Math.random() > 0.5) {
-          // 如果有新数据
-          this.items.unshift(new Date())
-          console.log('有新数据')
-        } else {
-          // 如果没有新数据
-          console.log('无新数据')
-          this.$refs.scroll.forceUpdate()
-        }
+        this.INIT_FAT_CURRENTPAGE()
+        this.INIT_FAT_LIST()
+        this.getFatList([
+          JSON.parse(getStore('userInfo')).id,
+          getStore('token'),
+          `${this.$route.params.days}`,
+          `1`
+        ])
+        // if (Math.random() > 0.5) {
+        //   // 如果有新数据
+        //   // this.items.unshift(new Date())
+        //   console.log('有新数据')
+        // } else {
+        //   // 如果没有新数据
+        //   console.log('无新数据')
+        this.$refs.scroll.forceUpdate(true)
+        // }
       }, 2000)
     },
     onPullingUp () {
       // 更新数据
-      console.log('pulling up and load data')
       setTimeout(() => {
         if (this._isDestroyed) {
           return
         }
-        if (Math.random() > 0.5) {
-          // 如果有新数据
-          let newPage = []
-          for (let i = 0; i < 10; i++) {
-            newPage.push(this.itemIndex)
-          }
-
-          this.items = this.items.concat(newPage)
+        // 总数大于当前列表的长度表示还未加载完所有分页
+        if (this.totalNum > this.fatList.length) {
+          this.getMoreFatList([
+            JSON.parse(getStore('userInfo')).id,
+            getStore('token'),
+            `${this.$route.params.days}`,
+            `${this.fatListCurpage}`
+          ])
         } else {
           // 如果没有新数据
-          this.$refs.scroll.forceUpdate()
+          this.$refs.scroll.forceUpdate(true)
         }
       }, 1500)
     },
@@ -105,18 +163,26 @@ export default {
         this.$refs.scroll.initScroll()
       })
     }
+  },
+  mounted () {
+    // if (this.fatList.length < this.totalNum) {
+    this.getFatList([
+      JSON.parse(getStore('userInfo')).id,
+      getStore('token'),
+      `${this.$route.params.days}`,
+      `${this.fatListCurpage}`
+    ])
+    // }
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin.less';
+@import '../../style/mixin.less';
 
-  .wrapper {
-    overflow-y: hidden;
-    position: relative;
-    height: 100%;
-  }
-
+.wrapper {
+  overflow-y: hidden;
+  position: relative;
+  height: 100%;
+}
 </style>

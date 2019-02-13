@@ -1,21 +1,26 @@
-import { BANK_PAY_PARAMS } from '../mutation-types'
-// import { sendSMS } from '@/service'
-// import { getStore } from '@/lib/js/storage'
+import { GET_AUTOINVEST_INFO } from '../mutation-types'
+import { autoInvest } from '@/service'
+import { getStore } from '@/lib/js/storage'
 
 const state = {
   bankParams: '',
-  payInfo: ''
+  payInfo: '',
+  autoInvestInfo: null
 }
 
 const mutations = {
-  [BANK_PAY_PARAMS] (state, bankParams) {
-    state.bankParams = bankParams
+  [GET_AUTOINVEST_INFO] (state, info) {
+    state.autoInvestInfo = info
   }
 }
 
 const actions = {
-  setBankPayParms ({ commit }, data) {
-    commit(BANK_PAY_PARAMS, data)
+  // 自动投标信息加载
+  async getAutoInvestInfo ({ commit }) {
+    let data = await autoInvest(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
+    if (data) {
+      commit(GET_AUTOINVEST_INFO, data.singleBean)
+    }
   }
 }
 

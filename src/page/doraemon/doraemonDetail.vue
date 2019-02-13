@@ -98,12 +98,11 @@ export default {
   },
   mounted () {
     let type = this.$route.params.days
-    if (!this.monthDetail && `${type}` === '1') {
-      this.getMonthDetail()
-    }
-
-    if (!this.yearDetail && `${type}` !== '1') {
-      this.getYearDetail(`${type}`)
+    if (`${type}` === '1') {
+      !this.monthDetail && this.getMonthDetail()
+    } else {
+      ;(!this.yearDetail || this.yearDetail.deadline !== `${type}`) &&
+        this.getYearDetail(`${type}`)
     }
   }
 }

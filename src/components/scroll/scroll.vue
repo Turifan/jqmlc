@@ -1,6 +1,7 @@
 <!-- 滚动组件 -->
 <template>
-  <div ref="wrapper" class="list-wrapper">
+  <div ref="wrapper"
+       class="list-wrapper">
     <div class="scroll-content">
       <div ref="listWrapper">
         <slot>
@@ -9,25 +10,40 @@
           </ul> -->
         </slot>
       </div>
-      <slot name="pullup" :pullUpLoad="pullUpLoad" :isPullUpLoad="isPullUpLoad">
-        <div class="pullup-wrapper" v-if="pullUpLoad">
-          <div class="before-trigger" v-if="!isPullUpLoad">
+      <slot name="pullup"
+            :pullUpLoad="pullUpLoad"
+            :isPullUpLoad="isPullUpLoad">
+        <div class="pullup-wrapper"
+             v-if="pullUpLoad">
+          <div class="before-trigger"
+               v-if="!isPullUpLoad">
             <span>{{pullUpTxt}}</span>
           </div>
-          <div class="after-trigger" v-else>
+          <div class="after-trigger"
+               v-else>
             <loading></loading>
           </div>
         </div>
       </slot>
     </div>
-    <slot name="pulldown" :pullDownRefresh="pullDownRefresh" :pullDownStyle="pullDownStyle" :beforePullDown="beforePullDown"
-      :isPullingDown="isPullingDown" :bubbleY="bubbleY">
-      <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="pullDownRefresh">
-        <div class="before-trigger" v-if="beforePullDown">
+    <slot name="pulldown"
+          :pullDownRefresh="pullDownRefresh"
+          :pullDownStyle="pullDownStyle"
+          :beforePullDown="beforePullDown"
+          :isPullingDown="isPullingDown"
+          :bubbleY="bubbleY">
+      <div ref="pulldown"
+           class="pulldown-wrapper"
+           :style="pullDownStyle"
+           v-if="pullDownRefresh">
+        <div class="before-trigger"
+             v-if="beforePullDown">
           <bubble :y="bubbleY"></bubble>
         </div>
-        <div class="after-trigger" v-else>
-          <div v-if="isPullingDown" class="loading">
+        <div class="after-trigger"
+             v-else>
+          <div v-if="isPullingDown"
+               class="loading">
             <loading></loading>
           </div>
           <div v-else><span>{{refreshTxt}}</span></div>
@@ -42,9 +58,7 @@ import BScroll from 'better-scroll'
 import Loading from '@/components/loading/loading.vue'
 import Bubble from '@/components/bubble/bubble.vue'
 
-import {
-  getRect
-} from '@/lib/js/dom'
+import { getRect } from '@/lib/js/dom'
 
 const COMPONENT_NAME = 'scroll'
 const DIRECTION_H = 'horizontal'
@@ -134,24 +148,31 @@ export default {
   },
   computed: {
     pullUpTxt () {
-      const moreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) || this.defaultLoadTxtMore
+      const moreTxt =
+        (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) ||
+        this.defaultLoadTxtMore
 
-      const noMoreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.noMore) || this.defaultLoadTxtNoMore
+      const noMoreTxt =
+        (this.pullUpLoad &&
+          this.pullUpLoad.txt &&
+          this.pullUpLoad.txt.noMore) ||
+        this.defaultLoadTxtNoMore
 
       return this.pullUpDirty ? moreTxt : noMoreTxt
     },
     refreshTxt () {
-      return (this.pullDownRefresh && this.pullDownRefresh.txt) || this.defaultRefreshTxt
+      return (
+        (this.pullDownRefresh && this.pullDownRefresh.txt) ||
+        this.defaultRefreshTxt
+      )
     }
   },
   created () {
     this.pullDownInitTop = -50
   },
   mounted () {
-    console.log('scroll组件已挂载')
     setTimeout(() => {
       this.initScroll()
-      console.log('initScroll初始化完毕')
     }, 20)
   },
   destroyed () {
@@ -163,7 +184,8 @@ export default {
         return
       }
       if (this.$refs.listWrapper && (this.pullDownRefresh || this.pullUpLoad)) {
-        this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper).height + 1}px`
+        this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper)
+          .height + 1}px`
       }
 
       let options = {
@@ -183,13 +205,13 @@ export default {
 
       this.scroll = new BScroll(this.$refs.wrapper, options)
       if (this.listenScroll) {
-        this.scroll.on('scroll', (pos) => {
+        this.scroll.on('scroll', pos => {
           this.$emit('scroll', pos)
         })
       }
 
       if (this.listenScrollEnd) {
-        this.scroll.on('scrollEnd', (pos) => {
+        this.scroll.on('scrollEnd', pos => {
           this.$emit('scroll-end', pos)
         })
       }
@@ -241,8 +263,11 @@ export default {
           this._afterPullDown()
         })
       } else if (this.pullUpLoad && this.isPullUpLoad) {
+        console.log(this.isPullUpLoad)
+        console.log(this.pullUpLoad)
         this.isPullUpLoad = false
         this.scroll.finishPullUp()
+
         this.pullUpDirty = dirty
         this.refresh()
       } else {
@@ -256,33 +281,38 @@ export default {
         this.$emit('pullingDown')
       })
 
-      this.scroll.on('scroll', (pos) => {
+      this.scroll.on('scroll', pos => {
         if (!this.pullDownRefresh) {
           return
         }
         if (this.beforePullDown) {
           this.bubbleY = Math.max(0, pos.y + this.pullDownInitTop)
-          this.pullDownStyle = `top:${Math.min(pos.y + this.pullDownInitTop, 0)}px`
+          this.pullDownStyle = `top:${Math.min(
+            pos.y + this.pullDownInitTop,
+            0
+          )}px`
         } else {
           this.bubbleY = 0
         }
 
         if (this.isRebounding) {
-          this.pullDownStyle = `top:${10 - (this.pullDownRefresh.stop - pos.y)}px`
+          this.pullDownStyle = `top:${10 -
+            (this.pullDownRefresh.stop - pos.y)}px`
         }
       })
     },
     _initPullUpLoad () {
+      // console.log(this.isPullUpLoad)
       this.scroll.on('pullingUp', () => {
+        // console.log(this.isPullUpLoad)
         this.isPullUpLoad = true
+        // console.log(this.isPullUpLoad)
         this.$emit('pullingUp')
       })
     },
     _reboundPullDown () {
-      const {
-        stopTime = 600
-      } = this.pullDownRefresh
-      return new Promise((resolve) => {
+      const { stopTime = 600 } = this.pullDownRefresh
+      return new Promise(resolve => {
         setTimeout(() => {
           this.isRebounding = true
           this.scroll.finishPullDown()
@@ -311,63 +341,61 @@ export default {
     Bubble
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin';
+@import '../../style/mixin';
 
-  .list-wrapper {
+.list-wrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  // background: #fff;
+
+  .scroll-content {
     position: relative;
-    height: 100%;
-    overflow: hidden;
-    // background: #fff;
+    z-index: 1;
+  }
+}
 
-    .scroll-content {
-      position: relative;
-      z-index: 1;
+.pulldown-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all;
+  top: -150px;
+  .fontSize(34px);
+
+  .after-trigger {
+    margin-top: 10px;
+
+    span {
+      display: inline-block;
+      height: 80px;
+      line-height: 80px;
     }
   }
+}
 
-  .pulldown-wrapper {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all;
-    top: -150px;
-    .fontSize(34px);
+.pullup-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  .fontSize(34px);
 
-    .after-trigger {
-      margin-top: 10px;
+  .before-trigger {
+    margin-top: 10px;
 
-      span {
-        display: inline-block;
-        height: 80px;
-        line-height: 80px;
-      }
+    span {
+      display: inline-block;
+      height: 80px;
+      line-height: 80px;
     }
   }
-
-  .pullup-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 0;
-    .fontSize(34px);
-
-    .before-trigger {
-      margin-top: 10px;
-
-      span {
-        display: inline-block;
-        height: 80px;
-        line-height: 80px;
-      }
-    }
-  }
-
+}
 </style>

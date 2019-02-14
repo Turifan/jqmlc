@@ -1,4 +1,5 @@
 import {
+  SET_SHARELIST,
   GET_DORAEMON_LIST,
   SET_MONTH_DETAIL,
   SET_YEAR_DETAIL,
@@ -10,14 +11,19 @@ import {
   SET_FAT_CURRENTPAGE,
   INIT_FAT_CURRENTPAGE,
   GET_FAT_LIST_TOTALNUM,
-  INIT_FAT_LIST
+  INIT_FAT_LIST,
+  SET_FATHISTORY_LIST,
+  SET_FATHISTORY_CURRENTPAGE,
+  GET_FAT_HISTORY_TOTALNUM
 } from '../mutation-types'
 
-import { machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList } from '@/service'
+import { shareList, machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList, loansOverList } from '@/service'
 
 import { getStore } from '@/lib/js/storage'
 
 const state = {
+  shareList: [],
+  shareCurpage: 0,
   doraemonList: [],
   monthDetail: null,
   yearDetail: null,
@@ -28,10 +34,16 @@ const state = {
   fattenList: [],
   fatList: [],
   fatListCurpage: 1,
-  totalNum: 0
+  totalNum: 0,
+  fatHistoryList: [],
+  fatHistoryCurpage: 1,
+  fatHistoryTotalNum: 0
 }
 
 const mutations = {
+  [SET_SHARELIST] (state, shareList) {
+    state.shareList = state.shareList.concat(shareList)
+  },
   [GET_DORAEMON_LIST] (state, doraemonList) {
     state.doraemonList = doraemonList
   },
@@ -60,18 +72,34 @@ const mutations = {
   [GET_FAT_LIST_TOTALNUM] (state, num) {
     state.totalNum = num
   },
+  [GET_FAT_HISTORY_TOTALNUM] (state, num) {
+    state.fatHistoryTotalNum = num
+  },
   [SET_FAT_CURRENTPAGE] (state) {
     state.fatListCurpage++
+  },
+  [SET_FATHISTORY_CURRENTPAGE] (state) {
+    state.fatHistoryCurpage++
   },
   [INIT_FAT_CURRENTPAGE] (state) {
     state.fatListCurpage = 1
   },
   [INIT_FAT_LIST] (state) {
     state.fatList = []
+  },
+  [SET_FATHISTORY_LIST] (state, fatHistoryList) {
+    state.fatHistoryList = state.fatHistoryList.concat(fatHistoryList)
   }
 }
 
 const actions = {
+  // 分享列表
+  async getShareList ({ state, commit }) {
+    let data = await shareList(...[JSON.parse(getStore('userInfo')).id, getStore('token'), `${state.shareCurpage}`])
+    if (data) {
+      commit(SET_SHARELIST, data)
+    }
+  },
   // 机器猫列表页
   async getDoraemonList ({ commit }) {
     let data = await machineList()
@@ -132,6 +160,15 @@ const actions = {
       commit(GET_FAT_LIST, data.listBean.page)
       commit(GET_FAT_LIST_TOTALNUM, data.listBean.totalNum)
       commit(SET_FAT_CURRENTPAGE)
+    }
+  },
+  // 发财猫历史列表
+  async loadFatHistoryList ({ state, commit }, numDays) {
+    let data = await loansOverList(`${state.fatHistoryCurpage}`, numDays)
+    if (data) {
+      commit(SET_FATHISTORY_LIST, data.listBean.page)
+      commit(SET_FATHISTORY_CURRENTPAGE)
+      commit(GET_FAT_HISTORY_TOTALNUM, data.listBean.totalNum)
     }
   }
 }

@@ -4,17 +4,17 @@
     <div class="fatten-list" v-for="item in data" :key="item.id">
       <div class="fatten-list-title">
         <div class="">
-          <span class="">{{i.typeName}}</span>
-          <span class="orange exptips">{{i.activityDesc}}</span>
+          <span class="">{{item.typeName}}</span>
+          <span class="orange exptips" v-if="item.activityDesc">{{item.activityDesc}}</span>
         </div>
         <div class="">
-          <span class="fatten-list-tip">银行卡标</span>
+          <span class="fatten-list-tip">{{item.payType===2?'直投标':''}}</span>
         </div>
       </div>
-      <router-link tag="div" :to="{ name: 'invest', params: {fatId:30} }" class="fatten-detail">
+      <router-link tag="div" :to="{ name: 'invest', params: {fatId:item.numDays} }" class="fatten-detail">
         <div class="fatten-rate">
           <div class="rate">
-            10.0 <span class="rate-simbol">%</span>
+            <span>{{item.rate}}</span><span class="" v-if="item.activityAddRate">+{{item.activityAddRate}}</span><span class="rate-simbol">%</span>
           </div>
           <div class="rate-tit">
             预期年化收益
@@ -23,23 +23,23 @@
         <div class="least-invest">
           <div class="invest-days">
             <span>投资期限</span>
-            <span class="invest-info">30<span class="invest-info-unit">天</span></span>
+            <span class="invest-info">{{item.numDays}}<span class="invest-info-unit">天</span></span>
           </div>
           <div class="least-amount">
             <span>起购金额</span>
-            <span class="invest-info">100<span class="invest-info-unit">元</span></span>
+            <span class="invest-info">{{item.leastAmount}}<span class="invest-info-unit">元</span></span>
           </div>
         </div>
-        <router-link tag="div" :to="{ name: 'invest', params: {fatId:30} }" class="invest-btn">
-          开抢
+        <router-link tag="div" :to="{ name: 'invest', params: {fatId:item.numDays} }" :class="['invest-btn',item.state==='0'?'invest-robing':'invest-repayment']">
+          {{item.state==='0'?'开抢':'还款中'}}
         </router-link>
       </router-link>
       <div class="fatten-limit">
         <div class="">
-          每个ID限额2万
+          每个ID限额{{item.maxAmout}}元
         </div>
         <div class="">
-          可投资金<span class="orange">200000.00元</span>
+          可投资金<span class="orange">{{item.surMoney}}元</span>
         </div>
       </div>
     </div>
@@ -145,11 +145,17 @@ export default {
 .invest-btn {
   .size(160px, 160px);
   .border-radius(50%);
-  .bg(@orange);
   line-height: 160px;
   text-align: center;
   .color(#fff);
   .fontSize(42px);
+}
+
+.invest-robing {
+  .bg(@orange);
+}
+.invest-repayment {
+  .bg(#ffc999);
 }
 
 .fatten-limit {

@@ -5,7 +5,7 @@
       <div class="wrapper">
         <scroll ref="scroll" :pullDownRefresh="pullDownRefreshObj" :pullUpLoad="pullUpLoadObj" :startY="parseInt(startY)"
           @pullingDown="onPullingDown" @pullingUp="onPullingUp">
-          <FattenList :data="items"></FattenList>
+          <FattenList :data="fatList"></FattenList>
         </scroll>
       </div>
     </div>
@@ -30,17 +30,6 @@ export default {
   },
   data () {
     return {
-      headerBar: {
-        title: '汤姆猫',
-        imgUrl: require('../../assets/images/fat_history.png'),
-        goBackUrl: require('../../assets/images/goBack.png'),
-        path: 'fatHistory',
-        params: {
-          days: 30
-        },
-        goBack: true,
-        showIcon: true
-      },
       pullDownRefresh: true,
       pullDownRefreshThreshold: 90,
       pullDownRefreshStop: 40,
@@ -49,7 +38,16 @@ export default {
       pullUpLoadMoreTxt: '加载更多',
       pullUpLoadNoMoreTxt: '没有更多数据了',
       startY: 0,
-      items: this.fatList
+      productInfo: {
+        30: '汤姆猫',
+        60: '布偶猫',
+        90: '卷耳猫',
+        180: '夏特尔猫',
+        270: '苏格兰折耳猫',
+        360: '波斯猫',
+        720: '金钱猫'
+      }
+      // items: this.fatList
     }
   },
   watch: {
@@ -87,7 +85,20 @@ export default {
     ...mapState({
       fatList: ({ products }) => products.fatList,
       fatListCurpage: ({ products }) => products.fatListCurpage,
-      totalNum: ({ products }) => products.totalNum
+      totalNum: ({ products }) => products.totalNum,
+      headerBar () {
+        return {
+          title: this.productInfo[`${this.$route.params.days}`],
+          imgUrl: require('../../assets/images/fat_history.png'),
+          goBackUrl: require('../../assets/images/goBack.png'),
+          path: 'fatHistory',
+          params: {
+            days: this.$route.params.days
+          },
+          goBack: true,
+          showIcon: true
+        }
+      }
     }),
     pullDownRefreshObj () {
       return this.pullDownRefresh
@@ -133,7 +144,7 @@ export default {
         // } else {
         //   // 如果没有新数据
         //   console.log('无新数据')
-        this.$refs.scroll.forceUpdate(true)
+        this.$refs.scroll.forceUpdate()
         // }
       }, 2000)
     },

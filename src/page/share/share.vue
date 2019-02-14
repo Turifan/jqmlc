@@ -4,14 +4,7 @@
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed-bg gray-fixed">
       <div class="">
-        <ShareList/>
-          <ShareList/>
-            <ShareList/>
-              <ShareList/>
-                <ShareList/>
-                  <ShareList/>
-                    <ShareList/>
-                      <ShareList/>
+        <ShareList></ShareList>
       </div>
     </div>
   </div>
@@ -21,6 +14,7 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import ShareList from './share_list.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Share',
@@ -39,6 +33,19 @@ export default {
         goBack: true,
         showIcon: true
       }
+    }
+  },
+  computed: {
+    ...mapState({
+      shareCurpage: ({ products }) => products.shareCurpage
+    })
+  },
+  methods: {
+    ...mapState(['getShareList'])
+  },
+  mounted () {
+    if (this.shareCurpage === 1) {
+      this.getShareList()
     }
   }
 }

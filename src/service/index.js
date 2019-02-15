@@ -7,31 +7,33 @@ import axios from '../config/http'
  * @param {String} name 用户名
  * @param {String} pwd 密码
  */
-export const login = (name, pwd) => axios({
-  url: requestUrl.login,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      name,
-      pwd
-    })
-  }
-})
+export const login = (name, pwd) =>
+  axios({
+    url: requestUrl.login,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        name,
+        pwd
+      })
+    }
+  })
 
 // 注册获取验证码
 /**
  * 注册获取验证码
  * @param {String} cellPhone 用户名-手 h机号
  */
-export const sendRegSMS = cellPhone => axios({
-  url: requestUrl.sendRegSMS,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      cellPhone
-    })
-  }
-})
+export const sendRegSMS = cellPhone =>
+  axios({
+    url: requestUrl.sendRegSMS,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        cellPhone
+      })
+    }
+  })
 
 // 注册点击下一步调用接口
 /**
@@ -39,16 +41,17 @@ export const sendRegSMS = cellPhone => axios({
  * @param {String} cellPhone 手机号
  * @param {String} code 手机验证码
  */
-export const phoneCodeCheck = (cellPhone, code) => axios({
-  url: requestUrl.phoneCodeCheck,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      cellPhone,
-      code
-    })
-  }
-})
+export const phoneCodeCheck = (cellPhone, code) =>
+  axios({
+    url: requestUrl.phoneCodeCheck,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        cellPhone,
+        code
+      })
+    }
+  })
 
 // 提交注册信息
 /**
@@ -80,16 +83,17 @@ export const register = (cellPhone, pwd, dealpwd, refferee, clientType) =>
  * @param {String} cellPhone 用户名称
  * @param {String} key 类型 back-找回密码，withdraw-提现，infoAuth-实名认证，backDeal-找回交易密码，currentPay-灵活猫支付，balancePay-余额支付
  */
-export const sendSMS = (cellPhone, key) => axios({
-  url: requestUrl.sendSMS,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      cellPhone,
-      key
-    })
-  }
-})
+export const sendSMS = (cellPhone, key) =>
+  axios({
+    url: requestUrl.sendSMS,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        cellPhone,
+        key
+      })
+    }
+  })
 
 // 验证短信验证码
 /**
@@ -97,16 +101,17 @@ export const sendSMS = (cellPhone, key) => axios({
  * @param {String} cellPhone 手机号
  * @param {String} key 验证码
  */
-export const codeCheck = (cellPhone, key) => axios({
-  url: requestUrl.codeCheck,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      cellPhone,
-      key
-    })
-  }
-})
+export const codeCheck = (cellPhone, key) =>
+  axios({
+    url: requestUrl.codeCheck,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        cellPhone,
+        key
+      })
+    }
+  })
 
 // 重置登录密码接口
 /**
@@ -134,25 +139,44 @@ export const resetLoginPassword = (cellPhone, password, confirmpassword) =>
  * @param {String} uid 用户ID
  * @param {String} token 唯一标识
  */
-export const userSignInfo = (uid, token) => axios({
-  url: requestUrl.userSignInfo,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const userSignInfo = (uid, token) =>
+  axios({
+    url: requestUrl.userSignInfo,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
+
+/**
+ * 签到
+ * @param {String} uid 用户ID
+ * @param {String} token 唯一标识
+ */
+export const sign = (uid, token) =>
+  axios({
+    url: requestUrl.sign,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 首页显示
 /**
  * 首页标显示
  */
-export const queryHome = () => axios({
-  url: requestUrl.queryHome,
-  method: 'get'
-})
+export const queryHome = () =>
+  axios({
+    url: requestUrl.queryHome,
+    method: 'get'
+  })
 
 // 分享列表
 /**
@@ -161,19 +185,20 @@ export const queryHome = () => axios({
  * @param {String} token 唯一标识
  * @param {String} curPage 页码
  */
-export const shareList = (uid, token, curPage) => axios({
-  url: requestUrl.shareList,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      curPage
-    })
-  }
-})
+export const shareList = (uid, token, curPage) =>
+  axios({
+    url: requestUrl.shareList,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        curPage
+      })
+    }
+  })
 
 // 月盈猫信息
 /**
@@ -249,19 +274,21 @@ export const profitInvest = (uid, token, money, payPWD, profitId) =>
 /**
  * doraemo list
  */
-export const machineList = () => axios({
-  url: requestUrl.machineList,
-  method: 'get'
-})
+export const machineList = () =>
+  axios({
+    url: requestUrl.machineList,
+    method: 'get'
+  })
 
 // banner图
 /**
  * banner Image list
  */
-export const banner = () => axios({
-  url: requestUrl.banner,
-  method: 'get'
-})
+export const banner = () =>
+  axios({
+    url: requestUrl.banner,
+    method: 'get'
+  })
 
 // 月月涨
 /**
@@ -269,16 +296,17 @@ export const banner = () => axios({
  * @param {String} uid user id
  * @param {String} token the singal token
  */
-export const month = (uid, token) => axios({
-  url: requestUrl.month,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const month = (uid, token) =>
+  axios({
+    url: requestUrl.month,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 季 半 九 年克隆
 /**
@@ -287,25 +315,27 @@ export const month = (uid, token) => axios({
  * @param {String} token token
  * @param {String} type the number of type 3,6,9,12,24
  */
-export const machineYear = (uid, token, type) => axios({
-  url: requestUrl.machineYear,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      type
-    })
-  }
-})
+export const machineYear = (uid, token, type) =>
+  axios({
+    url: requestUrl.machineYear,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        type
+      })
+    }
+  })
 
 // 发财猫页面列表
-export const fattenList = () => axios({
-  url: requestUrl.fattenList,
-  method: 'get'
-})
+export const fattenList = () =>
+  axios({
+    url: requestUrl.fattenList,
+    method: 'get'
+  })
 
 // 发财猫某一产品列表
 /**
@@ -315,20 +345,21 @@ export const fattenList = () => axios({
  * @param {String} term the term of this fatten product
  * @param {String} curPage page size
  */
-export const fatList = (uid, token, term, curPage) => axios({
-  url: requestUrl.fatList,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      term,
-      curPage
-    })
-  }
-})
+export const fatList = (uid, token, term, curPage) =>
+  axios({
+    url: requestUrl.fatList,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        term,
+        curPage
+      })
+    }
+  })
 
 // 投资详情页面加载
 /**
@@ -337,34 +368,36 @@ export const fatList = (uid, token, term, curPage) => axios({
  * @param {String} token token
  * @param {String} id loan id
  */
-export const loansDital = (uid, token, id) => axios({
-  url: requestUrl.loansDital,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      id
-    })
-  }
-})
+export const loansDital = (uid, token, id) =>
+  axios({
+    url: requestUrl.loansDital,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        id
+      })
+    }
+  })
 
 // 投资详情页面 借款详情
 /**
  * loan detail
  * @param {String} id the id of loanbid
  */
-export const borrowerInfo = id => axios({
-  url: requestUrl.borrowerInfo,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      id
-    })
-  }
-})
+export const borrowerInfo = id =>
+  axios({
+    url: requestUrl.borrowerInfo,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        id
+      })
+    }
+  })
 
 // 投资详情页面 投资记录
 /**
@@ -372,16 +405,17 @@ export const borrowerInfo = id => axios({
  * @param {String} id the loanbid id
  * @param {String} curPage page number
  */
-export const loansInvestList = (id, curPage) => axios({
-  url: requestUrl.loansInvestList,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      id,
-      curPage
-    })
-  }
-})
+export const loansInvestList = (id, curPage) =>
+  axios({
+    url: requestUrl.loansInvestList,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        id,
+        curPage
+      })
+    }
+  })
 
 // 投资详情页面 还款记录
 /**
@@ -389,16 +423,17 @@ export const loansInvestList = (id, curPage) => axios({
  * @param {String} id the loanbid id
  * @param {String} curPage page number
  */
-export const loansRepaymentList = (id, curPage) => axios({
-  url: requestUrl.loansRepaymentList,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      id,
-      curPage
-    })
-  }
-})
+export const loansRepaymentList = (id, curPage) =>
+  axios({
+    url: requestUrl.loansRepaymentList,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        id,
+        curPage
+      })
+    }
+  })
 
 // 发财猫投资接口
 /**
@@ -432,16 +467,17 @@ export const richInvest = (uid, token, money, payPWD, id) =>
  * @param {String} curPage page number
  * @param {String} numDays the term of history fatten
  */
-export const loansOverList = (curPage, numDays) => axios({
-  url: requestUrl.loansOverList,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      curPage,
-      numDays
-    })
-  }
-})
+export const loansOverList = (curPage, numDays) =>
+  axios({
+    url: requestUrl.loansOverList,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        curPage,
+        numDays
+      })
+    }
+  })
 
 // 自动投标信息
 /**
@@ -449,31 +485,33 @@ export const loansOverList = (curPage, numDays) => axios({
  * @param {String} uid userid
  * @param {String} token token
  */
-export const autoInvest = (uid, token) => axios({
-  url: requestUrl.autoInvest,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const autoInvest = (uid, token) =>
+  axios({
+    url: requestUrl.autoInvest,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 自动投标投资期限限额
 /**
  * maxInvest of auto invest when change term
  * @param {String} term the term of autoinvest
  */
-export const getBitQuota = term => axios({
-  url: requestUrl.getBitQuota,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      term
-    })
-  }
-})
+export const getBitQuota = term =>
+  axios({
+    url: requestUrl.getBitQuota,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        term
+      })
+    }
+  })
 
 // 开启或修改自动投标
 /**
@@ -511,16 +549,17 @@ export const setupAutoBid = (uid, token, minRate, maxRate, bidAmount, term, payT
  * @param {String} uid user id
  * @param {String} token token
  */
-export const closeAutoBid = (uid, token) => axios({
-  url: requestUrl.closeAutoBid,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const closeAutoBid = (uid, token) =>
+  axios({
+    url: requestUrl.closeAutoBid,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 点击提现 ---所有提现先点击后跳转到提现页面
 /**
@@ -610,16 +649,17 @@ export const withdraw = (uid, token, type, dealpwd, code, money, bankId, clientT
  * @param {String} uid userid
  * @param {String} token token
  */
-export const notice = (uid, token) => axios({
-  url: requestUrl.notice,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const notice = (uid, token) =>
+  axios({
+    url: requestUrl.notice,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 公告列表
 /**
@@ -628,19 +668,20 @@ export const notice = (uid, token) => axios({
  * @param {String} token token
  * @param {String} curPage the page number
  */
-export const noticeList = (uid, token, curPage) => axios({
-  url: requestUrl.noticeList,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      curPage
-    })
-  }
-})
+export const noticeList = (uid, token, curPage) =>
+  axios({
+    url: requestUrl.noticeList,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        curPage
+      })
+    }
+  })
 
 // 个人中心会员等级、手机号码、头像等信息
 /**
@@ -648,16 +689,17 @@ export const noticeList = (uid, token, curPage) => axios({
  * @param {String} uid userid
  * @param {String} token token
  */
-export const personInfo = (uid, token) => axios({
-  url: requestUrl.personInfo,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const personInfo = (uid, token) =>
+  axios({
+    url: requestUrl.personInfo,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 灵活猫
 /**
@@ -665,16 +707,17 @@ export const personInfo = (uid, token) => axios({
  * @param {String} uid userid
  * @param {String} token token
  */
-export const current = (uid, token) => axios({
-  url: requestUrl.current,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const current = (uid, token) =>
+  axios({
+    url: requestUrl.current,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 余额
 /**
@@ -682,16 +725,17 @@ export const current = (uid, token) => axios({
  * @param {String} uid userid
  * @param {String} token token
  */
-export const balance = (uid, token) => axios({
-  url: requestUrl.balance,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const balance = (uid, token) =>
+  axios({
+    url: requestUrl.balance,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 余额支付
 /**
@@ -727,19 +771,20 @@ export const balancePay = (uid, token, payPWD, money, divType, copies, steadyId,
  * @param {String} token token
  * @param {String} curPage the page number
  */
-export const balanceRecord = (uid, token, curPage) => axios({
-  url: requestUrl.balanceRecord,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      curPage
-    })
-  }
-})
+export const balanceRecord = (uid, token, curPage) =>
+  axios({
+    url: requestUrl.balanceRecord,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        curPage
+      })
+    }
+  })
 
 // 充值页面
 /**
@@ -747,16 +792,17 @@ export const balanceRecord = (uid, token, curPage) => axios({
  * @param {String} uid userid
  * @param {String} token token
  */
-export const balanceRechargeInit = (uid, token) => axios({
-  url: requestUrl.balanceRechargeInit,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const balanceRechargeInit = (uid, token) =>
+  axios({
+    url: requestUrl.balanceRechargeInit,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 充值
 /**
@@ -765,19 +811,20 @@ export const balanceRechargeInit = (uid, token) => axios({
  * @param {String} token token
  * @param {String} money the number of recharge
  */
-export const balanceRecharge = (uid, token, money) => axios({
-  url: requestUrl.balanceRecharge,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      money
-    })
-  }
-})
+export const balanceRecharge = (uid, token, money) =>
+  axios({
+    url: requestUrl.balanceRecharge,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        money
+      })
+    }
+  })
 
 // 账户资产
 /**
@@ -786,19 +833,20 @@ export const balanceRecharge = (uid, token, money) => axios({
  * @param {String} token token
  * @param {String} type the product type of user account. type:1、月月涨2、年账户 3、猫粮4、季度喵5、半年喵 6、九九喵7、活期喵 8、发财猫 9、克隆喵10、月盈猫（为0的就是全部）
  */
-export const accountInfo = (uid, token, type) => axios({
-  url: requestUrl.accountInfo,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      type
-    })
-  }
-})
+export const accountInfo = (uid, token, type) =>
+  axios({
+    url: requestUrl.accountInfo,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        type
+      })
+    }
+  })
 
 // 账户资产持有列表
 /**
@@ -878,16 +926,17 @@ export const fundrecordListDetail = (uid, token, type, curPage) =>
  * @param {String} uid userid
  * @param {String} token token
  */
-export const myInvitation = (uid, token) => axios({
-  url: requestUrl.myInvitation,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const myInvitation = (uid, token) =>
+  axios({
+    url: requestUrl.myInvitation,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 我的邀请列表
 /**
@@ -918,19 +967,20 @@ export const myInvitationList = (uid, token, curPage) =>
  * @param {String} token token
  * @param {String} curPage the page number
  */
-export const luckyDrawList = (uid, token, curPage) => axios({
-  url: requestUrl.luckyDrawList,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      curPage
-    })
-  }
-})
+export const luckyDrawList = (uid, token, curPage) =>
+  axios({
+    url: requestUrl.luckyDrawList,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        curPage
+      })
+    }
+  })
 
 // 抽奖号码某一期 我的号码
 /**
@@ -961,15 +1011,16 @@ export const drawNumber = (uid, token, drawId, curPage) =>
  * the rule of the luckdraw
  * @param {String} drawId luckdraw id
  */
-export const luckyDrawRule = drawId => axios({
-  url: requestUrl.luckyDrawRule,
-  method: 'post',
-  data: {
-    info: JSON.stringify({
-      draw_id: drawId
-    })
-  }
-})
+export const luckyDrawRule = drawId =>
+  axios({
+    url: requestUrl.luckyDrawRule,
+    method: 'post',
+    data: {
+      info: JSON.stringify({
+        draw_id: drawId
+      })
+    }
+  })
 
 // 我的任务
 /**
@@ -977,16 +1028,17 @@ export const luckyDrawRule = drawId => axios({
  * @param {String} uid userid
  * @param {String} token token
  */
-export const userTask = (uid, token) => axios({
-  url: requestUrl.userTask,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const userTask = (uid, token) =>
+  axios({
+    url: requestUrl.userTask,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 投资记录
 /**
@@ -1018,16 +1070,17 @@ export const investmentList = (uid, token, type, curPage) =>
  * @param {String} uid userid
  * @param {String} token token
  */
-export const catTicket = (uid, token) => axios({
-  url: requestUrl.catTicket,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const catTicket = (uid, token) =>
+  axios({
+    url: requestUrl.catTicket,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 猫小票兑换
 /**
@@ -1080,19 +1133,20 @@ export const winPrizeHistory = (uid, token, curPage) =>
  * @param {String} token token
  * @param {String} curPage page number
  */
-export const catTicketDraw = (uid, token, curPage) => axios({
-  url: requestUrl.catTicketDraw,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      curPage
-    })
-  }
-})
+export const catTicketDraw = (uid, token, curPage) =>
+  axios({
+    url: requestUrl.catTicketDraw,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        curPage
+      })
+    }
+  })
 
 // 猫小票历史票码某一期 我的号码
 /**
@@ -1146,16 +1200,17 @@ export const currentTicketNumber = (uid, token, curPage) =>
  * @param {String} uid userid
  * @param {String} token token
  */
-export const myCatFood = (uid, token) => axios({
-  url: requestUrl.myCatFood,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    })
-  }
-})
+export const myCatFood = (uid, token) =>
+  axios({
+    url: requestUrl.myCatFood,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      })
+    }
+  })
 
 // 猫粮记录
 /**
@@ -1164,19 +1219,20 @@ export const myCatFood = (uid, token) => axios({
  * @param {String} token token
  * @param {String} curPage page number
  */
-export const catFoodRecord = (uid, token, curPage) => axios({
-  url: requestUrl.catFoodRecord,
-  method: 'post',
-  data: {
-    auth: JSON.stringify({
-      uid,
-      qrsoft_fe_token: token
-    }),
-    info: JSON.stringify({
-      curPage
-    })
-  }
-})
+export const catFoodRecord = (uid, token, curPage) =>
+  axios({
+    url: requestUrl.catFoodRecord,
+    method: 'post',
+    data: {
+      auth: JSON.stringify({
+        uid,
+        qrsoft_fe_token: token
+      }),
+      info: JSON.stringify({
+        curPage
+      })
+    }
+  })
 
 // 红包卡券
 /**

@@ -3,31 +3,31 @@
   <div class="">
     <Header :title="title"></Header>
     <div class="gray-body">
-      <div class="notice">
+      <div class="notice" v-if="noticeInfo">
         <div class="notice-img">
           <img src="../../assets/images/notice.png" alt="">
         </div>
-        <div class="notice-txt" @click.stop.prevent="$router.push('noticeDetail')">
-          1月24号晚凌晨24:00至25号凌晨3:00系统维护。
+        <div class="notice-txt" @click.stop.prevent="$router.push(`noticeDetail/${noticeInfo.id}`)">
+          {{noticeInfo.title}}
         </div>
         <div class="moreNotice" @click.stop.prevent="$router.push('notice')">
           <img src="../../assets/images/moreNotice.png" alt="">
         </div>
       </div>
-      <div class="userInfo">
+      <div class="userInfo" v-if="personInfo">
         <div class="avatar">
           <img src="../../assets/images/default-image.png" alt="">
         </div>
         <div class="userDetail">
           <div class="mobile">
-            185******23
+            {{personInfo.mobilePhone}}
           </div>
           <div class="level" @click.stop.prevent="$router.push('member')">
             <div class="level-box">
-              <img src="../../assets/images/level.png" alt="" class="level-img">折耳猫 >>
+              <img src="../../assets/images/level.png" alt="" class="level-img">{{personInfo.groupName}} >>
             </div>
             <div class="level-box" @click.stop.prevent="$router.push('growValue')">
-              <img src="../../assets/images/growTree.png" alt="" class="level-img">110 >>
+              <img src="../../assets/images/growTree.png" alt="" class="level-img">{{personInfo.growthValue}} >>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Suduku from './suduku.vue'
-import {mapActions} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Personal',
@@ -145,12 +145,21 @@ export default {
       ]
     }
   },
-  computed: {},
+  computed: {
+    ...mapState({
+      noticeInfo: ({ globalVal }) => globalVal.noticeInfo,
+      personInfo: ({ auth }) => auth.personInfo
+    })
+  },
   methods: {
-    ...mapActions(['logoutAction']),
+    ...mapActions(['logoutAction', 'getNoticeInfo', 'getPersonInfo']),
     logout () {
       this.logoutAction()
     }
+  },
+  mounted () {
+    this.getNoticeInfo()
+    this.getPersonInfo()
   }
 }
 </script>

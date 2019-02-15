@@ -1,5 +1,7 @@
 import {
   SET_SHARELIST,
+  INIT_SHARECURPAGE,
+  SET_SHARECURPAGE,
   GET_DORAEMON_LIST,
   SET_MONTH_DETAIL,
   SET_YEAR_DETAIL,
@@ -23,7 +25,7 @@ import { getStore } from '@/lib/js/storage'
 
 const state = {
   shareList: [],
-  shareCurpage: 0,
+  shareCurpage: 1,
   doraemonList: [],
   monthDetail: null,
   yearDetail: null,
@@ -43,6 +45,12 @@ const state = {
 const mutations = {
   [SET_SHARELIST] (state, shareList) {
     state.shareList = state.shareList.concat(shareList)
+  },
+  [INIT_SHARECURPAGE] (state) {
+    state.shareCurpage = 1
+  },
+  [SET_SHARECURPAGE] (state) {
+    state.shareCurpage++
   },
   [GET_DORAEMON_LIST] (state, doraemonList) {
     state.doraemonList = doraemonList
@@ -97,7 +105,8 @@ const actions = {
   async getShareList ({ state, commit }) {
     let data = await shareList(...[JSON.parse(getStore('userInfo')).id, getStore('token'), `${state.shareCurpage}`])
     if (data) {
-      commit(SET_SHARELIST, data)
+      commit(SET_SHARELIST, data.listBean.page)
+      commit(SET_SHARECURPAGE)
     }
   },
   // 机器猫列表页

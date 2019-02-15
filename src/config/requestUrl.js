@@ -99,13 +99,13 @@ export default {
   withdraw: '/app/addWithdrawApp.do',
 
   // 个人中心最新公告
-  notice: '/app/ noticeInfoApp.do',
+  notice: '/app/noticeInfoApp.do',
 
   // 公告列表
   noticeList: '/app/queryNewsListApp.do',
 
   // 个人中心会员等级、手机号码、头像等信息
-  personInfo: '/app/ perInfoApp.do',
+  personInfo: '/app/perInfoApp.do',
 
   // 灵活猫
   current: '/app/flexibleCatApp.do',

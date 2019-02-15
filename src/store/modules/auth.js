@@ -1,9 +1,11 @@
-import { SET_TOKEN, SET_USERINFO, REMOVE_ALL_STORAGE } from '../mutation-types'
+import { SET_TOKEN, SET_USERINFO, REMOVE_ALL_STORAGE, GET_PERSONALINFO } from '../mutation-types'
 import { getStore, setStore, clearStore } from '@/lib/js/storage'
+import { personInfo } from '@/service'
 
 const state = {
   userInfo: getStore('userInfo') || null,
-  token: getStore('token') || null
+  token: getStore('token') || null,
+  personInfo: null
 }
 
 const mutations = {
@@ -20,6 +22,9 @@ const mutations = {
     state.token = null
     clearStore()
     sessionStorage.clear()
+  },
+  [GET_PERSONALINFO] (state, info) {
+    state.personInfo = info
   }
 }
 
@@ -34,6 +39,13 @@ const actions = {
   // 登出
   logoutAction ({ commit }) {
     commit(REMOVE_ALL_STORAGE)
+  },
+  // 个人信息
+  async getPersonInfo ({ commit }) {
+    let data = await personInfo(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
+    if (data) {
+      commit(GET_PERSONALINFO, data.singleBean)
+    }
   }
 }
 

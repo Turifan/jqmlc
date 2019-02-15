@@ -1,9 +1,13 @@
-import { GET_INDEX_IMAGES, GET_HOME_INFO } from '../mutation-types'
-import { banner, queryHome } from '@/service'
+import { GET_INDEX_IMAGES, GET_HOME_INFO, GET_SIGNINFO, GET_NOTICE, GET_PERSONALINFO, GET_NOTICE_LIST } from '../mutation-types'
+import { banner, queryHome, userSignInfo, notice } from '@/service'
+import { getStore } from '@/lib/js/storage'
 
 const state = {
   bannerImagesList: [],
-  homeInfo: null
+  homeInfo: null,
+  signInfo: null,
+  noticeInfo: null,
+  noticeList: []
 }
 
 const mutations = {
@@ -12,6 +16,18 @@ const mutations = {
   },
   [GET_HOME_INFO] (state, info) {
     state.homeInfo = info
+  },
+  [GET_SIGNINFO] (state, info) {
+    state.signInfo = info
+  },
+  [GET_NOTICE] (state, info) {
+    state.noticeInfo = info
+  },
+  [GET_NOTICE_LIST] (state, noticeList) {
+    state.noticeList = state.noticeList.concat(noticeList)
+  },
+  [GET_PERSONALINFO] (state, info) {
+    state.personInfo = info
   }
 }
 
@@ -25,6 +41,20 @@ const actions = {
   async queryHome ({ commit }) {
     let data = await queryHome()
     commit(GET_HOME_INFO, data.singleBean)
+  },
+  // 签到信息
+  async getSignInfo ({ commit }) {
+    let data = await userSignInfo(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
+    if (data) {
+      commit(GET_SIGNINFO, data.singleBean)
+    }
+  },
+  // 最新公告信息
+  async getNoticeInfo ({ commit }) {
+    let data = await notice(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
+    if (data) {
+      commit(GET_NOTICE, data.singleBean)
+    }
   }
 }
 

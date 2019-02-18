@@ -1,5 +1,5 @@
-import { GET_INDEX_IMAGES, GET_HOME_INFO, GET_SIGNINFO, GET_NOTICE, GET_PERSONALINFO, GET_NOTICE_LIST } from '../mutation-types'
-import { banner, queryHome, userSignInfo, notice } from '@/service'
+import { GET_INDEX_IMAGES, GET_HOME_INFO, GET_SIGNINFO, GET_NOTICE, GET_PERSONALINFO, GET_NOTICE_LIST, SET_NOTICE_PAGE, INIT_NOTICE_PAGE } from '../mutation-types'
+import { banner, queryHome, userSignInfo, notice, noticeList } from '@/service'
 import { getStore } from '@/lib/js/storage'
 
 const state = {
@@ -7,7 +7,8 @@ const state = {
   homeInfo: null,
   signInfo: null,
   noticeInfo: null,
-  noticeList: []
+  noticeList: [],
+  noticeCurpage: 1
 }
 
 const mutations = {
@@ -28,6 +29,12 @@ const mutations = {
   },
   [GET_PERSONALINFO] (state, info) {
     state.personInfo = info
+  },
+  [SET_NOTICE_PAGE] (state) {
+    state.noticeCurpage++
+  },
+  [INIT_NOTICE_PAGE] (state) {
+    state.noticeCurpage = 1
   }
 }
 
@@ -54,6 +61,14 @@ const actions = {
     let data = await notice(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
     if (data) {
       commit(GET_NOTICE, data.singleBean)
+    }
+  },
+  // 公告列表
+  async getNoticeList ({ state, commit }) {
+    let data = await noticeList(...[JSON.parse(getStore('userInfo')).id, getStore('token'), `${state.noticeCurpage}`])
+    if (data) {
+      commit(GET_NOTICE_LIST, data.listBean.page)
+      commit(SET_NOTICE_PAGE)
     }
   }
 }

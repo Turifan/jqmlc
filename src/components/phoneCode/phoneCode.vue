@@ -60,6 +60,15 @@ export default {
   outline: none;
 }
 
+.depositGetCode {
+  .size(282px, 102px);
+  border-radius: 20px;
+  background: @main-color;
+  .color(#fff);
+  text-align: center;
+  line-height: 102px;
+}
+
 .btn-disabled {
   cursor: not-allowed;
   pointer-events: none;

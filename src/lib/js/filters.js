@@ -9,3 +9,7 @@ export const currency = money => {
 export const formatCurrency = currency => {
   return currency.toFixed(2)
 }
+
+export const formatMobile = mobile => {
+  return mobile.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
+}

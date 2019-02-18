@@ -4,14 +4,14 @@
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed">
       <!-- deposit information -->
-      <div class="depositInfo">
+      <div class="depositInfo" v-if="depositInfo">
         <!-- 提现来源 -->
         <div class="depositAccount">
           <div class="depositAccountImg">
             <img src="../../assets/images/balance-icon.png" alt="" class="img-responsive">
           </div>
           <div class="depositAccountTit">余额</div>
-          <div class="depositAccountSum">(45679.00)</div>
+          <div class="depositAccountSum">({{depositInfo.usableSum}})</div>
         </div>
         <!-- arrow -->
         <div class="depositArrow">
@@ -22,8 +22,8 @@
           <div class="depositAccountImg">
             <img src="../../assets/images/depositBank.png" alt="" class="img-responsive">
           </div>
-          <div class="depositAccountTit">招商银行</div>
-          <div class="depositAccountSum">储蓄卡(2799)</div>
+          <div class="depositAccountTit">{{depositInfo.bankName}}</div>
+          <div class="depositAccountSum">储蓄卡({{depositInfo.cardNo.slice(-4)}})</div>
         </div>
       </div>
       <!-- deposit form -->
@@ -34,7 +34,7 @@
               <img src="../../assets/images/deposit03.png" alt="" class="img-responsive">
             </div>
             <div class="depositInput">
-              <input type="text" placeholder="可提金额：100.00元">
+              <input type="text" :placeholder="placeholder" v-model.trim="money">
             </div>
           </div>
           <div class="depositFromGroup">
@@ -42,7 +42,7 @@
               <img src="../../assets/images/password1.png" alt="" class="img-responsive">
             </div>
             <div class="depositInput">
-              <input type="text" placeholder="请输入交易密码">
+              <input type="password" placeholder="请输入交易密码" v-model.trim="dealPwd">
             </div>
           </div>
           <div class="depositFromGroup">
@@ -50,12 +50,16 @@
               <img src="../../assets/images/code.png" alt="" class="img-responsive">
             </div>
             <div class="depositInput">
-              <input type="text" placeholder="验证码">
+              <input type="text" placeholder="验证码" v-model="code">
             </div>
-            <div class="getCode">点击获取</div>
+            <!-- <div class="getCode">点击获取</div> -->
+            <PhoneCode :codeKey="codeKey"
+                       :codeBtn="codeBtn"
+                       :codeText="codeText">
+            </PhoneCode>
           </div>
         </div>
-        <div class="depositBtn">
+        <div class="depositBtn" @click.stop.prevent="deposit">
           下一步
         </div>
       </div>
@@ -76,11 +80,17 @@
 
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
+import PhoneCode from '@/components/PhoneCode/PhoneCode.vue'
+import { mapActions, mapState } from 'vuex'
+import { getStore } from '@/lib/js/storage'
+import { validateDeposit } from '@/lib/js/validate'
+import { withdraw } from '@/service'
 
 export default {
   name: 'Deposit',
   components: {
-    HeaderBar
+    HeaderBar,
+    PhoneCode
   },
   data () {
     return {
@@ -93,11 +103,66 @@ export default {
         goBack: true,
         showIcon: false
       },
-      assetAccount: {
-        txt: '余额总资金',
-        account: '600004.00'
+      money: '',
+      // 交易密码
+      dealPwd: '',
+      // 验证码
+      code: '',
+
+      // 验证码按钮初始化值
+      codeText: '点击获取',
+      // 验证码key值
+      codeKey: 'withdraw',
+      // 验证码按钮 class
+      codeBtn: 'depositGetCode'
+    }
+  },
+  computed: {
+    ...mapState({
+      depositInfo: ({ pay }) => pay.depositInfo
+    }),
+    placeholder () {
+      return `可提金额：${this.depositInfo.usableSum}`
+    },
+    bankId () {
+      return `${this.$route.params.type}` === '1'
+        ? '-6'
+        : this.depositInfo.cardNo
+    }
+  },
+  methods: {
+    ...mapActions(['getDepositInfo']),
+    async deposit () {
+      let validateMsg = validateDeposit(this.money, this.dealPwd, this.code)
+      if (validateMsg !== true) {
+        this.$message.error({ message: validateMsg })
+        return
+      }
+      let data = await withdraw(
+        ...[
+          JSON.parse(getStore('userInfo')).id,
+          getStore('token'),
+          `${this.$route.params.type}`,
+          `${this.dealPwd}`,
+          `${this.code}`,
+          `${this.money}`,
+          `${this.bankId}`,
+          `wechat`,
+          `${this.$route.params.assetId}`
+        ]
+      )
+      if (data.error === '0') {
+      } else {
       }
     }
+  },
+  mounted () {
+    this.getDepositInfo([
+      JSON.parse(getStore('userInfo')).id,
+      getStore('token'),
+      `${this.$route.params.type}`,
+      `${this.$route.params.assetId}`
+    ])
   }
 }
 </script>
@@ -175,14 +240,14 @@ export default {
   }
 }
 
-.getCode {
-  .size(282px, 102px);
-  border-radius: 20px;
-  background: @main-color;
-  .color(#fff);
-  text-align: center;
-  line-height: 102px;
-}
+// .depositGetCode {
+//   .size(282px, 102px);
+//   border-radius: 20px;
+//   background: @main-color;
+//   .color(#fff);
+//   text-align: center;
+//   line-height: 102px;
+// }
 
 .depositBtn {
   .size(1008px, 150px);

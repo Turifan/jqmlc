@@ -3,38 +3,50 @@
   <div>
     <HeaderBar :header-bar="headerBar"></HeaderBar>
     <div class="gray-fixed gray-fixed-bg">
-      <div class="noticeList"
-           v-for="(item,index) in noticeList"
-           :key="index">
-        <div class="noticeItem">
-          <div>
-            <div class="noticeTit">圣诞节到了 没有礼物怎么行</div>
-            <div class="noticeDate">
-              <div class="noticeDateImg">
-                <img src="../../assets/images/timeClock.svg"
-                     alt=""
-                     class="img-responsive">
-              </div>
+      <div class="wrapper">
+        <scroll ref="scroll"
+                :pullDownRefresh="pullDownRefresh"
+                :pullUpLoad="pullUpLoad"
+                :startY="parseInt(startY)"
+                @pullingDown="onPullingDown"
+                @pullingUp="onPullingUp">
+          <div class="noticeList"
+               v-for="(item,index) in noticeList"
+               :key="`${item.id}${index}`"
+               @click.stop.prevent="">
+            <div class="noticeItem">
               <div>
-                2015-12-22 17:02:30
+                <div class="noticeTit">{{item.title}}</div>
+                <div class="noticeDate">
+                  <div class="noticeDateImg">
+                    <img src="../../assets/images/timeClock.svg"
+                         alt=""
+                         class="img-responsive">
+                  </div>
+                  <div>
+                    {{item.publishTime}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </scroll>
       </div>
+
     </div>
   </div>
 </template>
 <script>
+import Vue from 'vue'
 import HeaderBar from '@/components/common/headerBar.vue'
-import { mapState, mapMutations } from 'vuex'
-import { noticeList } from '@/service'
-import { getStore } from '@/lib/js/storage'
+import { mapState, mapActions, mapMutations } from 'vuex'
+import Scroll from '@/components/scroll/scroll.vue'
 
 export default {
   name: 'Notice',
   components: {
-    HeaderBar
+    HeaderBar,
+    Scroll
   },
   data () {
     return {
@@ -47,31 +59,64 @@ export default {
         goBack: true,
         showIcon: false
       },
-      curPage: 1
+      pullDownRefresh: true,
+      pullUpLoad: true,
+      pullUpLoadMoreTxt: '加载更多',
+      pullUpLoadNoMoreTxt: '没有更多数据了',
+      startY: 0
     }
   },
+  watch: {
+    startY () {
+      this.rebuildScroll()
+    }
+  },
+  created () {
+    this.INIT_NOTICE_PAGE()
+  },
   computed: {
-    ...mapMutations(['GET_NOTICE_LIST']),
     ...mapState({
+      noticeCurpage: ({ globalVal }) => globalVal.noticeCurpage,
       noticeList: ({ globalVal }) => globalVal.noticeList
     })
   },
   methods: {
-    async getNoticeList (page) {
-      let data = await noticeList(
-        ...[JSON.parse(getStore('userInfo')).id, getStore('token'), `${page}`]
-      )
-      if (data.error === '0') {
-        this.GET_NOTICE_LIST()
-        this.curPage++
-      } else {
-        this.$message.error({ message: data.msg })
-      }
+    ...mapMutations(['INIT_NOTICE_PAGE']),
+    ...mapActions(['getNoticeList']),
+    onPullingDown () {
+      // 模拟更新数据
+      console.log('pulling down and load data')
+      this.INIT_NOTICE_PAGE()
+      setTimeout(() => {
+        if (this._isDestroyed) {
+          return
+        }
+        this.getNoticeList()
+        this.$refs.scroll.forceUpdate(true)
+      }, 2000)
+    },
+    onPullingUp () {
+      // 更新数据
+      console.log('pulling up and load data')
+      setTimeout(() => {
+        if (this._isDestroyed) {
+          return
+        }
+        this.getNoticeList()
+        // 如果没有新数据
+        this.$refs.scroll.forceUpdate()
+      }, 1500)
+    },
+    rebuildScroll () {
+      Vue.nextTick(() => {
+        this.$refs.scroll.destroy()
+        this.$refs.scroll.initScroll()
+      })
     }
   },
   mounted () {
-    if (this.curPage === 1) {
-      this.getNoticeList(`${this.curPage}`)
+    if (this.noticeCurpage === 1) {
+      this.getNoticeList()
     }
   }
 }
@@ -79,6 +124,11 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin.less';
 
+.wrapper {
+  overflow-y: hidden;
+  position: relative;
+  height: 100%;
+}
 .noticeList {
   padding: 0 35px;
   margin-bottom: 15px;

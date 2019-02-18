@@ -20,7 +20,7 @@
         </div>
         <div class="userDetail">
           <div class="mobile">
-            {{personInfo.mobilePhone}}
+            {{personInfo.mobilePhone|formatMobile}}
           </div>
           <div class="level" @click.stop.prevent="$router.push('member')">
             <div class="level-box">
@@ -75,6 +75,7 @@
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Suduku from './suduku.vue'
+import { formatMobile } from '@/lib/js/filters'
 import { mapActions, mapState } from 'vuex'
 
 export default {
@@ -156,6 +157,9 @@ export default {
     logout () {
       this.logoutAction()
     }
+  },
+  filters: {
+    formatMobile
   },
   mounted () {
     this.getNoticeInfo()

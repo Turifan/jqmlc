@@ -25,3 +25,16 @@ export function validateProfitInvest (money, dealPassword, selectAccount, code, 
   }
   return true
 }
+
+export function validateDeposit (money, dealPwd, code) {
+  if (!money) {
+    return '购买金额不能为空'
+  }
+  if (!dealPwd) {
+    return '交易密码不能为空'
+  }
+  if (!code) {
+    return '验证码不能为空'
+  }
+  return true
+}

@@ -16,10 +16,12 @@ import {
   INIT_FAT_LIST,
   SET_FATHISTORY_LIST,
   SET_FATHISTORY_CURRENTPAGE,
-  GET_FAT_HISTORY_TOTALNUM
+  GET_FAT_HISTORY_TOTALNUM,
+  GET_CURRENT_INFO,
+  GET_BALANCE_INFO
 } from '../mutation-types'
 
-import { shareList, machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList, loansOverList } from '@/service'
+import { shareList, machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList, loansOverList, current, balance } from '@/service'
 
 import { getStore } from '@/lib/js/storage'
 
@@ -39,7 +41,9 @@ const state = {
   totalNum: 0,
   fatHistoryList: [],
   fatHistoryCurpage: 1,
-  fatHistoryTotalNum: 0
+  fatHistoryTotalNum: 0,
+  currentInfo: '',
+  balanceInfo: ''
 }
 
 const mutations = {
@@ -97,6 +101,12 @@ const mutations = {
   },
   [SET_FATHISTORY_LIST] (state, fatHistoryList) {
     state.fatHistoryList = state.fatHistoryList.concat(fatHistoryList)
+  },
+  [GET_CURRENT_INFO] (state, currentInfo) {
+    state.currentInfo = currentInfo
+  },
+  [GET_BALANCE_INFO] (state, balanceInfo) {
+    state.balanceInfo = balanceInfo
   }
 }
 
@@ -178,6 +188,20 @@ const actions = {
       commit(SET_FATHISTORY_LIST, data.listBean.page)
       commit(SET_FATHISTORY_CURRENTPAGE)
       commit(GET_FAT_HISTORY_TOTALNUM, data.listBean.totalNum)
+    }
+  },
+  // 灵活猫信息
+  async getCurrentInfo ({ commit }) {
+    let data = await current(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
+    if (data) {
+      commit(GET_CURRENT_INFO, data.singleBean)
+    }
+  },
+  // 余额信息
+  async getBalanceInfo ({ commit }) {
+    let data = await balance(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
+    if (data) {
+      commit(GET_BALANCE_INFO, data.singleBean)
     }
   }
 }

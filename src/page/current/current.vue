@@ -3,14 +3,13 @@
   <div class="">
     <HeaderBar :header-bar="headerBar" />
     <div class="gray-fixed">
-      <AssetAccount :assetAccount="assetAccount"></AssetAccount>
+      <AssetAccount :assetAccount="assetAccount" v-if="assetAccount"></AssetAccount>
       <div class="currentTips">
         <div class="tips">
           <img src="../../assets/images/gantan.png" alt="">温馨提示：
         </div>
         <div class="tipsContent">
-          <div>灵活猫资金不能直接提现，</div>
-          <div>需购买发财猫，到期方能提现。</div>
+          <div v-for="(item,index) in currentInfo.tip" :key="index">{{item}}</div>
         </div>
       </div>
       <div class="goToInvest" @click.stop.prevent="$router.push('fatten')">
@@ -23,6 +22,7 @@
 <script>
 import HeaderBar from '@/components/common/headerBar.vue'
 import AssetAccount from '@/components/assetAccount/assetAccount.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Current',
@@ -40,49 +40,60 @@ export default {
         params: {},
         goBack: true,
         showIcon: false
-      },
-      assetAccount: {
-        txt: '灵活猫资产',
-        account: '600004.00',
-        path: 'asset'
       }
     }
+  },
+  computed: {
+    ...mapState({
+      currentInfo: ({ products }) => products.currentInfo
+    }),
+    assetAccount () {
+      return {
+        txt: '灵活猫资产',
+        account: this.currentInfo.flexibleMoney,
+        path: 'asset',
+        params: {}
+      }
+    }
+  },
+  methods: {
+    ...mapActions(['getCurrentInfo'])
+  },
+  mounted () {
+    this.getCurrentInfo()
   }
 }
-
 </script>
 
 <style lang="less" scoped>
-  @import '../../style/mixin';
+@import '../../style/mixin';
 
-  .currentTips {
-    padding: 50px 35px 0;
-    .fontSize(34px);
-    line-height: 60px;
+.currentTips {
+  padding: 50px 35px 0;
+  .fontSize(34px);
+  line-height: 60px;
+}
+
+.tips {
+  img {
+    width: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
   }
+}
 
-  .tips {
-    img {
-      width: 40px;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-  }
+.tipsContent {
+  padding-left: 50px;
+}
 
-  .tipsContent {
-    padding-left: 50px;
-
-  }
-
-  .goToInvest {
-    .size(800px, 130px);
-    margin: 487px auto 0;
-    .fontSize(42px);
-    .bg(#ff7032);
-    border-radius: 18px;
-    .color(#fff);
-    line-height: 130px;
-    .text-center;
-  }
-
+.goToInvest {
+  .size(800px, 130px);
+  margin: 487px auto 0;
+  .fontSize(42px);
+  .bg(#ff7032);
+  border-radius: 18px;
+  .color(#fff);
+  line-height: 130px;
+  .text-center;
+}
 </style>

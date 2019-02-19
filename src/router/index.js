@@ -61,6 +61,8 @@ const fat = r => require.ensure([], () => r(require('@/page/fat/fat')), 'fat')
 const fatHistory = r => require.ensure([], () => r(require('@/page/fat/fatHistory')), 'fatHistory')
 const paySuccess = r => require.ensure([], () => r(require('@/page/payInfo/paySuccess')), 'paySuccess')
 const payFailed = r => require.ensure([], () => r(require('@/page/payInfo/payFailed')), 'payFailed')
+const depositFailed = r => require.ensure([], () => r(require('@/page/depositInfo/depositFailed')), 'depositFailed')
+const depositSuccess = r => require.ensure([], () => r(require('@/page/depositInfo/depositSuccess')), 'depositSuccess')
 const description = r => require.ensure([], () => r(require('@/page/description/description')), 'description')
 
 Vue.use(Router)
@@ -316,7 +318,7 @@ const router = new Router({
     },
     // 充值
     {
-      path: '/recharge',
+      path: '/recharge/:cardNo',
       name: 'recharge',
       component: recharge,
       meta: {
@@ -598,6 +600,24 @@ const router = new Router({
       path: '/payFailed',
       name: 'payFailed',
       component: payFailed,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 提现失败
+    {
+      path: '/depositFailed',
+      name: 'depositFailed',
+      component: depositFailed,
+      meta: {
+        requireAuth: true
+      }
+    },
+    // 提现成功
+    {
+      path: '/depositSuccess',
+      name: 'depositSuccess',
+      component: depositSuccess,
       meta: {
         requireAuth: true
       }

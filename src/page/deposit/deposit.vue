@@ -152,7 +152,9 @@ export default {
         ]
       )
       if (data.error === '0') {
+        this.$router.push('/depositSuccess')
       } else {
+        this.$router.push('/depositFailed')
       }
     }
   },

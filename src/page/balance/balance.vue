@@ -111,20 +111,20 @@ export default {
   methods: {
     ...mapActions(['getBalanceInfo']),
     async recharge () {
-      !this.balanceInfo.idNo && this.$router.push('cert')
-      !this.balanceInfo.cardNo && this.$router.push('bindCard')
+      !this.balanceInfo.idNo && this.$router.push('/cert')
+      !this.balanceInfo.cardNo && this.$router.push('/bindCard')
       let data = await balanceRechargeInit(
         ...[JSON.parse(getStore('userInfo')).id, getStore('token')]
       )
       if (data.error === '0') {
-        this.$router.push('recharge')
+        this.$router.push(`/recharge/${this.balanceInfo.cardNo.slice(-4)}`)
       } else {
         this.$message.error({ message: data.msg })
       }
     },
     async deposit (type) {
-      !this.balanceInfo.idNo && this.$router.push('cert')
-      !this.balanceInfo.cardNo && this.$router.push('bindCard')
+      !this.balanceInfo.idNo && this.$router.push('/cert')
+      !this.balanceInfo.cardNo && this.$router.push('/bindCard')
       let data = await withdrawLoadInt(
         ...[JSON.parse(getStore('userInfo')).id, getStore('token'), `${type}`]
       )

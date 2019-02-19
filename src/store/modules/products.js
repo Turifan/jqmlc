@@ -18,10 +18,13 @@ import {
   SET_FATHISTORY_CURRENTPAGE,
   GET_FAT_HISTORY_TOTALNUM,
   GET_CURRENT_INFO,
-  GET_BALANCE_INFO
+  GET_BALANCE_INFO,
+  GET_BALANCERECORDS_LIST,
+  SET_BALANCERECORDS_PAGE,
+  INIT_BALANCERECORDS_PAGE
 } from '../mutation-types'
 
-import { shareList, machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList, loansOverList, current, balance } from '@/service'
+import { shareList, machineList, month, machineYear, monthProfitInfo, monthProfitList, fattenList, fatList, loansOverList, current, balance, balanceRecord } from '@/service'
 
 import { getStore } from '@/lib/js/storage'
 
@@ -43,7 +46,9 @@ const state = {
   fatHistoryCurpage: 1,
   fatHistoryTotalNum: 0,
   currentInfo: '',
-  balanceInfo: ''
+  balanceInfo: '',
+  balanceRecords: [],
+  balanceRecordsCurpage: 1
 }
 
 const mutations = {
@@ -107,6 +112,15 @@ const mutations = {
   },
   [GET_BALANCE_INFO] (state, balanceInfo) {
     state.balanceInfo = balanceInfo
+  },
+  [GET_BALANCERECORDS_LIST] (state, balanceRecords) {
+    state.balanceRecords = state.balanceRecords.concat(balanceRecords)
+  },
+  [SET_BALANCERECORDS_PAGE] (state) {
+    state.balanceRecordsCurpage++
+  },
+  [INIT_BALANCERECORDS_PAGE] (state) {
+    state.balanceRecordsCurpage = 1
   }
 }
 
@@ -202,6 +216,14 @@ const actions = {
     let data = await balance(...[JSON.parse(getStore('userInfo')).id, getStore('token')])
     if (data) {
       commit(GET_BALANCE_INFO, data.singleBean)
+    }
+  },
+  // 余额记录
+  async getBalanceRecords ({ state, commit }) {
+    let data = await balanceRecord(...[JSON.parse(getStore('userInfo')).id, getStore('token'), `${state.balanceRecordsCurpage}`])
+    if (data) {
+      commit(GET_BALANCERECORDS_LIST, data.listBean.page)
+      commit(SET_BALANCERECORDS_PAGE)
     }
   }
 }

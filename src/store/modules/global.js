@@ -42,12 +42,16 @@ const actions = {
   // 轮播
   async getBannerImages ({ commit }) {
     let data = await banner()
-    commit(GET_INDEX_IMAGES, data.listBean.page)
+    if (data) {
+      commit(GET_INDEX_IMAGES, data.listBean.page)
+    }
   },
   // 首页其他信息
   async queryHome ({ commit }) {
     let data = await queryHome()
-    commit(GET_HOME_INFO, data.singleBean)
+    if (data) {
+      commit(GET_HOME_INFO, data.singleBean)
+    }
   },
   // 签到信息
   async getSignInfo ({ commit }) {

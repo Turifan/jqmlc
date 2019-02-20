@@ -4,5 +4,5 @@ const devEnv = require('./dev.env')
 
 module.exports = merge(devEnv, {
   NODE_ENV: '"testing"',
-  BASE_URL: '"http://new.jqmlc.com"'
+  BASE_URL: '"http://jqm.turifan.cn"'
 })

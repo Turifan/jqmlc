@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/app': {
-        target: 'http://new.jqmlc.com',
+        target: 'http://jqm.turifan.cn:8080',
         changeOrigin: true
         // pathRewrite: {
         //   // 需要rewrite重写的, 如果在服务器端做了处理则可以不要这段
@@ -19,7 +19,7 @@ module.exports = {
         // }
       },
       '/weixin': {
-        target: 'http://new.jqmlc.com',
+        target: 'http://jqm.turifan.cn:8080',
         changeOrigin: true
         // pathRewrite: {
         //   // 需要rewrite重写的, 如果在服务器端做了处理则可以不要这段

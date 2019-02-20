@@ -1,0 +1,2 @@
+webpackJsonp([49],{"2Coa":function(e,t){},Ikhy:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{},[this._v("check")])},staticRenderFns:[]};var c=n("VU/8")({name:"Check",data:function(){return{}},created:function(){this.$router.push("/wxid/1")}},r,!1,function(e){n("2Coa")},null,null);t.default=c.exports}});
+//# sourceMappingURL=49.b8fbcf02b2ef7001f617.js.map
